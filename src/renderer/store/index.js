@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import listenForMain from './listenForMain.js'
+import preferences from './preferences.js'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,8 @@ const store = new Vuex.Store({
     actions,
     modules: {
         // have no states
-        listenForMain
+        listenForMain,
+        preferences,
     }
 })
 

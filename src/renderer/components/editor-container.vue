@@ -1,5 +1,10 @@
 <template>
-    <div class="editor-container">
+    <div class="editor-container"
+         :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
+         :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
+    'font-family': editorFontFamily ? `${editorFontFamily}, ${defaultFontFamily}` : `${defaultFontFamily}` }"
+         :dir="textDirection"
+    >
         <div class="J_editor editor"></div>
         <el-dialog
             :visible.sync="dialogTableVisible"
@@ -42,6 +47,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     import Muya from '../../muya/lib/index.js'
     import TablePicker from '../../muya/lib/ui/tablePicker'
     import QuickInsert from '../../muya/lib/ui/quickInsert'
@@ -50,10 +56,35 @@
     import ImagePathPicker from '../../muya/lib/ui/imagePicker'
     import FormatPicker from '../../muya/lib/ui/formatPicker'
     import bus from '../bus/index.js'
+    import { animatedScrollTo } from '../utils/index.js'
+    import Printer from '../services/printService.js'
+
+    const STANDAR_Y = 320
+
     export default {
         name: 'editor-container',
+        computed: {
+            ...mapState({
+                'preferLooseListItem': state => state.preferences.preferLooseListItem,
+                'autoPairBracket': state => state.preferences.autoPairBracket,
+                'autoPairMarkdownSyntax': state => state.preferences.autoPairMarkdownSyntax,
+                'autoPairQuote': state => state.preferences.autoPairQuote,
+                'bulletListMarker': state => state.preferences.bulletListMarker,
+                'tabSize': state => state.preferences.tabSize,
+                'lineHeight': state => state.preferences.lineHeight,
+                'fontSize': state => state.preferences.fontSize,
+                'lightColor': state => state.preferences.lightColor,
+                'darkColor': state => state.preferences.darkColor,
+                'editorFontFamily': state => state.preferences.editorFontFamily,
+                // edit modes
+                'typewriter': state => state.preferences.typewriter,
+                'focus': state => state.preferences.focus,
+                'sourceCode': state => state.preferences.sourceCode
+            })
+        },
         data () {
             return {
+                theme: 'light',
                 editor: null,
                 isShowClose: false,
                 dialogTableVisible: false,
@@ -78,7 +109,60 @@
             }
             this.editor = new Muya(container, config)
         },
+        watch: {
+            typewriter: function (value) {
+                if (value) {
+                    this.scrollToCursor()
+                }
+            },
+            focus: function (value) {
+                this.editor.setFocusMode(value)
+            },
+            theme: function (value, oldValue) {
+                const { editor } = this
+                if (value !== oldValue && editor) {
+                    editor.setTheme(value)
+                    this.addThemeStyle(value)
+                }
+            },
+            fontSize: function (value, oldValue) {
+                const { editor } = this
+                if (value !== oldValue && editor) {
+                    editor.setFont({ fontSize: value })
+                }
+            },
+            lineHeight: function (value, oldValue) {
+                const { editor } = this
+                if (value !== oldValue && editor) {
+                    editor.setFont({ lineHeight: value })
+                }
+            },
+            preferLooseListItem: function (value, oldValue) {
+                const { editor } = this
+                if (value !== oldValue && editor) {
+                    editor.setListItemPreference(value)
+                }
+            },
+            tabSize: function (value, oldValue) {
+                const { editor } = this
+                if (value !== oldValue && editor) {
+                    editor.setTabSize(value)
+                }
+            }
+        },
         created () {
+            const {
+                theme,
+                focus: focusMode,
+                markdown,
+                preferLooseListItem,
+                typewriter,
+                autoPairBracket,
+                autoPairMarkdownSyntax,
+                autoPairQuote,
+                bulletListMarker,
+                tabSize
+            } = this
             // use muya UI plugins
             Muya.use(TablePicker)
             Muya.use(QuickInsert)
@@ -86,6 +170,10 @@
             Muya.use(EmojiPicker)
             Muya.use(ImagePathPicker)
             Muya.use(FormatPicker)
+
+            // the default theme is light write in the store
+            this.addThemeStyle(theme)
+
             bus.$on('file-loaded', this.setMarkdownToEditor)
             bus.$on('undo', this.handleUndo)
             bus.$on('redo', this.handleRedo)
@@ -110,6 +198,21 @@
             bus.$on('print', this.handlePrint)
         },
         methods: {
+            addThemeStyle (theme) {
+                const linkId = 'ag-theme'
+                const href = process.env.NODE_ENV !== 'production'
+                    ? `./src/muya/themes/${theme}.css`
+                    : `./static/themes/${theme}.css`
+                let link = document.querySelector(`#${linkId}`)
+
+                if (!link) {
+                    link = document.createElement('link')
+                    link.setAttribute('rel', 'stylesheet')
+                    link.id = linkId
+                    document.head.appendChild(link)
+                }
+                link.href = href
+            },
             handleUndo () {
                 if (this.editor) {
                     this.editor.undo()
@@ -157,6 +260,25 @@
                 })
             },
 
+            scrollToHighlight () {
+                return this.scrollToElement('.ag-highlight')
+            },
+
+            scrollToHeader (slug) {
+                return this.scrollToElement(`[data-id="${slug}"]`)
+            },
+
+            scrollToElement (selector) {
+                // Scroll to search highlight word
+                const { container } = this.editor
+                const anchor = document.querySelector(selector)
+                if (anchor) {
+                    const { y } = anchor.getBoundingClientRect()
+                    const DURATION = 300
+                    animatedScrollTo(container, container.scrollTop + y - STANDAR_Y, DURATION)
+                }
+            },
+
             handleEditParagraph (type) {
                 if (type === 'table') {
                     this.tableChecker = { rows: 4, columns: 3 }
@@ -175,6 +297,40 @@
             handleDialogTableConfirm () {
                 this.dialogTableVisible = false
                 this.editor && this.editor.createTable(this.tableChecker)
+            },
+            handleFind (action) {
+                const searchMatches = this.editor.find(action)
+                this.$store.dispatch('SEARCH', searchMatches)
+                this.scrollToHighlight()
+            },
+            handlePrint () {
+                const html = this.editor.exportHtml()
+                const printer = new Printer(html)
+                printer.print()
+            },
+            handleExport (type) {
+                const markdown = this.editor.getMarkdown()
+                switch (type) {
+                case 'styledHtml': {
+                    const content = this.editor.exportStyledHTML(this.filename)
+                    this.$store.dispatch('EXPORT', { type, content, markdown })
+                    break
+                }
+
+                case 'pdf': {
+                    const html = this.editor.exportStyledHTML()
+                    this.printer.renderMarkdown(html)
+                    this.$store.dispatch('EXPORT', { type, markdown })
+                    break
+                }
+                }
+            },
+            blurEditor () {
+                this.editor.blur()
+            },
+
+            handleCopyBlock (name) {
+                this.editor.copy(name)
             }
         },
         beforeDestroy () {
@@ -205,7 +361,7 @@
     }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .editor-container {
         width: 100%;
         height: 100%;
