@@ -7,28 +7,28 @@ import strikeIcon from '../../assets/icons/format_strike.svg'
 import clearIcon from '../../assets/icons/format_clear.svg'
 
 const icons = [
-    {
-        type: 'strong',
-        icon: strongIcon
-    }, {
-        type: 'em',
-        icon: emphasisIcon
-    }, {
-        type: 'del',
-        icon: strikeIcon
-    }, {
-        type: 'inline_code',
-        icon: codeIcon
-    }, {
-        type: 'link',
-        icon: linkIcon
-    }, {
-        type: 'image',
-        icon: imageIcon
-    }, {
-        type: 'clear',
-        icon: clearIcon
-    }
+  {
+    type: 'strong',
+    icon: strongIcon
+  }, {
+    type: 'em',
+    icon: emphasisIcon
+  }, {
+    type: 'del',
+    icon: strikeIcon
+  }, {
+    type: 'inline_code',
+    icon: codeIcon
+  }, {
+    type: 'link',
+    icon: linkIcon
+  }, {
+    type: 'image',
+    icon: imageIcon
+  }, {
+    type: 'clear',
+    icon: clearIcon
+  }
 ]
 
 export default icons

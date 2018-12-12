@@ -10,7 +10,7 @@ const langs = Object.keys(languages).map(name => (languages[name]))
 const loadLanguage = initLoadLanguage(Prism)
 
 const search = text => {
-    return filter(langs, text, { key: 'name' })
+  return filter(langs, text, { key: 'name' })
 }
 
 // pre load latex and yaml and html for `math block` \ `front matter` and `html block`
@@ -18,10 +18,10 @@ loadLanguage('latex')
 loadLanguage('yaml')
 
 export {
-    search,
-    loadLanguage,
-    loadedCache,
-    languages
+  search,
+  loadLanguage,
+  loadedCache,
+  languages
 }
 
 export default prism

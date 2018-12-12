@@ -43,7 +43,12 @@
 
 <script>
     import Muya from '../../muya/lib/index.js'
-    import TablePicker from '../../muya/lib/ui/tablePicker/index.js'
+    import TablePicker from '../../muya/lib/ui/tablePicker'
+    import QuickInsert from '../../muya/lib/ui/quickInsert'
+    import CodePicker from '../../muya/lib/ui/codePicker'
+    import EmojiPicker from '../../muya/lib/ui/emojiPicker'
+    import ImagePathPicker from '../../muya/lib/ui/imagePicker'
+    import FormatPicker from '../../muya/lib/ui/formatPicker'
     import bus from '../bus/index.js'
     export default {
         name: 'editor-container',
@@ -72,10 +77,15 @@
                 theme: ''
             }
             this.editor = new Muya(container, config)
-            // use muya UI plugins
-            Muya.use(TablePicker)
         },
         created () {
+            // use muya UI plugins
+            Muya.use(TablePicker)
+            Muya.use(QuickInsert)
+            Muya.use(CodePicker)
+            Muya.use(EmojiPicker)
+            Muya.use(ImagePathPicker)
+            Muya.use(FormatPicker)
             bus.$on('file-loaded', this.setMarkdownToEditor)
             bus.$on('undo', this.handleUndo)
             bus.$on('redo', this.handleRedo)

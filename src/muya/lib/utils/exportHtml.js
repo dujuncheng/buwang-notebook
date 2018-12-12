@@ -9,39 +9,39 @@ import { sanitize } from '../utils'
 import { validEmoji } from '../ui/emojis'
 
 export const getSanitizeHtml = markdown => {
-    const html = marked(markdown)
-    return sanitize(html, EXPORT_DOMPURIFY_CONFIG)
+  const html = marked(markdown)
+  return sanitize(html, EXPORT_DOMPURIFY_CONFIG)
 }
 
 class ExportHtml {
-    constructor (markdown) {
-        this.markdown = markdown
-    }
-    // render pure html by marked
-    renderHtml () {
-        return marked(this.markdown, {
-            highlight (code, lang) {
-                return Prism.highlight(code, Prism.languages[lang], lang)
-            },
-            emojiRenderer (emoji) {
-                const validate = validEmoji(emoji)
-                if (validate) {
-                    return validate.emoji
-                } else {
-                    return `:${emoji}:`
-                }
-            },
-            mathRenderer (math, displayMode) {
-                return katex.renderToString(math, {
-                    displayMode
-                })
-            }
+  constructor (markdown) {
+    this.markdown = markdown
+  }
+  // render pure html by marked
+  renderHtml () {
+    return marked(this.markdown, {
+      highlight (code, lang) {
+        return Prism.highlight(code, Prism.languages[lang], lang)
+      },
+      emojiRenderer (emoji) {
+        const validate = validEmoji(emoji)
+        if (validate) {
+          return validate.emoji
+        } else {
+          return `:${emoji}:`
+        }
+      },
+      mathRenderer (math, displayMode) {
+        return katex.renderToString(math, {
+          displayMode
         })
-    }
-    // get html with style
-    generate (filename = '') {
-        const html = this.renderHtml()
-        return `<!DOCTYPE html>
+      }
+    })
+  }
+  // get html with style
+  generate (filename = '') {
+    const html = this.renderHtml()
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -84,7 +84,7 @@ class ExportHtml {
   </article>
 </body>
 </html>`
-    }
+  }
 }
 
 export default ExportHtml

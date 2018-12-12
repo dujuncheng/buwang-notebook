@@ -65,6 +65,9 @@
         flex: 1;
         height: 100%;
         background-color: white;
+        box-sizing: border-box;
+        padding-left: 60px;
+        padding-right: 60px;
         .editor {
             width: 90%;
             min-width: 600px;

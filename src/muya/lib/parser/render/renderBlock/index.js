@@ -3,7 +3,7 @@ import renderLeafBlock from './renderLeafBlock'
 import renderContainerBlock from './renderContainerBlock'
 
 export default {
-    renderBlock,
-    renderLeafBlock,
-    renderContainerBlock
+  renderBlock,
+  renderLeafBlock,
+  renderContainerBlock
 }
