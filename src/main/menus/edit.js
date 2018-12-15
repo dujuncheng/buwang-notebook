@@ -52,6 +52,18 @@ export default {
         }
     }, {
         type: 'separator'
-    }
+    },{
+        label: '全选',
+        accelerator: keybindings.getAccelerator('editSelectAll'),
+        role: 'selectall'
+    },{
+        type: 'separator'
+    }, {
+        label: '查找',
+        accelerator: keybindings.getAccelerator('editFind'),
+        click (menuItem, browserWindow) {
+            actions.edit(browserWindow, 'find')
+        }
+    },
     ]
 }

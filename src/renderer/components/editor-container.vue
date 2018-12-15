@@ -59,6 +59,8 @@
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
 
+    import { showContextMenu } from '../contextMenu/index.js'
+
     const STANDAR_Y = 320
 
     export default {
@@ -151,53 +153,93 @@
             }
         },
         created () {
-            const {
-                theme,
-                focus: focusMode,
-                markdown,
-                preferLooseListItem,
-                typewriter,
-                autoPairBracket,
-                autoPairMarkdownSyntax,
-                autoPairQuote,
-                bulletListMarker,
-                tabSize
-            } = this
-            // use muya UI plugins
-            Muya.use(TablePicker)
-            Muya.use(QuickInsert)
-            Muya.use(CodePicker)
-            Muya.use(EmojiPicker)
-            Muya.use(ImagePathPicker)
-            Muya.use(FormatPicker)
+            this.$nextTick(() => {
+                const {
+                    theme,
+                    focus: focusMode,
+                    markdown,
+                    preferLooseListItem,
+                    typewriter,
+                    autoPairBracket,
+                    autoPairMarkdownSyntax,
+                    autoPairQuote,
+                    bulletListMarker,
+                    tabSize
+                } = this
+                // use muya UI plugins
+                Muya.use(TablePicker)
+                Muya.use(QuickInsert)
+                Muya.use(CodePicker)
+                Muya.use(EmojiPicker)
+                Muya.use(ImagePathPicker)
+                Muya.use(FormatPicker)
 
-            // the default theme is light write in the store
-            this.addThemeStyle(theme)
+                // the default theme is light write in the store
+                this.addThemeStyle(theme)
 
-            bus.$on('file-loaded', this.setMarkdownToEditor)
-            bus.$on('undo', this.handleUndo)
-            bus.$on('redo', this.handleRedo)
-            bus.$on('export', this.handleExport)
-            bus.$on('paragraph', this.handleEditParagraph)
-            bus.$on('format', this.handleInlineFormat)
-            bus.$on('searchValue', this.handleSearch)
-            bus.$on('replaceValue', this.handReplace)
-            bus.$on('find', this.handleFind)
-            bus.$on('insert-image', this.handleSelect)
-            bus.$on('image-uploaded', this.handleUploadedImage)
-            bus.$on('file-changed', this.handleMarkdownChange)
-            bus.$on('editor-blur', this.blurEditor)
-            bus.$on('image-auto-path', this.handleImagePath)
-            bus.$on('copyAsMarkdown', this.handleCopyPaste)
-            bus.$on('copyAsHtml', this.handleCopyPaste)
-            bus.$on('pasteAsPlainText', this.handleCopyPaste)
-            bus.$on('insertParagraph', this.handleInsertParagraph)
-            bus.$on('editTable', this.handleEditTable)
-            bus.$on('scroll-to-header', this.scrollToHeader)
-            bus.$on('copy-block', this.handleCopyBlock)
-            bus.$on('print', this.handlePrint)
+                bus.$on('file-loaded', this.setMarkdownToEditor)
+                bus.$on('undo', this.handleUndo)
+                bus.$on('redo', this.handleRedo)
+                bus.$on('export', this.handleExport)
+                bus.$on('paragraph', this.handleEditParagraph)
+                bus.$on('format', this.handleInlineFormat)
+                bus.$on('searchValue', this.handleSearch)
+                bus.$on('replaceValue', this.handReplace)
+                bus.$on('find', this.handleFind)
+                bus.$on('insert-image', this.handleSelect)
+                bus.$on('image-uploaded', this.handleUploadedImage)
+                bus.$on('file-changed', this.handleMarkdownChange)
+                bus.$on('editor-blur', this.blurEditor)
+                bus.$on('image-auto-path', this.handleImagePath)
+                bus.$on('copyAsMarkdown', this.handleCopyPaste)
+                bus.$on('copyAsHtml', this.handleCopyPaste)
+                bus.$on('pasteAsPlainText', this.handleCopyPaste)
+                bus.$on('insertParagraph', this.handleInsertParagraph)
+                bus.$on('editTable', this.handleEditTable)
+                bus.$on('scroll-to-header', this.scrollToHeader)
+                bus.$on('copy-block', this.handleCopyBlock)
+                bus.$on('print', this.handlePrint)
+
+                this.editor.on('insert-image', type => {
+                    if (type === 'absolute' || type === 'relative') {
+                        this.$store.dispatch('ASK_FOR_INSERT_IMAGE', type)
+                    } else if (type === 'upload') {
+                        bus.$emit('upload-image')
+                    }
+                })
+
+                this.editor.on('image-path-autocomplement', src => {
+                    this.$store.dispatch('ASK_FOR_IMAGE_AUTO_PATH', src)
+                })
+
+                this.editor.on('change', changes => {
+                    this.$store.dispatch('LISTEN_FOR_CONTENT_CHANGE', changes)
+                })
+
+                this.editor.on('selectionChange', changes => {
+                    const { y } = changes.cursorCoords
+                    if (this.typewriter) {
+                        animatedScrollTo(container, container.scrollTop + y - STANDAR_Y, 100)
+                    }
+
+                    this.selectionChange = changes
+                    this.$store.dispatch('SELECTION_CHANGE', changes)
+                })
+
+                this.editor.on('selectionFormats', formats => {
+                    this.$store.dispatch('SELECTION_FORMATS', formats)
+                })
+
+                this.editor.on('contextmenu', (event, selectionChanges) => {
+                    showContextMenu(event, selectionChanges)
+                })
+            })
         },
         methods: {
+            handleInsertParagraph (location) {
+                const { editor } = this
+                editor && editor.insertParagraph(location)
+            },
             addThemeStyle (theme) {
                 const linkId = 'ag-theme'
                 const href = process.env.NODE_ENV !== 'production'

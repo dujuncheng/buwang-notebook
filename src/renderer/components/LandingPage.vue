@@ -57,21 +57,34 @@
         background-color: #191B1C;
         color: #C8C9C9!important;
     }
+    @media only screen and (max-width: 680px) {
+        .side-bar-container {
+            display: none;
+        }
+    }
+
     .note-list-container {
         flex-basis: 300px;
         height: 100%;
     }
+
+    @media only screen and (max-width: 1120px) {
+        .note-list-container {
+            display: none;
+        }
+    }
+
     .edit-container {
         flex: 1;
         height: 100%;
         background-color: white;
-        box-sizing: border-box;
-        padding-left: 60px;
-        padding-right: 60px;
+        overflow-y: scroll;
         .editor {
             width: 90%;
-            min-width: 600px;
             margin: 0 auto;
+            position: relative;
+            height: 100%;
+            box-sizing: border-box;
         }
     }
 </style>
