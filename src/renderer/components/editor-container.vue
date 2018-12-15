@@ -97,19 +97,7 @@
             }
         },
         mounted () {
-            const container = document.querySelector('.J_editor')
-            let config = {
-                autoPairBracket: true,
-                autoPairMarkdownSyntax: true,
-                autoPairQuote: true,
-                bulletListMarker: '',
-                focusMode: false,
-                markdown: '',
-                preferLooseListItem: true,
-                tabSize: 4,
-                theme: ''
-            }
-            this.editor = new Muya(container, config)
+
         },
         watch: {
             typewriter: function (value) {
@@ -154,6 +142,19 @@
         },
         created () {
             this.$nextTick(() => {
+                const ele = document.querySelector('.J_editor')
+                let config = {
+                    autoPairBracket: true,
+                    autoPairMarkdownSyntax: true,
+                    autoPairQuote: true,
+                    bulletListMarker: '',
+                    focusMode: false,
+                    markdown: '',
+                    preferLooseListItem: true,
+                    tabSize: 4,
+                    theme: ''
+                }
+                const {container} = this.editor = new Muya(ele, config)
                 const {
                     theme,
                     focus: focusMode,
