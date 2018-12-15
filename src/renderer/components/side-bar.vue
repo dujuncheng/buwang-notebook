@@ -377,6 +377,8 @@
             transform: translate(0, -50%);
             font-size: 16px;
             font-weight: 800;
+            margin: 0px;
+            padding: 0px;
         }
     }
     .category-container {
