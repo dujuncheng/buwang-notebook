@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import listenForMain from './listenForMain.js'
 import preferences from './preferences.js'
+import editor from './editor.js'
 
 Vue.use(Vuex)
 
@@ -23,6 +24,7 @@ const store = new Vuex.Store({
         // have no states
         listenForMain,
         preferences,
+        editor,
     }
 })
 

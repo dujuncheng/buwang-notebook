@@ -374,7 +374,10 @@
 
             handleCopyBlock (name) {
                 this.editor.copy(name)
-            }
+            },
+            handleInlineFormat (type) {
+                this.editor && this.editor.format(type)
+            },
         },
         beforeDestroy () {
             bus.$off('file-loaded', this.setMarkdownToEditor)

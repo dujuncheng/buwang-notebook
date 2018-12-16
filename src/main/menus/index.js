@@ -1,5 +1,6 @@
 import edit from './edit.js'
 import paragraph from './paragraph.js'
+import format from './format.js'
 var log = require('electron-log')
 
 let MenuTemplate = [
@@ -8,6 +9,7 @@ let MenuTemplate = [
         submenu: [{}]
     },
     edit,
-    paragraph
+    paragraph,
+    format
 ]
 export default MenuTemplate
