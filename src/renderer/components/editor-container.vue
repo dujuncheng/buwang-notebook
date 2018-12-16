@@ -2,7 +2,7 @@
     <div class="editor-container"
          :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
          :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
-    'font-family': editorFontFamily ? `${editorFontFamily}, ${defaultFontFamily}` : `${defaultFontFamily}` }"
+    'font-family': editorFontFamily}"
          :dir="textDirection"
     >
         <div class="J_editor editor"></div>
@@ -15,7 +15,7 @@
             center
             dir='ltr'
         >
-            <el-form :model="tableChecker" :inline="true">
+            <el-forSELECTION_CHANGEm :model="tableChecker" :inline="true">
                 <el-form-item label="Rows">
                     <el-input-number
                         ref="rowInput"
@@ -35,7 +35,7 @@
                         :max="20"
                     ></el-input-number>
                 </el-form-item>
-            </el-form>
+            </el-forSELECTION_CHANGEm>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogTableVisible = false" icon="el-icon-close">
                 </el-button>
