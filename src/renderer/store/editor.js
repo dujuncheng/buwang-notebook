@@ -329,7 +329,6 @@ const actions = {
     // Content change from realtime preview editor and source code editor
     LISTEN_FOR_CONTENT_CHANGE ({ commit, state, rootState }, { markdown, wordCount, cursor, history }) {
         const { autoSave } = rootState.preferences
-        const { projectTree } = rootState.project
         const { pathname, markdown: oldMarkdown, id } = state.currentFile
         commit('SET_MARKDOWN', markdown)
 
@@ -347,14 +346,14 @@ const actions = {
 
         // change save status/save to file only when the markdown changed!
         if (markdown !== oldMarkdown) {
-            if (projectTree) {
-                commit('UPDATE_PROJECT_CONTENT', { markdown, pathname })
-            }
-            if (pathname && autoSave) {
-                ipcRenderer.send('AGANI::response-file-save', { id, pathname, markdown })
-            } else {
-                commit('SET_SAVE_STATUS', false)
-            }
+            // if (projectTree) {
+            //     commit('UPDATE_PROJECT_CONTENT', { markdown, pathname })
+            // }
+            // if (pathname && autoSave) {
+            //     ipcRenderer.send('AGANI::response-file-save', { id, pathname, markdown })
+            // } else {
+            //     commit('SET_SAVE_STATUS', false)
+            // }
         }
     },
 

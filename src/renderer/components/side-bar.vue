@@ -43,8 +43,8 @@
                     <span class="icon el-icon-edit"></span>
                     <span class="text">重命名</span>
                 </div>
-                <div class="context-item">
-                    <span class="icon el-icon-delete" @click="deleteNoteBook()"></span>
+                <div class="context-item" @click="deleteNoteBook(contextSelectData)">
+                    <span class="icon el-icon-delete"></span>
                     <span class="text">删除</span>
                 </div>
             </div>
@@ -161,8 +161,13 @@
                 })
             },
             // 用户选择删除笔记
-            deleteNoteBook () {
-
+            deleteNoteBook (data) {
+                alert('ssss')
+                // 如果没有data 则不删除
+                if (!data) {
+                    return
+                }
+                console.log(data)
             },
             // 确认增加子笔记
             confirmAddNote (children, id, str) {
