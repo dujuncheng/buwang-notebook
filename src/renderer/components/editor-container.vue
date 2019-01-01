@@ -237,6 +237,12 @@
             })
         },
         methods: {
+            handleImagePath(files) {
+                alert('handleImagePath')
+                console.log(files)
+                const { editor } = this
+                editor && editor.showAutoImagePath(files)
+            },
             handleInsertParagraph (location) {
                 const { editor } = this
                 editor && editor.insertParagraph(location)
@@ -268,7 +274,6 @@
             },
             // Custom copyAsMarkdown copyAsHtml pasteAsPlainText
             handleCopyPaste (type) {
-                console.log(type)
                 if (this.editor) {
                     this.editor[type]()
                 }
@@ -291,6 +296,7 @@
             },
 
             handleUploadedImage (url, deletionUrl) {
+                alert('handleUploadedImage')
                 this.handleSelect(url)
                 this.$store.dispatch('SHOW_IMAGE_DELETION_URL', deletionUrl)
             },
