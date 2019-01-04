@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/less/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/less/no_scroll_bar.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -25,7 +19,7 @@
     <session id="1258963134">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="27" />
           <entry key="project.open.time.0" value="12" />
           <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.2" value="4" />
@@ -77,7 +71,7 @@
           <entry key="json" value="8" />
           <entry key="less" value="109" />
           <entry key="txt" value="71" />
-          <entry key="vue" value="11808" />
+          <entry key="vue" value="12150" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -88,7 +82,7 @@
           <entry key="JavaScript" value="2033" />
           <entry key="Less" value="109" />
           <entry key="PLAIN_TEXT" value="71" />
-          <entry key="Vue.js" value="11808" />
+          <entry key="Vue.js" value="12150" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -99,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-113">
-              <caret line="428" column="33" lean-forward="true" selection-start-line="428" selection-start-column="3" selection-end-line="428" selection-end-column="33" />
+            <state relative-caret-position="7562">
+              <caret line="448" column="39" selection-start-line="448" selection-start-column="39" selection-end-line="448" selection-end-column="39" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
@@ -121,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="124" column="33" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
+            <state relative-caret-position="300">
+              <caret line="16" column="75" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -207,9 +201,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SELECTION_CHANGE</find>
-      <find>SELECTION_CHANGELISTEN_FOR_CONTENT_CHANGE</find>
-      <find>handleInlineFormat</find>
       <find>SELECTION_FORMATS</find>
       <find>dispatch</find>
       <find>getSingleFileState</find>
@@ -235,8 +226,11 @@
       <find>link-icon</find>
       <find>bellIconStyle</find>
       <find>'@':</find>
-      <find>editor-container</find>
       <find>edit-container</find>
+      <find>blog-icon</find>
+      <find>editor-container</find>
+      <find>editorBox-container</find>
+      <find>shrink-icon</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/.electron-vue</dir>
@@ -295,8 +289,8 @@
         <option value="$PROJECT_DIR$/src/renderer/less/no_scroll_bar.less" />
         <option value="$PROJECT_DIR$/src/renderer/less/color_red.less" />
         <option value="$PROJECT_DIR$/src/renderer/less/index.less" />
-        <option value="$PROJECT_DIR$/src/renderer/components/editor-container.vue" />
         <option value="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" />
+        <option value="$PROJECT_DIR$/src/renderer/components/editor-container.vue" />
         <option value="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" />
       </list>
     </option>
@@ -404,6 +398,14 @@
               <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="editor-box" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
               <item name="less" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -500,7 +502,7 @@
       <workItem from="1546347884655" duration="1066000" />
       <workItem from="1546585105290" duration="4971000" />
       <workItem from="1546590684904" duration="73000" />
-      <workItem from="1546590791211" duration="1097000" />
+      <workItem from="1546590791211" duration="3264000" />
     </task>
     <task id="LOCAL-00001" summary="code change">
       <created>1544633102588</created>
@@ -558,11 +560,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546349254355</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add notification">
+      <created>1546592199797</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1546592199797</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83488000" />
+    <option name="totallyTimeSpent" value="85655000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -575,9 +584,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32980973" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32980973" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -589,9 +597,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32923833" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -970,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-113">
-          <caret line="428" column="33" lean-forward="true" selection-start-line="428" selection-start-column="3" selection-end-line="428" selection-end-column="33" />
+        <state relative-caret-position="7562">
+          <caret line="448" column="39" selection-start-line="448" selection-start-column="39" selection-end-line="448" selection-end-column="39" />
           <folding>
             <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
@@ -981,8 +989,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="124" column="33" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
+        <state relative-caret-position="300">
+          <caret line="16" column="75" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="75" />
         </state>
       </provider>
     </entry>

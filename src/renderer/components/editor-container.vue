@@ -446,6 +446,7 @@
                 display: inline-block;
                 font-size: 18px;
                 padding-left: 18px;
+                box-sizing: border-box;
             }
         }
         .box-container {
@@ -466,6 +467,8 @@
             width: 90%;
             margin: 0 auto;
             box-sizing: border-box;
+            overflow-y: scroll;
+            ._no_scroll_bar();
             .editor {
                 width: 100%;
                 height: 100%;

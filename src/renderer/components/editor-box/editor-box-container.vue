@@ -10,6 +10,12 @@
         <i class="far fa-bell bell-icon"
            :style="bellIconStyle"
         ></i>
+        <div class="review-container">
+            <el-rate v-model="reviewRate"></el-rate>
+        </div>
+
+        <i class="fas fa-compress-arrows-alt shrink-icon" v-if="scaleStatus === 1"></i>
+        <i class="fas fa-expand-arrows-alt enlarge-icon" v-if="scaleStatus === 0"></i>
     </div>
 </template>
 
@@ -17,8 +23,15 @@
     export default {
         data () {
             return {
+                // 是否发布为blog
                 blogStatus: 1,
-                notifyStatus: 0
+                // 是否开启提醒
+                notifyStatus: 1,
+                // 提醒的重要程度
+                reviewRate: 0,
+                // 是否放大 0 不变 1放大
+                scaleStatus: 0,
+
             }
         },
         computed: {
@@ -68,7 +81,7 @@
                     break
                 case 1:
                     style = {
-                        'color': '#3F88F9'
+                        'color': '#F7BA2A'
                     }
                     break
                 default:
@@ -86,6 +99,7 @@
     .editorBox-container {
         width: 100%;
         height: 100%;
+        position: relative;
         .blog-icon {
             font-size: 18px;
             margin-left: 19px;
@@ -125,6 +139,42 @@
             transition: all 0.5s;
         }
         .bell-icon:hover {
+            text-shadow : 0px 2px 4px rgba(0,0,0,0.2);
+        }
+        .review-container {
+            display: inline-block;
+            height: 30px;
+            line-height: 9px;
+            margin-left: 14px;
+            position: relative;
+            top: -4px;
+        }
+        .shrink-icon {
+            font-size: 18px;
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translate(0, -50%);
+            line-height: 30px;
+            cursor: pointer;
+            transition: all 0.5s;
+            color: #666767;
+        }
+        .shrink-icon:hover {
+            text-shadow : 0px 2px 4px rgba(0,0,0,0.2);
+        }
+        .enlarge-icon {
+            font-size: 18px;
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translate(0, -50%);
+            line-height: 30px;
+            cursor: pointer;
+            transition: all 0.5s;
+            color: #666767;
+        }
+        .enlarge-icon:hover {
             text-shadow : 0px 2px 4px rgba(0,0,0,0.2);
         }
     }
