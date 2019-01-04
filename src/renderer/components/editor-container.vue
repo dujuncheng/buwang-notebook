@@ -1,11 +1,19 @@
 <template>
-    <div class="editor-container"
-         :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
-         :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
+    <div class="wrap">
+        <div class="title-container">
+            <input type="text" class="title" placeholder="未命名"/>
+        </div>
+        <div class="box-container">
+            <editorBox></editorBox>
+        </div>
+        <div class="editor-container"
+             :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
+             :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
     'font-family': editorFontFamily}"
-         :dir="textDirection"
-    >
-        <div class="J_editor editor"></div>
+             :dir="textDirection"
+        >
+            <div class="J_editor editor"></div>
+        </div>
         <el-dialog
             :visible.sync="dialogTableVisible"
             :show-close="isShowClose"
@@ -15,7 +23,7 @@
             center
             dir='ltr'
         >
-            <el-forSELECTION_CHANGEm :model="tableChecker" :inline="true">
+            <el-form :model="tableChecker" :inline="true">
                 <el-form-item label="Rows">
                     <el-input-number
                         ref="rowInput"
@@ -35,7 +43,7 @@
                         :max="20"
                     ></el-input-number>
                 </el-form-item>
-            </el-forSELECTION_CHANGEm>
+            </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogTableVisible = false" icon="el-icon-close">
                 </el-button>
@@ -48,6 +56,7 @@
 
 <script>
     import { mapState } from 'vuex'
+    import editorBox from './editor-box/editor-box-container.vue';
     import Muya from '../../muya/lib/index.js'
     import TablePicker from '../../muya/lib/ui/tablePicker'
     import QuickInsert from '../../muya/lib/ui/quickInsert'
@@ -83,6 +92,9 @@
                 'focus': state => state.preferences.focus,
                 'sourceCode': state => state.preferences.sourceCode
             })
+        },
+        components: {
+            editorBox,
         },
         data () {
             return {
@@ -414,26 +426,63 @@
 </script>
 
 <style lang="less">
-    .editor-container {
+    @import "~@/less/index.less";
+
+    .wrap {
         width: 100%;
         height: 100%;
-        background-color: white;
-        .editor {
+        position: relative;
+        overflow-x: hidden;
+        ._no_scroll_bar();
+        .title-container {
             width: 100%;
-            height: 100%;
+            height: 48px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            .title {
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+                font-size: 18px;
+                padding-left: 18px;
+            }
         }
-    }
-    .ag-dialog-table {
-        border-radius: 5px;
-        box-shadow: 0 1px 3px rgba(230, 230, 230, .3);
-    }
+        .box-container {
+            width: 100%;
+            height: 30px;
+            background-color: #F8F8F8;
+            position: absolute;
+            top: 48px;
+            left: 0;
+        }
+        .editor-container {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            top: 78px;
+            right: 0;
+            background-color: white;
+            width: 90%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            .editor {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .ag-dialog-table {
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(230, 230, 230, .3);
+        }
 
-    .dark .ag-dialog-table {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
-    }
+        .dark .ag-dialog-table {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+        }
 
-    .ag-dialog-table .dialog-title svg {
-        width: 1.5em;
-        height: 1.5em;
+        .ag-dialog-table .dialog-title svg {
+            width: 1.5em;
+            height: 1.5em;
+        }
     }
 </style>

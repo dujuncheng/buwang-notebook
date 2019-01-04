@@ -42,6 +42,7 @@
 </script>
 
 <style lang="less">
+    @import "~@/less/index.less";
 
     .wrapper {
         width: 100%;
@@ -79,12 +80,6 @@
         height: 100%;
         background-color: white;
         overflow-y: scroll;
-        .editor {
-            width: 90%;
-            margin: 0 auto;
-            position: relative;
-            height: 100%;
-            box-sizing: border-box;
-        }
+        ._no_scroll_bar();
     }
 </style>
