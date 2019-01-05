@@ -12,7 +12,8 @@
             <div class="list">
                 <div class="item"
                      v-for="n in 10"
-                     :class="isSelected == n?'item-selected':''"
+                     :class="noteItemSelected == n?'item-selected':''"
+                     @click="setSelected('noteItemSelected', n)"
                 >
                     <noteListItem></noteListItem>
                 </div>
@@ -22,7 +23,8 @@
             <div class="list">
                 <div class="item"
                      v-for="n in 10"
-                     :class="isSelected == n?'item-selected':''"
+                     :class="reviewItemSelected == n?'item-selected':''"
+                     @click="setSelected('reviewItemSelected', n)"
                 >
                     <reviewListItem></reviewListItem>
                 </div>
@@ -43,12 +45,22 @@
         computed: {
             ...mapState({
                 'sideBarSelected': state => state.notebook.sideBarSelected,
+                'reviewItemSelected': state => state.notebook.reviewItemSelected,
+                'noteItemSelected': state => state.notebook.noteItemSelected,
             })
         },
         data () {
             return {
                 isSelected: 2
             }
+        },
+        methods: {
+            setSelected (name, value) {
+                if (name === undefined || value === undefined) {
+                    return
+                }
+                this.$store.commit('SET_NOTEBOOK', {name, value})
+            },
         }
     }
 </script>
