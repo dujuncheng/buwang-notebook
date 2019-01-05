@@ -27,6 +27,7 @@
 </script>
 
 <style scoped lang="less">
+    @import "~@/less/index.less";
     .bottom-line {
         width: 86%;
         position: absolute;
@@ -43,6 +44,8 @@
     .title {
         font-size: 17px;
         margin-bottom: 4px;
+        width: 237px;
+        .no_more();
     }
     .icon-container {
         width: 100%;
