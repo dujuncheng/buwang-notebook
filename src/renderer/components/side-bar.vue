@@ -13,9 +13,9 @@
         >
             <p class="title-text">笔记本</p>
             <i class="fas fa-sticky-note title-icon"></i>
-            <i class="fas fa-plus-circle plus-icon" v-show="selected === 1"></i>
+            <i class="fas fa-plus-circle plus-icon" v-show="sideBarSelected === 1"></i>
         </div>
-        <div class="category-container" v-show="selected === 1">
+        <div class="category-container" v-show="sideBarSelected === 1">
             <div class="notebook-container">
                 <el-tree
                     highlight-current
@@ -64,13 +64,12 @@
 
 <script>
     import contextMenu from 'vue-context-menu'
+    import {mapState} from 'vuex'
     export default {
         name: 'sidebar',
         components: { contextMenu },
         data () {
             return {
-                // 0 待复习
-                selected: 0,
                 inputType: '',
                 filterText: '',
                 // 右键——选中的父目录的data
@@ -98,7 +97,7 @@
         computed: {
             brainStyle () {
                 let style = ''
-                if (this.selected === 0) {
+                if (this.sideBarSelected === 0) {
                     style = {
                         'color': 'white',
                         'background': '#2D2D2D'
@@ -108,14 +107,18 @@
             },
             noteStyle () {
                 let style = ''
-                if (this.selected === 1) {
+                if (this.sideBarSelected === 1) {
                     style = {
                         'color': 'white',
                         'background': '#2D2D2D'
                     }
                 }
                 return style
-            }
+            },
+            ...mapState({
+                'scaleStatus': state => state.notebook.scaleStatus,
+                'sideBarSelected': state => state.notebook.sideBarSelected,
+            })
         },
         watch: {
             filterText (val) {
@@ -128,7 +131,7 @@
                 if (num === undefined) {
                     return
                 }
-                this.selected = num
+                this.$store.commit('SET_SELECTED', {num})
             },
             // 处理 input blur事件
             handleBlur (node) {

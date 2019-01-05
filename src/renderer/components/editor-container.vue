@@ -446,6 +446,7 @@
                 font-size: 18px;
                 padding-left: 18px;
                 box-sizing: border-box;
+                text-align: center;
             }
         }
         .box-container {

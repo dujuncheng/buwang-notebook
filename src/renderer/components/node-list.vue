@@ -1,14 +1,14 @@
 <template>
     <div class="node-list-container">
-        <div class="title-container" v-if="false">
+        <div class="title-container" v-if="sideBarSelected === 1">
             <i class="sort-icon el-icon-sort"></i>
-            <div class="title" v-if="false">笔记本</div>
+            <div class="title">笔记本</div>
             <i class="add-icon el-icon-plus"></i>
         </div>
-        <div class="search-container" v-if="false">
+        <div class="search-container" v-if="sideBarSelected === 1">
             <input type="text" class="search-input" placeholder="查找笔记">
         </div>
-        <div class="note-list-container" v-if="false">
+        <div class="note-list-container" v-if="sideBarSelected === 1">
             <div class="list">
                 <div class="item"
                      v-for="n in 10"
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="review-list-container">
+        <div class="review-list-container" v-if="sideBarSelected === 0">
             <div class="list">
                 <div class="item"
                      v-for="n in 10"
@@ -32,13 +32,18 @@
 </template>
 
 <script>
-    import noteListItem from './middle-list/note-list-item.vue';
-    import reviewListItem from './middle-list/review-list-item.vue';
+    import { mapState } from 'vuex'
+    import noteListItem from './middle-list/note-list-item.vue'
+    import reviewListItem from './middle-list/review-list-item.vue'
     export default {
-        name: 'node-list',
         components: {
             noteListItem,
             reviewListItem
+        },
+        computed: {
+            ...mapState({
+                'sideBarSelected': state => state.notebook.sideBarSelected,
+            })
         },
         data () {
             return {
