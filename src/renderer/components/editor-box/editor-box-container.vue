@@ -14,12 +14,15 @@
             <el-rate v-model="reviewRate"></el-rate>
         </div>
 
-        <i class="fas fa-compress-arrows-alt shrink-icon" v-if="scaleStatus === 1"></i>
-        <i class="fas fa-expand-arrows-alt enlarge-icon" v-if="scaleStatus === 0"></i>
+        <!--  恢复原样 -->
+        <i class="fas fa-compress-arrows-alt shrink-icon" v-if="scaleStatus === 1" @click="setScaleStatus(0)"></i>
+        <!-- 放大状态 -->
+        <i class="fas fa-expand-arrows-alt enlarge-icon" v-if="scaleStatus === 0" @click="setScaleStatus(1)"></i>
     </div>
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default {
         data () {
             return {
@@ -29,9 +32,6 @@
                 notifyStatus: 1,
                 // 提醒的重要程度
                 reviewRate: 0,
-                // 是否放大 0 不变 1放大
-                scaleStatus: 0,
-
             }
         },
         computed: {
@@ -88,6 +88,17 @@
                     style = {}
                 }
                 return style
+            },
+            ...mapState({
+                'scaleStatus': state => state.notebook.scaleStatus
+            })
+        },
+        methods: {
+            setScaleStatus (num) {
+                if (num === undefined) {
+                    return
+                }
+                this.$store.commit('SET_SCALE_STATUS', {num})
             }
         }
     }

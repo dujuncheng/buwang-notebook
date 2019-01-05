@@ -1,6 +1,6 @@
 <template>
     <div class="node-list-item-container">
-        <div class="title">这里是标题</div>
+        <div class="title">{{name || '未命名'}}</div>
         <div class="icon-container">
             <div class="left">
                 <!-- 预计复习时间-->

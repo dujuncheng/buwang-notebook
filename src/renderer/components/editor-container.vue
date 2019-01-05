@@ -56,7 +56,7 @@
 
 <script>
     import { mapState } from 'vuex'
-    import editorBox from './editor-box/editor-box-container.vue';
+    import editorBox from './editor-box/editor-box-container.vue'
     import Muya from '../../muya/lib/index.js'
     import TablePicker from '../../muya/lib/ui/tablePicker'
     import QuickInsert from '../../muya/lib/ui/quickInsert'
@@ -87,14 +87,13 @@
                 'lightColor': state => state.preferences.lightColor,
                 'darkColor': state => state.preferences.darkColor,
                 'editorFontFamily': state => state.preferences.editorFontFamily,
-                // edit modes
                 'typewriter': state => state.preferences.typewriter,
                 'focus': state => state.preferences.focus,
                 'sourceCode': state => state.preferences.sourceCode
             })
         },
         components: {
-            editorBox,
+            editorBox
         },
         data () {
             return {
@@ -249,7 +248,7 @@
             })
         },
         methods: {
-            handleImagePath(files) {
+            handleImagePath (files) {
                 alert('handleImagePath')
                 console.log(files)
                 const { editor } = this
@@ -395,7 +394,7 @@
             },
             handleInlineFormat (type) {
                 this.editor && this.editor.format(type)
-            },
+            }
         },
         beforeDestroy () {
             bus.$off('file-loaded', this.setMarkdownToEditor)

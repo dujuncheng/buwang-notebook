@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
       <!-- 最左侧的contaienr-->
-      <div class="side-bar-container">
-        <side-bar></side-bar>
+      <div v-if="scaleStatus === 0" class="side-bar-wrap">
+          <side-bar></side-bar>
       </div>
       <!-- 中间的笔记列表container -->
-      <div class="note-list-container">
-        <node-list></node-list>
+      <div v-if="scaleStatus === 0" class="middle-list-wrap">
+          <node-list></node-list>
       </div>
 
       <!-- 最右侧的编辑器区域-->
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     import sideBar from './side-bar.vue'
     import nodeList from './node-list.vue'
     import editorContainer from './editor-container.vue'
@@ -32,8 +33,13 @@
 
             }
         },
+        computed: {
+            ...mapState({
+                'scaleStatus': state => state.notebook.scaleStatus,
+            })
+        },
         mounted () {
-            var el = document.querySelector('.side-bar-container')
+            var el = document.querySelector('.side-bar-wrap')
             new Resizable(el, {
                 draggable: false
             })
@@ -50,7 +56,7 @@
         background-color: aliceblue;
         display: flex;
     }
-    .side-bar-container {
+    .side-bar-wrap {
         width: 150px;
         max-width: 300px;
         min-width: 200px;
@@ -59,18 +65,18 @@
         color: #C8C9C9!important;
     }
     @media only screen and (max-width: 680px) {
-        .side-bar-container {
+        .side-bar-wrap {
             display: none;
         }
     }
 
-    .note-list-container {
+    .middle-list-wrap {
         flex-basis: 300px;
         height: 100%;
     }
 
     @media only screen and (max-width: 1120px) {
-        .note-list-container {
+        .middle-list-wrap {
             display: none;
         }
     }
