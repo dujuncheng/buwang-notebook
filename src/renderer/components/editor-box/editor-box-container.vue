@@ -1,18 +1,27 @@
 <template>
     <div class="editorBox-container">
-        <i class="fas fa-blog blog-icon"
-           :style="blogIconStyle"
-        ></i>
-        <i class="fas fa-link blog-link-icon"
-           :style="linkIconStyle"
-        ></i>
+        <el-tooltip class="item" effect="dark" content="公开为blog" placement="bottom-start">
+            <i class="fas fa-blog blog-icon"
+               :style="blogIconStyle"
+            ></i>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="进入blog" placement="bottom">
+            <i class="fas fa-link blog-link-icon"
+               :style="linkIconStyle"
+            ></i>
+        </el-tooltip>
         <div class="divide-line"></div>
-        <i class="far fa-bell bell-icon"
-           :style="bellIconStyle"
-        ></i>
-        <div class="review-container">
-            <el-rate v-model="reviewRate"></el-rate>
-        </div>
+        <el-tooltip class="item" effect="dark" content="设置复习提醒" placement="bottom">
+            <i class="far fa-bell bell-icon"
+               :style="bellIconStyle"
+               @click="setNotify"
+            ></i>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="星星越多，提醒越勤" placement="bottom">
+            <div class="review-container">
+                <el-rate v-model="reviewRate"></el-rate>
+            </div>
+        </el-tooltip>
 
         <!--  恢复原样 -->
         <i class="fas fa-compress-arrows-alt shrink-icon" v-if="scaleStatus === 1" @click="setScaleStatus(0)"></i>
@@ -31,7 +40,7 @@
                 // 是否开启提醒
                 notifyStatus: 1,
                 // 提醒的重要程度
-                reviewRate: 0,
+                reviewRate: 0
             }
         },
         computed: {
@@ -94,11 +103,25 @@
             })
         },
         methods: {
+            // 设置缩放大小
             setScaleStatus (num) {
                 if (num === undefined) {
                     return
                 }
                 this.$store.commit('SET_SCALE_STATUS', {num})
+            },
+            // 设置提醒
+            setNotify () {
+                this.$message({
+                    message: '恭喜你，设置成功',
+                    type: 'success'
+                })
+                this.$notify({
+                    title: '恭喜你，设置成功',
+                    type: 'success',
+                    message: '这是一条不会自动关闭的消息',
+                    duration: 3000
+                })
             }
         }
     }

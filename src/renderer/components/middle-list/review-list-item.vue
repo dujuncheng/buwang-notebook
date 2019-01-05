@@ -31,7 +31,6 @@
 <script>
     import reviewProgress from '../common/reviewProgress.vue'
     export default {
-        name: "note-list-item.vue",
         components: {
             reviewProgress
         }

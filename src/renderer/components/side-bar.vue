@@ -5,6 +5,7 @@
              @click="setSelected(0)"
         >
             <p class="title-text">待复习</p>
+            <span class="badge">100</span>
             <i class="brain-icon fas fa-brain"></i>
         </div>
         <div class="category-title-container"
@@ -431,6 +432,21 @@
             font-size: 16px;
             margin: 0px;
             padding: 0px;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #f56c6c;
+            height: 18px;
+            padding: 0 8px;
+            border-radius: 10px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translate(0, -50%);
+            font-size: 12px;
+            text-align: center;
+            line-height: 18px;
+            color: white;
         }
     }
     .category-container {

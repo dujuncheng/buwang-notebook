@@ -165,6 +165,7 @@
         height: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
         .list {
             .item-selected {
                 border-left: 6px solid #488DF7!important;
