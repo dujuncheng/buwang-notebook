@@ -2,12 +2,8 @@
     <div class="treeprocess-container">
         <div class="progresss-bar-container">
             <div class="progresss-bar" :style="{'width': `${barWidth}%`}">
-                <img class="water-wave" src="http://h0.hucdn.com/open/201847/52336843d3c54815_375x10.png" alt="">
+                <img class="water-wave" src="http://h0.hucdn.com/open/201901/a2421a6132c5ce6b_1051x57.png" alt="">
             </div>
-        </div>
-        <div class="pop-area J_pop-area" v-if="showPop" :style="{'left': `${barWidth}%`}">
-            <img class="pop1" src="http://h0.hucdn.com/open/201847/4ab16adaa9b39d47_9x8.png" alt="">
-            <img class="pop2" src="http://h0.hucdn.com/open/201847/4ab16adaa9b39d47_9x8.png" alt="">
         </div>
     </div>
 </template>
@@ -44,7 +40,7 @@
         height: 12px;
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 52%;
         transform: translate(-50%, -50%);
         border-radius: 20px;
         border: 1px solid #C7C7C7;
@@ -57,15 +53,15 @@
             left: 50%;
             height: 100%;
             transform: translate(-50%, 0);
-            width: 98%;
+            width: 100%;
             overflow: hidden;
             border-radius: 20px;
             display: inline-block;
             z-index: 10;
             .progresss-bar {
                 transition: all 0.5s;
-                height: 15px;
-                background-color: #c7fcf5;
+                height: 12px;
+                background-color: #9DC3FF;
                 position: absolute;
                 left: 0px;
                 transform: translate(0, -50%);
@@ -74,14 +70,14 @@
                 overflow: hidden;
                 z-index: 10;
                 .water-wave {
-                    width: 500px!important;
-                    max-width: 500px!important;
+                    width: 900px!important;
+                    max-width: 900px!important;
                     display: inline-block;
-                    height: 15px;
+                    height: 12px;
                     position: absolute;
                     right: 0;
                     top: 20%;
-                    animation: water-wave 40s infinite linear;
+                    animation: water-wave 30s infinite linear;
                     z-index: 10;
                 }
             }
@@ -118,7 +114,7 @@
             transform: translate(0,0);
         }
         100% {
-            transform: translate(200px,0);
+            transform: translate(700px,0);
         }
     }
     @keyframes pop-scale {

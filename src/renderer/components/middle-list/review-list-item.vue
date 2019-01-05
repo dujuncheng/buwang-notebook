@@ -19,7 +19,10 @@
             </div>
         </div>
         <div class="desc-container">
-            <reviewProgress :progress="0.5"></reviewProgress>
+            <div class="desc-text">遗忘程度</div>
+            <div class="review-container">
+                <reviewProgress :progress="0.5"></reviewProgress>
+            </div>
         </div>
         <div class="bottom-line"></div>
     </div>
@@ -82,5 +85,16 @@
         -webkit-line-clamp: 3;
         overflow: hidden;
         height: 28px;
+        display: flex;
+        align-items: center;
+        padding-right: 2px;
+        .desc-text {
+            width: 60px;
+            text-align: left;
+        }
+        .review-container {
+            position: relative;
+            flex: 1;
+        }
     }
 </style>
