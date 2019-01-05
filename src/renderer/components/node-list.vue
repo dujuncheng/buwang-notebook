@@ -1,36 +1,30 @@
 <template>
     <div class="node-list-container">
-        <div class="title-container">
+        <div class="title-container" v-if="false">
             <i class="sort-icon el-icon-sort"></i>
-            <div class="title">笔记本</div>
+            <div class="title" v-if="false">笔记本</div>
             <i class="add-icon el-icon-plus"></i>
         </div>
-        <div class="search-container">
+        <div class="search-container" v-if="false">
             <input type="text" class="search-input" placeholder="查找笔记">
         </div>
-        <div class="list-container">
+        <div class="note-list-container" v-if="false">
             <div class="list">
                 <div class="item"
                      v-for="n in 10"
                      :class="isSelected == n?'item-selected':''"
                 >
-                    <div class="title">这里是标题</div>
-                    <div class="icon-container">
-                        <div class="left">
-                            <!--字符-->
-                            <i class="icon el-icon-time"></i>
-                            <span class="text">20字</span>
-                        </div>
-                        <div class="right">
-                            <!--复习次数-->
-                            <i class="icon el-icon-view"></i>
-                            <span class="text">2次</span>
-                        </div>
-                    </div>
-                    <div class="desc-container">
-                        这里是前面的内容内容内容内容这里是前面的内容内容内容内容这里是前面的内容内容内容内容这里是前面的内容内容内容内容 这里是前面的内容内容内容内容这里是前面的内容内容内容内容
-                    </div>
-                    <div class="bottom-line"></div>
+                    <noteListItem></noteListItem>
+                </div>
+            </div>
+        </div>
+        <div class="review-list-container">
+            <div class="list">
+                <div class="item"
+                     v-for="n in 10"
+                     :class="isSelected == n?'item-selected':''"
+                >
+                    <reviewListItem></reviewListItem>
                 </div>
             </div>
         </div>
@@ -38,8 +32,14 @@
 </template>
 
 <script>
+    import noteListItem from './middle-list/note-list-item.vue';
+    import reviewListItem from './middle-list/review-list-item.vue';
     export default {
         name: 'node-list',
+        components: {
+            noteListItem,
+            reviewListItem
+        },
         data () {
             return {
                 isSelected: 2
@@ -118,7 +118,7 @@
             border: 1px solid rgba(0,0,0,0.1);
         }
     }
-    .list-container {
+    .note-list-container {
         width: 100%;
         height: calc(100vh - 66px);
         overflow-y: scroll;
@@ -140,47 +140,30 @@
                 padding-left: 45px;
                 padding-right: 12px;
                 border-left: 6px solid transparent;
-                .bottom-line {
-                    width: 86%;
-                    position: absolute;
-                    bottom: 0px;
-                    right: 0px;
-                    border-bottom: 1px solid rgba(0,0,0,0.1);
-                }
-                .divide-line {
-                    width: 100%;
-                    height: 1px;
-                    border-bottom: 1px white dashed;
-                    font-size: 12px;
-                }
-                .title {
-                    font-size: 17px;
-                    margin-bottom: 4px;
-                }
-                .icon-container {
-                    width: 100%;
-                    height: 18px;
-                    display: flex;
-                    font-size: 12px;
-                    padding: 4px 0px;
-                    .left{
-                        flex: 1;
-                        position: relative;
-                    }
-                    .right{
-                        flex: 1;
-                        position: relative;
-                    }
-                }
-                .desc-container {
-                    width: 100%;
-                    font-size: 12px;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 3;
-                    overflow: hidden;
-                    height: 32px;
-                }
+            }
+        }
+    }
+    .review-list-container {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        .list {
+            .item-selected {
+                border-left: 6px solid #488DF7!important;
+                background-color: #E7F3FF;
+            }
+            .item {
+                cursor: pointer;
+                width: 100%;
+                height: 96px;
+                position: relative;
+                color: #4A4A4A;
+                box-sizing: border-box;
+                padding: 6px;
+                padding-left: 45px;
+                padding-right: 12px;
+                border-left: 6px solid transparent;
             }
         }
     }

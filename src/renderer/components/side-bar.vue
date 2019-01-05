@@ -1,16 +1,21 @@
 <template>
     <div class="">
-        <div class="category-title-container">
-            <p class="title-text">笔记本</p>
-            <span class="title-icon el-icon-tickets" alt=""></span>
-            <span class="plus-icon el-icon-circle-plus-outline" ></span>
+        <div class="category-title-container"
+             :style="brainStyle"
+             @click="setSelected(0)"
+        >
+            <p class="title-text">待复习</p>
+            <i class="brain-icon fas fa-brain"></i>
         </div>
-        <div class="category-title-container">
+        <div class="category-title-container"
+             :style="noteStyle"
+             @click="setSelected(1)"
+        >
             <p class="title-text">笔记本</p>
             <i class="fas fa-sticky-note title-icon"></i>
-            <i class="fas fa-plus-circle plus-icon"></i>
+            <i class="fas fa-plus-circle plus-icon" v-show="selected === 1"></i>
         </div>
-        <div class="category-container">
+        <div class="category-container" v-show="selected === 1">
             <div class="notebook-container">
                 <el-tree
                     highlight-current
@@ -64,6 +69,8 @@
         components: { contextMenu },
         data () {
             return {
+                // 0 待复习
+                selected: 0,
                 inputType: '',
                 filterText: '',
                 // 右键——选中的父目录的data
@@ -88,12 +95,41 @@
                 }
             }
         },
+        computed: {
+            brainStyle () {
+                let style = ''
+                if (this.selected === 0) {
+                    style = {
+                        'color': 'white',
+                        'background': '#2D2D2D'
+                    }
+                }
+                return style
+            },
+            noteStyle () {
+                let style = ''
+                if (this.selected === 1) {
+                    style = {
+                        'color': 'white',
+                        'background': '#2D2D2D'
+                    }
+                }
+                return style
+            }
+        },
         watch: {
             filterText (val) {
                 this.$refs.noteBook.filter(val)
             }
         },
         methods: {
+            // 设置用户点击
+            setSelected (num) {
+                if (num === undefined) {
+                    return
+                }
+                this.selected = num
+            },
             // 处理 input blur事件
             handleBlur (node) {
                 let id = node.key
@@ -356,20 +392,24 @@
         border-bottom: 1px solid rgba(0,0,0,0.1);
         box-sizing: border-box;
         overflow: hidden;
+        transition: all 0.2s;
         .title-icon {
-            width: 18px;
-            height: 18px;
             opacity: 0.8;
             font-size: 16px;
-            font-weight: 800;
             position: absolute;
             left: 12px;
-            top: 47%;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        .brain-icon {
+            opacity: 0.8;
+            font-size: 16px;
+            position: absolute;
+            left: 11px;
+            top: 50%;
             transform: translate(0, -50%);
         }
         .plus-icon {
-            width: 20px;
-            height: 20px;
             opacity: 0.8;
             font-size: 16px;
             position: absolute;
@@ -383,10 +423,9 @@
             cursor: pointer;
             position: absolute;
             left: 36px;
-            top: 50%;
+            top: 48%;
             transform: translate(0, -50%);
             font-size: 16px;
-            font-weight: 800;
             margin: 0px;
             padding: 0px;
         }
