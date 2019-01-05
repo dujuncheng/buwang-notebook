@@ -5,6 +5,11 @@
             <span class="title-icon el-icon-tickets" alt=""></span>
             <span class="plus-icon el-icon-circle-plus-outline" ></span>
         </div>
+        <div class="category-title-container">
+            <p class="title-text">笔记本</p>
+            <i class="fas fa-sticky-note title-icon"></i>
+            <i class="fas fa-plus-circle plus-icon"></i>
+        </div>
         <div class="category-container">
             <div class="notebook-container">
                 <el-tree
@@ -359,14 +364,14 @@
             font-weight: 800;
             position: absolute;
             left: 12px;
-            top: 50%;
+            top: 47%;
             transform: translate(0, -50%);
         }
         .plus-icon {
             width: 20px;
             height: 20px;
             opacity: 0.8;
-            font-size: 20px;
+            font-size: 16px;
             position: absolute;
             right: 12px;
             top: 50%;
