@@ -19,15 +19,19 @@
         <div class="category-container" v-show="sideBarSelected === 1">
             <div class="notebook-container">
                 <el-tree
+                    default-expand-all
                     highlight-current
                     draggable
                     @node-drop="handleDrop"
-                    :data="data" :props="defaultProps" @node-click="handleNodeClick"
-                    :filter-node-method="filterNode"
+                    :data="catalog"
+                    :props="defaultProps"
                     node-key="id"
                     ref="noteBook">
-                    <div class="custom-tree-node" slot-scope="{ node, data }"
-                         @contextmenu.prevent="addContextBoard($event,node,data)">
+                    <div class="custom-tree-node"
+                         slot-scope="{ node, catalog }"
+                         @contextmenu.prevent="addContextBoard($event,node,catalog)"
+                         @click="cosoleNode(node)"
+                    >
                         <!-- 如果contextInputId不是本节点，则显示babel -->
                         <span v-if="contextInputId !== node.key" class="_tree-node-label">{{ node.label }}</span>
                         <!-- 如果contextInputId是本节点，则显示input -->
@@ -40,7 +44,7 @@
                                ref="_tree_node_input"
                                v-bind:id="'insert_' + node.key"
                         >
-                        <span class="_tree-node-num">12</span>
+                        <span class="_tree-node-num">{{node.data.note_num}}</span>
                     </div>
                 </el-tree>
             </div>
@@ -139,7 +143,8 @@
             },
             ...mapState({
                 'scaleStatus': state => state.notebook.scaleStatus,
-                'sideBarSelected': state => state.notebook.sideBarSelected
+                'sideBarSelected': state => state.notebook.sideBarSelected,
+                'catalog': state => state.notebook.catalog
             })
         },
         watch: {
@@ -148,6 +153,9 @@
             }
         },
         methods: {
+            cosoleNode (node) {
+                console.log(node)
+            },
             fetchCatalog () {
                 this.$store.dispatch('GET_CATALOG')
             },
@@ -320,22 +328,15 @@
                 return result
             },
             // 用户右键
-            addContextBoard (e, node, data) {
+            addContextBoard (e, node, catalog) {
                 if (node.key == this.contextInputId) {
                     return
                 }
                 this.contextSelectNode = node
-                this.contextSelectData = data
+                this.contextSelectData = catalog
                 node.expand()
                 this.$refs.ctxMenu.open(e, node)
             },
-            handleNodeClick (data) {
-                console.log(data)
-            },
-            filterNode (value, data) {
-                if (!value) return true
-                return data.label.indexOf(value) !== -1
-            }
         }
     }
 </script>
@@ -385,9 +386,6 @@
         color: white;
     }
     .el-tree-node__content {
-        color: rgba(255,255,255,0.8)!important;
-    }
-    .el-tree-node__expand-icon {
         color: rgba(255,255,255,0.8)!important;
     }
     .is-current>.el-tree-node__content {

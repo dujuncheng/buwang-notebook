@@ -8,7 +8,8 @@ const state = {
     // 笔记本选中的
     noteItemSelected: 0,
     // 待复习选中的
-    reviewItemSelected: 0
+    reviewItemSelected: 0,
+    catalog: []
 }
 
 const getters = {}
@@ -62,10 +63,6 @@ const actions = {
                 url: 'http://127.0.0.1:8991/notebook?method=get_catalog'
             })).data
             if (!result || !result.success) {
-                this.$message({
-                    message: '该笔记本下面还有很多东东，请先删除哦',
-                    type: 'warning'
-                })
                 return
             }
             let data = result.data

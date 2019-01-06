@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/components/side-bar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/side-bar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/store/notebook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/notebook.js" afterDir="false" />
     </list>
@@ -21,8 +20,8 @@
     <session id="1258963134">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="33" />
-          <entry key="project.open.time.0" value="15" />
+          <entry key="project.closed" value="35" />
+          <entry key="project.open.time.0" value="17" />
           <entry key="project.open.time.1" value="8" />
           <entry key="project.open.time.2" value="5" />
           <entry key="project.open.time.3" value="1" />
@@ -31,7 +30,7 @@
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="36" />
+          <entry key="project.opened" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -64,7 +63,7 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="30" />
+          <entry key="ESLintLanguageService" value="32" />
           <entry key="PrettierLanguageServiceImpl" value="1" />
           <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
@@ -73,11 +72,11 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="ejs" value="115" />
-          <entry key="js" value="3355" />
+          <entry key="js" value="3360" />
           <entry key="json" value="8" />
           <entry key="less" value="134" />
-          <entry key="txt" value="209" />
-          <entry key="vue" value="15848" />
+          <entry key="txt" value="212" />
+          <entry key="vue" value="15985" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -85,10 +84,10 @@
           <entry key="CSS" value="1" />
           <entry key="EJS" value="115" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="3355" />
+          <entry key="JavaScript" value="3360" />
           <entry key="Less" value="134" />
-          <entry key="PLAIN_TEXT" value="209" />
-          <entry key="Vue.js" value="15848" />
+          <entry key="PLAIN_TEXT" value="212" />
+          <entry key="Vue.js" value="15985" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -108,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="151" column="42" lean-forward="true" selection-start-line="151" selection-start-column="38" selection-end-line="151" selection-end-column="49" />
+            <state relative-caret-position="221">
+              <caret line="389" column="5" lean-forward="true" selection-start-line="389" selection-start-column="5" selection-end-line="389" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -153,11 +152,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="75" column="9" lean-forward="true" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+            <state relative-caret-position="437">
+              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -196,12 +195,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selected</find>
-      <find>SET_SELECTED</find>
-      <find>sideBarSelected</find>
-      <find>isSelected</find>
-      <find>setSelected</find>
-      <find>noteItemSelected</find>
       <find>@import</find>
       <find>node-list-item-container</find>
       <find>no_more</find>
@@ -226,6 +219,12 @@
       <find>dispatch</find>
       <find>$message</find>
       <find>commit</find>
+      <find>$store.dispatch</find>
+      <find>fetchCatalog</find>
+      <find>catalog</find>
+      <find>node</find>
+      <find>handleNodeClick</find>
+      <find>filterNode</find>
     </findStrings>
     <replaceStrings>
       <replace>[</replace>
@@ -294,8 +293,8 @@
         <option value="$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue" />
         <option value="$PROJECT_DIR$/src/renderer/components/node-list.vue" />
         <option value="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/side-bar.vue" />
         <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/side-bar.vue" />
       </list>
     </option>
   </component>
@@ -386,13 +385,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="renderer" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="renderer" type="462c0819:PsiDirectoryNode" />
-              <item name="contextMenu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
@@ -511,7 +503,9 @@
       <workItem from="1546757831561" duration="4211000" />
       <workItem from="1546777626338" duration="660000" />
       <workItem from="1546778379492" duration="500000" />
-      <workItem from="1546781582032" duration="706000" />
+      <workItem from="1546781582032" duration="906000" />
+      <workItem from="1546782559707" duration="206000" />
+      <workItem from="1546782782620" duration="448000" />
     </task>
     <task id="LOCAL-00001" summary="code change">
       <created>1544633102588</created>
@@ -646,11 +640,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546777658655</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="【增加功能点】实现左侧目录区域的交互">
+      <created>1546782436961</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1546782436961</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105207000" />
+    <option name="totallyTimeSpent" value="106061000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -665,7 +666,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22128259" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22128259" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -679,7 +680,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3882064" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32923833" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -728,7 +729,8 @@
     <MESSAGE value="实现【待复习】【笔记本】样式上修改，超出部分省略号" />
     <MESSAGE value="实现【待复习】【笔记本】增加功能" />
     <MESSAGE value="【增加功能点】实现左侧目录区域的可拖拽" />
-    <option name="LAST_COMMIT_MESSAGE" value="【增加功能点】实现左侧目录区域的可拖拽" />
+    <MESSAGE value="【增加功能点】实现左侧目录区域的交互" />
+    <option name="LAST_COMMIT_MESSAGE" value="【增加功能点】实现左侧目录区域的交互" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.electron-vue/webpack.web.config.js">
@@ -937,9 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-173">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1036,6 +1035,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/_axios@0.18.0@axios/index.d.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1055,15 +1061,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="151" column="42" lean-forward="true" selection-start-line="151" selection-start-column="38" selection-end-line="151" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="75" column="9" lean-forward="true" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+        <state relative-caret-position="221">
+          <caret line="389" column="5" lean-forward="true" selection-start-line="389" selection-start-column="5" selection-end-line="389" selection-end-column="5" />
         </state>
       </provider>
     </entry>
