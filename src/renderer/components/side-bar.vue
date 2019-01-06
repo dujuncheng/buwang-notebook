@@ -20,6 +20,8 @@
             <div class="notebook-container">
                 <el-tree
                     highlight-current
+                    draggable
+                    @node-drop="handleDrop"
                     :data="data" :props="defaultProps" @node-click="handleNodeClick"
                     :filter-node-method="filterNode"
                     node-key="id"
@@ -54,7 +56,10 @@
                     <span class="icon el-icon-edit"></span>
                     <span class="text">重命名</span>
                 </div>
-                <div class="context-item" @click="deleteNoteBook(contextSelectData)">
+                <div class="context-item"
+                     :style="deleteStyle"
+                     @click="deleteNoteBook(contextSelectData)"
+                >
                     <span class="icon el-icon-delete"></span>
                     <span class="text">删除</span>
                 </div>
@@ -67,7 +72,6 @@
     import contextMenu from 'vue-context-menu'
     import {mapState} from 'vuex'
     export default {
-        name: 'sidebar',
         components: { contextMenu },
         data () {
             return {
@@ -82,10 +86,10 @@
                 contextInputText: '',
                 data: [{
                     id: '1111',
-                    label: '一级 1',
+                    label: '1111',
                     children: [{
                         id: '12312312',
-                        label: '二级 1-1',
+                        label: '12312312',
                         children: []
                     }]
                 }],
@@ -96,6 +100,17 @@
             }
         },
         computed: {
+            deleteStyle () {
+                if (this.contextSelectData &&
+                    this.contextSelectData.children &&
+                    this.contextSelectData.children.length !== 0) {
+                    return {
+                        'cursor': 'not-allowed'
+                    }
+                } else {
+                    return {}
+                }
+            },
             brainStyle () {
                 let style = ''
                 if (this.sideBarSelected === 0) {
@@ -118,7 +133,7 @@
             },
             ...mapState({
                 'scaleStatus': state => state.notebook.scaleStatus,
-                'sideBarSelected': state => state.notebook.sideBarSelected,
+                'sideBarSelected': state => state.notebook.sideBarSelected
             })
         },
         watch: {
@@ -127,6 +142,38 @@
             }
         },
         methods: {
+            handleDrop (draggingNode, dropNode, dropType, ev) {
+                // 没有拖动
+                if (!dropNode || !draggingNode) {
+                    return
+                }
+                let selfId = ''
+                let parentId = 0
+                if (draggingNode.data && draggingNode.data.id) {
+                    selfId = draggingNode.data.id
+                }
+                if (dropType === 'inner') {
+                    parentId = dropNode.data.id
+                } else if (dropType === 'before' || dropType === 'after') {
+                    if (dropNode.parent && dropNode.parent.key) {
+                        parentId = dropNode.parent && Number(dropNode.parent.key)
+                    } else {
+                        parentId = 0
+                    }
+                }
+
+                if (selfId === undefined || parentId === undefined) {
+                    alert('报错了')
+                }
+                this.moveCatalog({
+                    selfId,
+                    parentId
+                })
+            },
+            moveCatalog ({selfId, parentId}) {
+                console.log(selfId)
+                console.log(parentId)
+            },
             // 设置用户点击
             setSelected (num) {
                 if (num === undefined) {
@@ -207,12 +254,17 @@
             },
             // 用户选择删除笔记
             deleteNoteBook (data) {
-                alert('ssss')
                 // 如果没有data 则不删除
                 if (!data) {
                     return
                 }
-                console.log(data)
+                if (this.contextSelectData.children.length !== 0) {
+                    this.$message({
+                        message: '该笔记本下面还有很多东东，请先删除哦',
+                        type: 'warning'
+                    })
+                    return
+                }
             },
             // 确认增加子笔记
             confirmAddNote (children, id, str) {
