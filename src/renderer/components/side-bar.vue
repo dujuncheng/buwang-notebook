@@ -75,6 +75,8 @@
         components: { contextMenu },
         data () {
             return {
+                // 修改名称时，是重命名，还是新增
+                renameType: '',
                 inputType: '',
                 filterText: '',
                 // 右键——选中的父目录的data
@@ -87,6 +89,7 @@
                 data: [{
                     id: '1111',
                     label: '1111',
+                    test: '123',
                     children: [{
                         id: '12312312',
                         label: '12312312',
@@ -98,6 +101,9 @@
                     label: 'label'
                 }
             }
+        },
+        mounted () {
+            this.fetchCatalog()
         },
         computed: {
             deleteStyle () {
@@ -142,6 +148,9 @@
             }
         },
         methods: {
+            fetchCatalog () {
+                this.$store.dispatch('GET_CATALOG')
+            },
             handleDrop (draggingNode, dropNode, dropType, ev) {
                 // 没有拖动
                 if (!dropNode || !draggingNode) {
@@ -227,6 +236,8 @@
                 // 显示input框的那个节点文本内容
                 this.contextInputText = ''
                 this.inputType = 'add'
+                // 确定一下模式的addNoteBook
+                this.renameType = 0
                 // 增加新增的节点
                 data.children.push(newChild)
                 // 顺便改变一下input样式
