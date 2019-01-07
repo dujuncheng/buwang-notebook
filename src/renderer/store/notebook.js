@@ -1,6 +1,28 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
+const popFail = (obj) => {
+    Swal({
+        type: 'error',
+        title: obj.message || '网络请求失败',
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+
+const popSuccess = (message) => {
+    Swal({
+        type: 'success',
+        title: message || '网络请求失败',
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000
+    })
+}
+
 const state = {
     // 0 是原样，1 是放大
     scaleStatus: 0,
@@ -57,8 +79,24 @@ const actions = {
     REMOVE_CATALOG () {
 
     },
-    RENAME_CATALOG () {
-
+    async RENAME_CATALOG ({commit}, {catalogId, newName}) {
+        let params = {
+            catalog_id: catalogId,
+            new_name: newName
+        }
+        try {
+            let result = (await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8991/notebook?method=rename_catalog',
+                data: params
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+                return
+            }
+        } catch (e) {
+            console.log(e)
+        }
     },
     MOVE_CATALOG () {
 
@@ -70,13 +108,14 @@ const actions = {
                 url: 'http://127.0.0.1:8991/notebook?method=get_catalog'
             })).data
             if (!result || !result.success) {
+                popFail(result)
                 return
             }
             let data = result.data
             let catalog = data.catalog_tree
             commit('SET_CATALOG', { catalog })
         } catch (e) {
-            console.log(e)
+            popFail(e)
         }
     },
     async GET_NOTE_LIST ({commit}, {catalogId}) {
@@ -90,27 +129,13 @@ const actions = {
                 data: params
             })).data
             if (!result || !result.success) {
-                Swal({
-                    type: 'error',
-                    title: result.message || '网络请求失败',
-                    toast: true,
-                    position: 'top',
-                    showConfirmButton: false,
-                    timer: 3000
-                })
+                popFail(result)
                 return
             }
             let data = result.data
             commit('SET_NOTELIST', {noteList: data.noteList})
         } catch (e) {
-            Swal({
-                type: 'error',
-                title: e.message || '网络请求失败',
-                toast: true,
-                position: 'top',
-                showConfirmButton: false,
-                timer: 3000
-            })
+            popFail(e)
         }
     }
 }

@@ -29,20 +29,20 @@
                     node-key="id"
                     ref="noteBook">
                     <div class="custom-tree-node"
-                         slot-scope="{ node, catalog }"
-                         @contextmenu.prevent="addContextBoard($event,node,catalog)"
+                         slot-scope="{ node, data }"
+                         @contextmenu.prevent="addContextBoard($event,node, data)"
                     >
                         <!-- 如果contextInputId不是本节点，则显示babel -->
-                        <span v-if="contextInputId !== node.key" class="_tree-node-label">{{ node.label }}</span>
+                        <span v-if="contextInputId !== data.catalog_id" class="_tree-node-label">{{ node.label }}</span>
                         <!-- 如果contextInputId是本节点，则显示input -->
                         <input class="_tree-node-no-label"
-                               v-if="contextInputId == node.key"
+                               v-if="contextInputId == data.catalog_id"
                                type="text"
                                v-model.trim="contextInputText"
-                               @keyup.enter="handleEnter(node)"
-                               @blur="handleBlur(node)"
+                               @keyup.enter="handleEnter(node, data)"
+                               @blur="handleBlur(node, data)"
                                ref="_tree_node_input"
-                               v-bind:id="'insert_' + node.key"
+                               v-bind:id="'insert_' + data.catalog_id"
                         >
                         <span class="_tree-node-num">{{node.data.note_num}}</span>
                     </div>
@@ -203,9 +203,9 @@
                 this.$store.commit('SET_SELECTED', {num})
             },
             // 处理 input blur事件
-            handleBlur (node) {
-                let id = node.key
-                let str = String(this.contextInputText)
+            handleBlur (node, data) {
+                let id = data.catalog_id
+                let str = String(this.contextInputText).trim();
                 let children = this.contextSelectData.children
                 if (this.inputType === 'add') {
                     if (!str || str.length === 0) {
@@ -263,7 +263,7 @@
             // 用户选择重命名
             renameNoteBook () {
                 // input框的那个节点的id
-                this.contextInputId = this.contextSelectData.id
+                this.contextInputId = this.contextSelectData.catalog_id
                 // 显示input框的那个节点文本内容
                 this.contextInputText = this.contextSelectData.label
                 this.inputType = 'rename'
@@ -303,6 +303,10 @@
             // 确认重命名笔记
             confirmRenameNote (node, id, str) {
                 if (str) {
+                    this.$store.dispatch('RENAME_CATALOG', {
+                        newName: str,
+                        catalogId: id
+                    })
                     this.$set(this.contextSelectData, 'label', str)
                     this.contextInputText = ''
                     this.contextInputId = ''
@@ -332,12 +336,12 @@
                 return result
             },
             // 用户右键
-            addContextBoard (e, node, catalog) {
+            addContextBoard (e, node, data) {
                 if (node.key == this.contextInputId) {
                     return
                 }
                 this.contextSelectNode = node
-                this.contextSelectData = catalog
+                this.contextSelectData = data
                 node.expand()
                 this.$refs.ctxMenu.open(e, node)
             },
