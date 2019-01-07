@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 const popFail = (obj) => {
     Swal({
         type: 'error',
-        title: obj.message || '网络请求失败',
+        title: (obj && obj.message) || '网络请求失败',
         toast: true,
         position: 'top',
         showConfirmButton: false,
@@ -53,6 +53,9 @@ const mutations = {
     SET_CATALOG (state, { catalog }) {
         state.catalog = catalog
     },
+    ADD_CATALOG (state, {item}) {
+        state.catalog.unshift(item)
+    },
     SET_NOTELIST (state, { noteList }) {
         state.notelist = noteList
     }
@@ -66,14 +69,17 @@ const actions = {
             name
         }
         try {
-            let result = await axios({
+            let result = (await axios({
                 method: 'post',
                 url: 'http://127.0.0.1:8991/notebook?method=add_catalog',
                 data: params
-            })
-            console.log(result)
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+            }
+            await this.dispatch('GET_CATALOG')
         } catch (e) {
-            console.log(e)
+            popFail(e)
         }
     },
     REMOVE_CATALOG () {
@@ -95,11 +101,28 @@ const actions = {
                 return
             }
         } catch (e) {
-            console.log(e)
+            popFail(e)
         }
     },
-    MOVE_CATALOG () {
-
+    async MOVE_CATALOG ({commit}, {catalogId, parentId}) {
+        let params = {
+            catalog_id: catalogId,
+            parent_id: parentId
+        }
+        try {
+            let result = (await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8991/notebook?method=move_catalog',
+                data: params
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+                return
+            }
+            console.log(result)
+        } catch (e) {
+            popFail(e)
+        }
     },
     async GET_CATALOG ({commit}) {
         try {

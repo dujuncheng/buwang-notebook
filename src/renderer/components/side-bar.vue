@@ -1,5 +1,6 @@
 <template>
     <div class="">
+        <!-- 待复习 -->
         <div class="category-title-container"
              :style="brainStyle"
              @click="setSelected(0)"
@@ -8,13 +9,23 @@
             <span class="badge">100</span>
             <i class="brain-icon fas fa-brain"></i>
         </div>
+        <!-- 待办清单 -->
+        <div class="category-title-container"
+             :style="todoStyle"
+             @click="setSelected(2)"
+        >
+            <p class="title-text">任务清单</p>
+            <span class="badge">10</span>
+            <i class="todo-icon fas fa-clipboard-check"></i>
+        </div>
+        <!-- 笔记本 -->
         <div class="category-title-container"
              :style="noteStyle"
              @click="setSelected(1)"
         >
             <p class="title-text">笔记本</p>
             <i class="fas fa-sticky-note title-icon"></i>
-            <i class="fas fa-plus-circle plus-icon" v-show="sideBarSelected === 1"></i>
+            <i class="fas fa-plus-circle plus-icon" @click="addCatalog" v-show="sideBarSelected === 1"></i>
         </div>
         <div class="category-container" v-show="sideBarSelected === 1">
             <div class="notebook-container">
@@ -79,8 +90,6 @@
         components: { contextMenu },
         data () {
             return {
-                // 修改名称时，是重命名，还是新增
-                renameType: '',
                 inputType: '',
                 filterText: '',
                 // 右键——选中的父目录的data
@@ -90,16 +99,6 @@
                 contextInputId: '',
                 // 右键——选中的input的那一项的文本
                 contextInputText: '',
-                data: [{
-                    id: '1111',
-                    label: '1111',
-                    test: '123',
-                    children: [{
-                        id: '12312312',
-                        label: '12312312',
-                        children: []
-                    }]
-                }],
                 defaultProps: {
                     children: 'children',
                     label: 'label'
@@ -113,7 +112,9 @@
             deleteStyle () {
                 if (this.contextSelectData &&
                     this.contextSelectData.children &&
-                    this.contextSelectData.children.length !== 0) {
+                    (this.contextSelectData.children.length !== 0 ||
+                        this.contextSelectData.note_num !== 0)
+                ) {
                     return {
                         'cursor': 'not-allowed'
                     }
@@ -124,6 +125,17 @@
             brainStyle () {
                 let style = ''
                 if (this.sideBarSelected === 0) {
+                    style = {
+                        'color': 'white',
+                        'background': '#2D2D2D'
+                    }
+                }
+                return style
+            },
+            // 待办清单
+            todoStyle () {
+                let style = ''
+                if (this.sideBarSelected === 2) {
                     style = {
                         'color': 'white',
                         'background': '#2D2D2D'
@@ -153,6 +165,30 @@
             }
         },
         methods: {
+            // 直接点击按钮
+            addCatalog () {
+                // 把一个新的笔记本塞到数组中
+                let catalogId = new Date().getTime()
+                let newChild = {
+                    catalog_id: catalogId,
+                    label: '',
+                    children: []
+                }
+                // input框的那个节点的id
+                this.contextInputId = catalogId
+                // 显示input框的那个节点文本内容
+                this.contextInputText = ''
+                this.inputType = 'add'
+                // 增加新增的节点
+                this.$store.commit('ADD_CATALOG', {item: newChild})
+                // 顺便改变一下input样式
+                this.$nextTick(() => {
+                    let str = 'insert_' + this.contextInputId
+                    let insertDom = document.getElementById(str)
+                    insertDom.click()
+                    insertDom.focus()
+                })
+            },
             handleNodeClick (data) {
                 let catalogId = data && data.catalog_id
                 this.fetchNoteList(catalogId)
@@ -170,21 +206,21 @@
                 }
                 let selfId = ''
                 let parentId = 0
-                if (draggingNode.data && draggingNode.data.id) {
-                    selfId = draggingNode.data.id
+                if (draggingNode.data && draggingNode.data.catalog_id) {
+                    selfId = draggingNode.data.catalog_id
                 }
                 if (dropType === 'inner') {
-                    parentId = dropNode.data.id
+                    parentId = dropNode.data.catalog_id
                 } else if (dropType === 'before' || dropType === 'after') {
-                    if (dropNode.parent && dropNode.parent.key) {
-                        parentId = dropNode.parent && Number(dropNode.parent.key)
+                    if (dropNode.parent && dropNode.parent.data.catalog_id) {
+                        parentId = dropNode.parent && dropNode.parent.data && Number(dropNode.parent.data.catalog_id)
                     } else {
                         parentId = 0
                     }
                 }
 
                 if (selfId === undefined || parentId === undefined) {
-                    alert('报错了')
+                    alert('handleDrop函数报错了')
                 }
                 this.moveCatalog({
                     selfId,
@@ -192,8 +228,10 @@
                 })
             },
             moveCatalog ({selfId, parentId}) {
-                console.log(selfId)
-                console.log(parentId)
+                this.$store.dispatch('MOVE_CATALOG', {
+                    catalogId: selfId,
+                    parentId: parentId
+                })
             },
             // 设置用户点击
             setSelected (num) {
@@ -205,13 +243,14 @@
             // 处理 input blur事件
             handleBlur (node, data) {
                 let id = data.catalog_id
-                let str = String(this.contextInputText).trim();
+                let str = String(this.contextInputText).trim()
                 let children = this.contextSelectData.children
+                let parentId = (node.parent && node.parent.data && node.parent.data.catalog_id) || 0
                 if (this.inputType === 'add') {
                     if (!str || str.length === 0) {
                         this.cancelAddNote(children, id)
                     } else {
-                        this.confirmAddNote(children, id, str)
+                        this.confirmAddNote(children, id, str, parentId)
                     }
                 } else if (this.inputType === 'rename') {
                     if (!str || str.length === 0) {
@@ -234,9 +273,9 @@
                     return
                 }
                 // 把一个新的笔记本塞到数组中
-                let id = new Date().getTime()
+                let catalogId = new Date().getTime()
                 let newChild = {
-                    id,
+                    catalog_id: catalogId,
                     label: '',
                     children: []
                 }
@@ -244,12 +283,10 @@
                     this.$set(data, 'children', [])
                 }
                 // input框的那个节点的id
-                this.contextInputId = id
+                this.contextInputId = catalogId
                 // 显示input框的那个节点文本内容
                 this.contextInputText = ''
                 this.inputType = 'add'
-                // 确定一下模式的addNoteBook
-                this.renameType = 0
                 // 增加新增的节点
                 data.children.push(newChild)
                 // 顺便改变一下input样式
@@ -286,19 +323,33 @@
                         message: '该笔记本下面还有很多东东，请先删除哦',
                         type: 'warning'
                     })
-                    return
+                }
+                if (this.contextSelectData.note_num !== 0) {
+                    this.$message({
+                        message: '该笔记本下面还有很多笔记，怎么狠心删除？',
+                        type: 'warning'
+                    })
                 }
             },
             // 确认增加子笔记
-            confirmAddNote (children, id, str) {
-                let res = this.filterContextSelectData(children, id)
-                if (str && res && typeof res === 'object') {
-                    res.label = str
-                    this.contextInputText = ''
-                    this.contextInputId = ''
-                    this.contextSelectData = ''
-                    this.contextSelectNode = ''
-                }
+            confirmAddNote (children, id, str, parentId) {
+                this.$store.dispatch('ADD_CATALOG', {
+                    catalogId: id,
+                    parentId,
+                    name: str
+                })
+                this.contextInputText = ''
+                this.contextInputId = ''
+                this.contextSelectData = ''
+                this.contextSelectNode = ''
+                // let res = this.filterContextSelectData(children, id)
+                // if (str && res && typeof res === 'object') {
+                //     res.label = str
+                //     this.contextInputText = ''
+                //     this.contextInputId = ''
+                //     this.contextSelectData = ''
+                //     this.contextSelectNode = ''
+                // }
             },
             // 确认重命名笔记
             confirmRenameNote (node, id, str) {
@@ -317,7 +368,7 @@
             // 取消增加子笔记
             cancelAddNote (children, id) {
                 for (let i = 0; i < children.length; i++) {
-                    if (children[i].id == id) {
+                    if (children[i].catalog_id == id) {
                         children.splice(i, 1)
                     }
                 }
@@ -350,6 +401,11 @@
 </script>
 
 <style lang="less">
+    @import "~@/less/index.less";
+    .is-drop-inner > .el-tree-node__content{
+        background-color: #488DF7!important;
+        color: #fff!important;
+    }
 
     .el-tree {
         background: transparent!important;
@@ -462,7 +518,7 @@
         width: 100%;
         height: 36px;
         position: relative;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-top: 1px solid rgba(45,45,45);
         box-sizing: border-box;
         overflow: hidden;
         transition: all 0.2s;
@@ -475,6 +531,14 @@
             transform: translate(0, -50%);
         }
         .brain-icon {
+            opacity: 0.8;
+            font-size: 16px;
+            position: absolute;
+            left: 11px;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        .todo-icon {
             opacity: 0.8;
             font-size: 16px;
             position: absolute;
@@ -533,6 +597,10 @@
         }
         .notebook-container {
             width: 100%;
+            max-height: 380px;
+            overflow-y: scroll;
+            border-bottom: 1px solid rgba(45,45,45);
+            ._no_scroll_bar();
         }
     }
 
