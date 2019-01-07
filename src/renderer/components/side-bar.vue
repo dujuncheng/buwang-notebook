@@ -23,6 +23,7 @@
                     highlight-current
                     draggable
                     @node-drop="handleDrop"
+                    @node-click="handleNodeClick"
                     :data="catalog"
                     :props="defaultProps"
                     node-key="id"
@@ -30,7 +31,6 @@
                     <div class="custom-tree-node"
                          slot-scope="{ node, catalog }"
                          @contextmenu.prevent="addContextBoard($event,node,catalog)"
-                         @click="cosoleNode(node)"
                     >
                         <!-- 如果contextInputId不是本节点，则显示babel -->
                         <span v-if="contextInputId !== node.key" class="_tree-node-label">{{ node.label }}</span>
@@ -153,8 +153,12 @@
             }
         },
         methods: {
-            cosoleNode (node) {
-                console.log(node)
+            handleNodeClick (data) {
+                let catalogId = data && data.catalog_id
+                this.fetchNoteList(catalogId)
+            },
+            fetchNoteList (catalogId) {
+                this.$store.dispatch('GET_NOTE_LIST', {catalogId})
             },
             fetchCatalog () {
                 this.$store.dispatch('GET_CATALOG')

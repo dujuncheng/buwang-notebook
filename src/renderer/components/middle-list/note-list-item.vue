@@ -1,6 +1,6 @@
 <template>
     <div class="node-list-item-container">
-        <div class="title">这里是标题</div>
+        <div class="title">{{note.title || "未命名"}}</div>
         <div class="icon-container">
             <div class="left">
                 <!--字符-->
@@ -10,11 +10,11 @@
             <div class="right">
                 <!--复习次数-->
                 <i class="icon el-icon-view"></i>
-                <span class="text">2次</span>
+                <span class="text">{{note.review_num}}次</span>
             </div>
         </div>
         <div class="desc-container">
-            这里是前面的内容内容内容内容这里是前面的内容内容内容内容这里是前面的内容内容内容内容这里是前面的内容内容内容内容 这里是前面的内容内容内容内容这里是前面的内容内容内容内容
+            {{note.content}}
         </div>
         <div class="bottom-line"></div>
     </div>
@@ -22,7 +22,7 @@
 
 <script>
     export default {
-        name: "note-list-item.vue"
+        props: ['note']
     }
 </script>
 

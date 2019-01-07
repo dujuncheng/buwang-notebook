@@ -8,17 +8,19 @@
         <div class="search-container" v-if="sideBarSelected === 1">
             <input type="text" class="search-input" placeholder="查找笔记">
         </div>
+        <!-- 笔记本 -->
         <div class="note-list-container" v-if="sideBarSelected === 1">
             <div class="list">
                 <div class="item"
-                     v-for="n in 10"
-                     :class="noteItemSelected == n?'item-selected':''"
-                     @click="setSelected('noteItemSelected', n)"
+                     v-for="note in notelist"
+                     :class="noteItemSelected == note.note_id ?'item-selected':''"
+                     @click="setSelected('noteItemSelected', note.note_id)"
                 >
-                    <noteListItem></noteListItem>
+                    <noteListItem :note="note"></noteListItem>
                 </div>
             </div>
         </div>
+        <!-- 待复习 -->
         <div class="review-list-container" v-if="sideBarSelected === 0">
             <div class="list">
                 <div class="item"
@@ -47,6 +49,7 @@
                 'sideBarSelected': state => state.notebook.sideBarSelected,
                 'reviewItemSelected': state => state.notebook.reviewItemSelected,
                 'noteItemSelected': state => state.notebook.noteItemSelected,
+                'notelist': state => state.notebook.notelist
             })
         },
         data () {

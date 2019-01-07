@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const state = {
     // 0 是原样，1 是放大
@@ -9,7 +10,10 @@ const state = {
     noteItemSelected: 0,
     // 待复习选中的
     reviewItemSelected: 0,
-    catalog: []
+    // 左侧的目录
+    catalog: [],
+    // 中间的笔记列表
+    notelist: []
 }
 
 const getters = {}
@@ -26,6 +30,9 @@ const mutations = {
     },
     SET_CATALOG (state, { catalog }) {
         state.catalog = catalog
+    },
+    SET_NOTELIST (state, { noteList }) {
+        state.notelist = noteList
     }
 }
 
@@ -70,6 +77,40 @@ const actions = {
             commit('SET_CATALOG', { catalog })
         } catch (e) {
             console.log(e)
+        }
+    },
+    async GET_NOTE_LIST ({commit}, {catalogId}) {
+        let params = {
+            catalog_id: catalogId
+        }
+        try {
+            let result = (await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8991/notebook?method=get_note_list',
+                data: params
+            })).data
+            if (!result || !result.success) {
+                Swal({
+                    type: 'error',
+                    title: result.message || '网络请求失败',
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                return
+            }
+            let data = result.data
+            commit('SET_NOTELIST', {noteList: data.noteList})
+        } catch (e) {
+            Swal({
+                type: 'error',
+                title: e.message || '网络请求失败',
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 3000
+            })
         }
     }
 }
