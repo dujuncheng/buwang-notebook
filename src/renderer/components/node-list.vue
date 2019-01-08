@@ -1,5 +1,5 @@
 <template>
-    <div class="node-list-container">
+    <div class="node-list-container" :style="nodeListStyle">
         <div class="title-container" v-if="sideBarSelected === 1">
             <i class="sort-icon el-icon-sort"></i>
             <div class="title">笔记本</div>
@@ -45,6 +45,18 @@
             reviewListItem
         },
         computed: {
+            nodeListStyle () {
+                if (this.notelist.length === 0) {
+                    return {
+                        'background-image': 'url(http://h0.hucdn.com/open/201902/4bc76cd6687f7a50_749x1405.png)',
+                        'background-size': '100% 100%',
+                        'background-position': 'center center',
+                        'background-repeat': 'no-repeat'
+                    }
+                } else {
+                    return {};
+                }
+            },
             ...mapState({
                 'sideBarSelected': state => state.notebook.sideBarSelected,
                 'reviewItemSelected': state => state.notebook.reviewItemSelected,
@@ -79,7 +91,6 @@
     .title-container {
         width: 100%;
         height: 36px;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
         position: relative;
         box-sizing: border-box;
         overflow: hidden;

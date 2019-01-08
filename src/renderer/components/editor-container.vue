@@ -9,7 +9,7 @@
         <div class="editor-container"
              :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
              :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
-    'font-family': editorFontFamily}"
+'font-family': editorFontFamily}"
              :dir="textDirection"
         >
             <div class="J_editor editor"></div>
@@ -89,7 +89,8 @@
                 'editorFontFamily': state => state.preferences.editorFontFamily,
                 'typewriter': state => state.preferences.typewriter,
                 'focus': state => state.preferences.focus,
-                'sourceCode': state => state.preferences.sourceCode
+                'sourceCode': state => state.preferences.sourceCode,
+                'notelist': state => state.notebook.notelist
             })
         },
         components: {
@@ -433,6 +434,11 @@
         position: relative;
         overflow-x: hidden;
         ._no_scroll_bar();
+        .empty-container {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
         .title-container {
             width: 100%;
             height: 48px;
@@ -454,7 +460,7 @@
             height: 30px;
             background-color: #F8F8F8;
             position: absolute;
-            top: 48px;
+            top: 46px;
             left: 0;
         }
         .editor-container {

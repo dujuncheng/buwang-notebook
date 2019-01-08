@@ -30,7 +30,6 @@
         <div class="category-container" v-show="sideBarSelected === 1">
             <div class="notebook-container">
                 <el-tree
-                    default-expand-all
                     highlight-current
                     draggable
                     @node-drop="handleDrop"
