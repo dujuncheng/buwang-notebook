@@ -82,8 +82,24 @@ const actions = {
             popFail(e)
         }
     },
-    REMOVE_CATALOG () {
-
+    async REMOVE_CATALOG ({commit}, {catalogId}) {
+        let params = {
+            catalog_id: catalogId
+        }
+        try {
+            let result = (await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8991/notebook?method=remove_catalog',
+                data: params
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+                return
+            }
+            await this.dispatch('GET_CATALOG')
+        } catch (e) {
+            popFail(e)
+        }
     },
     async RENAME_CATALOG ({commit}, {catalogId, newName}) {
         let params = {

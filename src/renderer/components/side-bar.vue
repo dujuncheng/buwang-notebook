@@ -168,7 +168,7 @@
             // 直接点击按钮
             addCatalog () {
                 // 把一个新的笔记本塞到数组中
-                let timeStamp = Number(String(new Date().getTime()).slice(5))
+                let timeStamp = Number(String(new Date().getTime()).slice(2))
                 let randomNum = getRandomNum(1, 1000, 0)
                 let catalogId = Number(`${timeStamp}${randomNum}`)
                 let newChild = {
@@ -325,13 +325,16 @@
                         message: '该笔记本下面还有很多东东，请先删除哦',
                         type: 'warning'
                     })
+                    return
                 }
                 if (this.contextSelectData.note_num !== 0) {
                     this.$message({
                         message: '该笔记本下面还有很多笔记，怎么狠心删除？',
                         type: 'warning'
                     })
+                    return
                 }
+                this.$store.dispatch('REMOVE_CATALOG', {catalogId: data.catalog_id})
             },
             // 确认增加子笔记
             confirmAddNote (children, id, str, parentId) {
@@ -344,14 +347,6 @@
                 this.contextInputId = ''
                 this.contextSelectData = ''
                 this.contextSelectNode = ''
-                // let res = this.filterContextSelectData(children, id)
-                // if (str && res && typeof res === 'object') {
-                //     res.label = str
-                //     this.contextInputText = ''
-                //     this.contextInputId = ''
-                //     this.contextSelectData = ''
-                //     this.contextSelectNode = ''
-                // }
             },
             // 确认重命名笔记
             confirmRenameNote (node, id, str) {
