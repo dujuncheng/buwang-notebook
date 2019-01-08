@@ -192,7 +192,16 @@
                 })
             },
             handleNodeClick (data) {
-                let catalogId = data && data.catalog_id
+                let catalogId = Number(data && data.catalog_id)
+                if (catalogId === undefined) {
+                    alert('没有catalogId报错了')
+                    return
+                }
+                // 设置选中的目录
+                this.$store.commit('SET_NOTEBOOK', {
+                    name: 'selectedCatalogId',
+                    value: catalogId
+                })
                 this.fetchNoteList(catalogId)
             },
             fetchNoteList (catalogId) {

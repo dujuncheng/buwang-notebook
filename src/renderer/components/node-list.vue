@@ -3,7 +3,7 @@
         <div class="title-container" v-if="sideBarSelected === 1">
             <i class="sort-icon el-icon-sort"></i>
             <div class="title">笔记本</div>
-            <i class="add-icon el-icon-plus"></i>
+            <i class="add-icon el-icon-plus" @click="addNote"></i>
         </div>
         <div class="search-container" v-if="sideBarSelected === 1">
             <input type="text" class="search-input" placeholder="查找笔记">
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+    import { getRandomNum } from '@/utils/index.js'
     import { mapState } from 'vuex'
     import noteListItem from './middle-list/note-list-item.vue'
     import reviewListItem from './middle-list/review-list-item.vue'
@@ -61,6 +62,7 @@
                 'sideBarSelected': state => state.notebook.sideBarSelected,
                 'reviewItemSelected': state => state.notebook.reviewItemSelected,
                 'noteItemSelected': state => state.notebook.noteItemSelected,
+                'selectedCatalogId': state => state.notebook.selectedCatalogId,
                 'notelist': state => state.notebook.notelist
             })
         },
@@ -70,6 +72,21 @@
             }
         },
         methods: {
+            addNote () {
+                if (!this.selectedCatalogId) {
+                    return
+                }
+                let timeStamp = Number(String(new Date().getTime()).slice(2))
+                let randomNum = getRandomNum(1, 1000, 0)
+                let noteId = Number(`${timeStamp}${randomNum}`)
+                let params = {
+                    catalogId: this.selectedCatalogId,
+                    noteId,
+                    title: '未命名',
+                    content: ''
+                }
+                this.$store.dispatch('ADD_NOTE', params)
+            },
             setSelected (name, value) {
                 if (name === undefined || value === undefined) {
                     return

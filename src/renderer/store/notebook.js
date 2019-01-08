@@ -24,18 +24,20 @@ const popSuccess = (message) => {
 }
 
 const state = {
-    // 0 是原样，1 是放大
-    scaleStatus: 0,
-    // 左边栏，0待复习，1笔记本
-    sideBarSelected: 0,
-    // 笔记本选中的
-    noteItemSelected: 0,
-    // 待复习选中的
-    reviewItemSelected: 0,
     // 左侧的目录
     catalog: [],
     // 中间的笔记列表
-    notelist: []
+    notelist: [],
+    // 0 是原样，1 是放大
+    scaleStatus: 0,
+    // 左边栏，0待复习，1笔记本 2代办清单
+    sideBarSelected: 0,
+    // 笔记本 【中间栏】 选中的
+    noteItemSelected: 0,
+    // 待复习 【中间栏】 选中的
+    reviewItemSelected: 0,
+    // 目录【左边栏】 选中的
+    selectedCatalogId: 0
 }
 
 const getters = {}
@@ -55,6 +57,9 @@ const mutations = {
     },
     ADD_CATALOG (state, {item}) {
         state.catalog.unshift(item)
+    },
+    ADD_NOTE (state, {item}) {
+        state.notelist.unshift(item)
     },
     SET_NOTELIST (state, { noteList }) {
         state.notelist = noteList
@@ -78,6 +83,36 @@ const actions = {
                 popFail(result)
             }
             await this.dispatch('GET_CATALOG')
+        } catch (e) {
+            popFail(e)
+        }
+    },
+    async ADD_NOTE ({commit}, {catalogId, noteId, title, content}) {
+        let params = {
+            catalog_id: catalogId,
+            note_id: noteId,
+            title,
+            content
+        }
+        try {
+            let result = (await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8991/notebook?method=add_note',
+                data: params
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+            }
+            await this.dispatch('GET_CATALOG')
+            await this.dispatch('GET_NOTE_LIST', {catalogId})
+            commit('SET_NOTEBOOK', {
+                name: 'selectedCatalogId',
+                value: catalogId
+            })
+            commit('SET_NOTEBOOK', {
+                name: 'noteItemSelected',
+                value: noteId
+            })
         } catch (e) {
             popFail(e)
         }
