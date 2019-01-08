@@ -117,6 +117,37 @@ const actions = {
             popFail(e)
         }
     },
+    async DELETE_NOTE ({commit}, {noteId, catalogId, nextNote}) {
+        let params = {
+            note_id: noteId
+        }
+        try {
+            let result = (await axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8991/notebook?method=delete_note',
+                data: params
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+            }
+            await this.dispatch('GET_NOTE_LIST', {catalogId})
+            commit('SET_NOTEBOOK', {
+                name: 'selectedCatalogId',
+                value: catalogId
+            })
+
+            let newNoteItemSelected = 0
+            if (nextNote) {
+                newNoteItemSelected = nextNote.note_id
+            }
+            commit('SET_NOTEBOOK', {
+                name: 'noteItemSelected',
+                value: newNoteItemSelected
+            })
+        } catch (e) {
+            popFail(e)
+        }
+    },
     async REMOVE_CATALOG ({commit}, {catalogId}) {
         let params = {
             catalog_id: catalogId

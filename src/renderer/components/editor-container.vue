@@ -68,7 +68,7 @@
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
 
-    import { showContextMenu } from '../contextMenu/index.js'
+    import { showContextMenu } from '../contextMenu/editor/index.js'
 
     const STANDAR_Y = 320
 

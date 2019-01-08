@@ -1,4 +1,4 @@
-import bus from '../bus/index.js'
+import bus from '../../bus/index.js'
 
 export const copyTable = () => {
     bus.$emit('copy-block', 'table')

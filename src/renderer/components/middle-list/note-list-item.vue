@@ -1,6 +1,6 @@
 <template>
     <div class="node-list-item-container">
-        <div class="title">{{note.title || "未命名"}}</div>
+        <div class="title">{{note.id || "未命名"}}</div>
         <div class="icon-container">
             <div class="left">
                 <!--字符-->

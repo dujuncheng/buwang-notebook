@@ -15,6 +15,7 @@
                      v-for="note in notelist"
                      :class="noteItemSelected == note.note_id ?'item-selected':''"
                      @click="setSelected('noteItemSelected', note.note_id)"
+                     @contextmenu.prevent="addContextBoard($event,note)"
                 >
                     <noteListItem :note="note"></noteListItem>
                 </div>
@@ -36,6 +37,8 @@
 </template>
 
 <script>
+    import bus from '../bus/index.js'
+    import { showContextMenu } from '../contextMenu/noteList/index.js'
     import { getRandomNum } from '@/utils/index.js'
     import { mapState } from 'vuex'
     import noteListItem from './middle-list/note-list-item.vue'
@@ -43,7 +46,7 @@
     export default {
         components: {
             noteListItem,
-            reviewListItem
+            reviewListItem,
         },
         computed: {
             nodeListStyle () {
@@ -71,7 +74,55 @@
                 isSelected: 2
             }
         },
+        mounted () {
+            bus.$on('deleteNoteItem', this.deleteNoteItem)
+        },
         methods: {
+            getNext (noteId, arr) {
+                if (!noteId || !Array.isArray(arr)) {
+                    return
+                }
+                let currentIndex = 0
+                let result = ''
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].note_id === noteId) {
+                        currentIndex = i
+                    }
+                }
+                if (arr[currentIndex + 1]) {
+                    result = arr[currentIndex + 1]
+                } else if (arr[currentIndex - 1]) {
+                    result = arr[currentIndex - 1]
+                } else {
+                    result = ''
+                }
+                return result
+            },
+            deleteNoteItem () {
+                if (this.noteItemSelected === undefined) {
+                    return
+                }
+                let nextNote = this.getNext(this.noteItemSelected, this.notelist)
+                this.$store.dispatch('DELETE_NOTE', {
+                    catalogId: this.selectedCatalogId,
+                    noteId: this.noteItemSelected,
+                    nextNote
+                })
+            },
+            // 用户右键
+            addContextBoard (e, note) {
+                if (!note || !note.note_id) {
+                    return
+                }
+                if (note.note_id !== this.noteItemSelected) {
+                    this.$store.commit('SET_NOTEBOOK', {
+                        name: 'noteItemSelected',
+                        value: note.note_id
+                    })
+                }
+                showContextMenu(e)
+            },
+            // 添加笔记
             addNote () {
                 if (!this.selectedCatalogId) {
                     return
@@ -87,12 +138,17 @@
                 }
                 this.$store.dispatch('ADD_NOTE', params)
             },
+            // 选择笔记
             setSelected (name, value) {
                 if (name === undefined || value === undefined) {
                     return
                 }
                 this.$store.commit('SET_NOTEBOOK', {name, value})
             },
+            // 删除笔记
+            deleteNote () {
+
+            }
         }
     }
 </script>
