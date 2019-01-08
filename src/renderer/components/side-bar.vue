@@ -83,6 +83,7 @@
 </template>
 
 <script>
+    import { getRandomNum } from '@/utils/index.js'
     import contextMenu from 'vue-context-menu'
     import {mapState} from 'vuex'
     export default {
@@ -167,7 +168,9 @@
             // 直接点击按钮
             addCatalog () {
                 // 把一个新的笔记本塞到数组中
-                let catalogId = new Date().getTime()
+                let timeStamp = Number(String(new Date().getTime()).slice(5))
+                let randomNum = getRandomNum(1, 1000, 0)
+                let catalogId = Number(`${timeStamp}${randomNum}`)
                 let newChild = {
                     catalog_id: catalogId,
                     label: '',

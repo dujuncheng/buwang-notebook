@@ -175,4 +175,13 @@ export const getUniqueId = () => {
     return `${ID_PREFEX}${id++}`
 }
 
+export const getRandomNum = (min, max, fix = 0) => {
+    let res = ''
+    let num = Math.random()
+    let diff = max - min
+
+    res = (diff * num + min).toFixed(fix)
+    return res
+}
+
 export const hasKeys = obj => Object.keys(obj).length > 0
