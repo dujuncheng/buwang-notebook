@@ -81,7 +81,11 @@ npm run lint
 
 # 更新日志
 
-- 2018年1月9日 
+- 2018年12月20日
+自己设计了一张设计稿，换了新的ui界面，更加清爽自然
+![](https://ws3.sinaimg.cn/large/006tNc79ly1fz0qh1i1e8j31020jkgmw.jpg)
+
+- 2019年1月9日 
 深夜突然意识到保存和更新笔记写的有点问题，于是重新设计了一下逻辑，保证了在断网情况下的高可用性
 ![](https://ws4.sinaimg.cn/large/006tNc79ly1fz0q8nws39j31hc0u0n1k.jpg)
 
