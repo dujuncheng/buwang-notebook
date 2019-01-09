@@ -130,6 +130,7 @@ const actions = {
             if (!result || !result.success) {
                 popFail(result)
             }
+            await this.dispatch('GET_CATALOG')
             await this.dispatch('GET_NOTE_LIST', {catalogId})
             commit('SET_NOTEBOOK', {
                 name: 'selectedCatalogId',

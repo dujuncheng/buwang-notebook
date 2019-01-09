@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/actions/notebook.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/node-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/node-list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/editor/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/editor/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/menuItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/editor/menuItems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/store/notebook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/notebook.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -28,7 +18,7 @@
     <session id="1258963134">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="47" />
+          <entry key="project.closed" value="48" />
           <entry key="project.open.time.0" value="27" />
           <entry key="project.open.time.1" value="9" />
           <entry key="project.open.time.2" value="5" />
@@ -80,10 +70,10 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="ejs" value="115" />
-          <entry key="js" value="4696" />
+          <entry key="js" value="4697" />
           <entry key="json" value="8" />
           <entry key="less" value="134" />
-          <entry key="txt" value="369" />
+          <entry key="txt" value="371" />
           <entry key="vue" value="19958" />
         </counts>
       </usages-collector>
@@ -92,9 +82,9 @@
           <entry key="CSS" value="1" />
           <entry key="EJS" value="115" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="4696" />
+          <entry key="JavaScript" value="4697" />
           <entry key="Less" value="134" />
-          <entry key="PLAIN_TEXT" value="369" />
+          <entry key="PLAIN_TEXT" value="371" />
           <entry key="Vue.js" value="19958" />
         </counts>
       </usages-collector>
@@ -115,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="131">
@@ -130,14 +120,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="138" column="25" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
+            <state relative-caret-position="2565">
+              <caret line="226" column="16" lean-forward="true" selection-start-line="226" selection-start-column="16" selection-end-line="226" selection-end-column="16" />
               <folding>
                 <element signature="e#1469#1998#0" />
-                <element signature="e#2067#2925#0" />
                 <element signature="e#2976#3480#0" />
                 <element signature="e#3540#4028#0" />
                 <element signature="e#4087#4607#0" />
@@ -272,8 +261,8 @@
         <option value="$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js" />
         <option value="$PROJECT_DIR$/src/renderer/contextMenu/editor/actions.js" />
         <option value="$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js" />
-        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
         <option value="$PROJECT_DIR$/src/renderer/components/node-list.vue" />
+        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
       </list>
     </option>
   </component>
@@ -537,7 +526,7 @@
       <workItem from="1546941258424" duration="657000" />
       <workItem from="1546944283222" duration="1070000" />
       <workItem from="1546945673357" duration="122000" />
-      <workItem from="1546946155404" duration="2946000" />
+      <workItem from="1546946155404" duration="3300000" />
     </task>
     <task id="LOCAL-00001" summary="code change">
       <created>1544633102588</created>
@@ -728,11 +717,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546940932898</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="【增加功能点】 删除笔记的功能">
+      <created>1546949366736</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1546949366737</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131554000" />
+    <option name="totallyTimeSpent" value="131908000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,6 +741,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22128259" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -758,9 +755,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.46437347" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.46437347" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32923833" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -817,7 +814,8 @@
     <MESSAGE value="【增加功能点】 优化目录的id" />
     <MESSAGE value="【增加功能点】 增加删除目录的功能点" />
     <MESSAGE value="【增加功能点】 增加笔记的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="【增加功能点】 增加笔记的功能" />
+    <MESSAGE value="【增加功能点】 删除笔记的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="【增加功能点】 删除笔记的功能" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/menus/format.js">
@@ -1141,32 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/bus/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="138" column="25" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
-          <folding>
-            <element signature="e#1469#1998#0" />
-            <element signature="e#2067#2925#0" />
-            <element signature="e#2976#3480#0" />
-            <element signature="e#3540#4028#0" />
-            <element signature="e#4087#4607#0" />
-            <element signature="e#4642#5124#0" />
-            <element signature="e#5174#5727#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -1176,6 +1148,31 @@
             <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#3;n#div#0;n#template#0;n#!!top" />
             <element signature="e#1543#1552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/bus/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="226" column="16" lean-forward="true" selection-start-line="226" selection-start-column="16" selection-end-line="226" selection-end-column="16" />
+          <folding>
+            <element signature="e#1469#1998#0" />
+            <element signature="e#2976#3480#0" />
+            <element signature="e#3540#4028#0" />
+            <element signature="e#4087#4607#0" />
+            <element signature="e#4642#5124#0" />
+            <element signature="e#5174#5727#0" />
           </folding>
         </state>
       </provider>
