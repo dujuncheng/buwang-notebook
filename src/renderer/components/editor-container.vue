@@ -54,7 +54,6 @@
 </template>
 
 <script>
-    const base64 = require('js-base64')
     import { mapState, mapGetters } from 'vuex'
     import editorBox from './editor-box/editor-box-container.vue'
     import Muya from '../../muya/lib/index.js'
@@ -67,8 +66,10 @@
     import bus from '../bus/index.js'
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
+    import {convertLineEndings, LF_LINE_ENDING_REG, LINE_ENDING_REG, CRLF_LINE_ENDING_REG, getOsLineEndingName} from '../store/help.js'
 
     import { showContextMenu } from '../contextMenu/editor/index.js'
+    const base64 = require('js-base64')
 
     const STANDAR_Y = 320
 
@@ -90,13 +91,14 @@
                 'typewriter': state => state.preferences.typewriter,
                 'focus': state => state.preferences.focus,
                 'sourceCode': state => state.preferences.sourceCode,
+                'currentFile': state => state.editor.currentFile,
                 'markdown': state => state.notebook.markdown,
                 'titleChanged': state => state.notebook.titleChanged,
                 'contentChanged': state => state.notebook.contentChanged,
                 // 全局的被修改的note列表
                 'changeNote': state => state.notebook.changeNote,
                 'noteItemSelected': state => state.notebook.noteItemSelected,
-                'loading': state => state.notebook.loading,
+                'loading': state => state.notebook.loading
             }),
             ...mapGetters(['currentNote'])
         },
@@ -112,7 +114,7 @@
                 tableChecker: {
                     rows: 4,
                     columns: 3
-                },
+                }
             }
         },
         mounted () {
@@ -159,7 +161,6 @@
                 }
             },
             contentChanged: function (value, oldValue) {
-                console.log('contentChanged')
                 this.editor.clearHistory()
                 this.editor.setMarkdown(value)
             },
@@ -253,7 +254,7 @@
                     if (!changes) {
                         return
                     }
-                    console.log(changes)
+
                     // this.$store.commit('SET_NOTEBOOK', {name: 'contentChanged', value: changes.markdown})
                     this.$store.dispatch('LISTEN_FOR_CONTENT_CHANGE', changes)
                     let params = {
@@ -366,8 +367,9 @@
                 this.setChangeNote({noteId})
             },
             // 设置localStorage
-            // 这里使用web sql是不是更好？
+            // todo 这里使用web sql是不是更好？
             setCache ({noteId, content, title}) {
+                content = convertLineEndings(content, 'lf')
                 let cacheChange = window.localStorage.getItem('_change_note')
                 if (cacheChange) {
                     let obj = JSON.parse(cacheChange)

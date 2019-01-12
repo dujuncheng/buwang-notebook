@@ -26,7 +26,6 @@ const importRegister = ContentState => {
             nextSibling: null,
             children: []
         }
-
         const tokens = new Lexer({ disableInline: true }).lex(markdown)
 
         let token
@@ -151,6 +150,7 @@ const importRegister = ContentState => {
             }
             case 'text':
             case 'paragraph': {
+                debugger
                 value = token.text
                 block = this.createBlock('p')
                 const lines = value.split(LINE_BREAKS_REG).map(line => this.createBlock('span', line))
