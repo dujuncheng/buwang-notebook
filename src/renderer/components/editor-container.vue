@@ -162,11 +162,16 @@
                 }
             },
             contentChanged: function (value, oldValue) {
+                // 笔记区域更新
                 this.editor.clearHistory()
                 if (this.currentFile.markdown !== value) {
                     this.blurEditor()
                     this.editor.setMarkdown(value)
                 }
+            },
+            // 检测当前的笔记变化
+            titleChanged: function (value, oldValue) {
+                this.title = value
             },
             title (value) {
                 if (value === this.titleChanged) {
@@ -397,7 +402,16 @@
                 let cacheChange = window.localStorage.getItem('_change_note')
                 if (cacheChange) {
                     let obj = JSON.parse(cacheChange)
-                    obj[noteId].title = title
+                    if (obj[noteId]) {
+                        obj[noteId].title = title
+                    }
+                    if (!obj[noteId]) {
+                        obj[noteId] = {
+                            title: title,
+                            content: this.contentChanged
+                        }
+                    }
+
                     window.localStorage.setItem('_change_note', JSON.stringify(obj))
                 }
                 if (!cacheChange) {

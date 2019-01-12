@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/side-bar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/side-bar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/editor.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -42,12 +39,12 @@
           <entry key="editorconfig" value="2" />
           <entry key="ejs" value="3" />
           <entry key="html" value="1" />
-          <entry key="js" value="180" />
+          <entry key="js" value="182" />
           <entry key="json" value="9" />
           <entry key="less" value="6" />
           <entry key="md" value="3" />
           <entry key="ts" value="1" />
-          <entry key="vue" value="85" />
+          <entry key="vue" value="88" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -56,12 +53,12 @@
           <entry key="EJS" value="3" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="9" />
-          <entry key="JavaScript" value="180" />
+          <entry key="JavaScript" value="182" />
           <entry key="Less" value="6" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="TypeScript" value="1" />
-          <entry key="Vue.js" value="85" />
+          <entry key="Vue.js" value="88" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -75,12 +72,12 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="ejs" value="115" />
-          <entry key="js" value="6403" />
+          <entry key="js" value="6407" />
           <entry key="json" value="8" />
           <entry key="less" value="134" />
           <entry key="md" value="497" />
           <entry key="txt" value="487" />
-          <entry key="vue" value="25158" />
+          <entry key="vue" value="25568" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -88,11 +85,11 @@
           <entry key="CSS" value="1" />
           <entry key="EJS" value="115" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="6403" />
+          <entry key="JavaScript" value="6407" />
           <entry key="Less" value="134" />
           <entry key="Markdown" value="497" />
           <entry key="PLAIN_TEXT" value="487" />
-          <entry key="Vue.js" value="25158" />
+          <entry key="Vue.js" value="25568" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -100,11 +97,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/muya/lib/index.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1729">
-              <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
+            <state relative-caret-position="302">
+              <caret line="173" column="26" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="26" />
+              <folding>
+                <element signature="e#2093#2136#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="142" column="46" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="46" />
+              <folding>
+                <element signature="e#1539#1572#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,32 +124,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5491">
-              <caret line="290" column="73" selection-start-line="290" selection-start-column="60" selection-end-line="290" selection-end-column="73" />
+            <state relative-caret-position="-1104">
+              <caret line="167" column="46" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js">
+        <entry file="file://$PROJECT_DIR$/src/muya/lib/eventHandler/event.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="17" column="42" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="42" />
-              <folding>
-                <element signature="e#241#281#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="250">
+              <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/marked/lexer.js">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="494">
+              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -151,23 +157,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="11">
               <caret line="199" column="17" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -210,14 +204,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>handleInsertParagraph</find>
-      <find>blur</find>
-      <find>rootState</find>
-      <find>rules</find>
-      <find>Lexer</find>
-      <find>normal</find>
-      <find>debug</find>
-      <find>editor</find>
       <find>getUniqueId</find>
       <find>currentFile</find>
       <find>getOptionsFromState</find>
@@ -230,16 +216,24 @@
       <find>markdownToState</find>
       <find>LINE_BREAKS_REG</find>
       <find>SET_NOTEBOOK</find>
-      <find>GET_NOTE_LIST</find>
-      <find>debugger</find>
       <find>tabSize</find>
-      <find>handleChange</find>
-      <find>contentChanged</find>
       <find>LISTEN_FOR_CONTENT_CHANGE</find>
       <find>fetchNoteList</find>
       <find>handleNodeClick</find>
       <find>selectedCatalogId</find>
       <find>sideBarSelected</find>
+      <find>titleChanged</find>
+      <find>noteId</find>
+      <find>notelist</find>
+      <find>GET_NOTE_LIST</find>
+      <find>SET_NOTELIST</find>
+      <find>SET_CATALOG</find>
+      <find>handleChange</find>
+      <find>title</find>
+      <find>GET_CATALOG</find>
+      <find>currentnote</find>
+      <find>contentChanged</find>
+      <find>debugger</find>
     </findStrings>
     <replaceStrings>
       <replace>[</replace>
@@ -301,16 +295,16 @@
         <option value="$PROJECT_DIR$/src/main/menus/edit.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/node-list.vue" />
         <option value="$PROJECT_DIR$/src/muya/lib/index.js" />
         <option value="$PROJECT_DIR$/src/muya/lib/parser/marked/lexer.js" />
         <option value="$PROJECT_DIR$/src/muya/lib/parser/marked/utils.js" />
         <option value="$PROJECT_DIR$/src/renderer/store/help.js" />
         <option value="$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/editor-container.vue" />
         <option value="$PROJECT_DIR$/src/renderer/store/editor.js" />
         <option value="$PROJECT_DIR$/src/renderer/components/side-bar.vue" />
+        <option value="$PROJECT_DIR$/src/renderer/components/node-list.vue" />
+        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/editor-container.vue" />
       </list>
     </option>
   </component>
@@ -566,7 +560,7 @@
       <workItem from="1547144020066" duration="1214000" />
       <workItem from="1547209558806" duration="8364000" />
       <workItem from="1547281921061" duration="1215000" />
-      <workItem from="1547285163768" duration="314000" />
+      <workItem from="1547285163768" duration="2711000" />
     </task>
     <task id="LOCAL-00001" summary="code change">
       <created>1544633102588</created>
@@ -799,11 +793,25 @@
       <option name="project" value="LOCAL" />
       <updated>1547282032272</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="【增加功能】实现修改笔记的功能">
+      <created>1547285496381</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1547285496381</updated>
+    </task>
+    <task id="LOCAL-00035" summary="【增加功能】实现修改笔记的功能">
+      <created>1547287276552</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1547287276552</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165882000" />
+    <option name="totallyTimeSpent" value="168279000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -818,7 +826,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22198732" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22198732" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -830,9 +838,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.0073710075" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -892,7 +900,8 @@
     <MESSAGE value="【增加功能点】 删除笔记的功能" />
     <MESSAGE value="【fix bus】 修复了更新node-list ， 目录栏不更新的bug" />
     <MESSAGE value="【增加功能】实现修改笔记的功能，遗留bug：回车符不能被正确的识别" />
-    <option name="LAST_COMMIT_MESSAGE" value="【增加功能】实现修改笔记的功能，遗留bug：回车符不能被正确的识别" />
+    <MESSAGE value="【增加功能】实现修改笔记的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="【增加功能】实现修改笔记的功能" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/renderer/components/common/reviewProgress.vue">
@@ -940,13 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/eventHandler/event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1110,18 +1112,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2755">
-          <caret line="151" column="71" selection-start-line="151" selection-start-column="71" selection-end-line="151" selection-end-column="71" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#1539#1572#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/menus/edit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1143,13 +1133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/marked/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -1157,27 +1140,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4655">
-          <caret line="259" column="52" selection-start-line="259" selection-start-column="52" selection-end-line="259" selection-end-column="52" />
-          <folding>
-            <element signature="e#2093#2136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/muya/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1729">
           <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5491">
-          <caret line="290" column="73" selection-start-line="290" selection-start-column="60" selection-end-line="290" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -1241,8 +1207,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="11">
           <caret line="199" column="17" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/muya/lib/eventHandler/event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="142" column="46" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="46" />
+          <folding>
+            <element signature="e#1539#1572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1104">
+          <caret line="167" column="46" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="173" column="26" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="26" />
+          <folding>
+            <element signature="e#2093#2136#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
