@@ -6,6 +6,12 @@ var log = require('electron-log')
 export default {
     label: '编辑',
     submenu: [{
+        label: 'Save',
+        accelerator: keybindings.getAccelerator('fileSave'),
+        click (menuItem, browserWindow) {
+            actions.edit(browserWindow, 'save')
+        }
+    },{
         label: '撤销',
         accelerator: keybindings.getAccelerator('editUndo'),
         click: (menuItem, browserWindow) => {

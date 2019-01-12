@@ -1,6 +1,7 @@
 <template>
     <div class="node-list-item-container">
-        <div class="title">{{note.id || "未命名"}}</div>
+        <div class="change-icon" v-show="showChangeIcon"></div>
+        <div class="title">{{note.title || "未命名"}}</div>
         <div class="icon-container">
             <div class="left">
                 <!--字符-->
@@ -21,17 +22,39 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
-        props: ['note']
+        props: ['note'],
+        computed: {
+            showChangeIcon () {
+                return this.changeNote.indexOf(this.note.note_id) > -1
+            },
+            ...mapState({
+                // 全局的被修改的note列表
+                'changeNote': state => state.notebook.changeNote,
+            }),
+        }
     }
 </script>
 
 <style scoped lang="less">
     @import "~@/less/index.less";
+    .node-list-item-container {
+        position: relative;
+    }
+    .change-icon {
+        background-color: #f56c6c;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        position: absolute;
+        right: 5px;
+        top: 8px;
+    }
     .bottom-line {
         width: 86%;
         position: absolute;
-        bottom: 0px;
+        bottom: -8px;
         right: 0px;
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }

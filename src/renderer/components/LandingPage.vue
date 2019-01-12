@@ -11,8 +11,8 @@
 
       <!-- 最右侧的编辑器区域-->
       <div class="edit-container" v-show="sideBarSelected !== 2">
-          <editor-container class="editor" v-if="notelist.length !== 0"></editor-container>
-          <div class="empty-container" v-if="notelist.length === 0"></div>
+          <div class="empty-container" :style=" notelist.length === 0 ? {'visibility': 'visible'} : {'visibility': 'hidden'}"></div>
+          <editor-container class="editor"></editor-container>
       </div>
 
       <div class="todo-container" v-show="sideBarSelected === 2">
@@ -95,14 +95,20 @@
         height: 100%;
         background-color: white;
         overflow-y: scroll;
+        position: relative;
         ._no_scroll_bar();
         .empty-container {
+            background-color: white;
             width: 100%;
             height: 100%;
             background-image: url("http://h0.hucdn.com/open/201902/ac34d7df185e9514_1741x1405.png");
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            top: 0;
         }
     }
 

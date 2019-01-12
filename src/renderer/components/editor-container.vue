@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <div class="title-container">
-            <input type="text" class="title" placeholder="未命名"/>
+            <input type="text" class="title" placeholder="未命名" v-model="titleChanged"/>
         </div>
         <div class="box-container">
             <editorBox></editorBox>
@@ -10,7 +10,6 @@
              :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
              :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
 'font-family': editorFontFamily}"
-             :dir="textDirection"
         >
             <div class="J_editor editor"></div>
         </div>
@@ -55,7 +54,8 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    const base64 = require('js-base64')
+    import { mapState, mapGetters } from 'vuex'
     import editorBox from './editor-box/editor-box-container.vue'
     import Muya from '../../muya/lib/index.js'
     import TablePicker from '../../muya/lib/ui/tablePicker'
@@ -90,8 +90,15 @@
                 'typewriter': state => state.preferences.typewriter,
                 'focus': state => state.preferences.focus,
                 'sourceCode': state => state.preferences.sourceCode,
-                'notelist': state => state.notebook.notelist
-            })
+                'markdown': state => state.notebook.markdown,
+                'titleChanged': state => state.notebook.titleChanged,
+                'contentChanged': state => state.notebook.contentChanged,
+                // 全局的被修改的note列表
+                'changeNote': state => state.notebook.changeNote,
+                'noteItemSelected': state => state.notebook.noteItemSelected,
+                'loading': state => state.notebook.loading,
+            }),
+            ...mapGetters(['currentNote'])
         },
         components: {
             editorBox
@@ -105,7 +112,7 @@
                 tableChecker: {
                     rows: 4,
                     columns: 3
-                }
+                },
             }
         },
         mounted () {
@@ -150,10 +157,26 @@
                 if (value !== oldValue && editor) {
                     editor.setTabSize(value)
                 }
+            },
+            contentChanged: function (value, oldValue) {
+                console.log('contentChanged')
+                this.editor.clearHistory()
+                this.editor.setMarkdown(value)
+            },
+            titleChanged (value) {
+                this.$store.commit('SET_NOTEBOOK', {
+                    name: 'titleChanged',
+                    value: value
+                })
             }
         },
         created () {
             this.$nextTick(() => {
+                this.init()
+            })
+        },
+        methods: {
+            init () {
                 const ele = document.querySelector('.J_editor')
                 let config = {
                     autoPairBracket: true,
@@ -161,7 +184,7 @@
                     autoPairQuote: true,
                     bulletListMarker: '',
                     focusMode: false,
-                    markdown: '',
+                    markdown: this.contentChanged,
                     preferLooseListItem: true,
                     tabSize: 4,
                     theme: ''
@@ -192,6 +215,7 @@
 
                 bus.$on('file-loaded', this.setMarkdownToEditor)
                 bus.$on('undo', this.handleUndo)
+                bus.$on('save', this.handleSave)
                 bus.$on('redo', this.handleRedo)
                 bus.$on('export', this.handleExport)
                 bus.$on('paragraph', this.handleEditParagraph)
@@ -226,7 +250,18 @@
                 })
 
                 this.editor.on('change', changes => {
+                    if (!changes) {
+                        return
+                    }
+                    console.log(changes)
+                    // this.$store.commit('SET_NOTEBOOK', {name: 'contentChanged', value: changes.markdown})
                     this.$store.dispatch('LISTEN_FOR_CONTENT_CHANGE', changes)
+                    let params = {
+                        noteId: this.noteItemSelected,
+                        content: changes.markdown,
+                        title: this.titleChanged
+                    }
+                    this.handleChange(params, changes)
                 })
 
                 this.editor.on('selectionChange', changes => {
@@ -246,12 +281,18 @@
                 this.editor.on('contextmenu', (event, selectionChanges) => {
                     showContextMenu(event, selectionChanges)
                 })
-            })
-        },
-        methods: {
+            },
+            // listen for markdown change form source mode or change tabs etc
+            handleMarkdownChange ({ markdown, cursor, renderCursor, history }) {
+                const { editor } = this
+                if (editor) {
+                    if (history) {
+                        editor.setHistory(history)
+                    }
+                    editor.setMarkdown(markdown, cursor, renderCursor)
+                }
+            },
             handleImagePath (files) {
-                alert('handleImagePath')
-                console.log(files)
                 const { editor } = this
                 editor && editor.showAutoImagePath(files)
             },
@@ -278,6 +319,110 @@
                 if (this.editor) {
                     this.editor.undo()
                 }
+            },
+            // 监听 ctrl + s
+            handleSave () {
+                this.blurEditor()
+                let cache = window.localStorage.getItem('_change_note')
+                if (this.changeNote.length === 0 ||
+                    !cache ||
+                    Object.keys(JSON.parse(cache)).length === 0
+                ) {
+                    return
+                }
+                let changeArr = this.getCacheData(cache)
+                this.$store.commit('SET_NOTEBOOK', {
+                    name: 'loading',
+                    value: true
+                })
+                this.$store.dispatch('CHANGE_NOTE', {changeArr})
+            },
+            getCacheData (cache) {
+                let obj = JSON.parse(cache)
+                let keyArr = Object.keys(obj)
+                let result = []
+                for (let i = 0; i < keyArr.length; i++) {
+                    let item = {}
+                    item.note_id = Number(keyArr[i])
+                    item.title = obj[keyArr[i]].title
+                    item.content = base64.Base64.encode(obj[keyArr[i]].content)
+                    result.push(item)
+                }
+                return result
+            },
+            // 监听内容的变化
+            handleChange ({noteId, content, title}, changes) {
+                // todo 增加loading
+                if (!noteId) {
+                    return
+                }
+                let realChange = this.checkRealChange(noteId, content, changes)
+                if (!realChange) {
+                    console.log('没有修改')
+                    return
+                }
+                console.log('有修改')
+                this.setCache({noteId, content, title})
+                this.setChangeNote({noteId})
+            },
+            // 设置localStorage
+            // 这里使用web sql是不是更好？
+            setCache ({noteId, content, title}) {
+                let cacheChange = window.localStorage.getItem('_change_note')
+                if (cacheChange) {
+                    let obj = JSON.parse(cacheChange)
+                    obj[noteId] = {
+                        content,
+                        title
+                    }
+                    window.localStorage.setItem('_change_note', JSON.stringify(obj))
+                }
+                if (!cacheChange) {
+                    let obj = {}
+                    obj[noteId] = {
+                        content,
+                        title
+                    }
+                    window.localStorage.setItem('_change_note', JSON.stringify(obj))
+                }
+            },
+            // 设置changeNote
+            setChangeNote ({noteId}) {
+                if (this.changeNote.indexOf(noteId) > -1) {
+                    return
+                }
+                this.$store.commit('PUSH_CHANGE_NOTE', {noteId})
+            },
+            // 检查是否真正变化
+            // 目的是规避，点击一次就认定修改了
+            checkRealChange (noteId, content, changes) {
+                if (this.loading) {
+                    return false
+                }
+
+                let result = false
+                if (this.changeNote.indexOf(noteId) > -1) {
+                    // 历史上被修改的, 那一定是修改了
+                    result = true
+                } else {
+                    let nowcontent = String(content).trim()
+                    let oldcontent = String(this.currentNote.content).trim()
+                    // 没有被修改的, 和异步结果中比较
+                    result = (nowcontent !== oldcontent)
+                }
+                return result
+            },
+            // 从localStorage中拿到内容
+            getCache (noteId) {
+                let result = ''
+                let cacheChange = window.localStorage.getItem('_change_note')
+                if (!cacheChange) {
+                    return ''
+                } else {
+                    cacheChange = JSON.parse(cacheChange)
+                    result = cacheChange[noteId]
+                }
+                return result
             },
             handleRedo () {
                 if (this.editor) {
@@ -308,7 +453,6 @@
             },
 
             handleUploadedImage (url, deletionUrl) {
-                alert('handleUploadedImage')
                 this.handleSelect(url)
                 this.$store.dispatch('SHOW_IMAGE_DELETION_URL', deletionUrl)
             },

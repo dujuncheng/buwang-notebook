@@ -1,6 +1,5 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
-const base64 = require('js-base64')
 
 const popFail = (obj) => {
     Swal({
@@ -25,15 +24,10 @@ const popSuccess = (message) => {
 }
 
 const state = {
-    loading: false,
-    // 全局的被修改的note
-    changeNote: [],
     // 左侧的目录
     catalog: [],
     // 中间的笔记列表
     notelist: [],
-    contentChanged: '',
-    titleChanged: '',
     // 0 是原样，1 是放大
     scaleStatus: 0,
     // 左边栏，0待复习，1笔记本 2代办清单
@@ -59,17 +53,6 @@ const getters = {
 }
 
 const mutations = {
-    CLEAN_CHANGE_NOTE (state) {
-        state.changeNote = []
-    },
-    PUSH_CHANGE_NOTE (state, {noteId}) {
-        state.changeNote.push(noteId)
-    },
-    SET_SELECTED_NOTEBOOK (state, {noteId, index}) {
-        state.noteItemSelected = noteId
-        state.contentChanged = state.notelist[index].content
-        state.titleChanged = state.notelist[index].title
-    },
     SET_NOTEBOOK (state, {name, value}) {
         state[name] = value
     },
@@ -88,38 +71,13 @@ const mutations = {
     ADD_NOTE (state, {item}) {
         state.notelist.unshift(item)
     },
-    SET_NOTELIST (state, { notelist }) {
-        // todo
-        if (notelist && Array.isArray(notelist)) {
-            for (let i = 0; i < notelist.length; i++) {
-                try {
-                    notelist[i].content = base64.Base64.decode(notelist[i].content)
-                } catch (e) {
-                    console.log(e)
-                }
+    SET_NOTELIST (state, { noteList }) {
+        if (noteList && Array.isArray(noteList)) {
+            for (let i = 0; i < noteList.length; i++) {
+                noteList[i].content = noteList[i].content
             }
         }
-        state.notelist = notelist
-        let sameNote = 0
-        for (let i = 0; i < notelist.length; i++) {
-            if (notelist[i].note_id === state.noteItemSelected) {
-                sameNote = i
-            }
-        }
-        // 如果没有选择中间的nodelist, 则默认是第一个
-        if (state.notelist[sameNote]) {
-            state.noteItemSelected = state.notelist[sameNote].note_id
-            state.contentChanged = state.notelist[sameNote].content
-            state.titleChanged = state.notelist[sameNote].title
-        }
-    },
-    UPDATA_NOTE_CONTENT_TITLE (state, {noteId, title, content}) {
-        for (let i = 0; i < state.notelist.length; i++) {
-            if (state.notelist[i].note_id === noteId) {
-                state.notelist[i].title = title
-                state.notelist[i].content = content
-            }
-        }
+        state.notelist = noteList
     }
 }
 
@@ -296,34 +254,7 @@ const actions = {
                 return
             }
             let data = result.data
-            commit('SET_NOTELIST', {notelist: data.noteList})
-        } catch (e) {
-            popFail(e)
-        }
-    },
-    async CHANGE_NOTE ({commit, state}, {changeArr}) {
-        let params = {
-            change_arr: changeArr
-        }
-        try {
-            let result = (await axios({
-                method: 'post',
-                url: 'http://127.0.0.1:8991/notebook?method=change_arr',
-                data: params
-            })).data
-            if (!result || !result.success) {
-                // 如果更新失败
-                popFail(result)
-                return
-            }
-            await this.dispatch('GET_NOTE_LIST', {catalogId: state.selectedCatalogId})
-            // 如果更新成功
-            commit('CLEAN_CHANGE_NOTE')
-            commit('SET_NOTEBOOK', {
-                name: 'loading',
-                value: false
-            })
-            window.localStorage.setItem('_change_note', JSON.stringify({}))
+            commit('SET_NOTELIST', {noteList: data.noteList})
         } catch (e) {
             popFail(e)
         }

@@ -12,9 +12,9 @@
         <div class="note-list-container" v-if="sideBarSelected === 1">
             <div class="list">
                 <div class="item"
-                     v-for="note in notelist"
+                     v-for="(note, index) in notelist"
                      :class="noteItemSelected == note.note_id ?'item-selected':''"
-                     @click="setSelected('noteItemSelected', note.note_id)"
+                     @click="setSelected(note.note_id, index)"
                      @contextmenu.prevent="addContextBoard($event,note)"
                 >
                     <noteListItem :note="note"></noteListItem>
@@ -40,7 +40,7 @@
     import bus from '../bus/index.js'
     import { showContextMenu } from '../contextMenu/noteList/index.js'
     import { getRandomNum } from '@/utils/index.js'
-    import { mapState } from 'vuex'
+    import { mapState, mapGetters } from 'vuex'
     import noteListItem from './middle-list/note-list-item.vue'
     import reviewListItem from './middle-list/review-list-item.vue'
     export default {
@@ -66,8 +66,11 @@
                 'reviewItemSelected': state => state.notebook.reviewItemSelected,
                 'noteItemSelected': state => state.notebook.noteItemSelected,
                 'selectedCatalogId': state => state.notebook.selectedCatalogId,
-                'notelist': state => state.notebook.notelist
-            })
+                'notelist': state => state.notebook.notelist,
+                'titleChanged': state => state.notebook.titleChanged,
+                'contentChanged': state => state.notebook.contentChanged
+            }),
+            ...mapGetters(['currentNote'])
         },
         data () {
             return {
@@ -139,11 +142,17 @@
                 this.$store.dispatch('ADD_NOTE', params)
             },
             // 选择笔记
-            setSelected (name, value) {
-                if (name === undefined || value === undefined) {
+            setSelected (noteId, index) {
+                if (noteId === undefined) {
                     return
                 }
-                this.$store.commit('SET_NOTEBOOK', {name, value})
+                // // 设置选中的笔记
+                this.$store.commit('SET_SELECTED_NOTEBOOK', { noteId, index})
+                if (this.currentNote.title !== this.titleChanged ||
+                    this.currentNote.content !== this.contentChanged) {
+                } else {
+
+                }
             },
             // 删除笔记
             deleteNote () {
