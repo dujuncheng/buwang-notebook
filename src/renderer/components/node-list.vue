@@ -132,11 +132,12 @@
                 }
                 let timeStamp = Number(String(new Date().getTime()).slice(2))
                 let randomNum = getRandomNum(1, 1000, 0)
+                // 生成noteId
                 let noteId = Number(`${timeStamp}${randomNum}`)
                 let params = {
                     catalogId: this.selectedCatalogId,
                     noteId,
-                    title: '未命名',
+                    title: '',
                     content: ''
                 }
                 this.$store.dispatch('ADD_NOTE', params)

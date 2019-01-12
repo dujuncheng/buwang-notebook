@@ -160,15 +160,15 @@ const actions = {
             if (!result || !result.success) {
                 popFail(result)
             }
+            commit('SET_NOTEBOOK', {
+                name: 'noteItemSelected',
+                value: noteId
+            })
             await this.dispatch('GET_CATALOG')
             await this.dispatch('GET_NOTE_LIST', {catalogId})
             commit('SET_NOTEBOOK', {
                 name: 'selectedCatalogId',
                 value: catalogId
-            })
-            commit('SET_NOTEBOOK', {
-                name: 'noteItemSelected',
-                value: noteId
             })
         } catch (e) {
             popFail(e)

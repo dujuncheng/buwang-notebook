@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <div class="title-container">
-            <input type="text" class="title" placeholder="未命名" v-model="titleChanged"/>
+            <input type="text" class="title" placeholder="未命名" v-model="title"/>
         </div>
         <div class="box-container">
             <editorBox></editorBox>
@@ -107,6 +107,7 @@
         },
         data () {
             return {
+                title: '',
                 theme: 'light',
                 editor: null,
                 isShowClose: false,
@@ -167,11 +168,18 @@
                     this.editor.setMarkdown(value)
                 }
             },
-            titleChanged (value) {
+            title (value) {
+                if (value === this.titleChanged) {
+                    return
+                }
                 this.$store.commit('SET_NOTEBOOK', {
                     name: 'titleChanged',
                     value: value
                 })
+                let noteId = this.noteItemSelected
+                let title = value
+                this.setCacheTitle({noteId, title})
+                this.setChangeNote({noteId})
             }
         },
         created () {
@@ -360,12 +368,12 @@
                 if (!realChange) {
                     return
                 }
-                this.setCache({noteId, content, title})
+                this.setCacheContent({noteId, content, title})
                 this.setChangeNote({noteId})
             },
-            // 设置localStorage
+            // 设置内容的localStorage
             // todo 这里使用web sql是不是更好？
-            setCache ({noteId, content, title}) {
+            setCacheContent ({noteId, content, title}) {
                 content = convertLineEndings(content, 'lf')
                 let cacheChange = window.localStorage.getItem('_change_note')
                 if (cacheChange) {
@@ -380,6 +388,22 @@
                     let obj = {}
                     obj[noteId] = {
                         content,
+                        title
+                    }
+                    window.localStorage.setItem('_change_note', JSON.stringify(obj))
+                }
+            },
+            setCacheTitle ({noteId, title}) {
+                let cacheChange = window.localStorage.getItem('_change_note')
+                if (cacheChange) {
+                    let obj = JSON.parse(cacheChange)
+                    obj[noteId].title = title
+                    window.localStorage.setItem('_change_note', JSON.stringify(obj))
+                }
+                if (!cacheChange) {
+                    let obj = {}
+                    obj[noteId] = {
+                        content: '',
                         title
                     }
                     window.localStorage.setItem('_change_note', JSON.stringify(obj))
