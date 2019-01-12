@@ -66,7 +66,7 @@
     import bus from '../bus/index.js'
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
-    import {convertLineEndings, LF_LINE_ENDING_REG, LINE_ENDING_REG, CRLF_LINE_ENDING_REG, getOsLineEndingName} from '../store/help.js'
+    import {convertLineEndings} from '../store/help.js'
 
     import { showContextMenu } from '../contextMenu/editor/index.js'
     const base64 = require('js-base64')

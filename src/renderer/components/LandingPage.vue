@@ -27,13 +27,14 @@
     import nodeList from './node-list.vue'
     import editorContainer from './editor-container.vue'
     import todoContainer from './todo-container/todo-index.vue'
-    var Resizable = require('resizable')
+    // import progressBar from './progressBar.vue'
     export default {
         components: {
             sideBar,
             nodeList,
             editorContainer,
-            todoContainer
+            todoContainer,
+            // progressBar
         },
         data () {
             return {
@@ -48,10 +49,6 @@
             })
         },
         mounted () {
-            var el = document.querySelector('.side-bar-wrap')
-            new Resizable(el, {
-                draggable: false
-            })
         }
     }
 </script>
@@ -72,6 +69,7 @@
         height: 100%;
         background-color: #191B1C;
         color: #C8C9C9!important;
+        position: relative;
     }
     @media only screen and (max-width: 680px) {
         .side-bar-wrap {
