@@ -162,7 +162,10 @@
             },
             contentChanged: function (value, oldValue) {
                 this.editor.clearHistory()
-                this.editor.setMarkdown(value)
+                if (this.currentFile.markdown !== value) {
+                    this.blurEditor()
+                    this.editor.setMarkdown(value)
+                }
             },
             titleChanged (value) {
                 this.$store.commit('SET_NOTEBOOK', {
@@ -254,8 +257,6 @@
                     if (!changes) {
                         return
                     }
-
-                    // this.$store.commit('SET_NOTEBOOK', {name: 'contentChanged', value: changes.markdown})
                     this.$store.dispatch('LISTEN_FOR_CONTENT_CHANGE', changes)
                     let params = {
                         noteId: this.noteItemSelected,
@@ -323,7 +324,6 @@
             },
             // 监听 ctrl + s
             handleSave () {
-                this.blurEditor()
                 let cache = window.localStorage.getItem('_change_note')
                 if (this.changeNote.length === 0 ||
                     !cache ||
@@ -353,16 +353,13 @@
             },
             // 监听内容的变化
             handleChange ({noteId, content, title}, changes) {
-                // todo 增加loading
                 if (!noteId) {
                     return
                 }
                 let realChange = this.checkRealChange(noteId, content, changes)
                 if (!realChange) {
-                    console.log('没有修改')
                     return
                 }
-                console.log('有修改')
                 this.setCache({noteId, content, title})
                 this.setChangeNote({noteId})
             },

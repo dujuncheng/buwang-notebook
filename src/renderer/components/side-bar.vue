@@ -156,6 +156,7 @@
             ...mapState({
                 'scaleStatus': state => state.notebook.scaleStatus,
                 'sideBarSelected': state => state.notebook.sideBarSelected,
+                'selectedCatalogId': state => state.notebook.selectedCatalogId,
                 'catalog': state => state.notebook.catalog
             })
         },
@@ -195,6 +196,9 @@
                 let catalogId = Number(data && data.catalog_id)
                 if (catalogId === undefined) {
                     alert('没有catalogId报错了')
+                    return
+                }
+                if (catalogId === this.selectedCatalogId) {
                     return
                 }
                 // 设置选中的目录

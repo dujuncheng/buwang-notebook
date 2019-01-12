@@ -333,7 +333,7 @@ const actions = {
         commit('SET_MARKDOWN', markdown)
 
         // ignore new line which is added if the editor text is empty (#422)
-        if (oldMarkdown.length === 0 && markdown.length === 1 && markdown[0] === '\n') {
+        if (oldMarkdown && oldMarkdown.length === 0 && markdown.length === 1 && markdown[0] === '\n') {
             return
         }
 
