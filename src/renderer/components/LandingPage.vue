@@ -80,6 +80,7 @@
     .middle-list-wrap {
         flex-basis: 300px;
         height: 100%;
+        overflow: hidden;
     }
 
     @media only screen and (max-width: 1120px) {

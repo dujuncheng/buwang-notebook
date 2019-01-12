@@ -239,6 +239,7 @@
         overflow-x: hidden;
         .list {
             padding-bottom: 30px;
+            width: 100%;
             .item-selected {
                 border-left: 6px solid #488DF7!important;
                 background-color: #E7F3FF;
