@@ -104,6 +104,7 @@ const mutations = {
      * @constructor
      */
     SET_NOTELIST (state, { notelist }) {
+        // base64 解码
         if (notelist && Array.isArray(notelist)) {
             for (let i = 0; i < notelist.length; i++) {
                 try {
@@ -113,6 +114,7 @@ const mutations = {
                 }
             }
         }
+        // 设置
         state.notelist = notelist
         let sameNote = 0
         for (let i = 0; i < notelist.length; i++) {
@@ -127,6 +129,32 @@ const mutations = {
             state.titleChanged = state.notelist[sameNote].title
         }
     },
+    SET_REVIEW_LIST (state, { reviewlist }) {
+        // base64 解码
+        if (reviewlist && Array.isArray(reviewlist)) {
+            for (let i = 0; i < reviewlist.length; i++) {
+                try {
+                    reviewlist[i].content = base64.Base64.decode(reviewlist[i].content)
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+        }
+        // 设置
+        state.reviewlist = reviewlist
+        let sameNote = 0
+        for (let i = 0; i < reviewlist.length; i++) {
+            if (reviewlist[i].note_id === state.reviewItemSelected) {
+                sameNote = i
+            }
+        }
+        // 如果没有选择中间的nodelist, 则默认是第一个
+        if (state.reviewlist[sameNote]) {
+            state.reviewItemSelected = state.reviewlist[sameNote].note_id
+            state.contentChanged = state.reviewlist[sameNote].content
+            state.titleChanged = state.reviewlist[sameNote].title
+        }
+    },
     UPDATA_NOTE_CONTENT_TITLE (state, {noteId, title, content}) {
         for (let i = 0; i < state.notelist.length; i++) {
             if (state.notelist[i].note_id === noteId) {
@@ -134,9 +162,6 @@ const mutations = {
                 state.notelist[i].content = content
             }
         }
-    },
-    SET_REVIEW_LIST (state, {reviewList}) {
-        state.reviewlist = reviewList
     }
 }
 
@@ -162,7 +187,7 @@ const actions = {
                 })
                 return
             }
-            commit('SET_REVIEW_LIST', {reviewList: result.review_list})
+            commit('SET_REVIEW_LIST', {reviewlist: result.review_list})
         } catch (e) {
             popFail(e)
         }
