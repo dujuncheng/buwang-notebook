@@ -51,9 +51,17 @@ const state = {
 const getters = {
     currentNote: (state) => {
         let item = ''
-        for (let i = 0; i < state.notelist.length; i++) {
-            if (state.notelist[i].note_id === state.noteItemSelected) {
-                item = state.notelist[i]
+        if (state.sideBarSelected === 1) {
+            for (let i = 0; i < state.notelist.length; i++) {
+                if (state.notelist[i].note_id === state.noteItemSelected) {
+                    item = state.notelist[i]
+                }
+            }
+        } else if (state.sideBarSelected === 0) {
+            for (let i = 0; i < state.reviewlist.length; i++) {
+                if (state.reviewlist[i].note_id === state.reviewItemSelected) {
+                    item = state.reviewlist[i]
+                }
             }
         }
         return item
