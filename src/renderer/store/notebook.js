@@ -94,7 +94,18 @@ const mutations = {
         state.scaleStatus = num
     },
     SET_SELECTED (state, {num}) {
+        if (Number(num) === Number(state.sideBarSelected)) {
+            return
+        }
         state.sideBarSelected = num
+        if (num === 0) {
+            // 如果是待复习状态
+            this.dispatch('GET_REVIEWLIST')
+        } else if (num === 1) {
+            // 如果是笔记本状态
+            let catalogId = state.selectedCatalogId || 0
+            this.dispatch('GET_NOTE_LIST', {catalogId})
+        }
     },
     SET_CATALOG (state, { catalog }) {
         state.catalog = catalog

@@ -10,14 +10,14 @@
             <i class="brain-icon fas fa-brain"></i>
         </div>
         <!-- 待办清单 -->
-        <div class="category-title-container"
-             :style="todoStyle"
-             @click="setSelected(2)"
-        >
-            <p class="title-text">任务清单</p>
-            <span class="badge">10</span>
-            <i class="todo-icon fas fa-clipboard-check"></i>
-        </div>
+        <!--<div class="category-title-container"-->
+             <!--:style="todoStyle"-->
+             <!--@click="setSelected(2)"-->
+        <!--&gt;-->
+            <!--<p class="title-text">任务清单</p>-->
+            <!--<span class="badge">10</span>-->
+            <!--<i class="todo-icon fas fa-clipboard-check"></i>-->
+        <!--</div>-->
         <!-- 笔记本 -->
         <div class="category-title-container"
              :style="noteStyle"
