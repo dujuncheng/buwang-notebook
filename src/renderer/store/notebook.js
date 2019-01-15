@@ -435,6 +435,14 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 提交修改
+     * @param commit
+     * @param state
+     * @param changeArr
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async CHANGE_NOTE ({commit, state}, {changeArr}) {
         let params = {
             change_arr: changeArr
@@ -450,8 +458,16 @@ const actions = {
                 popFail(result)
                 return
             }
-            await this.dispatch('GET_NOTE_LIST', {catalogId: state.selectedCatalogId})
-            // 如果更新成功
+
+            if (state.sideBarSelected === 0) {
+                // 待复习状态
+                await this.dispatch('GET_REVIEWLIST')
+            } else if (state.sideBarSelected === 1) {
+                // 记笔记的状态
+                await this.dispatch('GET_NOTE_LIST', {catalogId: state.selectedCatalogId})
+            }
+
+            // 如果更新成功，清空全局的 changeNote
             commit('CLEAN_CHANGE_NOTE')
             commit('SET_NOTEBOOK', {
                 name: 'loading',
