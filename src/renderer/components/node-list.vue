@@ -14,7 +14,7 @@
                 <div class="item"
                      v-for="(note, index) in notelist"
                      :class="noteItemSelected == note.note_id ?'item-selected':''"
-                     @click="setSelected(note.note_id, index)"
+                     @click="clickNote(note.note_id, index)"
                      @contextmenu.prevent="addContextBoard($event,note)"
                 >
                     <noteListItem :note="note"></noteListItem>
@@ -25,11 +25,11 @@
         <div class="review-list-container" v-if="sideBarSelected === 0">
             <div class="list">
                 <div class="item"
-                     v-for="n in 10"
-                     :class="reviewItemSelected == n?'item-selected':''"
-                     @click="setSelected('reviewItemSelected', n)"
+                     v-for="(review , index) in reviewlist"
+                     :class="reviewItemSelected == review?'item-selected':''"
+                     @click="clickReview(review.note_id, review)"
                 >
-                    <reviewListItem></reviewListItem>
+                    <reviewListItem :review="review"></reviewListItem>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         },
         computed: {
             nodeListStyle () {
-                if (this.notelist.length === 0) {
+                if (this.notelist.length === 0 && this.reviewlist.length === 0) {
                     return {
                         'background-image': 'url(http://h0.hucdn.com/open/201902/4bc76cd6687f7a50_749x1405.png)',
                         'background-size': '100% 100%',
@@ -67,6 +67,7 @@
                 'noteItemSelected': state => state.notebook.noteItemSelected,
                 'selectedCatalogId': state => state.notebook.selectedCatalogId,
                 'notelist': state => state.notebook.notelist,
+                'reviewlist': state => state.notebook.reviewlist,
                 'titleChanged': state => state.notebook.titleChanged,
                 'contentChanged': state => state.notebook.contentChanged
             }),
@@ -143,21 +144,23 @@
                 this.$store.dispatch('ADD_NOTE', params)
             },
             // 选择笔记
-            setSelected (noteId, index) {
+            clickNote (noteId, index) {
                 if (noteId === undefined) {
                     return
                 }
                 // // 设置选中的笔记
-                this.$store.commit('SET_SELECTED_NOTEBOOK', { noteId, index})
-                if (this.currentNote.title !== this.titleChanged ||
-                    this.currentNote.content !== this.contentChanged) {
-                } else {
-
-                }
+                this.$store.commit('SELECT_NOTE', {noteId, index})
             },
             // 删除笔记
             deleteNote () {
 
+            },
+            clickReview (noteId, index) {
+                if (noteId === undefined) {
+                    return
+                }
+                // // 设置选中的笔记
+                this.$store.commit('SELECT_REVIEW', {noteId, review})
             }
         }
     }

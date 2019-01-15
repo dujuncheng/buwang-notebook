@@ -48,7 +48,14 @@
                 'notelist': state => state.notebook.notelist,
             })
         },
+        methods: {
+            getReviewList () {
+                // 请求待复习列表
+                this.$store.dispatch('GET_REVIEWLIST')
+            }
+        },
         mounted () {
+            this.getReviewList()
         }
     }
 </script>

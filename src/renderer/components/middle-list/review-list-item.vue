@@ -1,6 +1,6 @@
 <template>
     <div class="node-list-item-container">
-        <div class="title">{{name || '未命名'}}</div>
+        <div class="title">{{review.title || '未命名'}}</div>
         <div class="icon-container">
             <div class="left">
                 <!-- 预计复习时间-->
@@ -10,7 +10,7 @@
             <div class="middle">
                 <!--复习次数-->
                 <i class="fas fa-sync-alt"></i>
-                <span class="text">2次</span>
+                <span class="text">{{review.review_num}}次</span>
             </div>
             <div class="right">
                 <!--哪天复习-->
@@ -33,7 +33,8 @@
     export default {
         components: {
             reviewProgress
-        }
+        },
+        props: ['review']
     }
 </script>
 

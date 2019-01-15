@@ -32,6 +32,8 @@ const state = {
     catalog: [],
     // 中间的笔记列表
     notelist: [],
+    // 待复习列表
+    reviewlist: [],
     contentChanged: '',
     titleChanged: '',
     // 0 是原样，1 是放大
@@ -65,10 +67,15 @@ const mutations = {
     PUSH_CHANGE_NOTE (state, {noteId}) {
         state.changeNote.push(noteId)
     },
-    SET_SELECTED_NOTEBOOK (state, {noteId, index}) {
+    // 选中笔记
+    SELECT_NOTE (state, {noteId, index}) {
         state.noteItemSelected = noteId
         state.contentChanged = state.notelist[index].content
         state.titleChanged = state.notelist[index].title
+    },
+    // 选中待复习
+    SELECT_REVIEW (state, {noteId, review}) {
+        state.reviewItemSelected = noteId
     },
     SET_NOTEBOOK (state, {name, value}) {
         state[name] = value
@@ -120,10 +127,33 @@ const mutations = {
                 state.notelist[i].content = content
             }
         }
+    },
+    SET_REVIEW_LIST (state, {reviewList}) {
+        state.reviewlist = reviewList
     }
 }
 
 const actions = {
+    async GET_REVIEWLIST ({commit}) {
+        try {
+            let result = (await axios({
+                method: 'get',
+                url: 'http://127.0.0.1:8991/notebook?method=get_review_list',
+            })).data
+            if (!result || !result.success) {
+                popFail(result)
+            }
+            if (!result.review_list || !Array.isArray(result.review_list)) {
+                popFail({
+                    message: '网络错误，返回的不是列表'
+                })
+                return
+            }
+            commit('SET_REVIEW_LIST', {reviewList: result.review_list})
+        } catch (e) {
+            popFail(e)
+        }
+    },
     async ADD_CATALOG ({commit}, {catalogId, parentId, name}) {
         let params = {
             catalog_id: catalogId,
