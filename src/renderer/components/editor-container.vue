@@ -101,6 +101,7 @@
                 // 全局的被修改的note列表
                 'changeNote': state => state.notebook.changeNote,
                 'noteItemSelected': state => state.notebook.noteItemSelected,
+                'reviewItemSelected': state => state.notebook.reviewItemSelected,
                 'loading': state => state.notebook.loading,
                 'sideBarSelected': state => state.notebook.sideBarSelected
             }),
@@ -270,13 +271,15 @@
                     this.$store.dispatch('ASK_FOR_IMAGE_AUTO_PATH', src)
                 })
 
+                // 监听到内容的改变
                 this.editor.on('change', changes => {
                     if (!changes) {
                         return
                     }
                     this.$store.dispatch('LISTEN_FOR_CONTENT_CHANGE', changes)
+                    let noteId = this.getNoteId()
                     let params = {
-                        noteId: this.noteItemSelected,
+                        noteId: noteId,
                         content: changes.markdown,
                         title: this.titleChanged
                     }
@@ -310,6 +313,17 @@
                     }
                     editor.setMarkdown(markdown, cursor, renderCursor)
                 }
+            },
+            getNoteId () {
+                let noteId = 0
+                if (this.sideBarSelected === 0) {
+                    // 待复习模式
+                    noteId = this.reviewItemSelected
+                } else if (this.sideBarSelected === 1) {
+                    // 笔记复习模式
+                    noteId = this.noteItemSelected
+                }
+                return noteId
             },
             handleImagePath (files) {
                 const { editor } = this
@@ -383,7 +397,6 @@
             // 设置内容的localStorage
             // todo 这里使用web sql是不是更好？
             setCacheContent ({noteId, content, title}) {
-                content = convertLineEndings(content, 'lf')
                 let cacheChange = window.localStorage.getItem('_change_note')
                 if (cacheChange) {
                     let obj = JSON.parse(cacheChange)

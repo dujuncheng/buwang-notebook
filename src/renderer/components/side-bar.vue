@@ -6,7 +6,7 @@
              @click="setSelected(0)"
         >
             <p class="title-text">待复习</p>
-            <span class="badge">100</span>
+            <span class="badge" v-show="reviewlist.length > 0">{{reviewlist.length}}</span>
             <i class="brain-icon fas fa-brain"></i>
         </div>
         <!-- 待办清单 -->
@@ -157,7 +157,8 @@
                 'scaleStatus': state => state.notebook.scaleStatus,
                 'sideBarSelected': state => state.notebook.sideBarSelected,
                 'selectedCatalogId': state => state.notebook.selectedCatalogId,
-                'catalog': state => state.notebook.catalog
+                'catalog': state => state.notebook.catalog,
+                'reviewlist': state => state.notebook.reviewlist
             })
         },
         watch: {

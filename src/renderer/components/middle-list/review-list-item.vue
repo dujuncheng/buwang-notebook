@@ -1,5 +1,6 @@
 <template>
     <div class="node-list-item-container">
+        <div class="change-icon" v-show="showChangeIcon"></div>
         <div class="title">{{review.title || '未命名'}}</div>
         <div class="icon-container">
             <div class="left">
@@ -29,17 +30,36 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     import reviewProgress from '../common/reviewProgress.vue'
     export default {
         components: {
             reviewProgress
         },
-        props: ['review']
+        props: ['review'],
+        computed: {
+            showChangeIcon () {
+                return this.changeNote.indexOf(this.review.note_id) > -1
+            },
+            ...mapState({
+                // 全局的被修改的note列表
+                'changeNote': state => state.notebook.changeNote,
+            })
+        }
     }
 </script>
 
 <style scoped lang="less">
     @import "~@/less/index.less";
+    .change-icon {
+        background-color: #f56c6c;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        position: absolute;
+        right: 5px;
+        top: 8px;
+    }
     .bottom-line {
         width: 86%;
         position: absolute;
