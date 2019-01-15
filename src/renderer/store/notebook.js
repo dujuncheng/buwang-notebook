@@ -76,6 +76,8 @@ const mutations = {
     // 选中待复习
     SELECT_REVIEW (state, {noteId, review}) {
         state.reviewItemSelected = noteId
+        state.contentChanged = review.content
+        state.titleChanged = review.title
     },
     SET_NOTEBOOK (state, {name, value}) {
         state[name] = value
@@ -95,8 +97,13 @@ const mutations = {
     ADD_NOTE (state, {item}) {
         state.notelist.unshift(item)
     },
+    /**
+     * 设置一条笔记列表
+     * @param state
+     * @param notelist
+     * @constructor
+     */
     SET_NOTELIST (state, { notelist }) {
-        // todo
         if (notelist && Array.isArray(notelist)) {
             for (let i = 0; i < notelist.length; i++) {
                 try {
@@ -134,6 +141,12 @@ const mutations = {
 }
 
 const actions = {
+    /**
+     * 获取待复习列表
+     * @param commit
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async GET_REVIEWLIST ({commit}) {
         try {
             let result = (await axios({
@@ -154,6 +167,15 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 增加一个目录
+     * @param commit
+     * @param catalogId  新增的目录id
+     * @param parentId   新增的目录id的父亲id
+     * @param name       新增的目录名称
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async ADD_CATALOG ({commit}, {catalogId, parentId, name}) {
         let params = {
             catalog_id: catalogId,
@@ -174,6 +196,16 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 增加一条笔记
+     * @param commit
+     * @param catalogId   该笔记所属的目录
+     * @param noteId      该笔记的id
+     * @param title       该笔记的标题
+     * @param content     该笔记的内容
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async ADD_NOTE ({commit}, {catalogId, noteId, title, content}) {
         let params = {
             catalog_id: catalogId,
@@ -204,6 +236,15 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     *  删除一台笔记
+     * @param commit
+     * @param noteId
+     * @param catalogId
+     * @param nextNote
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async DELETE_NOTE ({commit}, {noteId, catalogId, nextNote}) {
         let params = {
             note_id: noteId
@@ -236,6 +277,13 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 移动一条目录
+     * @param commit
+     * @param catalogId
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async REMOVE_CATALOG ({commit}, {catalogId}) {
         let params = {
             catalog_id: catalogId
@@ -255,6 +303,14 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 对目录进行重命名
+     * @param commit
+     * @param catalogId
+     * @param newName
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async RENAME_CATALOG ({commit}, {catalogId, newName}) {
         let params = {
             catalog_id: catalogId,
@@ -274,6 +330,14 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 移动目录
+     * @param commit
+     * @param catalogId
+     * @param parentId
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async MOVE_CATALOG ({commit}, {catalogId, parentId}) {
         let params = {
             catalog_id: catalogId,
@@ -311,6 +375,13 @@ const actions = {
             popFail(e)
         }
     },
+    /**
+     * 获取一条笔记列表
+     * @param commit
+     * @param catalogId
+     * @returns {Promise<void>}
+     * @constructor
+     */
     async GET_NOTE_LIST ({commit}, {catalogId}) {
         let params = {
             catalog_id: catalogId

@@ -3,9 +3,12 @@
         <div class="title-container">
             <input type="text" class="title" placeholder="未命名" v-model="title"/>
         </div>
-        <div class="box-container">
+        <!-- 在记笔记状态下，才出现 工具箱-->
+        <div v-if="sideBarSelected === 1" class="editor-box-container">
             <editorBox></editorBox>
         </div>
+        <!-- 在复习的状态下，才出现 分割线-->
+        <div v-if="sideBarSelected === 0" class="review-box-container"></div>
         <div class="editor-container"
              :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
              :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
@@ -98,7 +101,8 @@
                 // 全局的被修改的note列表
                 'changeNote': state => state.notebook.changeNote,
                 'noteItemSelected': state => state.notebook.noteItemSelected,
-                'loading': state => state.notebook.loading
+                'loading': state => state.notebook.loading,
+                'sideBarSelected': state => state.notebook.sideBarSelected
             }),
             ...mapGetters(['currentNote'])
         },
@@ -636,12 +640,20 @@
                 text-align: center;
             }
         }
-        .box-container {
+        .editor-box-container {
             width: 100%;
             height: 30px;
             background-color: #F8F8F8;
             position: absolute;
             top: 46px;
+            left: 0;
+        }
+        .review-box-container {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0,0,0,0.2);
+            position: absolute;
+            top: 61px;
             left: 0;
         }
         .editor-container {

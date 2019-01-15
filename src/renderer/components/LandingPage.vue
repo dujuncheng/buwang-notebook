@@ -11,7 +11,8 @@
 
       <!-- 最右侧的编辑器区域-->
       <div class="edit-container" v-show="sideBarSelected !== 2">
-          <div class="empty-container" :style=" notelist.length === 0 ? {'visibility': 'visible'} : {'visibility': 'hidden'}"></div>
+          <!-- 当既没有笔记列表，也没有复习列表，出现的空白页面 -->
+          <div class="empty-area" :style="emptyStyle"></div>
           <editor-container class="editor"></editor-container>
       </div>
 
@@ -42,15 +43,26 @@
             }
         },
         computed: {
+            emptyStyle () {
+                if (
+                    this.notelist.length === 0 &&
+                    this.reviewlist.length === 0
+                ) {
+                    return {'visibility': 'visible'}
+                } else {
+                    return {'visibility': 'hidden'}
+                }
+            },
             ...mapState({
                 'scaleStatus': state => state.notebook.scaleStatus,
                 'sideBarSelected': state => state.notebook.sideBarSelected,
                 'notelist': state => state.notebook.notelist,
+                'reviewlist': state => state.notebook.reviewlist,
             })
         },
         methods: {
+            // 请求待复习列表
             getReviewList () {
-                // 请求待复习列表
                 this.$store.dispatch('GET_REVIEWLIST')
             }
         },
@@ -103,7 +115,7 @@
         overflow-y: scroll;
         position: relative;
         ._no_scroll_bar();
-        .empty-container {
+        .empty-area {
             background-color: white;
             width: 100%;
             height: 100%;

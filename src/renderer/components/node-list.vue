@@ -26,7 +26,7 @@
             <div class="list">
                 <div class="item"
                      v-for="(review , index) in reviewlist"
-                     :class="reviewItemSelected == review.note_id?'item-selected':''"
+                     :class="reviewItemSelected == review.note_id ? 'item-selected':''"
                      @click="clickReview(review.note_id, review)"
                 >
                     <reviewListItem :review="review"></reviewListItem>
