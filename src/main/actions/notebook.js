@@ -2,7 +2,7 @@ const {
     BrowserWindow,
     Menu,
     MenuItem,
-    ipcMain,
+    ipcMain
 } = require('electron')
 
 const menu = new Menu()
