@@ -1,8 +1,6 @@
 import * as actions from '../actions/editor.js'
 import keybindings from '../shortcutHandle.js'
 
-var log = require('electron-log')
-
 export default {
     label: '编辑',
     submenu: [{
