@@ -1,5 +1,4 @@
 'use strict'
-
 import { app, BrowserWindow, Menu } from 'electron'
 import ManuTemplate from './menus/index.js'
 // import AppMenu from './menu.js'
