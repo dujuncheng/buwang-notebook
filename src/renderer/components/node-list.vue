@@ -44,125 +44,125 @@
     import noteListItem from './middle-list/note-list-item.vue'
     import reviewListItem from './middle-list/review-list-item.vue'
     export default {
-        components: {
-            noteListItem,
-            reviewListItem,
-        },
-        computed: {
-            nodeListStyle () {
-                if (this.notelist.length === 0 && this.reviewlist.length === 0) {
-                    return {
-                        'background-image': 'url(http://h0.hucdn.com/open/201902/4bc76cd6687f7a50_749x1405.png)',
-                        'background-size': '100% 100%',
-                        'background-position': 'center center',
-                        'background-repeat': 'no-repeat'
-                    }
-                } else {
-                    return {};
-                }
-            },
-            ...mapState({
-                'sideBarSelected': state => state.notebook.sideBarSelected,
-                'reviewItemSelected': state => state.notebook.reviewItemSelected,
-                'noteItemSelected': state => state.notebook.noteItemSelected,
-                'selectedCatalogId': state => state.notebook.selectedCatalogId,
-                'notelist': state => state.notebook.notelist,
-                'reviewlist': state => state.notebook.reviewlist,
-                'titleChanged': state => state.notebook.titleChanged,
-                'contentChanged': state => state.notebook.contentChanged
-            }),
-            ...mapGetters(['currentNote'])
-        },
-        data () {
+      components: {
+        noteListItem,
+        reviewListItem
+      },
+      computed: {
+        nodeListStyle () {
+          if (this.notelist.length === 0 && this.reviewlist.length === 0) {
             return {
-                isSelected: 2
+              'background-image': 'url(http://h0.hucdn.com/open/201902/4bc76cd6687f7a50_749x1405.png)',
+              'background-size': '100% 100%',
+              'background-position': 'center center',
+              'background-repeat': 'no-repeat'
             }
+          } else {
+            return {}
+          }
         },
-        mounted () {
-            bus.$on('deleteNoteItem', this.deleteNoteItem)
-        },
-        methods: {
-            getNext (noteId, arr) {
-                if (!noteId || !Array.isArray(arr)) {
-                    return
-                }
-                let currentIndex = 0
-                let result = ''
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].note_id === noteId) {
-                        currentIndex = i
-                    }
-                }
-                if (arr[currentIndex + 1]) {
-                    result = arr[currentIndex + 1]
-                } else if (arr[currentIndex - 1]) {
-                    result = arr[currentIndex - 1]
-                } else {
-                    result = ''
-                }
-                return result
-            },
-            deleteNoteItem () {
-                if (this.noteItemSelected === undefined) {
-                    return
-                }
-                let nextNote = this.getNext(this.noteItemSelected, this.notelist)
-                this.$store.dispatch('DELETE_NOTE', {
-                    catalogId: this.selectedCatalogId,
-                    noteId: this.noteItemSelected,
-                    nextNote
-                })
-            },
-            // 用户右键
-            addContextBoard (e, note) {
-                if (!note || !note.note_id) {
-                    return
-                }
-                if (note.note_id !== this.noteItemSelected) {
-                    this.$store.commit('SET_NOTEBOOK', {
-                        name: 'noteItemSelected',
-                        value: note.note_id
-                    })
-                }
-                showContextMenu(e)
-            },
-            // 添加笔记
-            addNote () {
-                if (!this.selectedCatalogId) {
-                    return
-                }
-                let timeStamp = Number(String(new Date().getTime()).slice(2))
-                let randomNum = getRandomNum(1, 1000, 0)
-                // 生成noteId
-                let noteId = Number(`${timeStamp}${randomNum}`)
-                let params = {
-                    catalogId: this.selectedCatalogId,
-                    noteId,
-                    title: '',
-                    content: ''
-                }
-                this.$store.dispatch('ADD_NOTE', params)
-            },
-            // 选择笔记
-            clickNote (noteId, index) {
-                if (noteId === undefined) {
-                    return
-                }
-                // // 设置选中的笔记
-                this.$store.commit('SELECT_NOTE', {noteId, index})
-            },
-            // 删除笔记
-            deleteNote () {
-
-            },
-            clickReview (noteId, review) {
-                if (noteId === undefined) {
-                    return
-                }
-                // 设置选中的笔记
-                this.$store.commit('SELECT_REVIEW', {noteId, review})
-            }
+        ...mapState({
+          'sideBarSelected': state => state.notebook.sideBarSelected,
+          'reviewItemSelected': state => state.notebook.reviewItemSelected,
+          'noteItemSelected': state => state.notebook.noteItemSelected,
+          'selectedCatalogId': state => state.notebook.selectedCatalogId,
+          'notelist': state => state.notebook.notelist,
+          'reviewlist': state => state.notebook.reviewlist,
+          'titleChanged': state => state.notebook.titleChanged,
+          'contentChanged': state => state.notebook.contentChanged
+        }),
+        ...mapGetters(['currentNote'])
+      },
+      data () {
+        return {
+          isSelected: 2
         }
+      },
+      mounted () {
+        bus.$on('deleteNoteItem', this.deleteNoteItem)
+      },
+      methods: {
+        getNext (noteId, arr) {
+          if (!noteId || !Array.isArray(arr)) {
+            return
+          }
+          let currentIndex = 0
+          let result = ''
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].note_id === noteId) {
+              currentIndex = i
+            }
+          }
+          if (arr[currentIndex + 1]) {
+            result = arr[currentIndex + 1]
+          } else if (arr[currentIndex - 1]) {
+            result = arr[currentIndex - 1]
+          } else {
+            result = ''
+          }
+          return result
+        },
+        deleteNoteItem () {
+          if (this.noteItemSelected === undefined) {
+            return
+          }
+          let nextNote = this.getNext(this.noteItemSelected, this.notelist)
+          this.$store.dispatch('DELETE_NOTE', {
+            catalogId: this.selectedCatalogId,
+            noteId: this.noteItemSelected,
+            nextNote
+          })
+        },
+        // 用户右键
+        addContextBoard (e, note) {
+          if (!note || !note.note_id) {
+            return
+          }
+          if (note.note_id !== this.noteItemSelected) {
+            this.$store.commit('SET_NOTEBOOK', {
+              name: 'noteItemSelected',
+              value: note.note_id
+            })
+          }
+          showContextMenu(e)
+        },
+        // 添加笔记
+        addNote () {
+          if (!this.selectedCatalogId) {
+            return
+          }
+          let timeStamp = Number(String(new Date().getTime()).slice(2))
+          let randomNum = getRandomNum(1, 1000, 0)
+          // 生成noteId
+          let noteId = Number(`${timeStamp}${randomNum}`)
+          let params = {
+            catalogId: this.selectedCatalogId,
+            noteId,
+            title: '',
+            content: ''
+          }
+          this.$store.dispatch('ADD_NOTE', params)
+        },
+        // 选择笔记
+        clickNote (noteId, index) {
+          if (noteId === undefined) {
+            return
+          }
+          // // 设置选中的笔记
+          this.$store.commit('SELECT_NOTE', {noteId, index})
+        },
+        // 删除笔记
+        deleteNote () {
+
+        },
+        clickReview (noteId, review) {
+          if (noteId === undefined) {
+            return
+          }
+          // 设置选中的笔记
+          this.$store.commit('SELECT_REVIEW', {noteId, review})
+        }
+      }
     }
 </script>
 

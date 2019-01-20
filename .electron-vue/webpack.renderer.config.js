@@ -32,18 +32,6 @@ let rendererConfig = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: require('eslint-friendly-formatter'),
-              emitWarning: true,
-          }
-        }
-      },
-      {
         test: /\.scss$/,
         use: ['vue-style-loader', 'css-loader', 'sass-loader']
       },
@@ -171,7 +159,6 @@ if (process.env.NODE_ENV === 'production') {
   rendererConfig.devtool = ''
 
   rendererConfig.plugins.push(
-    new BabiliWebpackPlugin(),
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, '../static'),

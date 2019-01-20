@@ -33,19 +33,19 @@
     import {mapState} from 'vuex'
     import reviewProgress from '../common/reviewProgress.vue'
     export default {
-        components: {
-            reviewProgress
+      components: {
+        reviewProgress
+      },
+      props: ['review'],
+      computed: {
+        showChangeIcon () {
+          return this.changeNote.indexOf(this.review.note_id) > -1
         },
-        props: ['review'],
-        computed: {
-            showChangeIcon () {
-                return this.changeNote.indexOf(this.review.note_id) > -1
-            },
-            ...mapState({
-                // 全局的被修改的note列表
-                'changeNote': state => state.notebook.changeNote,
-            })
-        }
+        ...mapState({
+          // 全局的被修改的note列表
+          'changeNote': state => state.notebook.changeNote
+        })
+      }
     }
 </script>
 

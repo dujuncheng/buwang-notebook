@@ -30,45 +30,45 @@
     import todoContainer from './todo-container/todo-index.vue'
     // import progressBar from './progressBar.vue'
     export default {
-        components: {
-            sideBar,
-            nodeList,
-            editorContainer,
-            todoContainer,
-            // progressBar
-        },
-        data () {
-            return {
+      components: {
+        sideBar,
+        nodeList,
+        editorContainer,
+        todoContainer
+        // progressBar
+      },
+      data () {
+        return {
 
-            }
-        },
-        computed: {
-            emptyStyle () {
-                if (
-                    this.notelist.length === 0 &&
-                    this.reviewlist.length === 0
-                ) {
-                    return {'visibility': 'visible'}
-                } else {
-                    return {'visibility': 'hidden'}
-                }
-            },
-            ...mapState({
-                'scaleStatus': state => state.notebook.scaleStatus,
-                'sideBarSelected': state => state.notebook.sideBarSelected,
-                'notelist': state => state.notebook.notelist,
-                'reviewlist': state => state.notebook.reviewlist,
-            })
-        },
-        methods: {
-            // 请求待复习列表
-            getReviewList () {
-                this.$store.dispatch('GET_REVIEWLIST')
-            }
-        },
-        mounted () {
-            this.getReviewList()
         }
+      },
+      computed: {
+        emptyStyle () {
+          if (
+            this.notelist.length === 0 &&
+                    this.reviewlist.length === 0
+          ) {
+            return {'visibility': 'visible'}
+          } else {
+            return {'visibility': 'hidden'}
+          }
+        },
+        ...mapState({
+          'scaleStatus': state => state.notebook.scaleStatus,
+          'sideBarSelected': state => state.notebook.sideBarSelected,
+          'notelist': state => state.notebook.notelist,
+          'reviewlist': state => state.notebook.reviewlist
+        })
+      },
+      methods: {
+        // 请求待复习列表
+        getReviewList () {
+          this.$store.dispatch('GET_REVIEWLIST')
+        }
+      },
+      mounted () {
+        this.getReviewList()
+      }
     }
 </script>
 

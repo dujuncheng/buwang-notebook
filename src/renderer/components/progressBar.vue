@@ -7,16 +7,16 @@
 <script>
     import { mapState, mapGetters } from 'vuex'
     export default {
-        computed: {
-            progresStyle () {
+      computed: {
+        progresStyle () {
 
-            },
-            ...mapState({
-                'preferLooseListItem': state => state.preferences.preferLooseListItem,
+        },
+        ...mapState({
+          'preferLooseListItem': state => state.preferences.preferLooseListItem,
 
-                'loading': state => state.notebook.loading
-            }),
-        }
+          'loading': state => state.notebook.loading
+        })
+      }
     }
 </script>
 

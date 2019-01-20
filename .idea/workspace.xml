@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
+    <list default="true" id="b2669cbf-a180-4036-959c-a6f7092fdc53" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.electron-vue/webpack.main.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/.electron-vue/webpack.main.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.electron-vue/webpack.renderer.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/.electron-vue/webpack.renderer.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.electron-vue/webpack.web.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/.electron-vue/webpack.web.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104521.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104821.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104823.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104826.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104828.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104839.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.history/src/renderer/store/notebook_20190109104843.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nana-notebook.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/actions/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/actions/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/actions/format.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/actions/format.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/actions/notebook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/actions/notebook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/actions/paragraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/actions/paragraph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menus/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menus/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menus/format.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menus/format.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menus/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menus/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menus/paragraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menus/paragraph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/menus/windowMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/menus/windowMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/shortcutHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/shortcutHandle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/assets/libs/raphael.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/assets/libs/raphael.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/assets/libs/sequence-diagram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/assets/libs/sequence-diagram.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/assets/libs/webFontLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/assets/libs/webFontLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/parser/marked/blockRules.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/parser/marked/blockRules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/parser/marked/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/parser/marked/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/parser/marked/lexer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/parser/marked/lexer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/parser/marked/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/parser/marked/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/symbolIcon/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/symbolIcon/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/common/reviewProgress.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/common/reviewProgress.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-container.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/node-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/node-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/progressBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/progressBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/side-bar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/side-bar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/editor/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/editor/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/editor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/editor/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/editor/menuItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/editor/menuItems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/services/notification/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/services/notification/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/listenForMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/listenForMain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/notebook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/notebook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/preferences.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/preferences.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/image/notebook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/image/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/image/rename_black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/image/rename_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/e2e/specs/Launch.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/e2e/specs/Launch.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit/specs/LandingPage.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/specs/LandingPage.spec.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,232 +91,96 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="1258963134">
+    <session id="1231502510">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="60" />
-          <entry key="project.open.time.0" value="33" />
-          <entry key="project.open.time.1" value="11" />
-          <entry key="project.open.time.134" value="1" />
-          <entry key="project.open.time.2" value="8" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.6" value="4" />
-          <entry key="project.open.time.7" value="5" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="66" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="3" />
-          <entry key="editorconfig" value="2" />
-          <entry key="ejs" value="3" />
-          <entry key="html" value="1" />
-          <entry key="js" value="182" />
-          <entry key="json" value="11" />
-          <entry key="less" value="6" />
-          <entry key="md" value="3" />
-          <entry key="ts" value="1" />
-          <entry key="vue" value="95" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="3" />
-          <entry key="EJS" value="3" />
-          <entry key="HTML" value="1" />
-          <entry key="JSON" value="11" />
-          <entry key="JavaScript" value="182" />
-          <entry key="Less" value="6" />
-          <entry key="Markdown" value="3" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="TypeScript" value="1" />
-          <entry key="Vue.js" value="95" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="59" />
-          <entry key="PrettierLanguageServiceImpl" value="1" />
-          <entry key="TypeScriptServerServiceImpl" value="1" />
+          <entry key="ESLintLanguageService" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="ejs" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="EJS" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1" />
-          <entry key="ejs" value="115" />
-          <entry key="js" value="7540" />
-          <entry key="json" value="10" />
-          <entry key="less" value="134" />
-          <entry key="md" value="497" />
-          <entry key="txt" value="564" />
-          <entry key="vue" value="26953" />
+          <entry key="ejs" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1" />
-          <entry key="EJS" value="115" />
-          <entry key="JSON" value="10" />
-          <entry key="JavaScript" value="7540" />
-          <entry key="Less" value="134" />
-          <entry key="Markdown" value="497" />
-          <entry key="PLAIN_TEXT" value="564" />
-          <entry key="Vue.js" value="26953" />
+          <entry key="EJS" value="16" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages" />
+    </session>
+    <session id="1258963134">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="gitignore" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="gitignore" value="17" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="17" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/.electron-vue/webpack.main.config.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
+        <entry file="file://$PROJECT_DIR$/src/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/LandingPage.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="463" column="52" selection-start-line="463" selection-start-column="52" selection-end-line="463" selection-end-column="52" />
+            <state relative-caret-position="190">
+              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/App.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/editor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6270">
-              <caret line="334" column="76" selection-start-line="334" selection-start-column="76" selection-end-line="334" selection-end-column="76" />
+            <state relative-caret-position="142">
+              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Vue Single File Component" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>currentnote</find>
-      <find>contentChanged</find>
-      <find>side-bar-wrap</find>
-      <find>progressBar</find>
-      <find>node-list-container</find>
-      <find>desc-container</find>
-      <find>review_list</find>
-      <find>clickNote</find>
-      <find>SET_SELECTED_NOTEBOOK</find>
-      <find>notelist</find>
-      <find>reviewList</find>
-      <find>sideBarSelected</find>
-      <find>box-container</find>
-      <find>review-box-container</find>
-      <find>empty-container</find>
-      <find>getReviewList</find>
-      <find>SET_NOTELIST</find>
-      <find>reviewlist</find>
-      <find>SET_REVIEW_LIST</find>
-      <find>note_id</find>
-      <find>mapState</find>
-      <find>change-icon</find>
-      <find>showChangeIcon</find>
-      <find>item-selected</find>
-      <find>getNoteId</find>
-      <find>reviewItemSelected</find>
-      <find>noteItemSelected</find>
-      <find>titleChanged</find>
-      <find>debugger</find>
-      <find>GET_REVIEW_LIST</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>[</replace>
-      <replace>px</replace>
-      <replace>empty-area</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/.electron-vue</dir>
-      <dir>$PROJECT_DIR$/src/muya</dir>
-      <dir>$PROJECT_DIR$/src/renderer/store</dir>
-      <dir>$PROJECT_DIR$/src/main</dir>
-      <dir>$PROJECT_DIR$/src/renderer</dir>
-      <dir>$PROJECT_DIR$/src</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -249,57 +188,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/utils/index.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/ui/tablePicker/index.js" />
-        <option value="$PROJECT_DIR$/.electron-vue/webpack.main.config.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/assets/styles/index.css" />
-        <option value="$PROJECT_DIR$/src/renderer/store/preferences.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/actions.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/index.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/menuItems.js" />
-        <option value="$PROJECT_DIR$/src/main/actions/format.js" />
-        <option value="$PROJECT_DIR$/src/main/menus/format.js" />
-        <option value="$PROJECT_DIR$/src/renderer/services/notification/index.html" />
-        <option value="$PROJECT_DIR$/src/renderer/services/notification/index.js" />
-        <option value="$PROJECT_DIR$/src/renderer/services/notification/index.css" />
-        <option value="$PROJECT_DIR$/src/main/menus/index.js" />
-        <option value="$PROJECT_DIR$/src/main/menus/windowMenu.js" />
         <option value="$PROJECT_DIR$/src/index.ejs" />
-        <option value="$PROJECT_DIR$/src/renderer/less/no_scroll_bar.less" />
-        <option value="$PROJECT_DIR$/src/renderer/less/color_red.less" />
-        <option value="$PROJECT_DIR$/src/renderer/components/node-list-item.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/note-list-item.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/common/reviewProgress.vue" />
-        <option value="$PROJECT_DIR$/src/main/index.js" />
-        <option value="$PROJECT_DIR$/src/renderer/less/no_more_words.less" />
-        <option value="$PROJECT_DIR$/src/renderer/less/index.less" />
-        <option value="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/App.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/store/index.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/todo-container/todo-index.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/utils/index.js" />
-        <option value="$PROJECT_DIR$/src/main/actions/notebook.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/noteList/actions.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/editor/actions.js" />
-        <option value="$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js" />
-        <option value="$PROJECT_DIR$/src/main/menus/edit.js" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue" />
-        <option value="$PROJECT_DIR$/src/muya/lib/index.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/parser/marked/lexer.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/parser/marked/utils.js" />
-        <option value="$PROJECT_DIR$/src/renderer/store/help.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js" />
-        <option value="$PROJECT_DIR$/src/renderer/store/editor.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/progressBar.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/node-list.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/side-bar.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/editor-container.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
-        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -324,8 +214,6 @@
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/build/mac/nana-notebook.app/Contents/Resources/app.asar.unpacked/node_modules/popper/node_modules/ngrok/package.json" />
       <path value="$PROJECT_DIR$/build/mac/nana-notebook.app/Contents/Resources/app.asar.unpacked/node_modules/vuex-electron/node_modules/electron/package.json" />
-      <path value="$PROJECT_DIR$/build/nana-notebook.app/Contents/Resources/app.asar.unpacked/node_modules/popper/node_modules/ngrok/package.json" />
-      <path value="$PROJECT_DIR$/build/nana-notebook.app/Contents/Resources/app.asar.unpacked/node_modules/vuex-electron/node_modules/electron/package.json" />
       <path value="$PROJECT_DIR$/package.json" />
       <path value="$PROJECT_DIR$/src/muya/package.json" />
     </packageJsonPaths>
@@ -338,37 +226,30 @@
     <entry key="Project Default">
       <profile-state>
         <expanded-state>
-          <State />
           <State>
-            <id>Control flow issuesJavaScript</id>
+            <id />
           </State>
           <State>
-            <id>General</id>
+            <id>HTML</id>
           </State>
           <State>
-            <id>Internationalization</id>
-          </State>
-          <State>
-            <id>JavaScript</id>
-          </State>
-          <State>
-            <id>Pug/Jade</id>
+            <id>XML</id>
           </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>Angular</id>
+            <id>AngularJS</id>
           </State>
         </selected-state>
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -376,21 +257,10 @@
               <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
               <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
-              <item name=".electron-vue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -401,23 +271,11 @@
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="options.lastSelected" value="configurable.group.appearance" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/renderer/components" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/renderer/contextMenu/editor" />
-      <recent name="$PROJECT_DIR$/src/renderer/components/middle-list" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -431,468 +289,48 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="dev" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.dev" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\LK513\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="" />
-      <created>1541249232999</created>
+      <changelist id="b2669cbf-a180-4036-959c-a6f7092fdc53" name="Default Changelist" comment="" />
+      <created>1547564920386</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1541249232999</updated>
-      <workItem from="1541249234094" duration="293000" />
-      <workItem from="1541249542501" duration="67000" />
-      <workItem from="1541249959179" duration="360000" />
-      <workItem from="1541250331427" duration="8191000" />
-      <workItem from="1541349244421" duration="27746000" />
-      <workItem from="1541427155315" duration="925000" />
-      <workItem from="1541469980574" duration="133000" />
-      <workItem from="1541470136447" duration="2637000" />
-      <workItem from="1541490556678" duration="90000" />
-      <workItem from="1541508727624" duration="1141000" />
-      <workItem from="1543245483476" duration="219000" />
-      <workItem from="1543246132148" duration="5954000" />
-      <workItem from="1543334669605" duration="2793000" />
-      <workItem from="1543339598418" duration="223000" />
-      <workItem from="1543339878983" duration="4153000" />
-      <workItem from="1543345166415" duration="252000" />
-      <workItem from="1543370807175" duration="68000" />
-      <workItem from="1544460904068" duration="4064000" />
-      <workItem from="1544518914543" duration="1011000" />
-      <workItem from="1544525444667" duration="1814000" />
-      <workItem from="1544530359206" duration="784000" />
-      <workItem from="1544616403666" duration="1458000" />
-      <workItem from="1544632808302" duration="4566000" />
-      <workItem from="1544869754484" duration="3069000" />
-      <workItem from="1544948708050" duration="4270000" />
-      <workItem from="1546347884655" duration="1066000" />
-      <workItem from="1546585105290" duration="4971000" />
-      <workItem from="1546590684904" duration="73000" />
-      <workItem from="1546590791211" duration="3264000" />
-      <workItem from="1546596358970" duration="464000" />
-      <workItem from="1546668340093" duration="4487000" />
-      <workItem from="1546674186956" duration="8524000" />
-      <workItem from="1546757831561" duration="4211000" />
-      <workItem from="1546777626338" duration="660000" />
-      <workItem from="1546778379492" duration="500000" />
-      <workItem from="1546781582032" duration="906000" />
-      <workItem from="1546782559707" duration="206000" />
-      <workItem from="1546782782620" duration="448000" />
-      <workItem from="1546826720767" duration="545000" />
-      <workItem from="1546829988058" duration="1228000" />
-      <workItem from="1546833339810" duration="1130000" />
-      <workItem from="1546841764694" duration="5052000" />
-      <workItem from="1546847629546" duration="125000" />
-      <workItem from="1546847873807" duration="916000" />
-      <workItem from="1546849975378" duration="2140000" />
-      <workItem from="1546852715272" duration="2710000" />
-      <workItem from="1546929608173" duration="6852000" />
-      <workItem from="1546941258424" duration="657000" />
-      <workItem from="1546944283222" duration="1070000" />
-      <workItem from="1546945673357" duration="122000" />
-      <workItem from="1546946155404" duration="3300000" />
-      <workItem from="1547000908726" duration="961000" />
-      <workItem from="1547002217772" duration="4069000" />
-      <workItem from="1547025008080" duration="1776000" />
-      <workItem from="1547028769640" duration="2368000" />
-      <workItem from="1547031294214" duration="4383000" />
-      <workItem from="1547112394292" duration="6453000" />
-      <workItem from="1547122677679" duration="8000" />
-      <workItem from="1547140716346" duration="2849000" />
-      <workItem from="1547144020066" duration="1214000" />
-      <workItem from="1547209558806" duration="8364000" />
-      <workItem from="1547281921061" duration="1215000" />
-      <workItem from="1547285163768" duration="3977000" />
-      <workItem from="1547398673343" duration="3000" />
-      <workItem from="1547533611425" duration="5477000" />
-      <workItem from="1547559353391" duration="316000" />
+      <updated>1547564920386</updated>
+      <workItem from="1547564921706" duration="411000" />
+      <workItem from="1547611434236" duration="228000" />
+      <workItem from="1547967929277" duration="187000" />
     </task>
-    <task id="LOCAL-00001" summary="code change">
-      <created>1544633102588</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1544633102588</updated>
-    </task>
-    <task id="LOCAL-00002" summary="code change">
-      <created>1544636390498</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1544636390498</updated>
-    </task>
-    <task id="LOCAL-00003" summary="code change">
-      <created>1544881139775</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1544881139775</updated>
-    </task>
-    <task id="LOCAL-00004" summary="修复css style">
-      <created>1544881218131</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1544881218131</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fix bugs">
-      <created>1544881382928</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1544881382928</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fix bugs">
-      <created>1544949395550</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1544949395550</updated>
-    </task>
-    <task id="LOCAL-00007" summary="add notification">
-      <created>1544952201550</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1544952201550</updated>
-    </task>
-    <task id="LOCAL-00008" summary="add notification">
-      <created>1546349254355</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1546349254355</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add notification">
-      <created>1546592199797</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1546592199797</updated>
-    </task>
-    <task id="LOCAL-00010" summary="add notification">
-      <created>1546596459603</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1546596459603</updated>
-    </task>
-    <task id="LOCAL-00011" summary="样式上的调整">
-      <created>1546668826749</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1546668826749</updated>
-    </task>
-    <task id="LOCAL-00012" summary="增加【待复习】列表的样式">
-      <created>1546674747479</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1546674747479</updated>
-    </task>
-    <task id="LOCAL-00013" summary="增加【待复习】列表-进度条的样式">
-      <created>1546677158975</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1546677158975</updated>
-    </task>
-    <task id="LOCAL-00014" summary="增加【待复习】列表-进度条的样式">
-      <created>1546678985293</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1546678985293</updated>
-    </task>
-    <task id="LOCAL-00015" summary="实现【待复习】【笔记本】切换的交互">
-      <created>1546679917568</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1546679917568</updated>
-    </task>
-    <task id="LOCAL-00016" summary="实现【待复习】【笔记本】列表的选中交互">
-      <created>1546680657355</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1546680657355</updated>
-    </task>
-    <task id="LOCAL-00017" summary="实现【待复习】【笔记本】样式上修改，超出部分省略号">
-      <created>1546681685792</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1546681685792</updated>
-    </task>
-    <task id="LOCAL-00018" summary="实现【待复习】【笔记本】增加功能">
-      <created>1546689079417</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1546689079417</updated>
-    </task>
-    <task id="LOCAL-00019" summary="【增加功能点】实现左侧目录区域的可拖拽">
-      <created>1546777658655</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1546777658655</updated>
-    </task>
-    <task id="LOCAL-00020" summary="【增加功能点】实现左侧目录区域的交互">
-      <created>1546782436961</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1546782436961</updated>
-    </task>
-    <task id="LOCAL-00021" summary="【增加功能点】 实现异步请求-中部笔记区域">
-      <created>1546843578707</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1546843578707</updated>
-    </task>
-    <task id="LOCAL-00022" summary="【增加功能点】 实现左侧目录区域，可以修改名字">
-      <created>1546846086816</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1546846086816</updated>
-    </task>
-    <task id="LOCAL-00023" summary="【增加功能点】 增加若干功能">
-      <created>1546855585799</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1546855585799</updated>
-    </task>
-    <task id="LOCAL-00024" summary="【增加功能点】 在没有任何内容的情况下，增加背景图片">
-      <created>1546936963442</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1546936963442</updated>
-    </task>
-    <task id="LOCAL-00025" summary="【增加功能点】 优化目录的id">
-      <created>1546937991242</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1546937991242</updated>
-    </task>
-    <task id="LOCAL-00026" summary="【增加功能点】 增加删除目录的功能点">
-      <created>1546938628981</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1546938628981</updated>
-    </task>
-    <task id="LOCAL-00027" summary="【增加功能点】 增加笔记的功能">
-      <created>1546940932898</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1546940932898</updated>
-    </task>
-    <task id="LOCAL-00028" summary="【增加功能点】 删除笔记的功能">
-      <created>1546949366736</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1546949366737</updated>
-    </task>
-    <task id="LOCAL-00029" summary="【fix bus】 修复了更新node-list ， 目录栏不更新的bug">
-      <created>1547000941964</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1547000941964</updated>
-    </task>
-    <task id="LOCAL-00030" summary="【fix bus】 修复了更新node-list ， 目录栏不更新的bug">
-      <created>1547046177926</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1547046177926</updated>
-    </task>
-    <task id="LOCAL-00031" summary="【fix bus】 修复了更新node-list ， 目录栏不更新的bug">
-      <created>1547046570176</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1547046570177</updated>
-    </task>
-    <task id="LOCAL-00032" summary="【增加功能】实现修改笔记的功能，遗留bug：回车符不能被正确的识别">
-      <created>1547269415425</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1547269415425</updated>
-    </task>
-    <task id="LOCAL-00033" summary="【增加功能】实现修改笔记的功能，遗留bug：回车符不能被正确的识别">
-      <created>1547282032271</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1547282032272</updated>
-    </task>
-    <task id="LOCAL-00034" summary="【增加功能】实现修改笔记的功能">
-      <created>1547285496381</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1547285496381</updated>
-    </task>
-    <task id="LOCAL-00035" summary="【增加功能】实现修改笔记的功能">
-      <created>1547287276552</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1547287276552</updated>
-    </task>
-    <task id="LOCAL-00036" summary="【增加功能】实现修改笔记的功能">
-      <created>1547288182843</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1547288182843</updated>
-    </task>
-    <task id="LOCAL-00037" summary="【增加功能】实现修改笔记的功能">
-      <created>1547289093994</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1547289093994</updated>
-    </task>
-    <task id="LOCAL-00038" summary="【增加功能】样式上的调整">
-      <created>1547289298279</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1547289298280</updated>
-    </task>
-    <task id="LOCAL-00039" summary="【增加功能】获取待复习列表的功能">
-      <created>1547534985736</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1547534985736</updated>
-    </task>
-    <task id="LOCAL-00040" summary="【增加功能】获取待复习列表的功能">
-      <created>1547535156406</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1547535156406</updated>
-    </task>
-    <task id="LOCAL-00041" summary="【增加功能】增加一些注释">
-      <created>1547536469470</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1547536469471</updated>
-    </task>
-    <task id="LOCAL-00042" summary="【增加功能】待复习列表增加点击选中的功能">
-      <created>1547536938066</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1547536938066</updated>
-    </task>
-    <task id="LOCAL-00043" summary="【增加功能】待复习列表增加点击选中的功能">
-      <created>1547538166497</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1547538166497</updated>
-    </task>
-    <task id="LOCAL-00044" summary="【增加功能】待复习列表增加点击选中的功能">
-      <created>1547539665065</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1547539665065</updated>
-    </task>
-    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175341000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21212122" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32923833" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.15601966" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.7211302" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32923833" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="bottom" id="TypeScript" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17970401" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32923833" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -900,375 +338,21 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="add notification" />
-    <MESSAGE value="样式上的调整" />
-    <MESSAGE value="增加【待复习】列表的样式" />
-    <MESSAGE value="增加【待复习】列表-进度条的样式" />
-    <MESSAGE value="实现【待复习】【笔记本】切换的交互" />
-    <MESSAGE value="实现【待复习】【笔记本】列表的选中交互" />
-    <MESSAGE value="实现【待复习】【笔记本】样式上修改，超出部分省略号" />
-    <MESSAGE value="实现【待复习】【笔记本】增加功能" />
-    <MESSAGE value="【增加功能点】实现左侧目录区域的可拖拽" />
-    <MESSAGE value="【增加功能点】实现左侧目录区域的交互" />
-    <MESSAGE value="【增加功能点】 实现异步请求-中部笔记区域" />
-    <MESSAGE value="【增加功能点】 实现左侧目录区域，可以修改名字" />
-    <MESSAGE value="【增加功能点】 增加若干功能" />
-    <MESSAGE value="【增加功能点】 在没有任何内容的情况下，增加背景图片" />
-    <MESSAGE value="【增加功能点】 优化目录的id" />
-    <MESSAGE value="【增加功能点】 增加删除目录的功能点" />
-    <MESSAGE value="【增加功能点】 增加笔记的功能" />
-    <MESSAGE value="【增加功能点】 删除笔记的功能" />
-    <MESSAGE value="【fix bus】 修复了更新node-list ， 目录栏不更新的bug" />
-    <MESSAGE value="【增加功能】实现修改笔记的功能，遗留bug：回车符不能被正确的识别" />
-    <MESSAGE value="【增加功能】实现修改笔记的功能" />
-    <MESSAGE value="【增加功能】样式上的调整" />
-    <MESSAGE value="【增加功能】获取待复习列表的功能" />
-    <MESSAGE value="【增加功能】增加一些注释" />
-    <MESSAGE value="【增加功能】待复习列表增加点击选中的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="【增加功能】待复习列表增加点击选中的功能" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/renderer/less/no_more_words.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/preferences.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="68" column="6" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/_axios@0.18.0@axios/index.d.ts">
+    <entry file="file://$PROJECT_DIR$/.electron-vue/webpack.main.config.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/less/no_scroll_bar.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/todo-container/todo-index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/less/index.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.electron-vue/webpack.renderer.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2793">
-          <caret line="147" column="8" selection-start-line="147" selection-start-column="7" selection-end-line="147" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/utils/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2603">
-          <caret line="137" column="29" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/windowMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/actions/paragraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1672">
-          <caret line="88" column="6" selection-start-line="88" selection-end-line="88" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/actions/notebook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="7" selection-start-line="12" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/paragraph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/index.dev.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/actions.js" />
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/editor/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-200">
-          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/editor/menuItems.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1796">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/editor/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/config.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/bus/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/utils/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="551">
-            <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/shortcutHandle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/menus/edit.js">
+    <entry file="file://$PROJECT_DIR$/src/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="45" />
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/actions/editor.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/listenForMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/marked/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1729">
-          <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/utils/importMarkdown.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/marked/lexer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/marked/blockRules.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/marked/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/progressBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/eventHandler/event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1501">
-          <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/help.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6460">
-          <caret line="388" column="17" selection-start-line="388" selection-start-column="17" selection-end-line="388" selection-end-column="17" />
-          <folding>
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/LandingPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/middle-list/note-list-item.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6270">
-          <caret line="334" column="76" selection-start-line="334" selection-start-column="76" selection-end-line="334" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="463" column="52" selection-start-line="463" selection-start-column="52" selection-end-line="463" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state relative-caret-position="142">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
         </state>
       </provider>
     </entry>

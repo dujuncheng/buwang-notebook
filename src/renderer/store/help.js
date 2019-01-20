@@ -1,30 +1,30 @@
 // import { getUniqueId } from '../util'
 
 export const defaultFileState = {
-    isSaved: true,
-    pathname: '',
-    filename: 'Untitled-1',
-    markdown: '',
-    isUtf8BomEncoded: false,
-    lineEnding: 'lf', // lf or crlf
-    adjustLineEndingOnSave: false, // convert editor buffer (LF) to CRLF when saving
-    textDirection: 'ltr',
-    history: {
-        stack: [],
-        index: -1
-    },
-    cursor: null,
-    wordCount: {
-        paragraph: 0,
-        word: 0,
-        character: 0,
-        all: 0
-    },
-    searchMatches: {
-        index: -1,
-        matches: [],
-        value: ''
-    }
+  isSaved: true,
+  pathname: '',
+  filename: 'Untitled-1',
+  markdown: '',
+  isUtf8BomEncoded: false,
+  lineEnding: 'lf', // lf or crlf
+  adjustLineEndingOnSave: false, // convert editor buffer (LF) to CRLF when saving
+  textDirection: 'ltr',
+  history: {
+    stack: [],
+    index: -1
+  },
+  cursor: null,
+  wordCount: {
+    paragraph: 0,
+    word: 0,
+    character: 0,
+    all: 0
+  },
+  searchMatches: {
+    index: -1,
+    matches: [],
+    value: ''
+  }
 }
 
 export const LINE_ENDING_REG = /(?:\r\n|\n)/g
@@ -33,24 +33,24 @@ export const CRLF_LINE_ENDING_REG = /\r\n/
 export const isWindows = process.platform === 'win32'
 
 export const convertLineEndings = (text, lineEnding) => {
-    return text.replace(LINE_ENDING_REG, getLineEnding(lineEnding))
+  return text.replace(LINE_ENDING_REG, getLineEnding(lineEnding))
 }
 
 export const getLineEnding = lineEnding => {
-    if (lineEnding === 'lf') {
-        return '\n'
-    } else if (lineEnding === 'crlf') {
-        return '\r\n'
-    }
-    return getOsLineEndingName() === 'crlf' ? '\r\n' : '\n'
+  if (lineEnding === 'lf') {
+    return '\n'
+  } else if (lineEnding === 'crlf') {
+    return '\r\n'
+  }
+  return getOsLineEndingName() === 'crlf' ? '\r\n' : '\n'
 }
 
 export const getOsLineEndingName = () => {
-    const endOfLine = 'default'
-    if (endOfLine === 'lf') {
-        return 'lf'
-    }
-    return endOfLine === 'crlf' || isWindows ? 'crlf' : 'lf'
+  const endOfLine = 'default'
+  if (endOfLine === 'lf') {
+    return 'lf'
+  }
+  return endOfLine === 'crlf' || isWindows ? 'crlf' : 'lf'
 }
 
 // export const getFileStateFromData = data => {
@@ -119,9 +119,9 @@ export const getOsLineEndingName = () => {
 // }
 
 const assertLineEnding = (adjustLineEndingOnSave, lineEnding) => {
-    lineEnding = lineEnding.toLowerCase()
-    if ((adjustLineEndingOnSave && lineEnding !== 'crlf') ||
+  lineEnding = lineEnding.toLowerCase()
+  if ((adjustLineEndingOnSave && lineEnding !== 'crlf') ||
         (!adjustLineEndingOnSave && lineEnding === 'crlf')) {
-        console.error('Assertion failed: Line ending is "CRLF" but document is saved as "LF".')
-    }
+    console.error('Assertion failed: Line ending is "CRLF" but document is saved as "LF".')
+  }
 }

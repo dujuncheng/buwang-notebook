@@ -18,17 +18,17 @@ const mutations = {}
 const actions = {}
 
 const store = new Vuex.Store({
-    state,
-    getters,
-    mutations,
-    actions,
-    modules: {
-        // have no states
-        listenForMain,
-        preferences,
-        editor,
-        notebook
-    }
+  state,
+  getters,
+  mutations,
+  actions,
+  modules: {
+    // have no states
+    listenForMain,
+    preferences,
+    editor,
+    notebook
+  }
 })
 
 export default store

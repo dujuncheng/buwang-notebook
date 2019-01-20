@@ -87,327 +87,327 @@
     import contextMenu from 'vue-context-menu'
     import {mapState} from 'vuex'
     export default {
-        components: { contextMenu },
-        data () {
-            return {
-                inputType: '',
-                filterText: '',
-                // 右键——选中的父目录的data
-                contextSelectData: '',
-                contextSelectNode: '',
-                // 右键——选中的input的那一项的id
-                contextInputId: '',
-                // 右键——选中的input的那一项的文本
-                contextInputText: '',
-                defaultProps: {
-                    children: 'children',
-                    label: 'label'
-                }
-            }
-        },
-        mounted () {
-            this.fetchCatalog()
-        },
-        computed: {
-            deleteStyle () {
-                if (this.contextSelectData &&
+      components: { contextMenu },
+      data () {
+        return {
+          inputType: '',
+          filterText: '',
+          // 右键——选中的父目录的data
+          contextSelectData: '',
+          contextSelectNode: '',
+          // 右键——选中的input的那一项的id
+          contextInputId: '',
+          // 右键——选中的input的那一项的文本
+          contextInputText: '',
+          defaultProps: {
+            children: 'children',
+            label: 'label'
+          }
+        }
+      },
+      mounted () {
+        this.fetchCatalog()
+      },
+      computed: {
+        deleteStyle () {
+          if (this.contextSelectData &&
                     this.contextSelectData.children &&
                     (this.contextSelectData.children.length !== 0 ||
                         this.contextSelectData.note_num !== 0)
-                ) {
-                    return {
-                        'cursor': 'not-allowed'
-                    }
-                } else {
-                    return {}
-                }
-            },
-            brainStyle () {
-                let style = ''
-                if (this.sideBarSelected === 0) {
-                    style = {
-                        'color': 'white',
-                        'background': '#2D2D2D'
-                    }
-                }
-                return style
-            },
-            // 待办清单
-            todoStyle () {
-                let style = ''
-                if (this.sideBarSelected === 2) {
-                    style = {
-                        'color': 'white',
-                        'background': '#2D2D2D'
-                    }
-                }
-                return style
-            },
-            noteStyle () {
-                let style = ''
-                if (this.sideBarSelected === 1) {
-                    style = {
-                        'color': 'white',
-                        'background': '#2D2D2D'
-                    }
-                }
-                return style
-            },
-            ...mapState({
-                'scaleStatus': state => state.notebook.scaleStatus,
-                'sideBarSelected': state => state.notebook.sideBarSelected,
-                'selectedCatalogId': state => state.notebook.selectedCatalogId,
-                'catalog': state => state.notebook.catalog,
-                'reviewlist': state => state.notebook.reviewlist
-            })
-        },
-        watch: {
-            filterText (val) {
-                this.$refs.noteBook.filter(val)
+          ) {
+            return {
+              'cursor': 'not-allowed'
             }
+          } else {
+            return {}
+          }
         },
-        methods: {
-            // 直接点击按钮
-            addCatalog () {
-                // 把一个新的笔记本塞到数组中
-                let timeStamp = Number(String(new Date().getTime()).slice(2))
-                let randomNum = getRandomNum(1, 1000, 0)
-                let catalogId = Number(`${timeStamp}${randomNum}`)
-                let newChild = {
-                    catalog_id: catalogId,
-                    label: '',
-                    children: []
-                }
-                // input框的那个节点的id
-                this.contextInputId = catalogId
-                // 显示input框的那个节点文本内容
-                this.contextInputText = ''
-                this.inputType = 'add'
-                // 增加新增的节点
-                this.$store.commit('ADD_CATALOG', {item: newChild})
-                // 顺便改变一下input样式
-                this.$nextTick(() => {
-                    let str = 'insert_' + this.contextInputId
-                    let insertDom = document.getElementById(str)
-                    insertDom.click()
-                    insertDom.focus()
-                })
-            },
-            handleNodeClick (data) {
-                let catalogId = Number(data && data.catalog_id)
-                if (catalogId === undefined) {
-                    alert('没有catalogId报错了')
-                    return
-                }
-                if (catalogId === this.selectedCatalogId) {
-                    return
-                }
-                // 设置选中的目录
-                this.$store.commit('SET_NOTEBOOK', {
-                    name: 'selectedCatalogId',
-                    value: catalogId
-                })
-                this.fetchNoteList(catalogId)
-            },
-            fetchNoteList (catalogId) {
-                this.$store.dispatch('GET_NOTE_LIST', {catalogId})
-            },
-            fetchCatalog () {
-                this.$store.dispatch('GET_CATALOG')
-            },
-            handleDrop (draggingNode, dropNode, dropType, ev) {
-                // 没有拖动
-                if (!dropNode || !draggingNode) {
-                    return
-                }
-                let selfId = ''
-                let parentId = 0
-                if (draggingNode.data && draggingNode.data.catalog_id) {
-                    selfId = draggingNode.data.catalog_id
-                }
-                if (dropType === 'inner') {
-                    parentId = dropNode.data.catalog_id
-                } else if (dropType === 'before' || dropType === 'after') {
-                    if (dropNode.parent && dropNode.parent.data.catalog_id) {
-                        parentId = dropNode.parent && dropNode.parent.data && Number(dropNode.parent.data.catalog_id)
-                    } else {
-                        parentId = 0
-                    }
-                }
-
-                if (selfId === undefined || parentId === undefined) {
-                    alert('handleDrop函数报错了')
-                }
-                this.moveCatalog({
-                    selfId,
-                    parentId
-                })
-            },
-            moveCatalog ({selfId, parentId}) {
-                this.$store.dispatch('MOVE_CATALOG', {
-                    catalogId: selfId,
-                    parentId: parentId
-                })
-            },
-            // 设置用户点击
-            setSelected (num) {
-                if (num === undefined) {
-                    return
-                }
-                this.$store.commit('SET_SELECTED', {num})
-            },
-            // 处理 input blur事件
-            handleBlur (node, data) {
-                let id = data.catalog_id
-                let str = String(this.contextInputText).trim()
-                let children = this.contextSelectData.children
-                let parentId = (node.parent && node.parent.data && node.parent.data.catalog_id) || 0
-                if (this.inputType === 'add') {
-                    if (!str || str.length === 0) {
-                        this.cancelAddNote(children, id)
-                    } else {
-                        this.confirmAddNote(children, id, str, parentId)
-                    }
-                } else if (this.inputType === 'rename') {
-                    if (!str || str.length === 0) {
-                        alert('笔记名称不能为空哦')
-                    } else {
-                        this.confirmRenameNote(node, id, str)
-                    }
-                }
-            },
-            // 处理 input 回车事件
-            handleEnter () {
-                let str = 'insert_' + this.contextInputId
-                let insertDom = document.getElementById(str)
-                insertDom.blur()
-            },
-            // 用户选择添加笔记
-            addNoteBook (data) {
-                // 如果没有data 则不增加
-                if (!data) {
-                    return
-                }
-                // 把一个新的笔记本塞到数组中
-                let catalogId = new Date().getTime()
-                let newChild = {
-                    catalog_id: catalogId,
-                    label: '',
-                    children: []
-                }
-                if (!data.children) {
-                    this.$set(data, 'children', [])
-                }
-                // input框的那个节点的id
-                this.contextInputId = catalogId
-                // 显示input框的那个节点文本内容
-                this.contextInputText = ''
-                this.inputType = 'add'
-                // 增加新增的节点
-                data.children.push(newChild)
-                // 顺便改变一下input样式
-                this.$nextTick(() => {
-                    let str = 'insert_' + this.contextInputId
-                    let insertDom = document.getElementById(str)
-                    insertDom.click()
-                    insertDom.focus()
-                })
-            },
-            // 用户选择重命名
-            renameNoteBook () {
-                // input框的那个节点的id
-                this.contextInputId = this.contextSelectData.catalog_id
-                // 显示input框的那个节点文本内容
-                this.contextInputText = this.contextSelectData.label
-                this.inputType = 'rename'
-                // 顺便改变一下input样式
-                this.$nextTick(() => {
-                    let str = 'insert_' + this.contextInputId
-                    let insertDom = document.getElementById(str)
-                    insertDom.click()
-                    insertDom.focus()
-                })
-            },
-            // 用户选择删除笔记
-            deleteNoteBook (data) {
-                // 如果没有data 则不删除
-                if (!data) {
-                    return
-                }
-                if (this.contextSelectData.children.length !== 0) {
-                    this.$message({
-                        message: '该笔记本下面还有很多东东，请先删除哦',
-                        type: 'warning'
-                    })
-                    return
-                }
-                if (this.contextSelectData.note_num !== 0) {
-                    this.$message({
-                        message: '该笔记本下面还有很多笔记，怎么狠心删除？',
-                        type: 'warning'
-                    })
-                    return
-                }
-                this.$store.dispatch('REMOVE_CATALOG', {catalogId: data.catalog_id})
-            },
-            // 确认增加子笔记
-            confirmAddNote (children, id, str, parentId) {
-                this.$store.dispatch('ADD_CATALOG', {
-                    catalogId: id,
-                    parentId,
-                    name: str
-                })
-                this.contextInputText = ''
-                this.contextInputId = ''
-                this.contextSelectData = ''
-                this.contextSelectNode = ''
-            },
-            // 确认重命名笔记
-            confirmRenameNote (node, id, str) {
-                if (str) {
-                    this.$store.dispatch('RENAME_CATALOG', {
-                        newName: str,
-                        catalogId: id
-                    })
-                    this.$set(this.contextSelectData, 'label', str)
-                    this.contextInputText = ''
-                    this.contextInputId = ''
-                    this.contextSelectData = ''
-                    this.contextSelectNode = ''
-                }
-            },
-            // 取消增加子笔记
-            cancelAddNote (children, id) {
-                for (let i = 0; i < children.length; i++) {
-                    if (children[i].catalog_id == id) {
-                        children.splice(i, 1)
-                    }
-                }
-            },
-            // 过滤
-            filterContextSelectData (arr, id) {
-                if (!Array.isArray(arr)) {
-                    return {}
-                }
-                let result = ''
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].key = id) {
-                        result = arr[i]
-                    }
-                }
-                return result
-            },
-            // 用户右键
-            addContextBoard (e, node, data) {
-                if (node.key == this.contextInputId) {
-                    return
-                }
-                this.contextSelectNode = node
-                this.contextSelectData = data
-                node.expand()
-                this.$refs.ctxMenu.open(e, node)
-            },
+        brainStyle () {
+          let style = ''
+          if (this.sideBarSelected === 0) {
+            style = {
+              'color': 'white',
+              'background': '#2D2D2D'
+            }
+          }
+          return style
+        },
+        // 待办清单
+        todoStyle () {
+          let style = ''
+          if (this.sideBarSelected === 2) {
+            style = {
+              'color': 'white',
+              'background': '#2D2D2D'
+            }
+          }
+          return style
+        },
+        noteStyle () {
+          let style = ''
+          if (this.sideBarSelected === 1) {
+            style = {
+              'color': 'white',
+              'background': '#2D2D2D'
+            }
+          }
+          return style
+        },
+        ...mapState({
+          'scaleStatus': state => state.notebook.scaleStatus,
+          'sideBarSelected': state => state.notebook.sideBarSelected,
+          'selectedCatalogId': state => state.notebook.selectedCatalogId,
+          'catalog': state => state.notebook.catalog,
+          'reviewlist': state => state.notebook.reviewlist
+        })
+      },
+      watch: {
+        filterText (val) {
+          this.$refs.noteBook.filter(val)
         }
+      },
+      methods: {
+        // 直接点击按钮
+        addCatalog () {
+          // 把一个新的笔记本塞到数组中
+          let timeStamp = Number(String(new Date().getTime()).slice(2))
+          let randomNum = getRandomNum(1, 1000, 0)
+          let catalogId = Number(`${timeStamp}${randomNum}`)
+          let newChild = {
+            catalog_id: catalogId,
+            label: '',
+            children: []
+          }
+          // input框的那个节点的id
+          this.contextInputId = catalogId
+          // 显示input框的那个节点文本内容
+          this.contextInputText = ''
+          this.inputType = 'add'
+          // 增加新增的节点
+          this.$store.commit('ADD_CATALOG', {item: newChild})
+          // 顺便改变一下input样式
+          this.$nextTick(() => {
+            let str = 'insert_' + this.contextInputId
+            let insertDom = document.getElementById(str)
+            insertDom.click()
+            insertDom.focus()
+          })
+        },
+        handleNodeClick (data) {
+          let catalogId = Number(data && data.catalog_id)
+          if (catalogId === undefined) {
+            alert('没有catalogId报错了')
+            return
+          }
+          if (catalogId === this.selectedCatalogId) {
+            return
+          }
+          // 设置选中的目录
+          this.$store.commit('SET_NOTEBOOK', {
+            name: 'selectedCatalogId',
+            value: catalogId
+          })
+          this.fetchNoteList(catalogId)
+        },
+        fetchNoteList (catalogId) {
+          this.$store.dispatch('GET_NOTE_LIST', {catalogId})
+        },
+        fetchCatalog () {
+          this.$store.dispatch('GET_CATALOG')
+        },
+        handleDrop (draggingNode, dropNode, dropType, ev) {
+          // 没有拖动
+          if (!dropNode || !draggingNode) {
+            return
+          }
+          let selfId = ''
+          let parentId = 0
+          if (draggingNode.data && draggingNode.data.catalog_id) {
+            selfId = draggingNode.data.catalog_id
+          }
+          if (dropType === 'inner') {
+            parentId = dropNode.data.catalog_id
+          } else if (dropType === 'before' || dropType === 'after') {
+            if (dropNode.parent && dropNode.parent.data.catalog_id) {
+              parentId = dropNode.parent && dropNode.parent.data && Number(dropNode.parent.data.catalog_id)
+            } else {
+              parentId = 0
+            }
+          }
+
+          if (selfId === undefined || parentId === undefined) {
+            alert('handleDrop函数报错了')
+          }
+          this.moveCatalog({
+            selfId,
+            parentId
+          })
+        },
+        moveCatalog ({selfId, parentId}) {
+          this.$store.dispatch('MOVE_CATALOG', {
+            catalogId: selfId,
+            parentId: parentId
+          })
+        },
+        // 设置用户点击
+        setSelected (num) {
+          if (num === undefined) {
+            return
+          }
+          this.$store.commit('SET_SELECTED', {num})
+        },
+        // 处理 input blur事件
+        handleBlur (node, data) {
+          let id = data.catalog_id
+          let str = String(this.contextInputText).trim()
+          let children = this.contextSelectData.children
+          let parentId = (node.parent && node.parent.data && node.parent.data.catalog_id) || 0
+          if (this.inputType === 'add') {
+            if (!str || str.length === 0) {
+              this.cancelAddNote(children, id)
+            } else {
+              this.confirmAddNote(children, id, str, parentId)
+            }
+          } else if (this.inputType === 'rename') {
+            if (!str || str.length === 0) {
+              alert('笔记名称不能为空哦')
+            } else {
+              this.confirmRenameNote(node, id, str)
+            }
+          }
+        },
+        // 处理 input 回车事件
+        handleEnter () {
+          let str = 'insert_' + this.contextInputId
+          let insertDom = document.getElementById(str)
+          insertDom.blur()
+        },
+        // 用户选择添加笔记
+        addNoteBook (data) {
+          // 如果没有data 则不增加
+          if (!data) {
+            return
+          }
+          // 把一个新的笔记本塞到数组中
+          let catalogId = new Date().getTime()
+          let newChild = {
+            catalog_id: catalogId,
+            label: '',
+            children: []
+          }
+          if (!data.children) {
+            this.$set(data, 'children', [])
+          }
+          // input框的那个节点的id
+          this.contextInputId = catalogId
+          // 显示input框的那个节点文本内容
+          this.contextInputText = ''
+          this.inputType = 'add'
+          // 增加新增的节点
+          data.children.push(newChild)
+          // 顺便改变一下input样式
+          this.$nextTick(() => {
+            let str = 'insert_' + this.contextInputId
+            let insertDom = document.getElementById(str)
+            insertDom.click()
+            insertDom.focus()
+          })
+        },
+        // 用户选择重命名
+        renameNoteBook () {
+          // input框的那个节点的id
+          this.contextInputId = this.contextSelectData.catalog_id
+          // 显示input框的那个节点文本内容
+          this.contextInputText = this.contextSelectData.label
+          this.inputType = 'rename'
+          // 顺便改变一下input样式
+          this.$nextTick(() => {
+            let str = 'insert_' + this.contextInputId
+            let insertDom = document.getElementById(str)
+            insertDom.click()
+            insertDom.focus()
+          })
+        },
+        // 用户选择删除笔记
+        deleteNoteBook (data) {
+          // 如果没有data 则不删除
+          if (!data) {
+            return
+          }
+          if (this.contextSelectData.children.length !== 0) {
+            this.$message({
+              message: '该笔记本下面还有很多东东，请先删除哦',
+              type: 'warning'
+            })
+            return
+          }
+          if (this.contextSelectData.note_num !== 0) {
+            this.$message({
+              message: '该笔记本下面还有很多笔记，怎么狠心删除？',
+              type: 'warning'
+            })
+            return
+          }
+          this.$store.dispatch('REMOVE_CATALOG', {catalogId: data.catalog_id})
+        },
+        // 确认增加子笔记
+        confirmAddNote (children, id, str, parentId) {
+          this.$store.dispatch('ADD_CATALOG', {
+            catalogId: id,
+            parentId,
+            name: str
+          })
+          this.contextInputText = ''
+          this.contextInputId = ''
+          this.contextSelectData = ''
+          this.contextSelectNode = ''
+        },
+        // 确认重命名笔记
+        confirmRenameNote (node, id, str) {
+          if (str) {
+            this.$store.dispatch('RENAME_CATALOG', {
+              newName: str,
+              catalogId: id
+            })
+            this.$set(this.contextSelectData, 'label', str)
+            this.contextInputText = ''
+            this.contextInputId = ''
+            this.contextSelectData = ''
+            this.contextSelectNode = ''
+          }
+        },
+        // 取消增加子笔记
+        cancelAddNote (children, id) {
+          for (let i = 0; i < children.length; i++) {
+            if (children[i].catalog_id == id) {
+              children.splice(i, 1)
+            }
+          }
+        },
+        // 过滤
+        filterContextSelectData (arr, id) {
+          if (!Array.isArray(arr)) {
+            return {}
+          }
+          let result = ''
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].key = id) {
+              result = arr[i]
+            }
+          }
+          return result
+        },
+        // 用户右键
+        addContextBoard (e, node, data) {
+          if (node.key == this.contextInputId) {
+            return
+          }
+          this.contextSelectNode = node
+          this.contextSelectData = data
+          node.expand()
+          this.$refs.ctxMenu.open(e, node)
+        }
+      }
     }
 </script>
 

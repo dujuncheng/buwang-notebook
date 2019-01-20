@@ -24,16 +24,16 @@
 <script>
     import { mapState } from 'vuex'
     export default {
-        props: ['note'],
-        computed: {
-            showChangeIcon () {
-                return this.changeNote.indexOf(this.note.note_id) > -1
-            },
-            ...mapState({
-                // 全局的被修改的note列表
-                'changeNote': state => state.notebook.changeNote,
-            }),
-        }
+      props: ['note'],
+      computed: {
+        showChangeIcon () {
+          return this.changeNote.indexOf(this.note.note_id) > -1
+        },
+        ...mapState({
+          // 全局的被修改的note列表
+          'changeNote': state => state.notebook.changeNote
+        })
+      }
     }
 </script>
 

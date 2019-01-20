@@ -6,11 +6,11 @@
 
 <script>
   export default {
-      name: 'nana-notebook',
-      created () {
-          this.$store.dispatch('LISTEN_FOR_EDIT')
-          this.$store.dispatch('LISTEN_FOR_PARAGRAPH_INLINE_STYLE')
-      }
+    name: 'nana-notebook',
+    created () {
+      this.$store.dispatch('LISTEN_FOR_EDIT')
+      this.$store.dispatch('LISTEN_FOR_PARAGRAPH_INLINE_STYLE')
+    }
   }
 </script>
 

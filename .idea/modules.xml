@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/nana-notebook.iml" filepath="$PROJECT_DIR$/.idea/nana-notebook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/test-build.iml" filepath="$PROJECT_DIR$/.idea/test-build.iml" />
     </modules>
   </component>
 </project>

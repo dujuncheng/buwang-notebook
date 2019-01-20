@@ -33,97 +33,97 @@
 <script>
     import {mapState} from 'vuex'
     export default {
-        data () {
-            return {
-                // 是否发布为blog
-                blogStatus: 1,
-                // 是否开启提醒
-                notifyStatus: 1,
-                // 提醒的重要程度
-                reviewRate: 0
-            }
-        },
-        computed: {
-            blogIconStyle () {
-                let style = ''
-                switch (this.blogStatus) {
-                case 0:
-                    style = {
-                        'color': '#666767'
-                    }
-                    break
-                case 1:
-                    style = {
-                        'color': '#3F88F9'
-                    }
-                    break
-                default:
-                    style = {}
-                }
-                return style
-            },
-            linkIconStyle () {
-                let style = ''
-                switch (this.blogStatus) {
-                case 0:
-                    style = {
-                        'color': '#666767'
-                    }
-                    break
-                case 1:
-                    style = {
-                        'color': '#3F88F9'
-                    }
-                    break
-                default:
-                    style = {}
-                }
-                return style
-            },
-            bellIconStyle () {
-                let style = ''
-                switch (this.notifyStatus) {
-                case 0:
-                    style = {
-                        'color': '#666767'
-                    }
-                    break
-                case 1:
-                    style = {
-                        'color': '#F7BA2A'
-                    }
-                    break
-                default:
-                    style = {}
-                }
-                return style
-            },
-            ...mapState({
-                'scaleStatus': state => state.notebook.scaleStatus
-            })
-        },
-        methods: {
-            // 设置缩放大小
-            setScaleStatus (num) {
-                if (num === undefined) {
-                    return
-                }
-                this.$store.commit('SET_SCALE_STATUS', {num})
-            },
-            // 设置提醒
-            setNotify () {
-                this.$message({
-                    message: '恭喜你，设置成功',
-                    type: 'success'
-                })
-                this.$notify({
-                    title: '恭喜你，设置成功',
-                    type: 'success',
-                    message: '这是一条不会自动关闭的消息',
-                    duration: 3000
-                })
-            }
+      data () {
+        return {
+          // 是否发布为blog
+          blogStatus: 1,
+          // 是否开启提醒
+          notifyStatus: 1,
+          // 提醒的重要程度
+          reviewRate: 0
         }
+      },
+      computed: {
+        blogIconStyle () {
+          let style = ''
+          switch (this.blogStatus) {
+            case 0:
+              style = {
+                'color': '#666767'
+              }
+              break
+            case 1:
+              style = {
+                'color': '#3F88F9'
+              }
+              break
+            default:
+              style = {}
+          }
+          return style
+        },
+        linkIconStyle () {
+          let style = ''
+          switch (this.blogStatus) {
+            case 0:
+              style = {
+                'color': '#666767'
+              }
+              break
+            case 1:
+              style = {
+                'color': '#3F88F9'
+              }
+              break
+            default:
+              style = {}
+          }
+          return style
+        },
+        bellIconStyle () {
+          let style = ''
+          switch (this.notifyStatus) {
+            case 0:
+              style = {
+                'color': '#666767'
+              }
+              break
+            case 1:
+              style = {
+                'color': '#F7BA2A'
+              }
+              break
+            default:
+              style = {}
+          }
+          return style
+        },
+        ...mapState({
+          'scaleStatus': state => state.notebook.scaleStatus
+        })
+      },
+      methods: {
+        // 设置缩放大小
+        setScaleStatus (num) {
+          if (num === undefined) {
+            return
+          }
+          this.$store.commit('SET_SCALE_STATUS', {num})
+        },
+        // 设置提醒
+        setNotify () {
+          this.$message({
+            message: '恭喜你，设置成功',
+            type: 'success'
+          })
+          this.$notify({
+            title: '恭喜你，设置成功',
+            type: 'success',
+            message: '这是一条不会自动关闭的消息',
+            duration: 3000
+          })
+        }
+      }
     }
 </script>
 

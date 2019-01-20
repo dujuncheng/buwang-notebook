@@ -17,18 +17,6 @@ let mainConfig = {
   ],
   module: {
     rules: [
-        {
-            test: /\.(js|vue)$/,
-            enforce: 'pre',
-            exclude: /node_modules/,
-            use: {
-                loader: 'eslint-loader',
-                options: {
-                    formatter: require('eslint-friendly-formatter'),
-                    emitWarning: true,
-                }
-            }
-        },
       {
         test: /\.js$/,
         use: 'babel-loader',
@@ -74,7 +62,6 @@ if (process.env.NODE_ENV !== 'production') {
  */
 if (process.env.NODE_ENV === 'production') {
   mainConfig.plugins.push(
-    new BabiliWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     })

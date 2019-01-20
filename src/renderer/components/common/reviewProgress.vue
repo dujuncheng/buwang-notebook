@@ -10,27 +10,27 @@
 
 <script>
     export default {
-        props: ['progress'],
-        data () {
-            return {
-                popArr: []
-            }
+      props: ['progress'],
+      data () {
+        return {
+          popArr: []
+        }
+      },
+      computed: {
+        barWidth () {
+          return (this.progress * 100)
         },
-        computed: {
-            barWidth () {
-                return (this.progress * 100)
-            },
-            showPop () {
-                let res = false
-                if (this.barWidth > 90) {
-                    res = false
-                } else {
-                    res = true
-                }
-                return res
-            }
-        },
-        methods: {}
+        showPop () {
+          let res = false
+          if (this.barWidth > 90) {
+            res = false
+          } else {
+            res = true
+          }
+          return res
+        }
+      },
+      methods: {}
     }
 </script>
 
