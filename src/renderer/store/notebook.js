@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
 
 const popFail = (obj) => {
@@ -207,7 +208,7 @@ const actions = {
         popFail(result)
       }
       let data = result.data
-      let nextTime = data.next_notify_time
+      let nextTime = friendlyTime(data.next_notify_time)
       popSuccess(`复习成功，下次复习时间为${nextTime}`)
       commit('SET_NOTEBOOK', {
         name: 'reviewItemSelected',
