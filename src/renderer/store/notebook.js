@@ -16,7 +16,7 @@ const popFail = (obj) => {
 const popSuccess = (message) => {
   Swal({
     type: 'success',
-    title: message || '网络请求失败',
+    title: message || '操作成功',
     toast: true,
     position: 'top',
     showConfirmButton: false,
@@ -162,6 +162,7 @@ const mutations = {
     // 设置
     state.reviewlist = reviewlist
     let sameNote = 0
+    // 如果已经有选择的reviewItemSelected，则选择那个
     for (let i = 0; i < reviewlist.length; i++) {
       if (reviewlist[i].note_id === state.reviewItemSelected) {
         sameNote = i
@@ -198,14 +199,21 @@ const actions = {
     }
     try {
       let result = (await axios({
-        method: 'get',
+        method: 'post',
         url: 'http://127.0.0.1:8991/notebook?method=review_this',
         data: params
       })).data
-      if (!result || !result.success) {
+      if (!result || !result.success || !result.data) {
         popFail(result)
       }
-      console.log(result)
+      let data = result.data
+      let nextTime = data.next_notify_time
+      popSuccess(`复习成功，下次复习时间为${nextTime}`)
+      commit('SET_NOTEBOOK', {
+        name: 'reviewItemSelected',
+        value: 0
+      })
+      await this.dispatch('GET_REVIEWLIST')
     } catch (e) {
       popFail(e)
     }
