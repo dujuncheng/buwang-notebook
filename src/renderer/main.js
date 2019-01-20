@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import '../../node_modules/_@fortawesome_fontawesome-free@5.6.3@@fortawesome/fontawesome-free/css/all.css'
+// import '@fortawesome/fontawesome-free/css/all.css'
 import axios from 'axios'
 import { ipcRenderer } from 'electron'
 import App from './App'
