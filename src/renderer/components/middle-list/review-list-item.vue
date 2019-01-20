@@ -16,7 +16,7 @@
             <div class="right">
                 <!--哪天复习-->
                 <i class="far fa-calendar-check"></i>
-                <span class="text">今天</span>
+                <span class="text">{{review.notify_time | getFriendTime}}</span>
             </div>
         </div>
         <div class="desc-container">
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import {friendlyTime} from '../../utils/friendTime'
     import {mapState} from 'vuex'
     import reviewProgress from '../common/reviewProgress.vue'
     export default {
@@ -45,6 +46,11 @@
           // 全局的被修改的note列表
           'changeNote': state => state.notebook.changeNote
         })
+      },
+      filters: {
+        getFriendTime (value) {
+          return friendlyTime(value)
+        }
       }
     }
 </script>
@@ -93,10 +99,12 @@
         .middle{
             flex: 1;
             position: relative;
+            text-align: center;
         }
         .right{
-            flex: 1;
+            flex: 1.5;
             position: relative;
+            text-align: right;
         }
     }
     .desc-container {

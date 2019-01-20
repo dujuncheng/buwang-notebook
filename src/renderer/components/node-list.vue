@@ -281,7 +281,7 @@
                 box-sizing: border-box;
                 padding: 6px;
                 padding-left: 45px;
-                padding-right: 12px;
+                padding-right: 20px;
                 border-left: 6px solid transparent;
             }
         }
