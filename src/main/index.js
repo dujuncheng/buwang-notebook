@@ -1,7 +1,7 @@
 'use strict'
 import { app, BrowserWindow, Menu } from 'electron'
-// import ManuTemplate from './menus/index.js'
-// import AppMenu from './menu.js'
+import ManuTemplate from './menus/index.js'
+import AppMenu from './menu.js'
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -33,8 +33,8 @@ function createWindow () {
   })
   // show window without setting focus
   mainWindow.showInactive()
-  // const menu = Menu.buildFromTemplate(ManuTemplate)
-  // Menu.setApplicationMenu(menu)
+  const menu = Menu.buildFromTemplate(ManuTemplate)
+  Menu.setApplicationMenu(menu)
 }
 
 app.on('ready', createWindow)

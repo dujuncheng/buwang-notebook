@@ -5,10 +5,7 @@
 import {
   isBlockContainer,
   traverseUp,
-  isAganippeEditorElement,
   getFirstSelectableLeafNode,
-  isElementAtBeginningOfBlock,
-  findPreviousSibling,
   getClosestBlockContainer,
   getCursorPositionWithinMarkedText,
   compareParagraphsOrder,
@@ -40,60 +37,6 @@ class Selection {
     current = range.commonAncestorContainer
 
     return traverseUp(current, testElementFunction)
-  }
-
-  getSelectionElement (contentWindow) {
-    return this.findMatchingSelectionParent(el => {
-      return isAganippeEditorElement(el)
-    }, contentWindow)
-  }
-
-  // https://stackoverflow.com/questions/17678843/cant-restore-selection-after-html-modify-even-if-its-the-same-html
-  // Tim Down
-  exportSelection (root) {
-    if (!root) {
-      return null
-    }
-
-    let selectionState = null
-    const selection = this.doc.getSelection()
-
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0)
-      const preSelectionRange = range.cloneRange()
-
-      preSelectionRange.selectNodeContents(root)
-      preSelectionRange.setEnd(range.startContainer, range.startOffset)
-
-      const start = preSelectionRange.toString().length
-      selectionState = {
-        start,
-        end: start + range.toString().length
-      }
-
-      // Check to see if the selection starts with any images
-      // if so we need to make sure the the beginning of the selection is
-      // set correctly when importing selection
-      if (this.doesRangeStartWithImages(range)) {
-        selectionState.startsWithImage = true
-      }
-
-      // Check to see if the selection has any trailing images
-      // if so, this this means we need to look for them when we import selection
-      const trailingImageCount = this.getTrailingImageCount(root, selectionState, range.endContainer, range.endOffset)
-      if (trailingImageCount) {
-        selectionState.trailingImageCount = trailingImageCount
-      }
-
-      // If start = 0 there may still be an empty paragraph before it, but we don't care.
-      if (start !== 0) {
-        const emptyBlocksIndex = this.getIndexRelativeToAdjacentEmptyBlocks(root, range.startContainer, range.startOffset)
-        if (emptyBlocksIndex !== -1) {
-          selectionState.emptyBlocksIndex = emptyBlocksIndex
-        }
-      }
-    }
-    return selectionState
   }
 
   // https://stackoverflow.com/questions/17678843/cant-restore-selection-after-html-modify-even-if-its-the-same-html
@@ -591,61 +534,6 @@ class Selection {
       left: preCaretRange.toString().length,
       right: postCaretRange.toString().length
     }
-  }
-
-  // https://stackoverflow.com/questions/15867542/range-object-get-selection-parent-node-chrome-vs-firefox
-  rangeSelectsSingleNode (range) {
-    const startNode = range.startContainer
-    return startNode === range.endContainer &&
-    startNode.hasChildNodes() &&
-    range.endOffset === range.startOffset + 1
-  }
-
-  getSelectedParentElement (range) {
-    if (!range) {
-      return null
-    }
-
-    // Selection encompasses a single element
-    if (this.rangeSelectsSingleNode(range) && range.startContainer.childNodes[range.startOffset].nodeType !== 3) {
-      return range.startContainer.childNodes[range.startOffset]
-    }
-
-    // Selection range starts inside a text node, so get its parent
-    if (range.startContainer.nodeType === 3) {
-      return range.startContainer.parentNode
-    }
-
-    // Selection starts inside an element
-    return range.startContainer
-  }
-
-  getSelectedElements () {
-    const selection = this.doc.getSelection()
-    let range
-    let toRet
-    let currNode
-
-    if (!selection.rangeCount || selection.isCollapsed || !selection.getRangeAt(0).commonAncestorContainer) {
-      return []
-    }
-
-    range = selection.getRangeAt(0)
-
-    if (range.commonAncestorContainer.nodeType === 3) {
-      toRet = []
-      currNode = range.commonAncestorContainer
-      while (currNode.parentNode && currNode.parentNode.childNodes.length === 1) {
-        toRet.push(currNode.parentNode)
-        currNode = currNode.parentNode
-      }
-
-      return toRet
-    }
-
-    return [].filter.call(range.commonAncestorContainer.getElementsByTagName('*'), function (el) {
-      return (typeof selection.containsNode === 'function') ? selection.containsNode(el, true) : true
-    })
   }
 
   selectNode (node) {

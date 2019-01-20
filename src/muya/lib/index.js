@@ -21,7 +21,7 @@ class Muya {
     this.focusMode = focusMode
     this.theme = theme
     this.markdown = markdown
-    this.container = getContainer(container)
+    this.container = getContainer(container, this.options)
     this.eventCenter = new EventCenter()
     this.tooltip = new ToolTip(this)
     // UI plugins
@@ -81,9 +81,9 @@ class Muya {
     return this.contentState.history.clearHistory()
   }
 
-  exportStyledHTML (filename) {
+  exportStyledHTML (title = '', printOptimization = false) {
     const { markdown } = this
-    return new ExportHtml(markdown).generate(filename)
+    return new ExportHtml(markdown).generate(title, printOptimization)
   }
 
   exportHtml () {
@@ -267,7 +267,8 @@ class Muya {
 /**
   * [ensureContainerDiv ensure container element is div]
   */
-function getContainer (originContainer) {
+function getContainer (originContainer, options) {
+  const { hideQuickInsertHint } = options
   const container = document.createElement('div')
   const rootDom = document.createElement('div')
   const attrs = originContainer.attributes
@@ -275,6 +276,10 @@ function getContainer (originContainer) {
   Array.from(attrs).forEach(attr => {
     container.setAttribute(attr.name, attr.value)
   })
+
+  if (!hideQuickInsertHint) {
+    container.classList.add('ag-show-quick-insert-hint')
+  }
 
   container.setAttribute('contenteditable', true)
   container.setAttribute('autocorrect', false)

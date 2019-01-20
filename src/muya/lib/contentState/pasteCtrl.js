@@ -91,6 +91,39 @@ const pasteCtrl = ContentState => {
       }
     }
 
+    // Extract the first line from the language identifier (GH#553)
+    if (startBlock.type === 'span' && startBlock.functionType === 'languageInput') {
+      let language = text.trim().match(/^.*$/m)[0] || ''
+      const oldLanguageLength = startBlock.text.length
+      let offset = 0
+      if (start.offset !== 0 || end.offset !== oldLanguageLength) {
+        const prePartText = startBlock.text.substring(0, start.offset)
+        const postPartText = startBlock.text.substring(end.offset)
+
+        // Expect that the language doesn't contain new lines
+        language = prePartText + language + postPartText
+        offset = prePartText.length + language.length
+      } else {
+        offset = language.length
+      }
+
+      startBlock.text = language
+
+      const key = startBlock.key
+      this.cursor = {
+        start: { key, offset },
+        end: { key, offset }
+      }
+
+      // Hide code picker float box
+      const { eventCenter } = this.muya
+      eventCenter.dispatch('muya-code-picker', { reference: null })
+
+      // Update code block language and render
+      this.updateCodeLanguage(startBlock, language)
+      return
+    }
+
     if (startBlock.type === 'span' && startBlock.functionType === 'codeLine') {
       let referenceBlock = startBlock
       const blockText = startBlock.text
@@ -208,7 +241,7 @@ const pasteCtrl = ContentState => {
     lastBlock.text += cacheText
 
     switch (pasteType) {
-      case 'MERGE':
+      case 'MERGE': {
         if (LIST_REG.test(firstFragment.type)) {
           const listItems = firstFragment.children
           const firstListItem = listItems[0]
@@ -262,8 +295,8 @@ const pasteCtrl = ContentState => {
           })
         }
         break
-
-      case 'NEWLINE':
+      }
+      case 'NEWLINE': {
         let target = startBlock.type === 'span' ? parent : startBlock
         stateFragments.forEach(block => {
           this.insertAfter(block, target)
@@ -274,8 +307,10 @@ const pasteCtrl = ContentState => {
           if (this.isOnlyChild(startBlock) && startBlock.type === 'span') this.removeBlock(parent)
         }
         break
-      default:
+      }
+      default: {
         throw new Error('unknown paste type')
+      }
     }
     // step 3: set cursor and render
     let cursorBlock = this.getBlock(key)
