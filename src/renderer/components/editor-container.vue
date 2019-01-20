@@ -14,7 +14,12 @@
              :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
 'font-family': editorFontFamily}"
         >
+            <!-- 内容编辑区域 -->
             <div class="J_editor editor"></div>
+            <!-- 确认复习区域 在复习的状态下，才出现 -->
+            <div class="review-btn-container" v-show="sideBarSelected === 0">
+                <el-button class="review-btn" icon="el-icon-circle-check-outline" type="primary" plain @click="hasReview">我已复习</el-button>
+            </div>
         </div>
         <el-dialog
             :visible.sync="dialogTableVisible"
@@ -369,6 +374,14 @@
           })
           this.$store.dispatch('CHANGE_NOTE', {changeArr})
         },
+        // 监听 已经复习 的按钮点击
+        hasReview () {
+          let noteId = Number(this.reviewItemSelected)
+          if (!noteId) {
+            return
+          }
+          this.$store.dispatch('HAS_REVIEW', {noteId})
+        },
         getCacheData (cache) {
           let obj = JSON.parse(cache)
           let keyArr = Object.keys(obj)
@@ -683,7 +696,10 @@
             ._no_scroll_bar();
             .editor {
                 width: 100%;
-                height: 100%;
+                height: auto;
+                overflow: auto;
+                position: relative;
+                ._no_scroll_bar();
             }
         }
         .ag-dialog-table {
@@ -698,6 +714,18 @@
         .ag-dialog-table .dialog-title svg {
             width: 1.5em;
             height: 1.5em;
+        }
+
+        .review-btn-container {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #b3d8ff;
+            .review-btn {
+
+            }
         }
     }
 </style>

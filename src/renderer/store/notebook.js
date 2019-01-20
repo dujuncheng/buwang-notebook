@@ -186,6 +186,31 @@ const mutations = {
 
 const actions = {
   /**
+   * 已经复习了这个笔记的接口
+   * @param commit
+   * @param noteId
+   * @returns {Promise<void>}
+   * @constructor
+   */
+  async HAS_REVIEW ({commit}, {noteId}) {
+    let params = {
+      note_id: noteId
+    }
+    try {
+      let result = (await axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8991/notebook?method=review_this',
+        data: params
+      })).data
+      if (!result || !result.success) {
+        popFail(result)
+      }
+      console.log(result)
+    } catch (e) {
+      popFail(e)
+    }
+  },
+  /**
      * 获取待复习列表
      * @param commit
      * @returns {Promise<void>}
