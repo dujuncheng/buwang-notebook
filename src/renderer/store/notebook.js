@@ -220,6 +220,38 @@ const actions = {
     }
   },
   /**
+   * 设置笔记的复习状态
+   * @param commit
+   * @param noteId
+   * @returns {Promise<void>}
+   * @constructor
+   */
+  async SET_REVIEW ({commit}, {noteId}) {
+    let params = {
+      note_id: noteId
+    }
+    try {
+      let result = (await axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8991/notebook?method=review_this',
+        data: params
+      })).data
+      if (!result || !result.success || !result.data) {
+        popFail(result)
+      }
+      let data = result.data
+      let nextTime = friendlyTime(data.next_notify_time)
+      popSuccess(`复习成功，下次复习时间为${nextTime}`)
+      commit('SET_NOTEBOOK', {
+        name: 'reviewItemSelected',
+        value: 0
+      })
+      await this.dispatch('GET_REVIEWLIST')
+    } catch (e) {
+      popFail(e)
+    }
+  },
+  /**
      * 获取待复习列表
      * @param commit
      * @returns {Promise<void>}

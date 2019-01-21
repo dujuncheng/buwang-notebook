@@ -11,13 +11,15 @@
             ></i>
         </el-tooltip>
         <div class="divide-line"></div>
+        <!-- 设置复习的按钮 -->
         <el-tooltip class="item" effect="dark" content="设置复习提醒" placement="bottom">
             <i class="far fa-bell bell-icon"
                :style="bellIconStyle"
                @click="setNotify"
             ></i>
         </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="星星越多，提醒越勤" placement="bottom">
+        <!-- 星星，根据是否复习来显示/隐藏 -->
+        <el-tooltip v-show="notifyStatus === 1" class="item" effect="dark" content="星星越多，提醒越勤" placement="bottom">
             <div class="review-container">
                 <el-rate v-model="reviewRate"></el-rate>
             </div>
@@ -27,11 +29,27 @@
         <i class="fas fa-compress-arrows-alt shrink-icon" v-if="scaleStatus === 1" @click="setScaleStatus(0)"></i>
         <!-- 放大状态 -->
         <i class="fas fa-expand-arrows-alt enlarge-icon" v-if="scaleStatus === 0" @click="setScaleStatus(1)"></i>
+
+
+        <!-- 确定提醒的对话框 -->
+        <el-dialog
+                title="手下留情"
+                :visible.sync="noReviewDialog"
+                width="30%"
+                :before-close="handleClose">
+            <span>你确定要取消的复习通知吗？</span>
+            <span>取消后，再次开启复习通知将会从头开始哦~</span>
+            <span slot="footer" class="dialog-footer">
+            <el-button @click="noReviewDialog = false">取 消</el-button>
+            <el-button type="primary" @click="confirmCancel">确 定</el-button>
+          </span>
+        </el-dialog>
+
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState, mapGetters} from 'vuex'
     export default {
       data () {
         return {
@@ -40,7 +58,9 @@
           // 是否开启提醒
           notifyStatus: 1,
           // 提醒的重要程度
-          reviewRate: 0
+          reviewRate: 3,
+          // 是否显示 确认取消的dialog
+          noReviewDialog: false,
         }
       },
       computed: {
@@ -100,7 +120,15 @@
         },
         ...mapState({
           'scaleStatus': state => state.notebook.scaleStatus
-        })
+        }),
+        ...mapGetters(['currentNote'])
+      },
+      watch: {
+        currentNote (value) {
+          if (value && value.need_review !== undefined) {
+            this.notifyStatus = value.need_review
+          }
+        }
       },
       methods: {
         // 设置缩放大小
@@ -112,16 +140,23 @@
         },
         // 设置提醒
         setNotify () {
-          this.$message({
-            message: '恭喜你，设置成功',
-            type: 'success'
-          })
-          this.$notify({
-            title: '恭喜你，设置成功',
-            type: 'success',
-            message: '这是一条不会自动关闭的消息',
-            duration: 3000
-          })
+          this.noReviewDialog = !this.noReviewDialog;
+          // this.$message({
+          //   message: '恭喜你，设置成功',
+          //   type: 'success'
+          // })
+          // this.$notify({
+          //   title: '恭喜你，设置成功',
+          //   type: 'success',
+          //   message: '这是一条不会自动关闭的消息',
+          //   duration: 3000
+          // })
+        },
+        // 确定取消复习
+        confirmCancel () {
+        },
+        reviewThis () {
+
         }
       }
     }
