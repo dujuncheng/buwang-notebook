@@ -21,7 +21,7 @@
         <!-- 星星，根据是否复习来显示/隐藏 -->
         <el-tooltip v-show="notifyStatus === 1" class="item" effect="dark" content="星星越多，提醒越勤" placement="bottom">
             <div class="review-container">
-                <el-rate v-model="reviewRate"></el-rate>
+                <el-rate v-model="reviewRate" @change="handleStarChange"></el-rate>
             </div>
         </el-tooltip>
 
@@ -35,8 +35,7 @@
         <el-dialog
                 title="手下留情"
                 :visible.sync="noReviewDialog"
-                width="30%"
-                :before-close="handleClose">
+                width="30%" center>
             <span>你确定要取消的复习通知吗？</span>
             <span>取消后，再次开启复习通知将会从头开始哦~</span>
             <span slot="footer" class="dialog-footer">
@@ -49,6 +48,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import {mapState, mapGetters} from 'vuex'
     export default {
       data () {
@@ -131,6 +131,15 @@
         }
       },
       methods: {
+        // 处理星星的数目发生了变化
+        handleStarChange (value) {
+          if (!value) {
+            return
+          }
+          let frequency = value
+          this.setFrequency({frequency})
+        },
+
         // 设置缩放大小
         setScaleStatus (num) {
           if (num === undefined) {
@@ -139,25 +148,88 @@
           this.$store.commit('SET_SCALE_STATUS', {num})
         },
         // 设置提醒
-        setNotify () {
-          this.noReviewDialog = !this.noReviewDialog;
-          // this.$message({
-          //   message: '恭喜你，设置成功',
-          //   type: 'success'
-          // })
-          // this.$notify({
-          //   title: '恭喜你，设置成功',
-          //   type: 'success',
-          //   message: '这是一条不会自动关闭的消息',
-          //   duration: 3000
-          // })
+        async setNotify () {
+          // 从【复习】-> 【不复习】
+          if (this.notifyStatus === 1) {
+            this.noReviewDialog = true
+            return
+          }
+          let type = 1
+          this.setReview({type})
         },
         // 确定取消复习
         confirmCancel () {
+          // 先把弹窗关上吧
+          this.noReviewDialog = false
+          let type = 0
+          this.setReview({type})
         },
-        reviewThis () {
-
-        }
+        // 设置复习状态的异步接口
+        async setReview ({type}) {
+          let params = {
+            note_id: this.currentNote.note_id,
+            type
+          }
+          try {
+            let result = (await axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8991/notebook?method=set_review',
+              data: params
+            })).data
+            // 不成功的时候，弹出错误提示
+            if (!result || !result.success) {
+              this.$message({
+                message: result.message,
+                type: 'error'
+              })
+              return
+            }
+            // 如果是【未复习】-> 【复习】
+            if (type === 1) {
+              // 闹钟的状态修改
+              this.notifyStatus = 1
+              // 星星的状态修改
+              this.reviewRate = 3
+            } else {
+              // 闹钟的状态修改
+              this.notifyStatus = 0
+              // 星星的状态修改
+              this.reviewRate = 0
+            }
+          } catch (e) {
+            this.$message({
+              message: e.message,
+              type: 'error'
+            })
+          }
+        },
+        // 设置frequency的接口
+        async setFrequency ({frequency}) {
+          let params = {
+            note_id: this.currentNote.note_id,
+            frequency
+          }
+          try {
+            let result = (await axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8991/notebook?method=set_frequency',
+              data: params
+            })).data
+            // 不成功的时候，弹出错误提示
+            if (!result || !result.success) {
+              this.$message({
+                message: result.message,
+                type: 'error'
+              })
+              return
+            }
+          } catch (e) {
+            this.$message({
+              message: e.message,
+              type: 'error'
+            })
+          }
+        },
       }
     }
 </script>
