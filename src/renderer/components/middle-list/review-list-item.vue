@@ -6,7 +6,7 @@
             <div class="left">
                 <!-- 预计复习时间-->
                 <i class="fas fa-stopwatch"></i>
-                <span class="text">{{reviewPercent}}</span>
+                <span class="text">{{needTime}}</span>
             </div>
             <div class="middle">
                 <!--复习次数-->
@@ -101,6 +101,10 @@
       },
       props: ['review'],
       computed: {
+        needTime () {
+          let minute = (String(this.review.content).length / 500).toFixed(0)
+          return minute
+        },
         reviewPercent () {
           let lastReviewTime = getLastReviewTime(this.review.review_num, this.review.frequency, this.review.notify_time)
           let nextReviewTime = this.review.notify_time
@@ -183,7 +187,7 @@
         .middle{
             flex: 1;
             position: relative;
-            text-align: center;
+            text-align: left;
         }
         .right{
             flex: 1.5;
@@ -203,6 +207,7 @@
         display: flex;
         align-items: center;
         padding-right: 2px;
+        margin-top: 4px;
         .desc-text {
             width: 60px;
             text-align: left;
