@@ -126,7 +126,6 @@
       watch: {
         currentNote (value) {
           if (value && value.need_review !== undefined) {
-            console.log(value)
             this.notifyStatus = value.need_review
             this.reviewRate = value.frequency
           }
