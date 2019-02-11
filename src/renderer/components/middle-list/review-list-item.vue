@@ -6,7 +6,7 @@
             <div class="left">
                 <!-- 预计复习时间-->
                 <i class="fas fa-stopwatch"></i>
-                <span class="text">{{needTime}}</span>
+                <span class="text">{{needTime}}min</span>
             </div>
             <div class="middle">
                 <!--复习次数-->

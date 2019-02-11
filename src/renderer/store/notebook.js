@@ -3,6 +3,8 @@ import Swal from 'sweetalert2'
 import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
 
+const url = 'https://bi15s.cn/notebook'
+
 const popFail = (obj) => {
   Swal({
     type: 'error',
@@ -201,7 +203,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=review_this',
+        url: `${url}?method=review_this`,
         data: params
       })).data
       if (!result || !result.success || !result.data) {
@@ -229,7 +231,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'get',
-        url: 'http://127.0.0.1:8991/notebook?method=get_review_list'
+        url: `${url}?method=get_review_list`
       })).data
       if (!result || !result.success) {
         popFail(result)
@@ -263,7 +265,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=add_catalog',
+        url: `${url}?method=add_catalog`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -294,7 +296,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=add_note',
+        url: `${url}?method=add_note`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -330,7 +332,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=delete_note',
+        url: `${url}?method=delete_note`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -369,7 +371,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=remove_catalog',
+        url: `${url}?method=remove_catalog`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -397,7 +399,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=rename_catalog',
+        url: `${url}?method=rename_catalog`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -424,7 +426,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=move_catalog',
+        url: `${url}?method=move_catalog`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -440,7 +442,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'get',
-        url: 'http://127.0.0.1:8991/notebook?method=get_catalog'
+        url: `${url}?method=get_catalog`
       })).data
       if (!result || !result.success) {
         popFail(result)
@@ -467,7 +469,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=get_note_list',
+        url: `${url}?method=get_note_list`,
         data: params
       })).data
       if (!result || !result.success) {
@@ -495,7 +497,7 @@ const actions = {
     try {
       let result = (await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8991/notebook?method=change_arr',
+        url: `${url}?method=change_arr`,
         data: params
       })).data
       if (!result || !result.success) {

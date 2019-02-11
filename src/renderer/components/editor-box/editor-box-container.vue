@@ -174,7 +174,7 @@
           try {
             let result = (await axios({
               method: 'post',
-              url: 'http://127.0.0.1:8991/notebook?method=set_review',
+              url: 'https://bi15s.cn/notebook?method=set_review',
               data: params
             })).data
             // 不成功的时候，弹出错误提示
@@ -213,7 +213,7 @@
           try {
             let result = (await axios({
               method: 'post',
-              url: 'http://127.0.0.1:8991/notebook?method=set_frequency',
+              url: 'https://bi15s.cn/notebook?method=set_frequency',
               data: params
             })).data
             // 不成功的时候，弹出错误提示
