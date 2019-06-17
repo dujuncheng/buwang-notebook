@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
 
-const url = 'https://bi15s.cn/notebook'
+const url = 'http://118.24.193.194/notebook'
 
 const popFail = (obj) => {
   Swal({
@@ -25,6 +25,17 @@ const popSuccess = (message) => {
     showConfirmButton: false,
     timer: 3000
   })
+}
+
+const cleanStorageChange = (noteId) => {
+  let cacheChange = window.localStorage.getItem('_change_note')
+  if (cacheChange) {
+    let obj = JSON.parse(cacheChange)
+    if (obj[noteId]) {
+      delete obj[noteId]
+      window.localStorage.setItem('_change_note', JSON.stringify(obj))
+    }
+  }
 }
 
 const state = {
@@ -338,6 +349,8 @@ const actions = {
       if (!result || !result.success) {
         popFail(result)
       }
+      cleanStorageChange(noteId)
+
       await this.dispatch('GET_CATALOG')
       await this.dispatch('GET_NOTE_LIST', {catalogId})
       commit('SET_NOTEBOOK', {

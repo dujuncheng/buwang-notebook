@@ -90,3 +90,5 @@ npm run lint
 深夜突然意识到保存和更新笔记写的有点问题，于是重新设计了一下逻辑，保证了在断网情况下的高可用性
 ![](https://ws4.sinaimg.cn/large/006tNc79ly1fz0q8nws39j31hc0u0n1k.jpg)
 
+1
+
