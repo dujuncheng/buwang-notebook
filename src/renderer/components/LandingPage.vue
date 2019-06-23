@@ -16,9 +16,13 @@
           <editor-container class="editor"></editor-container>
       </div>
 
+      <!--to-do 代办清清单的功能-->
       <div class="todo-container" v-show="sideBarSelected === 2">
           <todoContainer></todoContainer>
       </div>
+
+      <!-- 注册登录的浮层 -->
+      <loginContainer class="login-layer"></loginContainer>
   </div>
 </template>
 
@@ -28,13 +32,15 @@
     import nodeList from './node-list.vue'
     import editorContainer from './editor-container.vue'
     import todoContainer from './todo-container/todo-index.vue'
+    import loginContainer from './login-container/login-container.vue'
     // import progressBar from './progressBar.vue'
     export default {
       components: {
         sideBar,
         nodeList,
         editorContainer,
-        todoContainer
+        todoContainer,
+        loginContainer
         // progressBar
       },
       data () {
@@ -136,5 +142,16 @@
         background-color: white;
         overflow-y: scroll;
         ._no_scroll_bar();
+    }
+
+
+    .login-layer {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 300;
     }
 </style>
