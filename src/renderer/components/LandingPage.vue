@@ -81,6 +81,8 @@
         },
         // 打开登录浮层
         openLogin () {
+          // 清空一下缓存中的笔记
+          window.localStorage.setItem('_change_note', JSON.stringify({}))
           this.showLogin = true
         }
       },
