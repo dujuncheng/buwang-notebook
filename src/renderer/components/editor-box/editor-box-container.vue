@@ -48,7 +48,8 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import ajax from '../../utils/ajax.js'
+
     import {mapState, mapGetters} from 'vuex'
     export default {
       data () {
@@ -172,11 +173,7 @@
             type
           }
           try {
-            let result = (await axios({
-              method: 'post',
-              url: 'http://118.24.193.194/notebook?method=set_review',
-              data: params
-            })).data
+            let result = await ajax('post', 'set_review', params)
             // 不成功的时候，弹出错误提示
             if (!result || !result.success) {
               this.$message({
@@ -211,11 +208,8 @@
             frequency
           }
           try {
-            let result = (await axios({
-              method: 'post',
-              url: 'http://118.24.193.194/notebook?method=set_frequency',
-              data: params
-            })).data
+            let result = await ajax('post', 'set_frequency', params)
+
             // 不成功的时候，弹出错误提示
             if (!result || !result.success) {
               this.$message({

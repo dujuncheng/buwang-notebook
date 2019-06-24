@@ -33,10 +33,7 @@
 
 
 <script>
-    import axios from 'axios'
-
-    // const url = 'http://118.24.193.194/notebook'
-    const url = 'http://127.0.0.1:85/notebook'
+    import ajax from '../../utils/ajax.js'
 
     export default {
       data () {
@@ -77,12 +74,7 @@
             email: this.email,
             password: this.password
           }
-          let result = (await axios({
-            method: 'post',
-            url: `${url}?method=login`,
-            data: params,
-            withCredentials: true
-          })).data
+          let result = await ajax('post', 'login', params)
 
           // 错误1：用户还没有注册
           if (!result.success && Number(result.err_code) === 1) {
@@ -111,7 +103,7 @@
             type: 'success'
           })
           // 登录成功
-          this.emit('closeLogin')
+          this.$emit('closeLogin')
         },
         // 点击了【注册按钮】
         async registerClick () {
@@ -129,11 +121,8 @@
             email: this.email,
             password: this.password
           }
-          let result = (await axios({
-            method: 'post',
-            url: `${url}?method=register`,
-            data: params
-          })).data
+
+          let result = await ajax('post', 'register', params)
           // 错误2：其他报错
           if (!result.success) {
             this.$message({
@@ -148,7 +137,7 @@
             type: 'success'
           })
 
-          this.emit('closeLogin')
+          this.$emit('closeLogin')
         },
         changeState (state) {
           this.state = state

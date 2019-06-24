@@ -1,11 +1,7 @@
-import axios from 'axios'
 import ajax from '../utils/ajax.js'
 import Swal from 'sweetalert2'
 import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
-
-// const url = 'http://118.24.193.194/notebook'
-const url = 'http://127.0.0.1:85/notebook'
 
 const popFail = (obj) => {
   Swal({
@@ -116,7 +112,7 @@ const mutations = {
     state.sideBarSelected = num
     if (num === 0) {
       // 如果是待复习状态
-      this.dispatch('GET_REVIEWLIST')
+      this.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
     } else if (num === 1) {
       // 如果是笔记本状态
       let catalogId = state.selectedCatalogId || 0
@@ -217,6 +213,7 @@ const actions = {
       let result = await ajax('post', 'review_this', params)
       if (!result || !result.success || !result.data) {
         popFail(result)
+        return
       }
       let data = result.data
       let nextTime = friendlyTime(data.next_notify_time)
@@ -225,7 +222,7 @@ const actions = {
         name: 'reviewItemSelected',
         value: 0
       })
-      await this.dispatch('GET_REVIEWLIST')
+      await this.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
     } catch (e) {
       popFail(e)
     }
@@ -236,9 +233,10 @@ const actions = {
      * @returns {Promise<void>}
      * @constructor
      */
-  async GET_REVIEWLIST ({commit}) {
+  async GET_REVIEWLIST ({commit}, params) {
     try {
-      let result = await ajax('get', 'get_review_list')
+      console.log(params, '1111')
+      let result = await ajax('post', 'get_review_list', params)
       if (!result || !result.success) {
         popFail(result)
         return
@@ -336,6 +334,7 @@ const actions = {
 
       if (!result || !result.success) {
         popFail(result)
+        return
       }
       cleanStorageChange(noteId)
 
@@ -490,7 +489,7 @@ const actions = {
 
       if (state.sideBarSelected === 0) {
         // 待复习状态
-        await this.dispatch('GET_REVIEWLIST')
+        await this.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
       } else if (state.sideBarSelected === 1) {
         // 记笔记的状态
         await this.dispatch('GET_NOTE_LIST', {catalogId: state.selectedCatalogId})

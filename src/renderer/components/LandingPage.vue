@@ -72,11 +72,12 @@
       methods: {
         // 请求待复习列表
         getReviewList () {
-          this.$store.dispatch('GET_REVIEWLIST')
+          this.$store.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
         },
         // 关闭登录浮层
         closeLogin () {
           this.showLogin = false
+          this.getReviewList()
         },
         // 打开登录浮层
         openLogin () {
