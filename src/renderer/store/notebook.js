@@ -1,4 +1,5 @@
 import axios from 'axios'
+import ajax from '../utils/ajax.js'
 import Swal from 'sweetalert2'
 import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
@@ -213,11 +214,7 @@ const actions = {
       note_id: noteId
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=review_this`,
-        data: params
-      })).data
+      let result = await ajax('post', 'review_this', params)
       if (!result || !result.success || !result.data) {
         popFail(result)
       }
@@ -241,13 +238,10 @@ const actions = {
      */
   async GET_REVIEWLIST ({commit}) {
     try {
-      let result = (await axios({
-        method: 'get',
-        url: `${url}?method=get_review_list`,
-        withCredentials: true
-      })).data
+      let result = await ajax('get', 'get_review_list')
       if (!result || !result.success) {
         popFail(result)
+        return
       }
       if (!result.review_list || !Array.isArray(result.review_list)) {
         popFail({
@@ -276,13 +270,10 @@ const actions = {
       name
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=add_catalog`,
-        data: params
-      })).data
+      let result = await ajax('post', 'add_catalog', params)
       if (!result || !result.success) {
         popFail(result)
+        return
       }
       await this.dispatch('GET_CATALOG')
     } catch (e) {
@@ -307,13 +298,11 @@ const actions = {
       content
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=add_note`,
-        data: params
-      })).data
+      let result = await ajax('post', 'add_note', params)
+
       if (!result || !result.success) {
         popFail(result)
+        return
       }
       commit('SET_NOTEBOOK', {
         name: 'noteItemSelected',
@@ -343,11 +332,8 @@ const actions = {
       note_id: noteId
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=delete_note`,
-        data: params
-      })).data
+      let result = await ajax('post', 'delete_note', params)
+
       if (!result || !result.success) {
         popFail(result)
       }
@@ -384,11 +370,7 @@ const actions = {
       catalog_id: catalogId
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=remove_catalog`,
-        data: params
-      })).data
+      let result = await ajax('post', 'remove_catalog', params)
       if (!result || !result.success) {
         popFail(result)
         return
@@ -412,11 +394,7 @@ const actions = {
       new_name: newName
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=rename_catalog`,
-        data: params
-      })).data
+      let result = await ajax('post', 'rename_catalog', params)
       if (!result || !result.success) {
         popFail(result)
         return
@@ -439,11 +417,8 @@ const actions = {
       parent_id: parentId
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=move_catalog`,
-        data: params
-      })).data
+      let result = await ajax('post', 'move_catalog', params)
+
       if (!result || !result.success) {
         popFail(result)
         return
@@ -455,10 +430,8 @@ const actions = {
   },
   async GET_CATALOG ({commit}) {
     try {
-      let result = (await axios({
-        method: 'get',
-        url: `${url}?method=get_catalog`
-      })).data
+      let result = await ajax('get', 'get_catalog', {})
+
       if (!result || !result.success) {
         popFail(result)
         return
@@ -482,11 +455,8 @@ const actions = {
       catalog_id: catalogId
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=get_note_list`,
-        data: params
-      })).data
+      let result = await ajax('post', 'get_note_list', params)
+
       if (!result || !result.success) {
         popFail(result)
         return
@@ -510,11 +480,8 @@ const actions = {
       change_arr: changeArr
     }
     try {
-      let result = (await axios({
-        method: 'post',
-        url: `${url}?method=change_arr`,
-        data: params
-      })).data
+      let result = await ajax('post', 'change_arr', params)
+
       if (!result || !result.success) {
         // 如果更新失败
         popFail(result)

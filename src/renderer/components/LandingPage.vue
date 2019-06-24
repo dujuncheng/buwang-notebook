@@ -33,6 +33,8 @@
     import editorContainer from './editor-container.vue'
     import todoContainer from './todo-container/todo-index.vue'
     import loginContainer from './login-container/login-container.vue'
+
+    import bus from '../utils/eventBus.js'
     // import progressBar from './progressBar.vue'
     export default {
       components: {
@@ -46,7 +48,7 @@
       data () {
         return {
           // 是否显示登录浮层
-          showLogin: true
+          showLogin: false
         }
       },
       computed: {
@@ -75,9 +77,14 @@
         // 关闭登录浮层
         closeLogin () {
           this.showLogin = false
+        },
+        // 打开登录浮层
+        openLogin () {
+          this.showLogin = true
         }
       },
       mounted () {
+        bus.$on('login', this.openLogin)
         this.getReviewList()
       }
     }
