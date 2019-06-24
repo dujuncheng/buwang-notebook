@@ -3,7 +3,8 @@ import Swal from 'sweetalert2'
 import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
 
-const url = 'http://118.24.193.194/notebook'
+// const url = 'http://118.24.193.194/notebook'
+const url = 'http://127.0.0.1:85/notebook'
 
 const popFail = (obj) => {
   Swal({
@@ -242,7 +243,8 @@ const actions = {
     try {
       let result = (await axios({
         method: 'get',
-        url: `${url}?method=get_review_list`
+        url: `${url}?method=get_review_list`,
+        withCredentials: true
       })).data
       if (!result || !result.success) {
         popFail(result)

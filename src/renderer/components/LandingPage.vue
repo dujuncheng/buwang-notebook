@@ -22,7 +22,7 @@
       </div>
 
       <!-- 注册登录的浮层 -->
-      <loginContainer class="login-layer"></loginContainer>
+      <loginContainer v-show="showLogin" class="login-layer" @closeLogin="closeLogin"></loginContainer>
   </div>
 </template>
 
@@ -45,7 +45,8 @@
       },
       data () {
         return {
-
+          // 是否显示登录浮层
+          showLogin: true
         }
       },
       computed: {
@@ -70,6 +71,10 @@
         // 请求待复习列表
         getReviewList () {
           this.$store.dispatch('GET_REVIEWLIST')
+        },
+        // 关闭登录浮层
+        closeLogin () {
+          this.showLogin = false
         }
       },
       mounted () {

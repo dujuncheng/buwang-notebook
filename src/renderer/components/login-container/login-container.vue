@@ -35,7 +35,8 @@
 <script>
     import axios from 'axios'
 
-    const url = 'http://118.24.193.194/notebook'
+    // const url = 'http://118.24.193.194/notebook'
+    const url = 'http://127.0.0.1:85/notebook'
 
     export default {
       data () {
@@ -59,6 +60,7 @@
       },
       props: {},
       methods: {
+        // 点击了【登录接口】
         async loginClick () {
           if (this.btnActive === false) {
             return false
@@ -71,14 +73,48 @@
             return false
           }
 
+          let params = {
+            email: this.email,
+            password: this.password
+          }
           let result = (await axios({
-            method: 'get',
-            url: `${url}?method=login`
+            method: 'post',
+            url: `${url}?method=login`,
+            data: params,
+            withCredentials: true
           })).data
 
-          console.log(result)
+          // 错误1：用户还没有注册
+          if (!result.success && Number(result.err_code) === 1) {
+            this.$message({
+              message: '您的账号还没有注册，请注册哦',
+              type: 'info'
+            })
+
+            this.state = 'register'
+            this.password = ''
+            this.rePassword = ''
+            return false
+          }
+
+          // 错误2：其他报错
+          if (!result.success) {
+            this.$message({
+              message: result.message,
+              type: 'error'
+            })
+            return false
+          }
+
+          this.$message({
+            message: result.message || '登录成功咯',
+            type: 'success'
+          })
+          // 登录成功
+          this.emit('closeLogin')
         },
-        registerClick () {
+        // 点击了【注册按钮】
+        async registerClick () {
           if (this.btnActive === false) {
             return false
           }
@@ -88,6 +124,31 @@
           if (!passwordOk || !emailOk) {
             return false
           }
+
+          let params = {
+            email: this.email,
+            password: this.password
+          }
+          let result = (await axios({
+            method: 'post',
+            url: `${url}?method=register`,
+            data: params
+          })).data
+          // 错误2：其他报错
+          if (!result.success) {
+            this.$message({
+              message: result.message,
+              type: 'error'
+            })
+            return false
+          }
+
+          this.$message({
+            message: '注册成功咯~',
+            type: 'success'
+          })
+
+          this.emit('closeLogin')
         },
         changeState (state) {
           this.state = state
@@ -156,6 +217,8 @@
             })
             return false
           }
+
+          return true
         }
       }
     }

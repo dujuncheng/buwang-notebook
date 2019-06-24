@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/notebook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/notebook.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,26 +22,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="73" column="20" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="20" />
-              <folding>
-                <element signature="e#2382#2862#0" />
-                <element signature="e#2568#3519#0" />
-              </folding>
+            <state relative-caret-position="124">
+              <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/help.js">
+        <entry file="file://$PROJECT_DIR$/node_modules/axios/index.d.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1767" />
+            <state relative-caret-position="2432">
+              <caret line="128" column="14" selection-start-line="128" selection-start-column="14" selection-end-line="128" selection-end-column="14" />
+            </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -58,11 +52,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/components/LandingPage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-              <folding>
-                <element signature="e#878#907#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="456">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/vuex/types/index.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="741">
+              <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -70,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4655">
-              <caret line="245" column="14" lean-forward="true" selection-start-line="242" selection-start-column="6" selection-end-line="245" selection-end-column="14" />
+            <state relative-caret-position="4693">
+              <caret line="247" column="14" lean-forward="true" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -107,10 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GET_REVIEWLIST</find>
-      <find>reviewThis</find>
-      <find>set_frequency</find>
-      <find>setFrequency</find>
       <find>checkRealChange</find>
       <find>hour</find>
       <find>treeprocess-container</find>
@@ -122,7 +118,6 @@
       <find>127.0.0.1:8991</find>
       <find>http://118.24.193.194</find>
       <find>${url}</find>
-      <find>url</find>
       <find>118.24.193.194</find>
       <find>window.localStorage</find>
       <find>cleanStorageChange</find>
@@ -137,6 +132,11 @@
       <find>axios</find>
       <find>let url =</find>
       <find>url =</find>
+      <find>await axios(</find>
+      <find>closeLogin</find>
+      <find>await axios</find>
+      <find>url</find>
+      <find>const url =</find>
     </findStrings>
     <replaceStrings>
       <replace>setReview</replace>
@@ -166,9 +166,9 @@
         <option value="$PROJECT_DIR$/src/renderer/utils/friendTime.js" />
         <option value="$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
         <option value="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" />
         <option value="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" />
+        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
         <option value="$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue" />
       </list>
     </option>
@@ -179,7 +179,7 @@
     <annotation-enable>false</annotation-enable>
     <other-services-enabled>false</other-services-enabled>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -213,7 +213,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -288,12 +287,20 @@
               <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,6 +317,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../marktext/package.json" />
     <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/../marktext/src/muya" />
   </component>
@@ -371,7 +379,12 @@
       <workItem from="1561206363133" duration="3430000" />
       <workItem from="1561209926707" duration="630000" />
       <workItem from="1561211479198" duration="177000" />
-      <workItem from="1561211676626" duration="1207000" />
+      <workItem from="1561211676626" duration="1797000" />
+      <workItem from="1561265386947" duration="1247000" />
+      <workItem from="1561269135534" duration="7000" />
+      <workItem from="1561271016848" duration="196000" />
+      <workItem from="1561341783892" duration="287000" />
+      <workItem from="1561342960910" duration="237000" />
     </task>
     <task id="LOCAL-00001" summary="修复了打包的上的问题">
       <created>1547968208883</created>
@@ -443,14 +456,21 @@
       <option name="project" value="LOCAL" />
       <updated>1560742104888</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="【add】 增加登录和注册页面">
+      <created>1561263606513</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1561263606513</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31419000" />
+    <option name="totallyTimeSpent" value="33983000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19379845" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -466,7 +486,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.49638554" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.036144577" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.35903615" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -503,7 +524,8 @@
     <MESSAGE value="【增加功能】add readme" />
     <MESSAGE value="【增加功能】修复了时间的bug" />
     <MESSAGE value="之前的老域名掉了备案号，腾讯云无法访问，&#10;&#10;暂时通过ip 访问，&#10;&#10;新域名在备案中，预计需要20天" />
-    <option name="LAST_COMMIT_MESSAGE" value="之前的老域名掉了备案号，腾讯云无法访问，&#10;&#10;暂时通过ip 访问，&#10;&#10;新域名在备案中，预计需要20天" />
+    <MESSAGE value="【add】 增加登录和注册页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="【add】 增加登录和注册页面" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/renderer/less/no_more_words.less">
@@ -701,19 +723,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
+    <entry file="file://$PROJECT_DIR$/src/renderer/store/help.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
+    <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/progressBar.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/main.js">
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state relative-caret-position="124">
+          <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/axios/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2432">
+          <caret line="128" column="14" selection-start-line="128" selection-start-column="14" selection-end-line="128" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -727,42 +753,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/help.js">
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/LandingPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1767" />
+        <state relative-caret-position="456">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/node_modules/vuex/types/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4655">
-          <caret line="245" column="14" lean-forward="true" selection-start-line="242" selection-start-column="6" selection-end-line="245" selection-end-column="14" />
+        <state relative-caret-position="4693">
+          <caret line="247" column="14" lean-forward="true" selection-start-line="247" selection-start-column="14" selection-end-line="247" selection-end-column="14" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/LandingPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding>
-            <element signature="e#878#907#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue">
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/progressBar.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="73" column="20" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="20" />
-          <folding>
-            <element signature="e#2382#2862#0" />
-            <element signature="e#2568#3519#0" />
-          </folding>
+        <state relative-caret-position="247">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
         </state>
       </provider>
     </entry>
