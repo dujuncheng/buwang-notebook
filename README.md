@@ -1,3 +1,5 @@
+# 下载 http://cdn.dujuncheng.com/nana-notebook-0.0.2.dmg
+
 # 不忘笔记
 
 不忘笔记不仅仅是一个华丽的笔记软件，更是个人的知识管理系统
