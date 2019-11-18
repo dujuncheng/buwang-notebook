@@ -4,6 +4,9 @@ import {friendlyTime} from '../utils/friendTime.js'
 const base64 = require('js-base64')
 
 const popFail = (obj) => {
+  if (Number(obj.err_code) === 2) {
+    return
+  }
   Swal({
     type: 'error',
     title: (obj && obj.message) || '网络请求失败',
@@ -48,6 +51,8 @@ const state = {
   reviewlist: [],
   contentChanged: '',
   titleChanged: '',
+  // 排序规则
+  selectedOrder: 2,
   // 0 是原样，1 是放大
   scaleStatus: 0,
   // 左边栏，0待复习，1笔记本 2代办清单
@@ -235,7 +240,6 @@ const actions = {
      */
   async GET_REVIEWLIST ({commit}, params) {
     try {
-      console.log(params, '1111')
       let result = await ajax('post', 'get_review_list', params)
       if (!result || !result.success) {
         popFail(result)
@@ -302,12 +306,14 @@ const actions = {
         popFail(result)
         return
       }
+      // 先添加
+      commit('ADD_NOTE', {item: params})
+      // 然后设置该笔记为选中
       commit('SET_NOTEBOOK', {
         name: 'noteItemSelected',
         value: noteId
       })
       await this.dispatch('GET_CATALOG')
-      await this.dispatch('GET_NOTE_LIST', {catalogId})
       commit('SET_NOTEBOOK', {
         name: 'selectedCatalogId',
         value: catalogId
@@ -427,6 +433,12 @@ const actions = {
       popFail(e)
     }
   },
+  /**
+   * 获取目录列表
+   * @param commit
+   * @returns {Promise<void>}
+   * @constructor
+   */
   async GET_CATALOG ({commit}) {
     try {
       let result = await ajax('get', 'get_catalog', {})
@@ -451,7 +463,8 @@ const actions = {
      */
   async GET_NOTE_LIST ({commit}, {catalogId}) {
     let params = {
-      catalog_id: catalogId
+      catalog_id: catalogId,
+      order: Number(state.selectedOrder) || 2
     }
     try {
       let result = await ajax('post', 'get_note_list', params)

@@ -1,8 +1,7 @@
 import axios from 'axios'
 import bus from '../utils/eventBus.js'
 
-// const url = 'http://118.24.193.194/notebook'
-const url = 'http://127.0.0.1:85/notebook'
+const url = 'https://dujuncheng.com/notebook'
 
 const ajax = async (type, method, params = {}) => {
   if (!method) {

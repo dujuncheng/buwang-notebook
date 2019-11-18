@@ -9,6 +9,9 @@ const codeBlockCtrl = ContentState => {
   */
   ContentState.prototype.checkEditLanguage = function () {
     const { start } = selection.getCursorRange()
+    if (!start) {
+      return { lang: '', paragraph: null }
+    }
     const startBlock = this.getBlock(start.key)
     const paragraph = document.querySelector(`#${start.key}`)
     let lang = ''
@@ -16,7 +19,7 @@ const codeBlockCtrl = ContentState => {
     if (startBlock.type === 'span') {
       if (startBlock.functionType === 'languageInput') {
         lang = text.trim()
-      } else {
+      } else if (startBlock.functionType === 'paragraphContent') {
         const token = text.match(/(^`{3,})([^`]+)/)
         if (token) {
           const len = token[1].length
@@ -84,9 +87,9 @@ const codeBlockCtrl = ContentState => {
     const match = CODE_UPDATE_REP.exec(text)
     if (match || lang) {
       const codeBlock = this.createBlock('code')
-      const firstLine = this.createBlock('span', code)
+      const firstLine = this.createBlock('span', { text: code })
       const language = lang || (match ? match[1] : '')
-      const inputBlock = this.createBlock('span', language)
+      const inputBlock = this.createBlock('span', { text: language })
       loadLanguage(language)
       inputBlock.functionType = 'languageInput'
       block.type = 'pre'

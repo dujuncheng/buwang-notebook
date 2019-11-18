@@ -2,6 +2,8 @@
 import { app, BrowserWindow, Menu } from 'electron'
 import ManuTemplate from './menus/index.js'
 import AppMenu from './menu.js'
+
+require('electron-debug')({ showDevTools: true })
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -23,7 +25,10 @@ function createWindow () {
     height: 563,
     useContentSize: true,
     width: 1200,
-    show: false
+    show: false,
+    webPreferences: {
+      webSecurity: false
+    }
   })
   mainWindow.loadURL(winURL)
 

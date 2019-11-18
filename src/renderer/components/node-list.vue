@@ -1,7 +1,7 @@
 <template>
     <div class="node-list-container" :style="nodeListStyle">
         <div class="title-container" v-if="sideBarSelected === 1">
-            <i class="sort-icon el-icon-sort"></i>
+            <i class="sort-icon el-icon-sort" @click="clickOrder($event)"></i>
             <div class="title">笔记本</div>
             <i class="add-icon el-icon-plus" @click="addNote"></i>
         </div>
@@ -12,6 +12,8 @@
         <div class="note-list-container" v-if="sideBarSelected === 1">
             <div class="list">
                 <div class="item"
+                     :id="note.note_id"
+                     :key="index"
                      v-for="(note, index) in notelist"
                      :class="noteItemSelected == note.note_id ?'item-selected':''"
                      @click="clickNote(note.note_id, index)"
@@ -26,6 +28,7 @@
             <div class="list">
                 <div class="item"
                      v-for="(review , index) in reviewlist"
+                     :key="index"
                      :class="reviewItemSelected == review.note_id ? 'item-selected':''"
                      @click="clickReview(review.note_id, review)"
                 >
@@ -38,7 +41,7 @@
 
 <script>
     import bus from '../bus/index.js'
-    import { showContextMenu } from '../contextMenu/noteList/index.js'
+    import { showItemContext, showOrderContext } from '../contextMenu/noteList/index.js'
     import { getRandomNum } from '@/utils/index.js'
     import { mapState, mapGetters } from 'vuex'
     import noteListItem from './middle-list/note-list-item.vue'
@@ -69,7 +72,8 @@
           'notelist': state => state.notebook.notelist,
           'reviewlist': state => state.notebook.reviewlist,
           'titleChanged': state => state.notebook.titleChanged,
-          'contentChanged': state => state.notebook.contentChanged
+          'contentChanged': state => state.notebook.contentChanged,
+          'selectedOrder': state => state.notebook.selectedOrder
         }),
         ...mapGetters(['currentNote'])
       },
@@ -80,6 +84,7 @@
       },
       mounted () {
         bus.$on('deleteNoteItem', this.deleteNoteItem)
+        bus.$on('orderNoteItem', this.orderNoteItem)
       },
       methods: {
         getNext (noteId, arr) {
@@ -113,6 +118,22 @@
             nextNote
           })
         },
+        // 设置选中的排序
+        orderNoteItem ({id}) {
+          if (this.noteItemSelected === undefined) {
+            return
+          }
+          // 设置选中的笔记
+          this.$store.commit('SET_NOTEBOOK', {
+            name: 'selectedOrder',
+            value: Number(id)
+          })
+          this.$store.dispatch('GET_NOTE_LIST', {catalogId: this.selectedCatalogId})
+        },
+        // 排序
+        clickOrder (e) {
+          showOrderContext(e, this.selectedOrder)
+        },
         // 用户右键
         addContextBoard (e, note) {
           if (!note || !note.note_id) {
@@ -124,10 +145,10 @@
               value: note.note_id
             })
           }
-          showContextMenu(e)
+          showItemContext(e)
         },
         // 添加笔记
-        addNote () {
+        async addNote () {
           if (!this.selectedCatalogId) {
             return
           }
@@ -141,7 +162,8 @@
             title: '',
             content: ''
           }
-          this.$store.dispatch('ADD_NOTE', params)
+          await this.$store.dispatch('ADD_NOTE', params)
+          document.getElementById(noteId).scrollIntoView()
         },
         // 选择笔记
         clickNote (noteId, index) {
@@ -150,10 +172,6 @@
           }
           // // 设置选中的笔记
           this.$store.commit('SELECT_NOTE', {noteId, index})
-        },
-        // 删除笔记
-        deleteNote () {
-
         },
         clickReview (noteId, review) {
           if (noteId === undefined) {
@@ -174,6 +192,7 @@
     width: 100%;
     height: 100%;
     background-color: #FAFAFA;
+    position: relative;
     .title-container {
         width: 100%;
         height: 36px;
@@ -237,7 +256,11 @@
     }
     .note-list-container {
         width: 100%;
-        height: calc(100vh - 66px);
+        position: absolute;
+        top: 90px;
+        bottom: 0;
+        left: 0;
+        right: 0;
         overflow-y: scroll;
         overflow-x: hidden;
         .list {

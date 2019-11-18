@@ -93,7 +93,7 @@
           if (!result.success) {
             this.$message({
               message: result.message,
-              type: 'error'
+              type: 'info'
             })
             return false
           }
@@ -127,7 +127,7 @@
           if (!result.success) {
             this.$message({
               message: result.message,
-              type: 'error'
+              type: 'info'
             })
             return false
           }

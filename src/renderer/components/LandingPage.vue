@@ -74,10 +74,14 @@
         getReviewList () {
           this.$store.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
         },
+        async getCatalogList () {
+          this.$store.dispatch('GET_CATALOG')
+        },
         // 关闭登录浮层
         closeLogin () {
           this.showLogin = false
           this.getReviewList()
+          this.getCatalogList()
         },
         // 打开登录浮层
         openLogin () {
@@ -89,6 +93,7 @@
       mounted () {
         bus.$on('login', this.openLogin)
         this.getReviewList()
+        this.getCatalogList()
       }
     }
 </script>
@@ -111,7 +116,8 @@
         color: #C8C9C9!important;
         position: relative;
     }
-    @media only screen and (max-width: 680px) {
+
+    @media only screen and (max-width: 1120px) {
         .side-bar-wrap {
             display: none;
         }
@@ -123,11 +129,12 @@
         overflow: hidden;
     }
 
-    @media only screen and (max-width: 1120px) {
+    @media only screen and (max-width: 730px) {
         .middle-list-wrap {
             display: none;
         }
     }
+
 
     .edit-container {
         flex: 1;

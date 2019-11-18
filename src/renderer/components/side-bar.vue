@@ -255,6 +255,12 @@
             return
           }
           this.$store.commit('SET_SELECTED', {num})
+          // 处理第一次打开的情况
+          if (!this.selectedCatalogId) {
+            this.handleNodeClick({
+              catalog_id: this.catalog[0].catalog_id
+            })
+          }
         },
         // 处理 input blur事件
         handleBlur (node, data) {

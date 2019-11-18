@@ -1,6 +1,6 @@
 {
   "name": "nana-notebook",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "juncheng.du <juncheng.du@beibei.com>",
   "description": "An electron-vue project",
   "license": null,
@@ -60,6 +60,7 @@
     "chokidar": "^2.0.4",
     "codemirror": "^5.42.0",
     "command-exists": "^1.2.8",
+    "crypto-js": "^3.1.9-1",
     "diacritics-map": "^0.1.0",
     "dompurify": "^1.0.8",
     "file-icons-js": "^1.0.3",
@@ -72,6 +73,7 @@
     "markdown-toc": "^1.2.0",
     "popper": "^1.0.1",
     "popper.js": "^1.14.4",
+    "prismjs": "^1.17.1",
     "prismjs2": "^1.15.0",
     "request": "^2.88.0",
     "resizable": "^1.2.1",

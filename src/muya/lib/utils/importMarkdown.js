@@ -9,9 +9,59 @@ import TurndownService, { usePluginAddRules } from './turndownService'
 import { loadLanguage } from '../prism/index'
 
 // To be disabled rules when parse markdown, Because content state don't need to parse inline rules
-import { CURSOR_DNA, TABLE_TOOLS } from '../config'
+import { CURSOR_ANCHOR_DNA, CURSOR_FOCUS_DNA } from '../config'
 
 const LINE_BREAKS_REG = /\n/
+
+// Just because turndown change `\n`(soft line break) to space, So we add `span.ag-soft-line-break` to workaround.
+const turnSoftBreakToSpan = html => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(
+    `<x-mt id="turn-root">${html}</x-mt>`,
+    'text/html'
+  )
+  const root = doc.querySelector(`#turn-root`)
+  const travel = childNodes => {
+    for (const node of childNodes) {
+      if (node.nodeType === 3) {
+        let startLen = 0
+        let endLen = 0
+        const text = node.nodeValue.replace(/^(\n+)/, (_, p) => {
+          startLen = p.length
+          return ''
+        }).replace(/(\n+)$/, (_, p) => {
+          endLen = p.length
+          return ''
+        })
+        if (/\n/.test(text)) {
+          const tokens = text.split('\n')
+          const params = []
+          let i = 0
+          const len = tokens.length
+          for (; i < len; i++) {
+            let text = tokens[i]
+            if (i === 0 && startLen !== 0) {
+              text = '\n'.repeat(startLen) + text
+            } else if (i === len - 1 && endLen !== 0) {
+              text = text + '\n'.repeat(endLen)
+            }
+            params.push(document.createTextNode(text))
+            if (i !== len - 1) {
+              const softBreak = document.createElement('span')
+              softBreak.classList.add('ag-soft-line-break')
+              params.push(softBreak)
+            }
+          }
+          node.replaceWith(...params)
+        }
+      } else if (node.nodeType === 1) {
+        travel(node.childNodes)
+      }
+    }
+  }
+  travel(root.childNodes)
+  return root.innerHTML.trim()
+}
 
 const importRegister = ContentState => {
   // turn markdown to blocks
@@ -26,48 +76,72 @@ const importRegister = ContentState => {
       nextSibling: null,
       children: []
     }
-
     const tokens = new Lexer({ disableInline: true }).lex(markdown)
 
     let token
     let block
     let value
-    let parentList = [ rootState ]
+    const parentList = [rootState]
+    const languageLoaded = new Set()
 
     while ((token = tokens.shift())) {
       switch (token.type) {
         case 'frontmatter': {
+          const lang = 'yaml'
           value = token.text
-          block = this.createBlock('pre')
-          const codeBlock = this.createBlock('code')
+          block = this.createBlock('pre', {
+            functionType: token.type,
+            lang
+          })
+          const codeBlock = this.createBlock('code', {
+            lang
+          })
           value
             .replace(/^\s+/, '')
             .replace(/\s$/, '')
             .split(LINE_BREAKS_REG).forEach(line => {
-              const codeLine = this.createBlock('span', line)
-              codeLine.functionType = 'codeLine'
-              codeLine.lang = 'yaml'
+              const codeLine = this.createBlock('span', {
+                text: line,
+                lang,
+                functionType: 'codeLine'
+              })
+
               this.appendChild(codeBlock, codeLine)
             })
 
-          block.functionType = token.type
-          block.lang = codeBlock.lang = 'yaml'
-          this.codeBlocks.set(block.key, value)
           this.appendChild(block, codeBlock)
           this.appendChild(parentList[0], block)
           break
         }
         case 'hr': {
-          value = '---'
-          block = this.createBlock('hr', value)
+          value = token.marker
+          block = this.createBlock('hr')
+          const thematicBreakContent = this.createBlock('span', {
+            text: value,
+            functionType: 'thematicBreakLine'
+          })
+          this.appendChild(block, thematicBreakContent)
           this.appendChild(parentList[0], block)
           break
         }
         case 'heading': {
-          const { headingStyle, depth, text } = token
-          value = '#'.repeat(+depth) + ` ${text}`
-          block = this.createBlock(`h${depth}`, value)
-          block.headingStyle = headingStyle
+          const { headingStyle, depth, text, marker } = token
+          value = headingStyle === 'atx' ? '#'.repeat(+depth) + ` ${text}` : text
+          block = this.createBlock(`h${depth}`, {
+            headingStyle
+          })
+
+          const headingContent = this.createBlock('span', {
+            text: value,
+            functionType: headingStyle === 'atx' ? 'atxLine' : 'paragraphContent'
+          })
+
+          this.appendChild(block, headingContent)
+
+          if (marker) {
+            block.marker = marker
+          }
+
           this.appendChild(parentList[0], block)
           break
         }
@@ -78,7 +152,11 @@ const importRegister = ContentState => {
           break
         }
         case 'code': {
-          const { codeBlockStyle, text, lang = '' } = token
+          const { codeBlockStyle, text, lang: infostring = '' } = token
+
+          // GH#697, markedjs#1387
+          const lang = (infostring || '').match(/\S*/)[0]
+
           value = text
           if (value.endsWith('\n')) {
             value = value.replace(/\n+$/, '')
@@ -87,22 +165,43 @@ const importRegister = ContentState => {
             block = this.createContainerBlock(lang, value)
             this.appendChild(parentList[0], block)
           } else {
-            block = this.createBlock('pre')
-            const codeBlock = this.createBlock('code')
+            block = this.createBlock('pre', {
+              functionType: codeBlockStyle === 'fenced' ? 'fencecode' : 'indentcode',
+              lang
+            })
+            const codeBlock = this.createBlock('code', {
+              lang
+            })
             value.split(LINE_BREAKS_REG).forEach(line => {
-              const codeLine = this.createBlock('span', line)
+              const codeLine = this.createBlock('span', {
+                text: line
+              })
               codeLine.lang = lang
               codeLine.functionType = 'codeLine'
               this.appendChild(codeBlock, codeLine)
             })
-            const inputBlock = this.createBlock('span', lang)
-            if (lang) {
+            const inputBlock = this.createBlock('span', {
+              text: lang,
+              functionType: 'languageInput'
+            })
+            if (lang && !languageLoaded.has(lang)) {
+              languageLoaded.add(lang)
               loadLanguage(lang)
+                .then(infoList => {
+                  if (!Array.isArray(infoList)) return
+                  // There are three status `loaded`, `noexist` and `cached`.
+                  // if the status is `loaded`, indicated that it's a new loaded language
+                  const needRender = infoList.some(({ status }) => status === 'loaded')
+                  if (needRender) {
+                    this.render()
+                  }
+                })
+                .catch(err => {
+                  // if no parameter provided, will cause error.
+                  console.warn(err)
+                })
             }
-            inputBlock.functionType = 'languageInput'
-            this.codeBlocks.set(block.key, value)
-            block.functionType = codeBlockStyle === 'fenced' ? 'fencecode' : 'indentcode'
-            block.lang = codeBlock.lang = lang
+
             this.appendChild(block, inputBlock)
             this.appendChild(block, codeBlock)
             this.appendChild(parentList[0], block)
@@ -111,14 +210,20 @@ const importRegister = ContentState => {
         }
         case 'table': {
           const { header, align, cells } = token
-          const toolBar = this.createToolBar(TABLE_TOOLS, 'table')
           const table = this.createBlock('table')
           const thead = this.createBlock('thead')
           const tbody = this.createBlock('tbody')
           const theadRow = this.createBlock('tr')
+          const restoreTableEscapeCharacters = text => {
+            // NOTE: markedjs replaces all escaped "|" ("\|") characters inside a cell with "|".
+            //       We have to re-escape the chraracter to not break the table.
+            return text.replace(/\|/g, '\\|')
+          }
           for (const headText of header) {
             const i = header.indexOf(headText)
-            const th = this.createBlock('th', headText)
+            const th = this.createBlock('th', {
+              text: restoreTableEscapeCharacters(headText)
+            })
             Object.assign(th, { align: align[i] || '', column: i })
             this.appendChild(theadRow, th)
           }
@@ -126,7 +231,9 @@ const importRegister = ContentState => {
             const rowBlock = this.createBlock('tr')
             for (const cell of row) {
               const i = row.indexOf(cell)
-              const td = this.createBlock('td', cell)
+              const td = this.createBlock('td', {
+                text: restoreTableEscapeCharacters(cell)
+              })
               Object.assign(td, { align: align[i] || '', column: i })
               this.appendChild(rowBlock, td)
             }
@@ -136,7 +243,6 @@ const importRegister = ContentState => {
           block = this.createBlock('figure')
           block.functionType = 'table'
           this.appendChild(thead, theadRow)
-          this.appendChild(block, toolBar)
           this.appendChild(block, table)
           this.appendChild(table, thead)
           this.appendChild(table, tbody)
@@ -149,14 +255,27 @@ const importRegister = ContentState => {
           this.appendChild(parentList[0], block)
           break
         }
-        case 'text':
+        case 'text': {
+          value = token.text
+          while (tokens[0].type === 'text') {
+            token = tokens.shift()
+            value += `\n${token.text}`
+          }
+          block = this.createBlock('p')
+          const contentBlock = this.createBlock('span', {
+            text: value
+          })
+          this.appendChild(block, contentBlock)
+          this.appendChild(parentList[0], block)
+          break
+        }
         case 'paragraph': {
           value = token.text
           block = this.createBlock('p')
-          const lines = value.split(LINE_BREAKS_REG).map(line => this.createBlock('span', line))
-          for (const line of lines) {
-            this.appendChild(block, line)
-          }
+          const contentBlock = this.createBlock('span', {
+            text: value
+          })
+          this.appendChild(block, contentBlock)
           this.appendChild(parentList[0], block)
           break
         }
@@ -187,14 +306,18 @@ const importRegister = ContentState => {
         }
         case 'loose_item_start':
         case 'list_item_start': {
-          const { listItemType, bulletListItemMarker, checked, type } = token
-          block = this.createBlock('li')
-          block.listItemType = checked !== undefined ? 'task' : listItemType
-          block.bulletListItemMarker = bulletListItemMarker
-          block.isLooseListItem = type === 'loose_item_start'
+          const { listItemType, bulletMarkerOrDelimiter, checked, type } = token
+          block = this.createBlock('li', {
+            listItemType: checked !== undefined ? 'task' : listItemType,
+            bulletMarkerOrDelimiter,
+            isLooseListItem: type === 'loose_item_start'
+          })
+
           if (checked !== undefined) {
-            const input = this.createBlock('input')
-            input.checked = checked
+            const input = this.createBlock('input', {
+              checked
+            })
+
             this.appendChild(block, input)
           }
           this.appendChild(parentList[0], block)
@@ -205,109 +328,181 @@ const importRegister = ContentState => {
           parentList.shift()
           break
         }
+        case 'space': {
+          break
+        }
         default:
           console.warn(`Unknown type ${token.type}`)
           break
       }
     }
-
+    languageLoaded.clear()
     return rootState.children.length ? rootState.children : [this.createBlockP()]
   }
 
-  ContentState.prototype.htmlToMarkdown = function (html) {
+  ContentState.prototype.htmlToMarkdown = function (html, keeps = []) {
     // turn html to markdown
     const { turndownConfig } = this
     const turndownService = new TurndownService(turndownConfig)
-    usePluginAddRules(turndownService)
-    // remove double `\\` in Math but I dont know why there are two '\' when paste. @jocs
-    const markdown = turndownService.turndown(html) // .replace(/(\\)\\/g, '$1')
+    usePluginAddRules(turndownService, keeps)
+    // fix #752, but I don't know why the &nbsp; vanlished.
+    html = html.replace(/<span>&nbsp;<\/span>/g, ' ')
+    html = turnSoftBreakToSpan(html)
+    const markdown = turndownService.turndown(html)
     return markdown
   }
 
   // turn html to blocks
   ContentState.prototype.html2State = function (html) {
-    const markdown = this.htmlToMarkdown(html)
-    return this.markdownToState(markdown)
-  }
+    const markdown = this.htmlToMarkdown(html, ['ruby', 'rt', 'u', 'br'])
 
-  ContentState.prototype.addCursorToMarkdown = function (markdown, cursor) {
-    const { ch, line } = cursor
-    const lines = markdown.split('\n')
-    const rawText = lines[line]
-    lines[line] = rawText.substring(0, ch) + CURSOR_DNA + rawText.substring(ch)
-    return lines.join('\n')
+    return this.markdownToState(markdown)
   }
 
   ContentState.prototype.getCodeMirrorCursor = function () {
     const blocks = this.getBlocks()
-    const { start: { key, offset } } = this.cursor
-    const block = this.getBlock(key)
-    const { text } = block
-    block.text = text.substring(0, offset) + CURSOR_DNA + text.substring(offset)
-    const markdown = new ExportMarkdown(blocks).generate()
+    const { anchor, focus } = this.cursor
+    const anchorBlock = this.getBlock(anchor.key)
+    const focusBlock = this.getBlock(focus.key)
+    const { text: anchorText } = anchorBlock
+    const { text: focusText } = focusBlock
+    if (anchor.key === focus.key) {
+      const minOffset = Math.min(anchor.offset, focus.offset)
+      const maxOffset = Math.max(anchor.offset, focus.offset)
+      const firstTextPart = anchorText.substring(0, minOffset)
+      const secondTextPart = anchorText.substring(minOffset, maxOffset)
+      const thirdTextPart = anchorText.substring(maxOffset)
+      anchorBlock.text = firstTextPart +
+        (anchor.offset <= focus.offset ? CURSOR_ANCHOR_DNA : CURSOR_FOCUS_DNA) +
+        secondTextPart +
+        (anchor.offset <= focus.offset ? CURSOR_FOCUS_DNA : CURSOR_ANCHOR_DNA) +
+        thirdTextPart
+    } else {
+      anchorBlock.text = anchorText.substring(0, anchor.offset) + CURSOR_ANCHOR_DNA + anchorText.substring(anchor.offset)
+      focusBlock.text = focusText.substring(0, focus.offset) + CURSOR_FOCUS_DNA + focusText.substring(focus.offset)
+    }
+
+    const listIndentation = this.listIndentation
+    const markdown = new ExportMarkdown(blocks, listIndentation).generate()
     const cursor = markdown.split('\n').reduce((acc, line, index) => {
-      const ch = line.indexOf(CURSOR_DNA)
-      if (ch > -1) {
-        Object.assign(acc, { line: index, ch })
+      const ach = line.indexOf(CURSOR_ANCHOR_DNA)
+      const fch = line.indexOf(CURSOR_FOCUS_DNA)
+      if (ach > -1 && fch > -1) {
+        if (ach <= fch) {
+          Object.assign(acc.anchor, { line: index, ch: ach })
+          Object.assign(acc.focus, { line: index, ch: fch - CURSOR_ANCHOR_DNA.length })
+        } else {
+          Object.assign(acc.focus, { line: index, ch: fch })
+          Object.assign(acc.anchor, { line: index, ch: ach - CURSOR_FOCUS_DNA.length })
+        }
+      } else if (ach > -1) {
+        Object.assign(acc.anchor, { line: index, ch: ach })
+      } else if (fch > -1) {
+        Object.assign(acc.focus, { line: index, ch: fch })
       }
       return acc
     }, {
-      line: 0,
-      ch: 0
+      anchor: {
+        line: 0,
+        ch: 0
+      },
+      focus: {
+        line: 0,
+        ch: 0
+      }
     })
-    // remove CURSOR_DNA
-    block.text = text
+    // remove CURSOR_FOCUS_DNA and CURSOR_ANCHOR_DNA
+    anchorBlock.text = anchorText
+    focusBlock.text = focusText
     return cursor
   }
 
-  ContentState.prototype.importCursor = function (cursor) {
+  ContentState.prototype.addCursorToMarkdown = function (markdown, cursor) {
+    const { anchor, focus } = cursor
+    const lines = markdown.split('\n')
+    const anchorText = lines[anchor.line]
+    const focusText = lines[focus.line]
+    if (!anchorText || !focusText) {
+      return {
+        markdown: lines.join('\n'),
+        isValid: false
+      }
+    }
+    if (anchor.line === focus.line) {
+      const minOffset = Math.min(anchor.ch, focus.ch)
+      const maxOffset = Math.max(anchor.ch, focus.ch)
+      const firstTextPart = anchorText.substring(0, minOffset)
+      const secondTextPart = anchorText.substring(minOffset, maxOffset)
+      const thirdTextPart = anchorText.substring(maxOffset)
+      lines[anchor.line] = firstTextPart +
+        (anchor.ch <= focus.ch ? CURSOR_ANCHOR_DNA : CURSOR_FOCUS_DNA) +
+        secondTextPart +
+        (anchor.ch <= focus.ch ? CURSOR_FOCUS_DNA : CURSOR_ANCHOR_DNA) +
+        thirdTextPart
+    } else {
+      lines[anchor.line] = anchorText.substring(0, anchor.ch) + CURSOR_ANCHOR_DNA + anchorText.substring(anchor.ch)
+      lines[focus.line] = focusText.substring(0, focus.ch) + CURSOR_FOCUS_DNA + focusText.substring(focus.ch)
+    }
+
+    return {
+      markdown: lines.join('\n'),
+      isValid: true
+    }
+  }
+
+  ContentState.prototype.importCursor = function (hasCursor) {
     // set cursor
+    const cursor = {
+      anchor: null,
+      focus: null
+    }
+
+    let count = 0
+
     const travel = blocks => {
       for (const block of blocks) {
-        const { key, text, children, editable, type, functionType } = block
+        let { key, text, children, editable } = block
         if (text) {
-          const offset = text.indexOf(CURSOR_DNA)
+          const offset = text.indexOf(CURSOR_ANCHOR_DNA)
           if (offset > -1) {
-            block.text = text.substring(0, offset) + text.substring(offset + CURSOR_DNA.length)
+            block.text = text.substring(0, offset) + text.substring(offset + CURSOR_ANCHOR_DNA.length)
+            text = block.text
+            count++
             if (editable) {
-              this.cursor = {
-                start: { key, offset },
-                end: { key, offset }
-              }
-              // handle cursor in Math block, need to remove `CURSOR_DNA` in preview block
-              if (type === 'span' && functionType === 'codeLine') {
-                const preBlock = this.getParent(this.getParent(block))
-                const code = this.codeBlocks.get(preBlock.key)
-                if (!code) return
-                const offset = code.indexOf(CURSOR_DNA)
-                if (offset > -1) {
-                  const newCode = code.substring(0, offset) + code.substring(offset + CURSOR_DNA.length)
-                  this.codeBlocks.set(preBlock.key, newCode)
-                }
-              }
-              return
+              cursor.anchor = { key, offset }
             }
+          }
+          const focusOffset = text.indexOf(CURSOR_FOCUS_DNA)
+          if (focusOffset > -1) {
+            block.text = text.substring(0, focusOffset) + text.substring(focusOffset + CURSOR_FOCUS_DNA.length)
+            count++
+            if (editable) {
+              cursor.focus = { key, offset: focusOffset }
+            }
+          }
+          if (count === 2) {
+            break
           }
         } else if (children.length) {
           travel(children)
         }
       }
     }
-    if (cursor) {
+    if (hasCursor) {
       travel(this.blocks)
     } else {
       const lastBlock = this.getLastBlock()
       const key = lastBlock.key
       const offset = lastBlock.text.length
-      this.cursor = {
-        start: { key, offset },
-        end: { key, offset }
-      }
+      cursor.anchor = { key, offset }
+      cursor.focus = { key, offset }
+    }
+    if (cursor.anchor && cursor.focus) {
+      this.cursor = cursor
     }
   }
 
   ContentState.prototype.importMarkdown = function (markdown) {
-    this.codeBlocks = new Map()
     this.blocks = this.markdownToState(markdown)
   }
 }

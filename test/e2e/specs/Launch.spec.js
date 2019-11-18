@@ -7,7 +7,7 @@ describe('Launch', function () {
   it('shows the proper application title', function () {
     return this.app.client.getTitle()
       .then(title => {
-        expect(title).to.equal('test-build')
+        expect(title).to.equal('不忘笔记')
       })
   })
 })

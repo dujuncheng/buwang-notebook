@@ -75,6 +75,7 @@
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
     import {convertLineEndings} from '../store/help.js'
+    import qiniu from '../utils/uploadQiniu.js'
 
     import { showContextMenu } from '../contextMenu/editor/index.js'
     const base64 = require('js-base64')
@@ -129,7 +130,6 @@
         }
       },
       mounted () {
-
       },
       watch: {
         typewriter: function (value) {
@@ -214,7 +214,9 @@
             markdown: this.contentChanged,
             preferLooseListItem: true,
             tabSize: 4,
-            theme: ''
+            theme: '',
+            hideQuickInsertHint: false,
+            imageAction: this.imageAction.bind(this),
           }
           const {container} = this.editor = new Muya(ele, config)
           const {
@@ -244,6 +246,7 @@
           bus.$on('undo', this.handleUndo)
           bus.$on('save', this.handleSave)
           bus.$on('redo', this.handleRedo)
+          bus.$on('selectAll', this.handleSelectAll)
           bus.$on('export', this.handleExport)
           bus.$on('paragraph', this.handleEditParagraph)
           bus.$on('format', this.handleInlineFormat)
@@ -259,6 +262,7 @@
           bus.$on('copyAsHtml', this.handleCopyPaste)
           bus.$on('pasteAsPlainText', this.handleCopyPaste)
           bus.$on('insertParagraph', this.handleInsertParagraph)
+          bus.$on('deleteParagraph', this.handleParagraph)
           bus.$on('editTable', this.handleEditTable)
           bus.$on('scroll-to-header', this.scrollToHeader)
           bus.$on('copy-block', this.handleCopyBlock)
@@ -317,6 +321,17 @@
               editor.setHistory(history)
             }
             editor.setMarkdown(markdown, cursor, renderCursor)
+          }
+        },
+        // 自定义上传图片的行为
+        async imageAction(image) {
+          try {
+            const result = await qiniu.upload(image)
+            return result
+          } catch (err) {
+            // 上传报错，把图片保存在本地
+            console.log(err)
+            return ''
           }
         },
         getNoteId () {
@@ -496,6 +511,11 @@
             this.editor.redo()
           }
         },
+        handleSelectAll () {
+          if (this.editor && !this.sourceCode) {
+            this.editor.selectAll()
+          }
+        },
         // Custom copyAsMarkdown copyAsHtml pasteAsPlainText
         handleCopyPaste (type) {
           if (this.editor) {
@@ -562,6 +582,27 @@
             this.editor && this.editor.updateParagraph(type)
           }
         },
+
+        // handle `duplicate`, `delete`, `create paragraph bellow`
+        handleParagraph (type) {
+          const { editor } = this
+          if (editor) {
+            switch (type) {
+              case 'duplicate': {
+                return editor.duplicate()
+              }
+              case 'createParagraph': {
+                return editor.insertParagraph('after', '', true)
+              }
+              case 'deleteParagraph': {
+                return editor.deleteParagraph()
+              }
+              default:
+                console.error(`unknow paragraph edit type: ${type}`)
+            }
+          }
+        },
+
         handleEditTable (data) {
           const { editor } = this
           editor && editor.editTable(data)
