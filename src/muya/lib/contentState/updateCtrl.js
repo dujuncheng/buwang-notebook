@@ -10,6 +10,7 @@ const INLINE_UPDATE_FRAGMENTS = [
   '^(?:[\\s\\S]+?)\\n {0,3}(\\={3,}|\\-{3,})(?= {1,}|$)', // Setext headings **match from beginning**
   '(?:^|\n) {0,3}(>).+', // Block quote
   '^( {4,})', // Indent code **match from beginning**
+  '^(\\[\\^[^\\^\\[\\]\\s]+?(?<!\\\\)\\]: )', // Footnote **match from beginning**
   '(?:^|\n) {0,3}((?:\\* *\\* *\\*|- *- *-|_ *_ *_)[ \\*\\-\\_]*)$' // Thematic break
 ]
 
@@ -21,7 +22,7 @@ const updateCtrl = ContentState => {
     const { checked, id } = checkbox
     const block = this.getBlock(id)
     block.checked = checked
-    checkbox.classList.toggle(CLASS_OR_ID['AG_CHECKBOX_CHECKED'])
+    checkbox.classList.toggle(CLASS_OR_ID.AG_CHECKBOX_CHECKED)
   }
 
   ContentState.prototype.checkSameMarkerOrDelimiter = function (list, markerOrDelimiter) {
@@ -38,7 +39,10 @@ const updateCtrl = ContentState => {
     const endOffset = cEnd ? cEnd.offset : focus.offset
     const NO_NEED_TOKEN_REG = /text|hard_line_break|soft_line_break/
 
-    for (const token of tokenizer(startBlock.text, undefined, undefined, labels)) {
+    for (const token of tokenizer(startBlock.text, {
+      labels,
+      options: this.muya.options
+    })) {
       if (NO_NEED_TOKEN_REG.test(token.type)) continue
       const { start, end } = token.range
       const textLen = startBlock.text.length
@@ -48,7 +52,10 @@ const updateCtrl = ContentState => {
         return true
       }
     }
-    for (const token of tokenizer(endBlock.text, undefined, undefined, labels)) {
+    for (const token of tokenizer(endBlock.text, {
+      labels,
+      options: this.muya.options
+    })) {
       if (NO_NEED_TOKEN_REG.test(token.type)) continue
       const { start, end } = token.range
       const textLen = endBlock.text.length
@@ -67,8 +74,12 @@ const updateCtrl = ContentState => {
    */
   ContentState.prototype.checkInlineUpdate = function (block) {
     // table cell can not have blocks in it
-    if (/th|td|figure/.test(block.type)) return false
-    if (/codeLine|languageInput/.test(block.functionType)) return false
+    if (/figure/.test(block.type)) {
+      return false
+    }
+    if (/cellContent|codeContent|languageInput|footnoteInput/.test(block.functionType)) {
+      return false
+    }
 
     let line = null
     const { text } = block
@@ -79,12 +90,13 @@ const updateCtrl = ContentState => {
     const listItem = this.getParent(block)
     const [
       match, bullet, tasklist, order, atxHeader,
-      setextHeader, blockquote, indentCode, hr
+      setextHeader, blockquote, indentCode, footnote, hr
     ] = text.match(INLINE_UPDATE_REG) || []
+    const { footnote: isSupportFootnote } = this.muya.options
 
     switch (true) {
       case (!!hr && new Set(hr.split('').filter(i => /\S/.test(i))).size === 1):
-        return this.updateHr(block, hr, line)
+        return this.updateThematicBreak(block, hr, line)
 
       case !!bullet:
         return this.updateList(block, 'bullet', bullet, line)
@@ -108,6 +120,9 @@ const updateCtrl = ContentState => {
       case !!indentCode:
         return this.updateIndentCode(block, line)
 
+      case !!footnote && block.type === 'p' && !block.parent && isSupportFootnote:
+        return this.updateFootnote(block, line)
+
       case !match:
       default:
         return this.updateToParagraph(block, line)
@@ -115,7 +130,7 @@ const updateCtrl = ContentState => {
   }
 
   // Thematic break
-  ContentState.prototype.updateHr = function (block, marker, line) {
+  ContentState.prototype.updateThematicBreak = function (block, marker, line) {
     // If the block is already thematic break, no need to update.
     if (block.type === 'hr') return null
     const text = line.text
@@ -124,9 +139,10 @@ const updateCtrl = ContentState => {
     let thematicLine = ''
     const postParagraphLines = []
     let thematicLineHasPushed = false
-
     for (const l of lines) {
-      if (/ {0,3}(?:\\* *\\* *\\*|- *- *-|_ *_ *_)[ \\*\\-\\_]*$/.test(l) && !thematicLineHasPushed) {
+      /* eslint-disable no-useless-escape */
+      if (/ {0,3}(?:\* *\* *\*|- *- *-|_ *_ *_)[ \*\-\_]*$/.test(l) && !thematicLineHasPushed) {
+      /* eslint-enable no-useless-escape */
         thematicLine = l
         thematicLineHasPushed = true
       } else if (!thematicLineHasPushed) {
@@ -155,9 +171,12 @@ const updateCtrl = ContentState => {
     this.removeBlock(block)
     const { start, end } = this.cursor
     const key = thematicBlock.children[0].key
+    const preParagraphLength = preParagraphLines.reduce((acc, i) => acc + i.length + 1, 0) // Add one, because the `\n`
+    const startOffset = start.offset - preParagraphLength
+    const endOffset = end.offset - preParagraphLength
     this.cursor = {
-      start: { key, offset: start.offset },
-      end: { key, offset: end.offset }
+      start: { key, offset: startOffset },
+      end: { key, offset: endOffset }
     }
     return thematicBlock
   }
@@ -510,24 +529,25 @@ const updateCtrl = ContentState => {
 
     const key = quoteParagraphBlock.children[0].key
     const { start, end } = this.cursor
-    this.cursor = {
-      start: { key, offset: start.offset - 1 },
-      end: { key, offset: end.offset - 1 }
-    }
 
+    this.cursor = {
+      start: { key, offset: Math.max(0, start.offset - 1) },
+      end: { key, offset: Math.max(0, end.offset - 1) }
+    }
     return quoteBlock
   }
 
   ContentState.prototype.updateIndentCode = function (block, line) {
+    const lang = ''
     const codeBlock = this.createBlock('code', {
-      lang: ''
+      lang
     })
     const inputBlock = this.createBlock('span', {
       functionType: 'languageInput'
     })
     const preBlock = this.createBlock('pre', {
       functionType: 'indentcode',
-      lang: ''
+      lang
     })
 
     const text = line ? line.text : block.text
@@ -545,15 +565,13 @@ const updateCtrl = ContentState => {
         paragraphLines.push(l)
       }
     }
-    codeLines.forEach(text => {
-      const codeLine = this.createBlock('span', {
-        text,
-        functionType: 'codeLine',
-        lang: ''
-      })
-      this.appendChild(codeBlock, codeLine)
+    const codeContent = this.createBlock('span', {
+      text: codeLines.join('\n'),
+      functionType: 'codeContent',
+      lang
     })
 
+    this.appendChild(codeBlock, codeContent)
     this.appendChild(preBlock, inputBlock)
     this.appendChild(preBlock, codeBlock)
     this.insertBefore(preBlock, block)
