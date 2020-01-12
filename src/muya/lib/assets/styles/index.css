@@ -1,3 +1,20 @@
+:root {
+    --brandColor: #5b3cc4;
+    --successColor: rgb(23, 201, 100);
+    --warningColor: rgb(255, 130, 0);
+    --dangerColor: rgb(242, 19, 93);
+    --activeColor: #409eff;
+    --infoColor: #909399;
+    --primaryColor: #303133;
+    --regularColor: #606266;
+    --secondaryColor: #909399;
+    --placeholerColor: #C0C4CC;
+    --baseBorder: #DCDFE6;
+    --lightBorder: #E4E7ED;
+    --lighterBorder: #EBEEF5;
+    --extraLightBorder: #F2F6FC;
+}
+
 @keyframes loading {
   0% {
     -webkit-transform: rotate(0deg);

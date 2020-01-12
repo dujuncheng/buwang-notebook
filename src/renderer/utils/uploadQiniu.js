@@ -189,7 +189,6 @@ class UploadImgQiNiu {
       }, false);
       // 错误监听
       xhr.addEventListener('error', (e) => {
-        console.log('上传失败');
         console.log(e)
         reject(e);
       }, false);

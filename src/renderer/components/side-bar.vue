@@ -193,10 +193,8 @@
             insertDom.focus()
           })
         },
-        handleNodeClick (data) {
-          let catalogId = Number(data && data.catalog_id)
+        setSelectedCatalog (catalogId) {
           if (catalogId === undefined) {
-            alert('没有catalogId报错了')
             return
           }
           if (catalogId === this.selectedCatalogId) {
@@ -208,6 +206,10 @@
             value: catalogId
           })
           this.fetchNoteList(catalogId)
+        },
+        handleNodeClick (data) {
+          let catalogId = Number(data && data.catalog_id)
+          this.setSelectedCatalog(catalogId)
         },
         fetchNoteList (catalogId) {
           this.$store.dispatch('GET_NOTE_LIST', {catalogId})
@@ -255,11 +257,16 @@
             return
           }
           this.$store.commit('SET_SELECTED', {num})
-          // 处理第一次打开的情况
-          if (!this.selectedCatalogId) {
-            this.handleNodeClick({
-              catalog_id: this.catalog[0].catalog_id
-            })
+
+          if (num === 0) {
+            // 如果是待复习状态
+            this.$store.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
+          } else if (num === 1) {
+            let catalogId = this.selectedCatalogId
+            if (this.catalog && this.catalog[0] && this.catalog[0].catalog_id) {
+              catalogId = this.catalog[0].catalog_id
+            }
+            this.setSelectedCatalog(catalogId)
           }
         },
         // 处理 input blur事件

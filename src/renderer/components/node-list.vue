@@ -46,6 +46,7 @@
     import { mapState, mapGetters } from 'vuex'
     import noteListItem from './middle-list/note-list-item.vue'
     import reviewListItem from './middle-list/review-list-item.vue'
+    import eventBus from '../utils/eventBus'
     export default {
       components: {
         noteListItem,
@@ -92,18 +93,24 @@
             return
           }
           let currentIndex = 0
-          let result = ''
+          let result = false
           for (let i = 0; i < arr.length; i++) {
             if (arr[i].note_id === noteId) {
               currentIndex = i
             }
           }
           if (arr[currentIndex + 1]) {
-            result = arr[currentIndex + 1]
+            result = {
+              index: currentIndex + 1,
+              note: arr[currentIndex + 1]
+            }
           } else if (arr[currentIndex - 1]) {
-            result = arr[currentIndex - 1]
+            result = {
+              index: currentIndex - 1,
+              note: arr[currentIndex - 1]
+            }
           } else {
-            result = ''
+            result = false
           }
           return result
         },
@@ -114,9 +121,14 @@
           let nextNote = this.getNext(this.noteItemSelected, this.notelist)
           this.$store.dispatch('DELETE_NOTE', {
             catalogId: this.selectedCatalogId,
-            noteId: this.noteItemSelected,
-            nextNote
+            noteId: this.noteItemSelected
           })
+          if (nextNote) {
+            let {index, note} = nextNote
+            this.clickNote(note.note_id, index)
+          } else {
+            bus.$emit('clearEditBox')
+          }
         },
         // 设置选中的排序
         orderNoteItem ({id}) {
@@ -164,6 +176,9 @@
           }
           await this.$store.dispatch('ADD_NOTE', params)
           document.getElementById(noteId).scrollIntoView()
+          this.$nextTick(() => {
+            this.clickNote(noteId, 0)
+          })
         },
         // 选择笔记
         clickNote (noteId, index) {

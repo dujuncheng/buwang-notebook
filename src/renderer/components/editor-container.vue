@@ -1,63 +1,68 @@
 <template>
     <div class="wrap">
-        <div class="title-container">
-            <input type="text" class="title" placeholder="未命名" v-model="title"/>
-        </div>
-        <!-- 在记笔记状态下，才出现 工具箱-->
-        <div v-if="sideBarSelected === 1" class="editor-box-container">
-            <editorBox></editorBox>
-        </div>
-        <!-- 在复习的状态下，才出现 分割线-->
-        <div v-if="sideBarSelected === 0" class="review-box-container"></div>
-        <div class="editor-container"
-             :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
-             :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
+        <div v-show="showEdit">
+            <div class="title-container">
+                <input type="text" class="title" placeholder="未命名" v-model="title"/>
+            </div>
+            <!-- 在记笔记状态下，才出现 工具箱-->
+            <div v-if="sideBarSelected === 1" class="editor-box-container">
+                <editorBox></editorBox>
+            </div>
+            <!-- 在复习的状态下，才出现 分割线-->
+            <div v-if="sideBarSelected === 0" class="review-box-container"></div>
+            <div class="editor-container"
+                 :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
+                 :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
 'font-family': editorFontFamily}"
-        >
-            <!-- 内容编辑区域 -->
-            <div class="J_editor editor"></div>
-            <!-- 确认复习区域 在复习的状态下，才出现 -->
-            <div class="review-btn-container" v-show="sideBarSelected === 0">
-                <el-button class="review-btn" icon="el-icon-circle-check-outline" type="primary" plain @click="hasReview">我已复习</el-button>
+            >
+                <!-- 内容编辑区域 -->
+                <div class="J_editor editor"></div>
+                <!-- 确认复习区域 在复习的状态下，才出现 -->
+                <div class="review-btn-container" v-show="sideBarSelected === 0">
+                    <el-button class="review-btn" icon="el-icon-circle-check-outline" type="primary" plain @click="hasReview">我已复习</el-button>
+                </div>
             </div>
+            <el-dialog
+                    :visible.sync="dialogTableVisible"
+                    :show-close="isShowClose"
+                    :modal="true"
+                    custom-class="ag-dialog-table"
+                    width="454px"
+                    center
+                    dir='ltr'
+            >
+                <el-form :model="tableChecker" :inline="true">
+                    <el-form-item label="Rows">
+                        <el-input-number
+                                ref="rowInput"
+                                size="mini"
+                                v-model="tableChecker.rows"
+                                controls-position="right"
+                                :min="2"
+                                :max="20"
+                        ></el-input-number>
+                    </el-form-item>
+                    <el-form-item label="Columns">
+                        <el-input-number
+                                size="mini"
+                                v-model="tableChecker.columns"
+                                controls-position="right"
+                                :min="2"
+                                :max="20"
+                        ></el-input-number>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogTableVisible = false" icon="el-icon-close">
+                    </el-button>
+                    <el-button type="primary" @click="handleDialogTableConfirm" icon="el-icon-check">
+                    </el-button>
+                </div>
+            </el-dialog>
         </div>
-        <el-dialog
-            :visible.sync="dialogTableVisible"
-            :show-close="isShowClose"
-            :modal="true"
-            custom-class="ag-dialog-table"
-            width="454px"
-            center
-            dir='ltr'
-        >
-            <el-form :model="tableChecker" :inline="true">
-                <el-form-item label="Rows">
-                    <el-input-number
-                        ref="rowInput"
-                        size="mini"
-                        v-model="tableChecker.rows"
-                        controls-position="right"
-                        :min="2"
-                        :max="20"
-                    ></el-input-number>
-                </el-form-item>
-                <el-form-item label="Columns">
-                    <el-input-number
-                        size="mini"
-                        v-model="tableChecker.columns"
-                        controls-position="right"
-                        :min="2"
-                        :max="20"
-                    ></el-input-number>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="dialogTableVisible = false" icon="el-icon-close">
-                </el-button>
-                <el-button type="primary" @click="handleDialogTableConfirm" icon="el-icon-check">
-                </el-button>
-            </div>
-        </el-dialog>
+        <div v-show="!showEdit">
+            <div class="empty-area"></div>
+        </div>
     </div>
 </template>
 
@@ -109,7 +114,8 @@
           'noteItemSelected': state => state.notebook.noteItemSelected,
           'reviewItemSelected': state => state.notebook.reviewItemSelected,
           'loading': state => state.notebook.loading,
-          'sideBarSelected': state => state.notebook.sideBarSelected
+          'sideBarSelected': state => state.notebook.sideBarSelected,
+          'showEdit': state => state.notebook.showEdit
         }),
         ...mapGetters(['currentNote'])
       },
@@ -216,7 +222,7 @@
             tabSize: 4,
             theme: '',
             hideQuickInsertHint: false,
-            imageAction: this.imageAction.bind(this),
+            imageAction: this.imageAction.bind(this)
           }
           const {container} = this.editor = new Muya(ele, config)
           const {
@@ -267,6 +273,7 @@
           bus.$on('scroll-to-header', this.scrollToHeader)
           bus.$on('copy-block', this.handleCopyBlock)
           bus.$on('print', this.handlePrint)
+          bus.$on('clearEditBox', this.clearEditBox)
 
           this.editor.on('insert-image', type => {
             if (type === 'absolute' || type === 'relative') {
@@ -324,7 +331,7 @@
           }
         },
         // 自定义上传图片的行为
-        async imageAction(image) {
+        async imageAction (image) {
           try {
             const result = await qiniu.upload(image)
             return result
@@ -344,6 +351,13 @@
             noteId = this.noteItemSelected
           }
           return noteId
+        },
+        clearEditBox () {
+          // 编辑器区域
+          this.editor.clearHistory()
+          this.editor.setMarkdown('', undefined, false)
+          // 标题区域
+          this.$store.commit('SET_NOTEBOOK', {name: 'showEdit', value: false})
         },
         handleImagePath (files) {
           const { editor } = this
@@ -375,6 +389,9 @@
         },
         // 监听 ctrl + s
         handleSave () {
+          if (!this.showEdit) {
+            return
+          }
           let cache = window.localStorage.getItem('_change_note')
           if (this.changeNote.length === 0 ||
                     !cache ||
@@ -487,8 +504,8 @@
             // 历史上被修改的, 那一定是修改了
             result = true
           } else {
-            let nowcontent = String(content).trim()
-            let oldcontent = String(this.currentNote.content).trim()
+            let nowcontent = String(content).replace(/[\r\n]/g, '').trim()
+            let oldcontent = String(this.currentNote.content || '').replace(/[\r\n]/g, '').trim()
             // 没有被修改的, 和异步结果中比较
             result = (nowcontent !== oldcontent)
           }
@@ -686,6 +703,12 @@
         position: relative;
         overflow-x: hidden;
         ._no_scroll_bar();
+        .empty-area {
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-color: white;
+        }
         .empty-container {
             width: 100%;
             height: 100%;

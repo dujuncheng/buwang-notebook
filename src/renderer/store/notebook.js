@@ -1,6 +1,7 @@
 import ajax from '../utils/ajax.js'
 import Swal from 'sweetalert2'
 import {friendlyTime} from '../utils/friendTime.js'
+import bus from '../bus/index.js'
 const base64 = require('js-base64')
 
 const popFail = (obj) => {
@@ -62,7 +63,9 @@ const state = {
   // 待复习 【中间栏】 选中的
   reviewItemSelected: 0,
   // 目录【左边栏】 选中的
-  selectedCatalogId: 0
+  selectedCatalogId: 0,
+  // 是否显示可以编辑的区域
+  showEdit: true
 }
 
 const getters = {
@@ -94,6 +97,9 @@ const mutations = {
   },
   // 选中笔记
   SELECT_NOTE (state, {noteId, index}) {
+    if (!state.showEdit) {
+      state.showEdit = true
+    }
     state.noteItemSelected = noteId
     state.contentChanged = state.notelist[index].content
     state.titleChanged = state.notelist[index].title
@@ -115,14 +121,6 @@ const mutations = {
       return
     }
     state.sideBarSelected = num
-    if (num === 0) {
-      // 如果是待复习状态
-      this.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
-    } else if (num === 1) {
-      // 如果是笔记本状态
-      let catalogId = state.selectedCatalogId || 0
-      this.dispatch('GET_NOTE_LIST', {catalogId})
-    }
   },
   SET_CATALOG (state, { catalog }) {
     state.catalog = catalog
@@ -132,6 +130,18 @@ const mutations = {
   },
   ADD_NOTE (state, {item}) {
     state.notelist.unshift(item)
+  },
+  DELETE_NOTE_BY_ID (state, {id}) {
+    if (id === undefined) {
+      return
+    }
+    for (let i = state.notelist.length - 1; i >= 0; i--) {
+      let note = state.notelist[i]
+      if (Number(note.note_id) === Number(id)) {
+        state.notelist.splice(i, 1)
+        break
+      }
+    }
   },
   /**
      * 设置一条笔记列表
@@ -159,7 +169,7 @@ const mutations = {
       }
     }
     // 如果没有选择中间的nodelist, 则默认是第一个
-    if (state.notelist[sameNote]) {
+    if (state.notelist[sameNote] && state.sideBarSelected === 1) {
       state.noteItemSelected = state.notelist[sameNote].note_id
       state.contentChanged = state.notelist[sameNote].content
       state.titleChanged = state.notelist[sameNote].title
@@ -186,7 +196,7 @@ const mutations = {
       }
     }
     // 如果没有选择中间的nodelist, 则默认是第一个
-    if (state.reviewlist[sameNote]) {
+    if (state.reviewlist[sameNote] && state.sideBarSelected === 0) {
       state.reviewItemSelected = state.reviewlist[sameNote].note_id
       state.contentChanged = state.reviewlist[sameNote].content
       state.titleChanged = state.reviewlist[sameNote].title
@@ -331,7 +341,7 @@ const actions = {
      * @returns {Promise<void>}
      * @constructor
      */
-  async DELETE_NOTE ({commit}, {noteId, catalogId, nextNote}) {
+  async DELETE_NOTE ({commit}, {noteId, catalogId}) {
     let params = {
       note_id: noteId
     }
@@ -343,21 +353,9 @@ const actions = {
         return
       }
       cleanStorageChange(noteId)
-
-      await this.dispatch('GET_CATALOG')
-      await this.dispatch('GET_NOTE_LIST', {catalogId})
-      commit('SET_NOTEBOOK', {
-        name: 'selectedCatalogId',
-        value: catalogId
-      })
-
-      let newNoteItemSelected = 0
-      if (nextNote) {
-        newNoteItemSelected = nextNote.note_id
-      }
-      commit('SET_NOTEBOOK', {
-        name: 'noteItemSelected',
-        value: newNoteItemSelected
+      // 把这一条笔记从列表中删除
+      commit('DELETE_NOTE_BY_ID', {
+        id: noteId
       })
     } catch (e) {
       popFail(e)
@@ -474,7 +472,15 @@ const actions = {
         return
       }
       let data = result.data
-      commit('SET_NOTELIST', {notelist: data.noteList})
+      if (data.noteList && data.noteList.length > 0) {
+        commit('SET_NOTELIST', {notelist: data.noteList})
+        commit('SET_NOTEBOOK', {name: 'showEdit', value: true})
+      } else {
+        // 清空 编辑区
+        bus.$emit('clearEditBox')
+        commit('SET_NOTEBOOK', {name: 'notelist', value: []})
+        commit('SET_NOTEBOOK', {name: 'titleChanged', value: ''})
+      }
     } catch (e) {
       popFail(e)
     }

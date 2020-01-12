@@ -6,7 +6,7 @@
             <div class="left">
                 <!--字符-->
                 <i class="icon el-icon-time"></i>
-                <span class="text">20字</span>
+                <span class="text">{{note.content.length || 0}}字</span>
             </div>
             <div class="right">
                 <!--复习次数-->
