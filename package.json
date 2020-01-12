@@ -63,12 +63,14 @@
     "crypto-js": "^3.1.9-1",
     "diacritics-map": "^0.1.0",
     "dompurify": "^1.0.8",
+    "execall": "^2.0.0",
     "file-icons-js": "^1.0.3",
     "flowchart.js": "^1.11.3",
     "fs-extra": "^7.0.1",
     "fuzzaldrin": "^2.1.0",
     "github-markdown-css": "^2.10.0",
     "html-tags": "^2.0.0",
+    "joplin-turndown-plugin-gfm": "^1.0.11",
     "katex": "^0.10.0",
     "markdown-toc": "^1.2.0",
     "popper": "^1.0.1",
@@ -93,7 +95,8 @@
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-electron": "^1.0.0"
+    "vuex-electron": "^1.0.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.6.3",
