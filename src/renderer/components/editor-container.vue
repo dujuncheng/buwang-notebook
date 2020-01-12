@@ -176,7 +176,7 @@
           this.editor.clearHistory()
           if (this.currentFile.markdown !== value) {
             this.blurEditor()
-            this.editor.setMarkdown(value)
+            this.editor.setMarkdown(value, undefined, false)
           }
         },
         // 检测当前的笔记变化
