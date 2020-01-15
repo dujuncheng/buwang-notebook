@@ -105,10 +105,10 @@ const mutations = {
     state.titleChanged = state.notelist[index].title
   },
   // 选中待复习
-  SELECT_REVIEW (state, {noteId, review}) {
+  SELECT_REVIEW (state, {noteId, index}) {
     state.reviewItemSelected = noteId
-    state.contentChanged = review.content
-    state.titleChanged = review.title
+    state.contentChanged = state.reviewlist[index].content
+    state.titleChanged = state.reviewlist[index].title
   },
   SET_NOTEBOOK (state, {name, value}) {
     state[name] = value
@@ -473,7 +473,9 @@ const actions = {
       }
       let data = result.data
       if (data.noteList && data.noteList.length > 0) {
+        //
         commit('SET_NOTELIST', {notelist: data.noteList})
+        // 显示编辑区域
         commit('SET_NOTEBOOK', {name: 'showEdit', value: true})
       } else {
         // 清空 编辑区
