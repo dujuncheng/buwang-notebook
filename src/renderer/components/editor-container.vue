@@ -82,6 +82,8 @@
     import {convertLineEndings} from '../store/help.js'
     import qiniu from '../utils/uploadQiniu.js'
 
+    import '../../muya/themes/default.css'
+
     import { showContextMenu } from '../contextMenu/editor/index.js'
     const base64 = require('js-base64')
 
@@ -109,7 +111,6 @@
           'markdown': state => state.notebook.markdown,
           'titleChanged': state => state.notebook.titleChanged,
           'contentChanged': state => state.notebook.contentChanged,
-          // 全局的被修改的note列表
           'changeNote': state => state.notebook.changeNote,
           'noteItemSelected': state => state.notebook.noteItemSelected,
           'reviewItemSelected': state => state.notebook.reviewItemSelected,
@@ -368,19 +369,19 @@
           editor && editor.insertParagraph(location)
         },
         addThemeStyle (theme) {
-          const linkId = 'ag-theme'
-          const href = process.env.NODE_ENV !== 'production'
-            ? `./src/muya/themes/${theme}.css`
-            : `./static/themes/${theme}.css`
-          let link = document.querySelector(`#${linkId}`)
-
-          if (!link) {
-            link = document.createElement('link')
-            link.setAttribute('rel', 'stylesheet')
-            link.id = linkId
-            document.head.appendChild(link)
-          }
-          link.href = href
+          // const linkId = 'ag-theme'
+          // const href = process.env.NODE_ENV !== 'production'
+          //   ? `./src/muya/themes/${theme}.css`
+          //   : `./static/themes/${theme}.css`
+          // let link = document.querySelector(`#${linkId}`)
+          //
+          // if (!link) {
+          //   link = document.createElement('link')
+          //   link.setAttribute('rel', 'stylesheet')
+          //   link.id = linkId
+          //   document.head.appendChild(link)
+          // }
+          // link.href = href
         },
         handleUndo () {
           if (this.editor) {

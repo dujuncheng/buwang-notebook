@@ -3,7 +3,7 @@
         <!-- 待复习 -->
         <div class="category-title-container"
              :style="brainStyle"
-             @click="setSelected(0)"
+             @click="handleTopClick(0)"
         >
             <p class="title-text">待复习</p>
             <span class="badge" v-show="reviewlist.length > 0">{{reviewlist.length}}</span>
@@ -12,7 +12,7 @@
         <!-- 待办清单 -->
         <!--<div class="category-title-container"-->
              <!--:style="todoStyle"-->
-             <!--@click="setSelected(2)"-->
+             <!--@click="handleTopClick(2)"-->
         <!--&gt;-->
             <!--<p class="title-text">任务清单</p>-->
             <!--<span class="badge">10</span>-->
@@ -21,7 +21,7 @@
         <!-- 笔记本 -->
         <div class="category-title-container"
              :style="noteStyle"
-             @click="setSelected(1)"
+             @click="handleTopClick(1)"
         >
             <p class="title-text">笔记本</p>
             <i class="fas fa-sticky-note title-icon"></i>
@@ -197,9 +197,9 @@
           if (catalogId === undefined) {
             return
           }
-          if (catalogId === this.selectedCatalogId) {
-            return
-          }
+          // if (catalogId === this.selectedCatalogId) {
+          //   return
+          // }
           // 设置选中的目录
           this.$store.commit('SET_NOTEBOOK', {
             name: 'selectedCatalogId',
@@ -251,8 +251,8 @@
             parentId: parentId
           })
         },
-        // 设置用户点击
-        setSelected (num) {
+        // top 点击
+        handleTopClick (num) {
           if (num === undefined) {
             return
           }
@@ -262,11 +262,9 @@
             // 如果是待复习状态
             this.$store.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
           } else if (num === 1) {
-            let catalogId = this.selectedCatalogId
-            if (this.catalog && this.catalog[0] && this.catalog[0].catalog_id) {
-              catalogId = this.catalog[0].catalog_id
-            }
-            this.setSelectedCatalog(catalogId)
+            // 如果是 笔记本 状态
+            let catalogId = this.selectedCatalogId || this.catalog[0].catalog_id
+            this.handleNodeClick({catalog_id: catalogId })
           }
         },
         // 处理 input blur事件

@@ -30,7 +30,7 @@
                      v-for="(review , index) in reviewlist"
                      :key="index"
                      :class="reviewItemSelected == review.note_id ? 'item-selected':''"
-                     @click="clickReview(review.note_id, review)"
+                     @click="clickReview(review.note_id, index)"
                 >
                     <reviewListItem :review="review"></reviewListItem>
                 </div>
@@ -188,12 +188,12 @@
           // // 设置选中的笔记
           this.$store.commit('SELECT_NOTE', {noteId, index})
         },
-        clickReview (noteId, review) {
+        clickReview (noteId, index) {
           if (noteId === undefined) {
             return
           }
           // 设置选中的笔记
-          this.$store.commit('SELECT_REVIEW', {noteId, review})
+          this.$store.commit('SELECT_REVIEW', {noteId, index})
         }
       }
     }
