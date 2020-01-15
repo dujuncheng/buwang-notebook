@@ -64,7 +64,7 @@ const pasteCtrl = ContentState => {
     return type
   }
 
-  ContentState.prototype.standardizeHTML = async function (html) {
+  ContentState.prototype.standardizeHTML = function (html) {
     // Only extract the `body.innerHTML` when the `html` is a full HTML Document.
     if (/<body>[\s\S]*<\/body>/.test(html)) {
       const match = /<body>([\s\S]*)<\/body>/.exec(html)
@@ -106,22 +106,22 @@ const pasteCtrl = ContentState => {
     }
 
     // Prevent it parse into a link if copy a url.
-    const links = Array.from(tempWrapper.querySelectorAll('a'))
-    for (const link of links) {
-      const href = link.getAttribute('href')
-      const text = link.textContent
-
-      if (href === text) {
-        const title = await getPageTitle(href)
-        if (title) {
-          link.textContent = title
-        } else {
-          const span = document.createElement('span')
-          span.innerHTML = text
-          link.replaceWith(span)
-        }
-      }
-    }
+    // const links = Array.from(tempWrapper.querySelectorAll('a'))
+    // for (const link of links) {
+    //   const href = link.getAttribute('href')
+    //   const text = link.textContent
+    //
+    //   if (href === text) {
+    //     const title = await getPageTitle(href)
+    //     if (title) {
+    //       link.textContent = title
+    //     } else {
+    //       const span = document.createElement('span')
+    //       span.innerHTML = text
+    //       link.replaceWith(span)
+    //     }
+    //   }
+    // }
     return tempWrapper.innerHTML
   }
 
@@ -141,7 +141,7 @@ const pasteCtrl = ContentState => {
           src: imagePath
         })
       }
-      const nSrc = await this.muya.options.imageAction(imagePath, id)
+      const nSrc = await this.muya.options.imageAction(imagePath)
       const { src } = getImageSrc(imagePath)
       if (src) {
         this.stateRender.urlMap.set(nSrc, src)
@@ -221,6 +221,7 @@ const pasteCtrl = ContentState => {
 
   // Handle global events.
   ContentState.prototype.docPasteHandler = async function (event) {
+    console.log('docPasteHandler')
     // TODO: Pasting into CodeMirror will not work for special data like images
     // or tables (HTML) because it's not handled.
 
@@ -232,6 +233,7 @@ const pasteCtrl = ContentState => {
 
   // Handle `normal` and `pasteAsPlainText` paste for preview mode.
   ContentState.prototype.pasteHandler = async function (event, type = 'normal', rawText, rawHtml) {
+    console.log(event)
     event.preventDefault()
     event.stopPropagation()
 
@@ -244,7 +246,7 @@ const pasteCtrl = ContentState => {
     }
 
     // Remove crap from HTML such as meta data and styles.
-    html = await this.standardizeHTML(html)
+    html = this.standardizeHTML(html)
 
     let copyType = this.checkCopyType(html, text)
     const { start, end } = this.cursor
@@ -511,9 +513,9 @@ const pasteCtrl = ContentState => {
     }
     this.checkInlineUpdate(cursorBlock)
     this.partialRender()
-    this.muya.dispatchSelectionChange()
-    this.muya.dispatchSelectionFormats()
-    return this.muya.dispatchChange()
+    // this.muya.dispatchSelectionChange()
+    // this.muya.dispatchSelectionFormats()
+    // return this.muya.dispatchChange()
   }
 }
 
