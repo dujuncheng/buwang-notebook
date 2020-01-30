@@ -423,7 +423,7 @@
             let item = {}
             item.note_id = Number(keyArr[i])
             item.title = obj[keyArr[i]].title
-            item.content = base64.Base64.encode(obj[keyArr[i]].content)
+            item.content = obj[keyArr[i]].content
             result.push(item)
           }
           return result

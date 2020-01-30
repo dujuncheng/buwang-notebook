@@ -40,17 +40,48 @@ const cleanStorageChange = (noteId) => {
   }
 }
 
+const encodeChangeArr = (changeArr) => {
+  let temp = []
+  for (let i = 0; i < changeArr.length; i++) {
+    let obj = {
+      ...changeArr[i],
+      content: base64.Base64.encode(changeArr[i].content)
+    }
+    temp.push(obj)
+  }
+  return temp
+}
+
 const state = {
   loading: false,
   // 全局的被修改的note
   changeNote: [],
   // 左侧的目录
   catalog: [],
-  // 中间的笔记列表
+  // [中间一列] 笔记列表
+  // [ {id: 909,
+  //   'note_id': 79487824008777,
+  //   'title': '不应该把一切温柔都视为理所应当',
+  //   'content': '',
+  //   'need_review': 1,
+  //   'notify_time': 1580392893,
+  //   'frequency': 3,
+  //   'review_num': 1} ]
   notelist: [],
   // 待复习列表
+  // [ {catalog_id: 75532910323295,
+  //   note_id: 79158769640990,
+  //   title: '【已整理】 react hook'
+  //   content: '',
+  //   frequency: 3,
+  //   need_review: 1,
+  //   notify_time: 1579160596,
+  //   review_num: 0
+  // } ]
   reviewlist: [],
+  // 编辑区域的内容
   contentChanged: '',
+  // 标题
   titleChanged: '',
   // 排序规则
   selectedOrder: 2,
@@ -95,7 +126,7 @@ const mutations = {
   PUSH_CHANGE_NOTE (state, {noteId}) {
     state.changeNote.push(noteId)
   },
-  // 选中笔记
+  // [ 中间一列 ] click 选中笔记
   SELECT_NOTE (state, {noteId, index}) {
     if (!state.showEdit) {
       state.showEdit = true
@@ -103,6 +134,27 @@ const mutations = {
     state.noteItemSelected = noteId
     state.contentChanged = state.notelist[index].content
     state.titleChanged = state.notelist[index].title
+  },
+  // ctrl + s 保存，循环调用, 本地修改 notelist,  reviewlist
+  // changeArr [ { content, note_id, title } ]
+  SET_NOTE_CONTENT (state, { changeArr }) {
+    let flag = ''
+    if (state.sideBarSelected === 0) {
+      // 待复习状态
+      flag = 'reviewlist'
+    } else if (state.sideBarSelected === 1) {
+      // 记笔记的状态
+      flag = 'notelist'
+    }
+    for (let i = 0; i < changeArr.length; i++) {
+      let obj = changeArr[i]
+      for (let j = 0; j < state[flag].length; j++) {
+        if (Number(state[flag][j].note_id) === Number(obj.note_id)) {
+          state[flag][j].content = obj.content
+          state[flag][j].title = obj.title
+        }
+      }
+    }
   },
   // 选中待复习
   SELECT_REVIEW (state, {noteId, index}) {
@@ -473,7 +525,6 @@ const actions = {
       }
       let data = result.data
       if (data.noteList && data.noteList.length > 0) {
-        //
         commit('SET_NOTELIST', {notelist: data.noteList})
         // 显示编辑区域
         commit('SET_NOTEBOOK', {name: 'showEdit', value: true})
@@ -497,7 +548,7 @@ const actions = {
      */
   async CHANGE_NOTE ({commit, state}, {changeArr}) {
     let params = {
-      change_arr: changeArr
+      change_arr: encodeChangeArr(changeArr)
     }
     try {
       let result = await ajax('post', 'change_arr', params)
@@ -508,13 +559,8 @@ const actions = {
         return
       }
 
-      if (state.sideBarSelected === 0) {
-        // 待复习状态
-        await this.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
-      } else if (state.sideBarSelected === 1) {
-        // 记笔记的状态
-        await this.dispatch('GET_NOTE_LIST', {catalogId: state.selectedCatalogId})
-      }
+      // 修改前端本地的数据
+      commit('SET_NOTE_CONTENT', {changeArr})
 
       // 如果更新成功，清空全局的 changeNote
       commit('CLEAN_CHANGE_NOTE')
