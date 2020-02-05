@@ -24,6 +24,14 @@
                 <el-rate v-model="reviewRate" @change="handleStarChange"></el-rate>
             </div>
         </el-tooltip>
+        <!-- 是否当场复习一次  -->
+        <el-tooltip class="item" effect="dark" content="复习这个笔记吧" placement="bottom">
+            <i class="fas fa-brain brain-icon"
+               :style="brainStyle"
+               @click="setReviewed"
+            ></i>
+        </el-tooltip>
+
 
         <!--  恢复原样 -->
         <i class="fas fa-compress-arrows-alt shrink-icon" v-if="scaleStatus === 1" @click="setScaleStatus(0)"></i>
@@ -51,6 +59,21 @@
     import ajax from '../../utils/ajax.js'
 
     import {mapState, mapGetters} from 'vuex'
+    import {friendlyTime} from '../../utils/friendTime'
+
+    const errorMessage = (message) => {
+      this.$message({
+        message: message || '报错了',
+        type: 'error'
+      })
+    }
+
+    const successMessage = (message) => {
+      this.$message({
+        message: message || '成功了',
+        type: 'success'
+      })
+    }
     export default {
       data () {
         return {
@@ -65,6 +88,16 @@
         }
       },
       computed: {
+        // 能否现在点击 复习此 blog
+        canReview () {
+          if (this.currentNote &&
+            this.currentNote.need_review === 1 &&
+            this.currentNote.notify_time < Date.now() / 1000) {
+            return 1
+          } else {
+            return 0
+          }
+        },
         blogIconStyle () {
           let style = ''
           switch (this.blogStatus) {
@@ -119,8 +152,27 @@
           }
           return style
         },
+        brainStyle () {
+          let style = ''
+          switch (this.canReview) {
+            case 0:
+              style = {
+                'color': '#666767'
+              }
+              break
+            case 1:
+              style = {
+                'color': '#F7BA2A'
+              }
+              break
+            default:
+              style = {}
+          }
+          return style
+        },
         ...mapState({
-          'scaleStatus': state => state.notebook.scaleStatus
+          'scaleStatus': state => state.notebook.scaleStatus,
+          'notelist': state => state.notebook.notelist
         }),
         ...mapGetters(['currentNote'])
       },
@@ -159,6 +211,12 @@
           let type = 1
           this.setReview({type})
         },
+        // 设置已经复习
+        setReviewed () {
+          if (this.canReview === 1) {
+            this.postReviewed()
+          }
+        },
         // 确定取消复习
         confirmCancel () {
           // 先把弹窗关上吧
@@ -166,7 +224,7 @@
           let type = 0
           this.setReview({type})
         },
-        // 设置复习状态的异步接口
+        // 设置复习状态，从 不复习 -》 复习 的异步接口
         async setReview ({type}) {
           let params = {
             note_id: this.currentNote.note_id,
@@ -176,10 +234,7 @@
             let result = await ajax('post', 'set_review', params)
             // 不成功的时候，弹出错误提示
             if (!result || !result.success) {
-              this.$message({
-                message: result.message,
-                type: 'error'
-              })
+              errorMessage(result.success)
               return
             }
             // 如果是【未复习】-> 【复习】
@@ -195,16 +250,14 @@
               this.reviewRate = 0
             }
           } catch (e) {
-            this.$message({
-              message: e.message,
-              type: 'error'
-            })
+            errorMessage(e.message)
           }
         },
         // 设置frequency的接口
         async setFrequency ({frequency}) {
+          let noteId = this.currentNote.note_id
           let params = {
-            note_id: this.currentNote.note_id,
+            note_id: noteId,
             frequency
           }
           try {
@@ -212,19 +265,46 @@
 
             // 不成功的时候，弹出错误提示
             if (!result || !result.success) {
-              this.$message({
-                message: result.message,
-                type: 'error'
-              })
+              errorMessage(result.message)
               return
             }
-          } catch (e) {
-            this.$message({
-              message: e.message,
-              type: 'error'
+            // 成功了, 更新本地的数据
+            this.$store.commit('UPDATE_NOTE_LIST', {
+              noteId,
+              frequency
             })
+          } catch (e) {
+            errorMessage(e.message)
           }
         },
+        // 当场设置 已经复习
+        async postReviewed () {
+          let noteId = this.currentNote.note_id
+          let reviewNum = this.currentNote.review_num
+          let params = {
+            note_id: noteId
+          }
+          try {
+            let result = await ajax('post', 'review_this', params)
+
+            // 不成功的时候，弹出错误提示
+            if (!result || !result.success) {
+              errorMessage(result.message)
+              return
+            }
+
+            let data = result.data
+            // 成功了, 更新本地的数据
+            this.$store.commit('UPDATE_NOTE_LIST', {
+              noteId,
+              notifyTime: data.next_notify_time,
+              reviewNum: reviewNum + 1
+            })
+            successMessage(`复习成功，下次复习时间为${friendlyTime(data.next_notify_time)}`)
+          } catch (e) {
+            errorMessage(e.message)
+          }
+        }
       }
     }
 </script>
@@ -275,6 +355,16 @@
             transition: all 0.5s;
         }
         .bell-icon:hover {
+            text-shadow : 0px 2px 4px rgba(0,0,0,0.2);
+        }
+        .brain-icon {
+            font-size: 18px;
+            margin-left: 9px;
+            line-height: 30px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .brain-icon:hover {
             text-shadow : 0px 2px 4px rgba(0,0,0,0.2);
         }
         .review-container {

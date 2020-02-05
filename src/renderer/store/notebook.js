@@ -261,6 +261,31 @@ const mutations = {
         state.notelist[i].content = content
       }
     }
+  },
+  UPDATE_NOTE_LIST (state, {noteId, title = '', content = '', frequency, needReview, notifyTime, reviewNum}) {
+    for (let i = 0; i < state.notelist.length; i++) {
+      if (Number(state.notelist[i].note_id) === Number(noteId)) {
+        let current = state.notelist[i]
+        if (title) {
+          current.title = title
+        }
+        if (content) {
+          current.content = content
+        }
+        if (frequency) {
+          current.frequency = frequency
+        }
+        if (needReview) {
+          current.need_review = needReview
+        }
+        if (notifyTime) {
+          current.notify_time = notifyTime
+        }
+        if (reviewNum) {
+          current.review_num = reviewNum
+        }
+      }
+    }
   }
 }
 

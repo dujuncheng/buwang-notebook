@@ -197,20 +197,20 @@
           if (catalogId === undefined) {
             return
           }
-          // if (catalogId === this.selectedCatalogId) {
-          //   return
-          // }
           // 设置选中的目录
           this.$store.commit('SET_NOTEBOOK', {
             name: 'selectedCatalogId',
             value: catalogId
           })
+          // 获取该目录下的笔记列表
           this.fetchNoteList(catalogId)
         },
+        // 处理 目录的点击事件
         handleNodeClick (data) {
           let catalogId = Number(data && data.catalog_id)
           this.setSelectedCatalog(catalogId)
         },
+        // 根据 catalogId 获取笔记列表
         fetchNoteList (catalogId) {
           this.$store.dispatch('GET_NOTE_LIST', {catalogId})
         },
