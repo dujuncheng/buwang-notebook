@@ -94,9 +94,10 @@
       },
       computed: {
         // 能否现在点击 复习此 blog
+        // 能：必须同时满足的条件 需要复习 + 复习时间已经超时
         canReview () {
           if (this.currentNote &&
-            this.currentNote.need_review === 1 &&
+            Number(this.currentNote.need_review) === 1 &&
             this.currentNote.notify_time < Date.now() / 1000) {
             return 1
           } else {
@@ -182,6 +183,7 @@
         ...mapGetters(['currentNote'])
       },
       watch: {
+        // 如果当前笔记发生了改变 notifyStatus 和 reviewRate 值会发改变
         currentNote (value) {
           if (value && value.need_review !== undefined) {
             this.notifyStatus = value.need_review
@@ -222,7 +224,7 @@
             this.postReviewed()
           }
         },
-        // 确定取消复习
+        // 确定 取消复习
         confirmCancel () {
           // 先把弹窗关上吧
           this.noReviewDialog = false
@@ -231,8 +233,9 @@
         },
         // 设置复习状态，从 不复习 -》 复习 的异步接口
         async setReview ({type}) {
+          let noteId = this.currentNote.note_id
           let params = {
-            note_id: this.currentNote.note_id,
+            note_id: noteId,
             type
           }
           try {
@@ -248,11 +251,25 @@
               this.notifyStatus = 1
               // 星星的状态修改
               this.reviewRate = 3
+
+              // 成功了, 更新本地的数据
+              this.$store.commit('UPDATE_NOTE_LIST', {
+                noteId,
+                frequency: 3,
+                needReview: 1
+              })
             } else {
               // 闹钟的状态修改
               this.notifyStatus = 0
               // 星星的状态修改
               this.reviewRate = 0
+
+              // 成功了, 更新本地的数据
+              this.$store.commit('UPDATE_NOTE_LIST', {
+                noteId,
+                frequency: 0,
+                needReview: 0
+              })
             }
           } catch (e) {
             errorMessage(e.message)

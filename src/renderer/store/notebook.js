@@ -262,26 +262,26 @@ const mutations = {
       }
     }
   },
-  UPDATE_NOTE_LIST (state, {noteId, title = '', content = '', frequency, needReview, notifyTime, reviewNum}) {
+  UPDATE_NOTE_LIST (state, {noteId, title, content, frequency, needReview, notifyTime, reviewNum}) {
     for (let i = 0; i < state.notelist.length; i++) {
       if (Number(state.notelist[i].note_id) === Number(noteId)) {
         let current = state.notelist[i]
-        if (title) {
+        if (title !== undefined) {
           current.title = title
         }
-        if (content) {
+        if (content !== undefined) {
           current.content = content
         }
-        if (frequency) {
+        if (frequency !== undefined) {
           current.frequency = frequency
         }
-        if (needReview) {
+        if (needReview !== undefined) {
           current.need_review = needReview
         }
-        if (notifyTime) {
+        if (notifyTime !== undefined) {
           current.notify_time = notifyTime
         }
-        if (reviewNum) {
+        if (reviewNum !== undefined) {
           current.review_num = reviewNum
         }
       }
