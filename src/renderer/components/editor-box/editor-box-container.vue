@@ -56,6 +56,7 @@
 </template>
 
 <script>
+    import Swal from 'sweetalert2'
     import ajax from '../../utils/ajax.js'
 
     import {mapState, mapGetters} from 'vuex'
@@ -69,9 +70,13 @@
     }
 
     const successMessage = (message) => {
-      this.$message({
-        message: message || '成功了',
-        type: 'success'
+      Swal({
+        type: 'success',
+        title: message || '操作成功',
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000
       })
     }
     export default {

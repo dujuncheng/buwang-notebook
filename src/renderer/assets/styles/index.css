@@ -169,7 +169,7 @@ body {
     border-bottom-color: var(--floatBorderColor);
 }
 .el-tooltip__popper[x-placement^=bottom] .popper__arrow::after {
-    border-bottom-color: var(--floatBgColor);
+    border-bottom-color: var(--floatBorderColor);
 }
 
 .el-button:hover,

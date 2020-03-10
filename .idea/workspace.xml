@@ -1,14 +1,328 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="">
+    <list default="true" id="7c0a23fa-8740-4a21-b05c-eab117987645" name="Default Changelist" comment="【fix】 更新 muya 框架的版本，修复了偶现的bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/add_close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/align_center.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/align_left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/align_right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/bullet_list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/chart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/delete.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/enter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/flowchart.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/folder.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_clear.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_code.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_emphasis.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_math.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_strike.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_strong.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/format_underline.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/front_matter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/header_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/header_2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/header_3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/header_4.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/header_5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/header_6.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/horizontal_line.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/html.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/image_dark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/image_dark_fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/image_light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/image_light_fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/imagefail.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/math.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/mermaid.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/new_table.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/order_list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/paragraph.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/quote.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/quote_block.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/sequence.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/table.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/table_add.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/title.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/todolist.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/turn.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/icons/upload.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/bullet_list/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/bullet_list/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/bullet_list/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/chart/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/chart/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/chart/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/code/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/code/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/code/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/copy/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/copy/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/copy/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/delete/delete.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/delete/delete@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/delete/delete@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/flowchart/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/flowchart/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/flowchart/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_clear/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_clear/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_clear/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_emphasis/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_emphasis/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_emphasis/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_image/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_image/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_image/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_link/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_link/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_link/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_math/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_math/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_math/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_strike/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_strike/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_strike/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_strong/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_strong/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_strong/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_underline/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_underline/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/format_underline/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/front_matter/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/front_matter/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/front_matter/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_1/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_1/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_1/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_2/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_2/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_2/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_3/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_3/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_3/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_4/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_4/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_4/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_5/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_5/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_5/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_6/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_6/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/heading_6/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/horizontal_line/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/horizontal_line/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/horizontal_line/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/html/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/html/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/html/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/image/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/image/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/image/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/imageEdit/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/imageEdit/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/imageEdit/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/image_fail/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/image_fail/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/image_fail/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/math/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/math/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/math/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/mermaid/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/mermaid/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/mermaid/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/new_table/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/new_table/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/new_table/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/order_list/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/order_list/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/order_list/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/paragraph/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/paragraph/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/paragraph/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/quote/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/quote/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/quote/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/quote_block/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/quote_block/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/quote_block/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/sequence/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/sequence/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/sequence/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/table/table.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/table/table@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/table/table@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/todolist/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/todolist/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/todolist/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/turninto/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/turninto/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/pngicon/turninto/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/styles/danielbd.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/styles/danielbd.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/styles/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/assets/styles/sequence-diagram.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/config/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/arrowCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/backspaceCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/clickCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/codeBlockCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/containerCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/copyCutCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/deleteCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/dragDropCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/emojiCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/enterCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/formatCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/history.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/htmlBlock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/imageCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/inputCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/paragraphCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/pasteCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/searchCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/tabCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/tableBlockCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/tocCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/contentState/updateCtrl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/eventHandler/clickEvent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/eventHandler/clipboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/eventHandler/dragDrop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/eventHandler/event.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/eventHandler/keyboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/escapeCharacter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/blockRules.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/inlineLexer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/inlineRules.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/lexer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/slugger.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/textRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/marked/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/renderBlock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/renderContainerBlock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/renderContainerEditIcon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/renderIcon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/renderLeafBlock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderBlock/renderToolBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/autoLink.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/backlash.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/backlashInToken.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/codeFense.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/del.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/delEmStringFactory.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/em.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/emoji.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/hardLineBreak.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/highlight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/hr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/htmlEscape.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/htmlRuby.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/htmlTag.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/image.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/inlineCode.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/inlineMath.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/link.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/loadImageAsync.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/multipleMath.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/referenceDefinition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/referenceImage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/referenceLink.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/softLineBreak.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/strong.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/tailHeader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/renderInlines/text.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/sequence.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/render/snabbdom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/rules.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/parser/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/prism/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/prism/languages.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/prism/loadLanguage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/selection/cursor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/selection/dom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/selection/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/baseFloat/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/baseFloat/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/baseScrollFloat/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/codePicker/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/codePicker/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/emojiPicker/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/emojiPicker/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/emojis/emojisJson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/emojis/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/fileIcons/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/formatPicker/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/formatPicker/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/formatPicker/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/frontMenu/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/frontMenu/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/frontMenu/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/imagePicker/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/imagePicker/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/imageSelector/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/imageSelector/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/quickInsert/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/quickInsert/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/quickInsert/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/tablePicker/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/tablePicker/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/tooltip/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/ui/tooltip/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/domManipulate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/exportHtml.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/exportMarkdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/getImageInfo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/importMarkdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/lib/utils/turndownService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/DejaVuSansMono-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/DejaVuSansMono-BoldOblique.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/DejaVuSansMono-Oblique.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/DejaVuSansMono.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/DejaVuSansMono_LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-300.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-300italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-600.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-600italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-700.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-700italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/fonts/open-sans-v15-latin_latin-ext-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/github/300.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/github/400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/github/400i.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/github/600i.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/github/700.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/github/700i.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/themes/prismjs/light.theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/muya1/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/assets/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/assets/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/dist/" />
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,214 +333,8 @@
       <option value="directory" />
     </option>
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="29" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/progressBar.vue">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1354">
-              <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="441" column="8" selection-start-line="441" selection-start-column="8" selection-end-line="441" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/App.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="2" column="11" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="215" column="36" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="43" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#5969#6811#0" />
-                <element signature="e#7546#8437#0" />
-                <element signature="e#8480#8615#0" />
-                <element signature="e#8851#9565#0" />
-                <element signature="e#9615#9760#0" />
-                <element signature="e#9809#10660#0" />
-                <element signature="e#10707#11186#0" />
-                <element signature="e#11238#11826#0" />
-                <element signature="e#11900#12191#0" />
-                <element signature="e#12254#12638#0" />
-                <element signature="e#12696#12871#0" />
-                <element signature="e#12929#13201#0" />
-                <element signature="e#13259#13497#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/store/editor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="688">
-              <caret line="359" column="18" selection-start-line="359" selection-start-column="2" selection-end-line="359" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>handleParagraph</find>
-      <find>select</find>
-      <find>editor-component</find>
-      <find>var(--selectionColor)</find>
-      <find>getEditorLineWidth</find>
-      <find>sel</find>
-      <find>*:not(.ag-hide)::selection, .ag-selection</find>
-      <find>RED</find>
-      <find>--selectionColor</find>
-      <find>selectionChange</find>
-      <find>popup</find>
-      <find>this.file</find>
-      <find>imageAction</find>
-      <find>base64EncodeChars</find>
-      <find>base64encode</find>
-      <find>putPolicy</find>
-      <find>genUpToken</find>
-      <find>new Bro</find>
-      <find>genFormData</find>
-      <find>upload</find>
-      <find>debugger</find>
-      <find>console</find>
-      <find>test-build</find>
-      <find>test</find>
-      <find>@me</find>
-      <find>DELETE_NOTE</find>
-      <find>deleteNoteItem</find>
-      <find>handleNodeClick</find>
-      <find>fetchNoteList</find>
-      <find>selectedCatalogId</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>setReview</replace>
-      <replace>range</replace>
-      <replace>118.24.193.194</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/node_modules/axios</dir>
-      <dir>$PROJECT_DIR$/src/muya</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/renderer/store</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/muya/lib</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/muya/themes</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/muya</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/common</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/main</dir>
-      <dir>$PROJECT_DIR$/../../marktext-develop/src/renderer</dir>
-      <dir>$PROJECT_DIR$/src</dir>
-      <dir>$PROJECT_DIR$</dir>
-      <dir>$PROJECT_DIR$/src/renderer</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/.electron-vue/webpack.main.config.js" />
-        <option value="$PROJECT_DIR$/.electron-vue/webpack.web.config.js" />
-        <option value="$PROJECT_DIR$/.electron-vue/webpack.renderer.config.js" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
-        <option value="$PROJECT_DIR$/src/renderer/utils/friendTime.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/middle-list/review-list-item.vue" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/renderer/utils/eventBus.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/utils/storage.js" />
-        <option value="$PROJECT_DIR$/src/renderer/store/notebook.js" />
-        <option value="$PROJECT_DIR$/src/renderer/utils/ajax.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/index.js" />
-        <option value="$PROJECT_DIR$/src/muya/themes/default.css" />
-        <option value="$PROJECT_DIR$/src/muya/lib/assets/styles/index.css" />
-        <option value="$PROJECT_DIR$/../../marktext-develop/src/renderer/components/editorWithTabs/editor.vue" />
-        <option value="$PROJECT_DIR$/../../marktext-develop/src/muya/lib/assets/styles/index.css" />
-        <option value="$PROJECT_DIR$/src/renderer/assets/styles/index.css" />
-        <option value="$PROJECT_DIR$/src/renderer/main.js" />
-        <option value="$PROJECT_DIR$/src/main/index.js" />
-        <option value="$PROJECT_DIR$/src/renderer/utils/uploadQiniu.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/contentState/pasteCtrl.js" />
-        <option value="$PROJECT_DIR$/src/muya/lib/contentState/imageCtrl.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/editor-container.vue" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/index.ejs" />
-        <option value="$PROJECT_DIR$/test/e2e/specs/Launch.spec.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/LandingPage.vue" />
-        <option value="$PROJECT_DIR$/src/renderer/components/side-bar.vue" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-      </list>
-    </option>
   </component>
   <component name="JsFlowSettings">
     <service-enabled>false</service-enabled>
@@ -234,10 +342,7 @@
     <annotation-enable>false</annotation-enable>
     <other-services-enabled>false</other-services-enabled>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
-  </component>
+  <component name="ProjectId" id="1WNlWCmdKnYEDepejcqAaddLh73" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -263,31 +368,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-build" type="47feb1d3:ProjectViewModuleNode" />
-            </path>
-            <path>
-              <item name="nana-notebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-build" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="nana-notebook" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -301,25 +389,25 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../marktext/package.json" />
-    <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/../marktext/src/muya" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/muya1/lib/contentState/pasteCtrl.js" />
+    <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/src/muya" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -398,6 +486,16 @@
       <workItem from="1564845617520" duration="1689000" />
       <workItem from="1564847429338" duration="3500000" />
       <workItem from="1564924159708" duration="4120000" />
+      <workItem from="1578997963368" duration="681000" />
+      <workItem from="1579000617657" duration="665000" />
+      <workItem from="1579001794006" duration="61000" />
+      <workItem from="1579002305237" duration="20000" />
+      <workItem from="1579005065924" duration="805000" />
+      <workItem from="1579006802344" duration="4841000" />
+      <workItem from="1580351166346" duration="8417000" />
+      <workItem from="1580870631561" duration="5707000" />
+      <workItem from="1581043118657" duration="2985000" />
+      <workItem from="1581408407139" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="修复了打包的上的问题">
       <created>1547968208883</created>
@@ -546,11 +644,71 @@
       <option name="project" value="LOCAL" />
       <updated>1574083089432</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="【fix】 更新 muya 框架的版本，修复了偶现的bug">
+      <created>1578834890599</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1578834890599</updated>
+    </task>
+    <task id="LOCAL-00023" summary="【fix】 更新 muya 框架的版本，修复了偶现的bug">
+      <created>1578834999231</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1578834999232</updated>
+    </task>
+    <task id="LOCAL-00024" summary="【fix】 修复了偶现的bug">
+      <created>1578844615370</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1578844615370</updated>
+    </task>
+    <task id="LOCAL-00025" summary="【fix】 &#10;&#10;- 修复了无法插入图片的bug&#10;- 修复了插入代码时的样式问题">
+      <created>1579054888575</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1579054888575</updated>
+    </task>
+    <task id="LOCAL-00026" summary="【fix】 &#10;&#10;- 修复了部分bug">
+      <created>1579054968913</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1579054968913</updated>
+    </task>
+    <task id="LOCAL-00027" summary="【fix】 更新 muya 框架的版本，修复了偶现的bug">
+      <created>1579054984087</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1579054984087</updated>
+    </task>
+    <task id="LOCAL-00028" summary="【fix】 更新 muya 框架的版本，修复了偶现的bug">
+      <created>1579054991749</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1579054991749</updated>
+    </task>
+    <task id="LOCAL-00029" summary="【feature】 优化保存修改时的性能">
+      <created>1580356276092</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1580356276092</updated>
+    </task>
+    <task id="LOCAL-00030" summary="【feature】 &#10;- 增加在编辑模式下，可以复习笔记&#10;&#10;【fix】&#10;- 修复了 复习频率 五角星，更新笔记时不更新的bug">
+      <created>1580874979867</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1580874979867</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -560,52 +718,6 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2966878" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.5385542" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.5530121" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49753347" weight="0.65903616" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.42706132" side_tool="true" visible="true" weight="0.5180723" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.5729387" visible="true" weight="0.5180723" />
-      <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17970401" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32923833" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32923833" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -623,590 +735,60 @@
     <MESSAGE value="【fix】 修复切换账号后，缓存没有清空的bug" />
     <MESSAGE value="【fix】更换请求链接为 https 证书" />
     <MESSAGE value="【优化】 优化了性能；增加了笔记排序的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="【优化】 优化了性能；增加了笔记排序的功能" />
+    <MESSAGE value="【fix】 修复了偶现的bug" />
+    <MESSAGE value="【fix】 &#10;&#10;- 修复了无法插入图片的bug&#10;- 修复了插入代码时的样式问题" />
+    <MESSAGE value="【fix】 &#10;&#10;- 修复了部分bug" />
+    <MESSAGE value="【fix】 更新 muya 框架的版本，修复了偶现的bug" />
+    <MESSAGE value="【feature】 优化保存修改时的性能" />
+    <MESSAGE value="【feature】 &#10;- 增加在编辑模式下，可以复习笔记&#10;&#10;【fix】&#10;- 修复了 复习频率 五角星，更新笔记时不更新的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="【feature】 &#10;- 增加在编辑模式下，可以复习笔记&#10;&#10;【fix】&#10;- 修复了 复习频率 五角星，更新笔记时不更新的bug" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/axios/lib/core/InterceptorManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/axios/lib/core/enhanceError.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/axios/lib/core/dispatchRequest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/axios/lib/core/createError.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/axios/CHANGELOG.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/login-container/login-container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="23" selection-end-line="313" />
-          <folding>
-            <element signature="e#1400#5604#0" />
-            <element signature="e#5666#8152#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/config.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/index.dev.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/utils/ajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-box/editor-box-container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
-          <folding>
-            <element signature="e#1896#1934#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/ui/imagePicker/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
-          <folding>
-            <element signature="e#286#373#0" />
-            <element signature="e#1122#1629#0" />
-            <element signature="e#1213#1296#0" />
-            <element signature="e#1230#1288#0" />
-            <element signature="e#1444#1605#0" />
-            <element signature="e#1463#1501#0" />
-            <element signature="e#1515#1597#0" />
-            <element signature="e#1540#1587#0" />
-            <element signature="e#1687#1723#0" />
-            <element signature="e#1729#1770#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/utils/checkEditImage.js" />
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3553">
-          <caret line="197" column="21" selection-start-line="197" selection-start-column="21" selection-end-line="197" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/contentState/history.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/parser/parse.js" />
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/contentState/pasteCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2992">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/ui/emojis/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/listenForMain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/muya/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/assets/styles/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9139">
-          <caret line="479" column="34" selection-start-line="479" selection-start-column="18" selection-end-line="479" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/muya/lib/assets/styles/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1212">
-          <caret line="85" column="36" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/muya/lib/assets/styles/sequence-diagram.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/renderer/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/index.ejs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/renderer/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="38" selection-start-line="38" selection-end-line="38" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/renderer/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/renderer/assets/styles/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6916">
-          <caret line="364" column="18" selection-end-line="386" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/assets/icons/markdown.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/assets/icons/import_file.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/assets/styles/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="127" selection-end-line="386" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../marktext-develop/src/renderer/components/editorWithTabs/editor.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="476" column="28" selection-start-line="476" selection-start-column="23" selection-end-line="476" selection-end-column="28" />
-          <folding>
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#2046#2077#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/editor-container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="328" column="52" selection-start-line="328" selection-start-column="52" selection-end-line="328" selection-end-column="52" />
-          <folding>
-            <element signature="n#template#0;n#!!top" />
-            <element signature="n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#3;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input-number#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input-number#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#2568#2611#0" expanded="true" />
-            <element signature="e#3501#5131#0" />
-            <element signature="e#3523#5082#0" />
-            <element signature="e#5151#5178#0" />
-            <element signature="e#5194#5450#0" />
-            <element signature="e#5211#5442#0" />
-            <element signature="e#5375#5432#0" />
-            <element signature="e#5469#5478#0" />
-            <element signature="e#5493#7481#0" />
-            <element signature="e#5532#5612#0" />
-            <element signature="e#5555#5602#0" />
-            <element signature="e#5646#5699#0" />
-            <element signature="e#5743#5919#0" />
-            <element signature="e#5823#5909#0" />
-            <element signature="e#5966#6117#0" />
-            <element signature="e#6046#6107#0" />
-            <element signature="e#6166#6319#0" />
-            <element signature="e#6246#6309#0" />
-            <element signature="e#6377#6528#0" />
-            <element signature="e#6457#6518#0" />
-            <element signature="e#6574#6714#0" />
-            <element signature="e#6654#6704#0" />
-            <element signature="e#6767#6973#0" />
-            <element signature="e#6877#6963#0" />
-            <element signature="e#7045#7085#0" />
-            <element signature="e#7109#7473#0" />
-            <element signature="e#7154#7186#0" />
-            <element signature="e#7232#7304#0" />
-            <element signature="e#7500#7573#0" />
-            <element signature="e#7531#7564#0" />
-            <element signature="e#7608#11613#0" />
-            <element signature="e#7691#8047#0" />
-            <element signature="e#10134#10372#0" />
-            <element signature="e#10196#10276#0" />
-            <element signature="e#10305#10360#0" />
-            <element signature="e#10436#10514#0" />
-            <element signature="e#10585#10972#0" />
-            <element signature="e#10613#10649#0" />
-            <element signature="e#10788#10913#0" />
-            <element signature="e#11030#11329#0" />
-            <element signature="e#11112#11211#0" />
-            <element signature="e#11388#11464#0" />
-            <element signature="e#11536#11602#0" />
-            <element signature="e#11764#11990#0" />
-            <element signature="e#11822#11980#0" />
-            <element signature="e#11849#11905#0" />
-            <element signature="e#12013#12311#0" />
-            <element signature="e#12082#12161#0" />
-            <element signature="e#12199#12277#0" />
-            <element signature="e#12345#12461#0" />
-            <element signature="e#12504#12602#0" />
-            <element signature="e#12634#13129#0" />
-            <element signature="e#12905#13092#0" />
-            <element signature="e#13153#13236#0" />
-            <element signature="e#13182#13226#0" />
-            <element signature="e#13283#13768#0" />
-            <element signature="e#13503#13535#0" />
-            <element signature="e#13632#13698#0" />
-            <element signature="e#13816#13993#0" />
-            <element signature="e#13896#13928#0" />
-            <element signature="e#14024#14446#0" />
-            <element signature="e#14180#14412#0" />
-            <element signature="e#14524#14821#0" />
-            <element signature="e#14549#14581#0" />
-            <element signature="e#14683#14715#0" />
-            <element signature="e#14831#14851#0" />
-            <element signature="e#14937#15498#0" />
-            <element signature="e#15038#15259#0" />
-            <element signature="e#15112#15170#0" />
-            <element signature="e#15288#15488#0" />
-            <element signature="e#15341#15399#0" />
-            <element signature="e#15540#16273#0" />
-            <element signature="e#15641#16030#0" />
-            <element signature="e#15718#15773#0" />
-            <element signature="e#15804#15940#0" />
-            <element signature="e#15834#15926#0" />
-            <element signature="e#16059#16263#0" />
-            <element signature="e#16112#16174#0" />
-            <element signature="e#16332#16487#0" />
-            <element signature="e#16386#16418#0" />
-            <element signature="e#16497#16508#0" />
-            <element signature="e#16588#17065#0" />
-            <element signature="e#16618#16656#0" />
-            <element signature="e#16739#16810#0" />
-            <element signature="e#16816#17031#0" />
-            <element signature="e#17123#17430#0" />
-            <element signature="e#17251#17286#0" />
-            <element signature="e#17292#17396#0" />
-            <element signature="e#17454#17537#0" />
-            <element signature="e#17483#17527#0" />
-            <element signature="e#17566#17674#0" />
-            <element signature="e#17615#17664#0" />
-            <element signature="e#17768#17852#0" />
-            <element signature="e#17797#17842#0" />
-            <element signature="e#17881#17994#0" />
-            <element signature="e#17915#17984#0" />
-            <element signature="e#18031#18196#0" />
-            <element signature="e#18232#18363#0" />
-            <element signature="e#18413#18547#0" />
-            <element signature="e#18576#18827#0" />
-            <element signature="e#18609#18816#0" />
-            <element signature="e#18859#18925#0" />
-            <element signature="e#18958#19030#0" />
-            <element signature="e#19068#19439#0" />
-            <element signature="e#19239#19429#0" />
-            <element signature="e#19477#19805#0" />
-            <element signature="e#19511#19715#0" />
-            <element signature="e#19645#19702#0" />
-            <element signature="e#19721#19795#0" />
-            <element signature="e#19906#20438#0" />
-            <element signature="e#19964#20428#0" />
-            <element signature="e#19978#20416#0" />
-            <element signature="e#20008#20085#0" />
-            <element signature="e#20100#20206#0" />
-            <element signature="e#20221#20310#0" />
-            <element signature="e#20325#20402#0" />
-            <element signature="e#20472#20560#0" />
-            <element signature="e#20598#20719#0" />
-            <element signature="e#20749#20908#0" />
-            <element signature="e#20933#21062#0" />
-            <element signature="e#21092#21641#0" />
-            <element signature="e#21157#21631#0" />
-            <element signature="e#21185#21387#0" />
-            <element signature="e#21401#21619#0" />
-            <element signature="e#21665#21705#0" />
-            <element signature="e#21739#21783#0" />
-            <element signature="e#21819#21880#0" />
-            <element signature="e#21913#23018#0" />
-            <element signature="n#style#0;n#!!top" />
-            <element signature="e#23101#25373#0" />
-            <element signature="e#23254#23351#0" />
-            <element signature="e#23377#23790#0" />
-            <element signature="e#23522#23780#0" />
-            <element signature="e#23821#23998#0" />
-            <element signature="e#24029#24213#0" />
-            <element signature="e#24240#24758#0" />
-            <element signature="e#24571#24748#0" />
-            <element signature="e#24784#24886#0" />
-            <element signature="e#24919#24983#0" />
-            <element signature="e#25028#25092#0" />
-            <element signature="e#25124#25367#0" />
-            <element signature="e#25341#25357#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/utils/uploadQiniu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="230" column="11" selection-start-line="230" selection-start-column="11" selection-end-line="230" selection-end-column="11" />
-          <folding>
-            <element signature="e#750#1616#0" />
-            <element signature="e#848#1600#0" />
-            <element signature="e#905#1048#0" />
-            <element signature="e#1097#1318#0" />
-            <element signature="e#1651#1749#0" />
-            <element signature="e#1777#2356#0" />
-            <element signature="e#1880#2340#0" />
-            <element signature="e#1952#1987#0" />
-            <element signature="e#2010#2201#0" />
-            <element signature="e#2207#2336#0" />
-            <element signature="e#2393#3013#0" />
-            <element signature="e#2474#2655#0" />
-            <element signature="e#2896#2940#0" />
-            <element signature="n#!!block;n#getImgInfo#0;n#UploadImgQiNiu#0" />
-            <element signature="e#4506#4752#0" />
-            <element signature="e#4566#4723#0" />
-            <element signature="e#4587#4660#0" />
-            <element signature="n#!!block;n#getTempUrl#0;n#UploadImgQiNiu#0" />
-            <element signature="e#7107#7190#0" />
-            <element signature="n#!!block;n#getCorrectOrientation#0;n#UploadImgQiNiu#0" />
-            <element signature="e#7316#8365#0" />
-            <element signature="e#7459#7530#0" />
-            <element signature="e#7536#7607#0" />
-            <element signature="e#7614#8104#0" />
-            <element signature="e#7645#7697#0" />
-            <element signature="e#7706#7764#0" />
-            <element signature="e#7773#7826#0" />
-            <element signature="e#7835#7882#0" />
-            <element signature="e#7891#7944#0" />
-            <element signature="e#7953#8011#0" />
-            <element signature="e#8020#8072#0" />
-            <element signature="e#8081#8096#0" />
-            <element signature="e#8275#8326#0" />
-            <element signature="e#8332#8359#0" />
-            <element signature="n#!!block;n#getFileContent#0;n#UploadImgQiNiu#0" />
-            <element signature="e#8453#8706#0" />
-            <element signature="e#8527#8661#0" />
-            <element signature="e#8581#8616#0" />
-            <element signature="e#8622#8653#0" />
-            <element signature="n#!!block;n#getOrientation#0;n#UploadImgQiNiu#0" />
-            <element signature="e#8801#9898#0" />
-            <element signature="e#8893#8923#0" />
-            <element signature="e#9012#9873#0" />
-            <element signature="e#9066#9100#0" />
-            <element signature="e#9204#9730#0" />
-            <element signature="e#9270#9308#0" />
-            <element signature="e#9552#9720#0" />
-            <element signature="e#9623#9708#0" />
-            <element signature="e#9769#9797#0" />
-            <element signature="e#9803#9865#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="44" column="7" lean-forward="true" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/less/index.less">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/assets/styles/printService.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/LandingPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="116" column="27" selection-start-line="116" selection-start-column="27" selection-end-line="116" selection-end-column="27" />
-          <folding>
-            <element signature="e#922#951#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="359" column="18" selection-start-line="359" selection-start-column="2" selection-end-line="359" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/node-list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1354">
-          <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/progressBar.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/side-bar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="215" column="36" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="43" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#5969#6811#0" />
-            <element signature="e#7546#8437#0" />
-            <element signature="e#8480#8615#0" />
-            <element signature="e#8851#9565#0" />
-            <element signature="e#9615#9760#0" />
-            <element signature="e#9809#10660#0" />
-            <element signature="e#10707#11186#0" />
-            <element signature="e#11238#11826#0" />
-            <element signature="e#11900#12191#0" />
-            <element signature="e#12254#12638#0" />
-            <element signature="e#12696#12871#0" />
-            <element signature="e#12929#13201#0" />
-            <element signature="e#13259#13497#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store/notebook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="441" column="8" selection-start-line="441" selection-start-column="8" selection-end-line="441" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contextMenu/noteList/noteListOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="68" column="19" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="104" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580872299027">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="104" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777@0.23.1280.777" timestamp="1580872299027" />
+    <state x="251" y="23" width="705" height="777" key="CommitChangelistDialog2" timestamp="1580874979699">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="251" y="23" width="788" height="777" key="CommitChangelistDialog2/-142.-1057.1920.1057/0.23.1280.777@0.23.1280.777" timestamp="1579054991589" />
+    <state x="282" y="64" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1578844615118" />
+    <state x="251" y="23" width="705" height="777" key="CommitChangelistDialog2/0.23.1280.777@0.23.1280.777" timestamp="1580874979699" />
+    <state x="0" y="111" width="1280" height="585" key="DiffContextDialog" timestamp="1580356158026">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="0" y="111" width="1280" height="585" key="DiffContextDialog/-142.-1057.1920.1057/0.23.1280.777@0.23.1280.777" timestamp="1579054988689" />
+    <state x="100" y="123" width="1240" height="677" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1578844605224" />
+    <state x="0" y="111" width="1280" height="585" key="DiffContextDialog/0.23.1280.777@0.23.1280.777" timestamp="1580356158026" />
+    <state x="0" y="122" width="1440" height="661" key="DiffContextDialog/0.23.1440.877@0.23.1440.877" timestamp="1579012474362" />
+    <state x="434" y="129" key="RollbackChangesDialog" timestamp="1580874901862">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="434" y="129" key="RollbackChangesDialog/0.23.1280.777@0.23.1280.777" timestamp="1580874901862" />
+    <state x="210" y="78" key="SettingsEditor" timestamp="1580351478007">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="236" y="100" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578839996829" />
+    <state x="210" y="78" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1580351478007" />
+    <state x="100" y="123" width="1240" height="677" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578840373917">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="123" width="1240" height="677" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1578840373917" />
+    <state x="357" y="217" width="813" height="473" key="find.popup" timestamp="1580907086321">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="357" y="217" width="645" height="472" key="find.popup/-142.-1057.1920.1057/0.23.1280.777@0.23.1280.777" timestamp="1579008017057" />
+    <state x="402" y="225" width="725" height="472" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1578844565338" />
+    <state x="357" y="217" width="813" height="473" key="find.popup/0.23.1280.777@0.23.1280.777" timestamp="1580907086321" />
+    <state x="402" y="242" width="726" height="533" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1579014228167" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1578834969290">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1578834969290" />
+    <state x="370" y="330" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1581071809410">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="370" y="330" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1280.777@0.23.1280.777" timestamp="1581071809410" />
   </component>
   <component name="masterDetails">
     <states>
