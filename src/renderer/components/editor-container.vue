@@ -67,6 +67,7 @@
 </template>
 
 <script>
+    import { shell } from 'electron'
     import { mapState, mapGetters } from 'vuex'
     import editorBox from './editor-box/editor-box-container.vue'
     import Muya from '../../muya/lib/index.js'
@@ -75,7 +76,9 @@
     import CodePicker from '../../muya/lib/ui/codePicker'
     import EmojiPicker from '../../muya/lib/ui/emojiPicker'
     import ImagePathPicker from '../../muya/lib/ui/imagePicker'
+    import ImageToolbar from '../../muya/lib/ui/imageToolbar'
     import FormatPicker from '../../muya/lib/ui/formatPicker'
+    import ImageSelector from '../../muya/lib/ui/imageSelector'
     import bus from '../bus/index.js'
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
@@ -210,6 +213,29 @@
         })
       },
       methods: {
+        focusEditor () {
+          this.editor.focus()
+        },
+        handleFindAction (action) {
+          const searchMatches = this.editor.find(action)
+          this.$store.dispatch('SEARCH', searchMatches)
+          this.scrollToHighlight()
+        },
+        // listen for `open-single-file` event, it will call this method only when open a new file.
+        setMarkdownToEditor ({ id, markdown, cursor }) {
+          const { editor } = this
+          if (editor) {
+            editor.clearHistory()
+            if (cursor) {
+              editor.setMarkdown(markdown, cursor, true)
+            } else {
+              editor.setMarkdown(markdown)
+            }
+          }
+        },
+        photoCreatorClick: (url) => {
+          shell.openExternal(url)
+        },
         init () {
           const ele = document.querySelector('.J_editor')
           let config = {
@@ -225,7 +251,6 @@
             hideQuickInsertHint: false,
             imageAction: this.imageAction.bind(this)
           }
-          const {container} = this.editor = new Muya(ele, config)
           const {
             theme,
             focus: focusMode,
@@ -243,8 +268,15 @@
           Muya.use(QuickInsert)
           Muya.use(CodePicker)
           Muya.use(EmojiPicker)
+          Muya.use(ImageToolbar)
           Muya.use(ImagePathPicker)
           Muya.use(FormatPicker)
+          Muya.use(ImageSelector, {
+            unsplashAccessKey: process.env.UNSPLASH_ACCESS_KEY,
+            photoCreatorClick: this.photoCreatorClick
+          })
+
+          const {container} = this.editor = new Muya(ele, config)
 
           // the default theme is light write in the store
           this.addThemeStyle(theme)
@@ -254,27 +286,25 @@
           bus.$on('save', this.handleSave)
           bus.$on('redo', this.handleRedo)
           bus.$on('selectAll', this.handleSelectAll)
-          bus.$on('export', this.handleExport)
           bus.$on('paragraph', this.handleEditParagraph)
           bus.$on('format', this.handleInlineFormat)
           bus.$on('searchValue', this.handleSearch)
           bus.$on('replaceValue', this.handReplace)
-          bus.$on('find', this.handleFind)
+          bus.$on('find-action', this.handleFindAction)
           bus.$on('insert-image', this.handleSelect)
           bus.$on('image-uploaded', this.handleUploadedImage)
           bus.$on('file-changed', this.handleMarkdownChange)
           bus.$on('editor-blur', this.blurEditor)
+          bus.$on('editor-focus', this.focusEditor)
           bus.$on('image-auto-path', this.handleImagePath)
           bus.$on('copyAsMarkdown', this.handleCopyPaste)
           bus.$on('copyAsHtml', this.handleCopyPaste)
           bus.$on('pasteAsPlainText', this.handleCopyPaste)
-          bus.$on('insertParagraph', this.handleInsertParagraph)
+          bus.$on('duplicate', this.handleParagraph)
+          bus.$on('createParagraph', this.handleParagraph)
           bus.$on('deleteParagraph', this.handleParagraph)
-          bus.$on('editTable', this.handleEditTable)
+          bus.$on('insertParagraph', this.handleInsertParagraph)
           bus.$on('scroll-to-header', this.scrollToHeader)
-          bus.$on('copy-block', this.handleCopyBlock)
-          bus.$on('print', this.handlePrint)
-          bus.$on('clearEditBox', this.clearEditBox)
 
           this.editor.on('insert-image', type => {
             if (type === 'absolute' || type === 'relative') {
