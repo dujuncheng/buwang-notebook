@@ -1,20 +1,28 @@
 <template>
     <div class="wrap">
         <div v-show="showEdit">
-            <div class="title-container">
+            <div class="title-container" v-if="!isHide">
                 <input type="text" class="title" placeholder="未命名" v-model="title"/>
             </div>
             <!-- 在记笔记状态下，才出现 工具箱-->
-            <div v-if="sideBarSelected === 1" class="editor-box-container">
+            <div v-if="!isHide && sideBarSelected === 1" class="editor-box-container">
                 <editorBox></editorBox>
             </div>
             <!-- 在复习的状态下，才出现 分割线-->
-            <div v-if="sideBarSelected === 0" class="review-box-container"></div>
-            <div class="editor-container"
+            <div v-if="!isHide && sideBarSelected === 0" class="review-box-container"></div>
+
+           <div class="editor-container"
                  :class="[{ 'typewriter': typewriter, 'focus': focus, 'source': sourceCode }, theme]"
-                 :style="{ 'color': theme === 'dark' ? darkColor : lightColor, 'lineHeight': lineHeight, 'fontSize': fontSize,
-'font-family': editorFontFamily}"
+                 :style="{
+                  'color': theme === 'dark' ? 'rgb(128,128,128)' : lightColor,
+                  'lineHeight': lineHeight,
+                  'fontSize': fontSize,
+                  'font-family': editorFontFamily,
+                  'top': isHide ? 0 : '78px'
+              }"
             >
+                <i v-if="isHide" class="el-icon-caret-bottom" @click="handleHide"></i>
+                <i v-if="!isHide"  class="el-icon-caret-top" @click="handleHide"></i>
                 <!-- 内容编辑区域 -->
                 <div class="J_editor editor"></div>
                 <!-- 确认复习区域 在复习的状态下，才出现 -->
@@ -121,7 +129,8 @@
           'sideBarSelected': state => state.notebook.sideBarSelected,
           'showEdit': state => state.notebook.showEdit
         }),
-        ...mapGetters(['currentNote'])
+        ...mapGetters(['currentNote']),
+
       },
       components: {
         editorBox
@@ -129,14 +138,16 @@
       data () {
         return {
           title: '',
-          theme: 'light',
+          theme: 'dark',
           editor: null,
           isShowClose: false,
           dialogTableVisible: false,
+          // 是否需要隐藏
+          isHide: false,
           tableChecker: {
             rows: 4,
             columns: 3
-          }
+          },
         }
       },
       mounted () {
@@ -213,6 +224,9 @@
         })
       },
       methods: {
+        handleHide() {
+          this.isHide = !this.isHide
+        },
         focusEditor () {
           this.editor.focus()
         },
@@ -781,9 +795,8 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            top: 78px;
             right: 0;
-            background-color: white;
+            background-color: rgb(39,40,34);
             width: 90%;
             margin: 0 auto;
             box-sizing: border-box;
@@ -822,5 +835,19 @@
 
             }
         }
+
+      code[class*="language-"],
+      pre[class*="language-"] {
+        text-shadow: none !important;
+      }
+
+      .token.operator,
+      .token.entity,
+      .token.url,
+      .language-css .token.string,
+      .style .token.string {
+        color: #9a6e3a;
+        background: transparent!important;
+      }
     }
 </style>

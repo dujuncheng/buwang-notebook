@@ -554,7 +554,7 @@ kbd {
     font-size: 85%;
     margin: 0;
     padding: 0.2em 0.4em;
-    color: var(--editorColor);
+    color: rgb(247,38,113);
   }
 
   :not(pre) > code[class*="language-"],
