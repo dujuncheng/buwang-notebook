@@ -26,6 +26,8 @@ function createWindow () {
     useContentSize: true,
     width: 1200,
     show: false,
+    frame: false,
+    hasShadow: false,
     webPreferences: {
       webSecurity: false
     }
