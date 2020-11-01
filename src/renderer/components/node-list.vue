@@ -8,7 +8,7 @@
         <div class="search-container" v-if="sideBarSelected === 1">
             <input type="text" class="search-input" placeholder="查找笔记">
         </div>
-        <!-- 笔记本 -->
+        <!-- 笔记本列表 -->
         <div class="note-list-container" v-if="sideBarSelected === 1">
             <div class="list">
                 <div class="item"
@@ -23,9 +23,10 @@
                 </div>
             </div>
         </div>
-        <!-- 待复习 -->
+        <!-- 待复习列表 -->
         <div class="review-list-container" v-if="sideBarSelected === 0">
-            <div class="list">
+            <!--  有列表时，则渲染列表-->
+            <div class="list" v-if="reviewlist && reviewlist.length !== 0">
                 <div class="item"
                      v-for="(review , index) in reviewlist"
                      :key="index"
@@ -34,6 +35,13 @@
                 >
                     <reviewListItem :review="review"></reviewListItem>
                 </div>
+            </div>
+            <!--   没有列表时，渲染提示文字   -->
+            <div class="empty-tip-container" v-if="!reviewlist || reviewlist.length === 0">
+              <div>
+                <i class="el-icon-folder-opened icon"></i>
+              </div>
+              您还没有任何待复习的笔记，请先去创建新的笔记吧
             </div>
         </div>
     </div>
@@ -114,6 +122,7 @@
           }
           return result
         },
+        // 删除笔记
         deleteNoteItem () {
           if (this.noteItemSelected === undefined) {
             return
@@ -180,13 +189,15 @@
             this.clickNote(noteId, 0)
           })
         },
-        // 选择笔记
+        // 选择 中间列表的中的一个笔记
         clickNote (noteId, index) {
           if (noteId === undefined) {
             return
           }
-          // // 设置选中的笔记
+          // 设置选中的笔记
           this.$store.commit('SELECT_NOTE', {noteId, index})
+          // 设置编辑器为展示
+          this.$store.commit('SET_NOTEBOOK', {name: 'showEdit', value: true})
         },
         clickReview (noteId, index) {
           if (noteId === undefined) {
@@ -305,6 +316,7 @@
         overflow-y: scroll;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
+        position: relative;
         .list {
             .item-selected {
                 border-left: 6px solid #488DF7!important;
@@ -322,6 +334,17 @@
                 padding-right: 20px;
                 border-left: 6px solid transparent;
             }
+        }
+        .empty-tip-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          .icon {
+            font-size: 30px;
+            text-align: center;
+          }
         }
     }
 }

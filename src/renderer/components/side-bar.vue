@@ -3,25 +3,15 @@
         <!-- 待复习 -->
         <div class="category-title-container"
              :style="brainStyle"
-             @click="handleTopClick(0)"
+             @click="toggleWriteOrReview(0)"
         >
             <p class="title-text">待复习</p>
             <span class="badge" v-show="reviewlist.length > 0">{{reviewlist.length}}</span>
             <i class="brain-icon fas fa-brain"></i>
         </div>
-        <!-- 待办清单 -->
-        <!--<div class="category-title-container"-->
-             <!--:style="todoStyle"-->
-             <!--@click="handleTopClick(2)"-->
-        <!--&gt;-->
-            <!--<p class="title-text">任务清单</p>-->
-            <!--<span class="badge">10</span>-->
-            <!--<i class="todo-icon fas fa-clipboard-check"></i>-->
-        <!--</div>-->
-        <!-- 笔记本 -->
         <div class="category-title-container"
              :style="noteStyle"
-             @click="handleTopClick(1)"
+             @click="toggleWriteOrReview(1)"
         >
             <p class="title-text">笔记本</p>
             <i class="fas fa-sticky-note title-icon"></i>
@@ -251,8 +241,8 @@
             parentId: parentId
           })
         },
-        // top 点击
-        handleTopClick (num) {
+        // 切换 待复习和 笔记本
+        toggleWriteOrReview (num) {
           if (num === undefined) {
             return
           }
@@ -261,6 +251,15 @@
           if (num === 0) {
             // 如果是待复习状态
             this.$store.dispatch('GET_REVIEWLIST', {page: 0, page_size: 0, need_page: false})
+            let that = this
+            // 如果复习列表为空，则不让显示编辑器
+            setTimeout(() => {
+              if (that.reviewlist.length === 0) {
+                that.$store.commit('SET_NOTEBOOK', {name: 'showEdit', value: false})
+              } else {
+                that.$store.commit('SET_NOTEBOOK', {name: 'showEdit', value: true})
+              }
+            }, 100)
           } else if (num === 1) {
             // 如果是 笔记本 状态
             let catalogId = this.selectedCatalogId || this.catalog[0].catalog_id

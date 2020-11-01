@@ -126,7 +126,7 @@ const mutations = {
   PUSH_CHANGE_NOTE (state, {noteId}) {
     state.changeNote.push(noteId)
   },
-  // [ 中间一列 ] click 选中笔记
+  // [ 中间一列 ] 响应 click事件 选中笔记
   SELECT_NOTE (state, {noteId, index}) {
     if (!state.showEdit) {
       state.showEdit = true
@@ -159,7 +159,9 @@ const mutations = {
   // 选中待复习
   SELECT_REVIEW (state, {noteId, index}) {
     state.reviewItemSelected = noteId
+    // 更新内容
     state.contentChanged = state.reviewlist[index].content
+    // 更新标题
     state.titleChanged = state.reviewlist[index].title
   },
   SET_NOTEBOOK (state, {name, value}) {

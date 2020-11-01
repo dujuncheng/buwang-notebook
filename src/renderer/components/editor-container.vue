@@ -319,6 +319,7 @@
           bus.$on('deleteParagraph', this.handleParagraph)
           bus.$on('insertParagraph', this.handleInsertParagraph)
           bus.$on('scroll-to-header', this.scrollToHeader)
+          bus.$on('clearEditBox', this.clearEditBox)
 
           this.editor.on('insert-image', type => {
             if (type === 'absolute' || type === 'relative') {
