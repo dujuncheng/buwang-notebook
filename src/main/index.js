@@ -28,7 +28,9 @@ function createWindow () {
     show: true,
     webPreferences: {
       webSecurity: false
-    }
+    },
+    frame: false,
+    hasShadow: false
   })
   mainWindow.loadURL(winURL)
 

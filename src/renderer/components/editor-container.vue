@@ -797,7 +797,7 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background-color: rgb(39,40,34);
+            background-color: rgb(52,53,46);
             width: 90%;
             margin: 0 auto;
             box-sizing: border-box;

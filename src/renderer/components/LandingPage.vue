@@ -139,7 +139,7 @@
     .edit-container {
         flex: 1;
         height: 100%;
-        background-color: rgb(39,40,34);
+        background-color: rgb(52,53,46);
         overflow-y: scroll;
         position: relative;
         ._no_scroll_bar();

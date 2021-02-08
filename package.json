@@ -1,6 +1,6 @@
 {
-  "name": "nana-notebook",
-  "version": "0.0.2",
+  "name": "nana-notebook-with-bar",
+  "version": "0.0.4",
   "author": "juncheng.du <juncheng.du@beibei.com>",
   "description": "An electron-vue project",
   "license": null,
@@ -21,7 +21,7 @@
     "unit": "karma start test/unit/karma.conf.js"
   },
   "build": {
-    "productName": "nana-notebook",
+    "productName": "不忘笔记",
     "appId": "com.example.yourapp",
     "directories": {
       "output": "build"
