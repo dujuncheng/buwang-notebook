@@ -1,6 +1,6 @@
 {
-  "name": "nana-notebook-with-bar",
-  "version": "0.0.4",
+  "name": "nana-notebook",
+  "version": "0.0.5",
   "author": "juncheng.du <juncheng.du@beibei.com>",
   "description": "An electron-vue project",
   "license": null,

@@ -27,7 +27,34 @@
                 <div class="J_editor editor"></div>
                 <!-- 确认复习区域 在复习的状态下，才出现 -->
                 <div class="review-btn-container" v-show="sideBarSelected === 0">
-                    <el-button class="review-btn" icon="el-icon-circle-check-outline" type="primary" plain @click="hasReview">我已复习</el-button>
+                  <div>
+                    <el-button
+                        class="review-btn"
+                        icon="el-icon-circle-check-outline"
+                        type="primary"
+                        plain
+                        @click="hasReview">
+                      帮我确定下次review时间
+                    </el-button>
+                  </div>
+
+                  <div>
+                    <el-date-picker
+                        class="review-date-picker"
+                        v-model="nextReviewTime"
+                        type="datetime"
+                        size="small"
+                        clearable
+                        :picker-options="pickerOptions"
+                        placeholder="选择日期">
+                    </el-date-picker>
+                    <el-button
+                        class="review-btn"
+                        icon="el-icon-circle-check-outline"
+                        type="primary"
+                        plain
+                        @click="hasCustomerReview">自定义review</el-button>
+                  </div>
                 </div>
             </div>
             <el-dialog
@@ -90,13 +117,11 @@
     import bus from '../bus/index.js'
     import { animatedScrollTo } from '../utils/index.js'
     import Printer from '../services/printService.js'
-    import {convertLineEndings} from '../store/help.js'
     import qiniu from '../utils/uploadQiniu.js'
 
     import '../../muya/themes/default.css'
 
     import { showContextMenu } from '../contextMenu/editor/index.js'
-    const base64 = require('js-base64')
 
     const STANDAR_Y = 320
 
@@ -129,7 +154,7 @@
           'sideBarSelected': state => state.notebook.sideBarSelected,
           'showEdit': state => state.notebook.showEdit
         }),
-        ...mapGetters(['currentNote']),
+        ...mapGetters(['currentNote'])
 
       },
       components: {
@@ -148,6 +173,97 @@
             rows: 4,
             columns: 3
           },
+          // 自定义的下一次的复习时间
+          nextReviewTime: '',
+          pickerOptions: {
+            shortcuts: [{
+              text: '明天',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 3600 * 1000 * 24)
+                picker.$emit('pick', date)
+              }
+            }, {
+              text: '后天',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 2 * 3600 * 1000 * 24)
+                picker.$emit('pick', date)
+              }
+            }, {
+              text: '3天后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 3 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '1周后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 7 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '2周后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 14 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '1月后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 30 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '2月后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 60 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '3月后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 90 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '6月后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 6 * 30 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '1年后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 12 * 30 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            },
+            {
+              text: '2年后',
+              onClick (picker) {
+                const date = new Date()
+                date.setTime(date.getTime() + 24 * 30 * 3600 * 1000 * 24 * 7)
+                picker.$emit('pick', date)
+              }
+            }
+            ]
+          }
         }
       },
       mounted () {
@@ -224,7 +340,7 @@
         })
       },
       methods: {
-        handleHide() {
+        handleHide () {
           this.isHide = !this.isHide
         },
         focusEditor () {
@@ -267,15 +383,7 @@
           }
           const {
             theme,
-            focus: focusMode,
-            markdown,
-            preferLooseListItem,
-            typewriter,
-            autoPairBracket,
-            autoPairMarkdownSyntax,
-            autoPairQuote,
-            bulletListMarker,
-            tabSize
+            focus
           } = this
           // use muya UI plugins
           Muya.use(TablePicker)
@@ -413,21 +521,7 @@
           const { editor } = this
           editor && editor.insertParagraph(location)
         },
-        addThemeStyle (theme) {
-          // const linkId = 'ag-theme'
-          // const href = process.env.NODE_ENV !== 'production'
-          //   ? `./src/muya/themes/${theme}.css`
-          //   : `./static/themes/${theme}.css`
-          // let link = document.querySelector(`#${linkId}`)
-          //
-          // if (!link) {
-          //   link = document.createElement('link')
-          //   link.setAttribute('rel', 'stylesheet')
-          //   link.id = linkId
-          //   document.head.appendChild(link)
-          // }
-          // link.href = href
-        },
+        addThemeStyle (theme) {},
         handleUndo () {
           if (this.editor) {
             this.editor.undo()
@@ -459,6 +553,25 @@
             return
           }
           this.$store.dispatch('HAS_REVIEW', {noteId})
+        },
+
+        hasCustomerReview () {
+          let noteId = Number(this.reviewItemSelected)
+          if (!noteId) {
+            return
+          }
+          if (!this.nextReviewTime) {
+            this.$message({
+              message: '请先选择自定义review时间',
+              type: 'error'
+            })
+            return
+          }
+          let nextReviewTime = Math.round(this.nextReviewTime.getTime() / 1000)
+          this.$store.dispatch('HAS_REVIEW', {
+            noteId,
+            nextReviewTime: nextReviewTime
+          })
         },
         getCacheData (cache) {
           let obj = JSON.parse(cache)
@@ -827,13 +940,14 @@
 
         .review-btn-container {
             width: 100%;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-top: 1px solid #b3d8ff;
+            margin-top: 60px;
+            text-align: center;
+            padding-bottom: 100px;
             .review-btn {
 
+            }
+            .review-date-picker {
+              margin-top: 20px;
             }
         }
 

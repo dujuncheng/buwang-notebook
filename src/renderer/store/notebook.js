@@ -299,9 +299,10 @@ const actions = {
    * @returns {Promise<void>}
    * @constructor
    */
-  async HAS_REVIEW ({commit}, {noteId}) {
+  async HAS_REVIEW ({commit}, {noteId, nextReviewTime}) {
     let params = {
-      note_id: noteId
+      note_id: noteId,
+      nextReviewTime: nextReviewTime || ''
     }
     try {
       let result = await ajax('post', 'review_this', params)
